@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP — Sources du droit international — Révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+:root{
+  --r:#8B0000;--rv:#B22222;--rp:#fdf0f0;--rb:#e8c8c8;
+  --n:#1a1a1a;--gf:#2d2d2d;--g:#555;--gc:#f6f8fb;--b:#fefefe;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--b);color:var(--n);font-size:17px;line-height:1.75}
+header{background:var(--n);color:#fff;padding:1.8rem 2rem 1.4rem;border-bottom:4px solid var(--r);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+header h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:600}
+header h1 span{color:#B22222}
+header small{color:#aaa;font-size:.82rem;letter-spacing:.06em;display:block;margin-top:.2rem}
+nav{background:var(--r);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav ul{list-style:none;display:flex;flex-wrap:nowrap;min-width:max-content}
+.nav-radio{display:none}
+nav label{display:block;padding:.65rem .85rem;color:rgba(255,255,255,.82);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
+.page-content{display:none}
+#home-content{display:block}
+
+#r-home:checked~.wrap #home-content,
+#r-plan:checked~.wrap #home-content,
+#r-f1:checked~.wrap #home-content,
+#r-f2:checked~.wrap #home-content,
+#r-f3:checked~.wrap #home-content,
+#r-f4:checked~.wrap #home-content,
+#r-f5:checked~.wrap #home-content,
+#r-f6:checked~.wrap #home-content,
+#r-f7:checked~.wrap #home-content,
+#r-f8:checked~.wrap #home-content,
+#r-f9:checked~.wrap #home-content,
+#r-f10:checked~.wrap #home-content{display:none}
+#r-home:checked~.wrap #home-content{display:block}
+#r-plan:checked~.wrap #page-plan{display:block}
+#r-f1:checked~.wrap #page-f1{display:block}
+#r-f2:checked~.wrap #page-f2{display:block}
+#r-f3:checked~.wrap #page-f3{display:block}
+#r-f4:checked~.wrap #page-f4{display:block}
+#r-f5:checked~.wrap #page-f5{display:block}
+#r-f6:checked~.wrap #page-f6{display:block}
+#r-f7:checked~.wrap #page-f7{display:block}
+#r-f8:checked~.wrap #page-f8{display:block}
+#r-f9:checked~.wrap #page-f9{display:block}
+#r-f10:checked~.wrap #page-f10{display:block}
+
+#r-home:checked~.wrap .nav-home,
+#r-plan:checked~.wrap .nav-plan,
+#r-f1:checked~.wrap .nav-f1,
+#r-f2:checked~.wrap .nav-f2,
+#r-f3:checked~.wrap .nav-f3,
+#r-f4:checked~.wrap .nav-f4,
+#r-f5:checked~.wrap .nav-f5,
+#r-f6:checked~.wrap .nav-f6,
+#r-f7:checked~.wrap .nav-f7,
+#r-f8:checked~.wrap .nav-f8,
+#r-f9:checked~.wrap .nav-f9,
+#r-f10:checked~.wrap .nav-f10{color:#fff!important;background:rgba(255,255,255,.15)!important;border-bottom-color:#fff!important}
+
+#home{padding:2.5rem 2.5rem 4rem}
+.home-intro{text-align:center;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--rb)}
+.home-intro h2{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:700;margin-bottom:.4rem}
+.home-intro p{color:var(--g);font-size:.95rem;max-width:560px;margin:0 auto}
+.home-section-title{font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin:2rem 0 .9rem;padding-bottom:.3rem;border-bottom:1px solid var(--rb)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+label.card{display:block;background:var(--b);border:1.5px solid var(--rb);border-top:4px solid var(--r);padding:1.2rem 1.1rem 1rem;cursor:pointer;color:inherit;transition:box-shadow .15s}
+label.card:hover{box-shadow:0 4px 18px rgba(139,0,0,.13)}
+label.card .card-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.3rem}
+label.card h3{font-size:.95rem;font-weight:700;color:var(--r);margin-bottom:.2rem;line-height:1.35}
+label.card p{font-size:.8rem;color:var(--g);line-height:1.4}
+label.card-plan{display:block;background:var(--n);border-top:4px solid var(--r);padding:1.2rem 1.1rem 1rem;cursor:pointer;color:#fff;transition:opacity .15s}
+label.card-plan:hover{opacity:.9}
+label.card-plan .card-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:.3rem}
+label.card-plan h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+label.card-plan p{font-size:.8rem;color:#aaa;line-height:1.4}
+
+main{max-width:100%;margin:0 auto;padding:2.2rem 2.5rem 5rem}
+label.btn-home{display:inline-block;background:transparent;border:1.5px solid rgba(139,0,0,.3);color:var(--rv);padding:.4rem 1rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+
+.mindmap-container{width:100%;overflow-x:auto;padding:1.5rem 0}
+.mindmap-scroll{min-width:900px}
+.root-node{display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+.root-node .node-box{background:var(--n);color:#fff;padding:.9rem 2rem;font-size:1.1rem;font-weight:700;letter-spacing:.04em;text-align:center;border-bottom:3px solid var(--r)}
+.root-node .node-box small{display:block;color:#aaa;font-size:.72rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem}
+.single-col{display:flex;flex-direction:column;gap:1.5rem;align-items:stretch}
+.partie-block{border:2px solid var(--r);background:#fff}
+.partie-header{background:var(--r);color:#fff;padding:.6rem 1rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.partie-body{padding:.8rem;display:flex;flex-direction:column;gap:.7rem}
+.chap-block{border:1px solid var(--rb);background:#fff}
+.chap-header{background:var(--gc);border-bottom:1px solid var(--rb);padding:.35rem .7rem;font-size:.73rem;font-weight:700;color:var(--r);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;list-style:none}
+.chap-header::-webkit-details-marker{display:none}
+.chap-toggle::after{content:'▸';color:var(--r);font-size:.8rem}
+details[open] .chap-toggle::after{content:'▾'}
+.chap-body{padding:.55rem .7rem;display:flex;flex-direction:column;gap:.3rem}
+.section-item{padding:.28rem .5rem .28rem .85rem;border-left:2px solid var(--rb);font-size:.82rem;color:var(--gf);display:flex;flex-direction:column;gap:.18rem}
+.section-label{font-weight:700;color:var(--rv);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.section-name{font-size:.84rem;color:var(--gf);font-weight:600}
+.para-list{margin-top:.22rem;padding-left:.7rem;display:flex;flex-direction:column;gap:.12rem}
+.para-item{font-size:.78rem;color:var(--g);position:relative;padding-left:.9rem;line-height:1.4}
+.para-item::before{content:'§';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.7rem}
+.sub-list{margin-top:.1rem;padding-left:.8rem}
+.sub-item{font-size:.74rem;color:#777;position:relative;padding-left:.7rem;line-height:1.4}
+.sub-item::before{content:'–';position:absolute;left:0;color:var(--r)}
+.plan-fiche-link{display:inline-block;margin-top:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--r);padding:.18rem .55rem;cursor:pointer;border:none;font-family:inherit}
+
+/* FICHES */
+.fiche-page{max-width:840px;margin:0 auto}
+.fiche-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid var(--r)}
+.fiche-meta{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem}
+.fiche-header h2{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--n)}
+.fiche-loc{margin-top:.7rem;background:var(--n);color:#aaa;padding:.55rem .9rem;font-size:.76rem;line-height:1.6;border-left:3px solid var(--r)}
+.fiche-loc strong{color:#fff;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.fiche-loc span{color:#ccc}
+.fiche-intro{margin-top:.9rem;font-size:.93rem;color:var(--g);line-height:1.65;font-style:italic;padding:.7rem 1rem;background:var(--gc);border-left:3px solid var(--rb)}
+
+.f-bloc{margin-bottom:2.4rem}
+.f-bloc-title{font-size:1.05rem;font-weight:700;color:#fff;background:var(--n);padding:.5rem .9rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem}
+.f-bloc-title .f-num{background:var(--r);padding:.1rem .5rem;font-size:.75rem;letter-spacing:.07em}
+.f-sous{margin-bottom:1.5rem;padding-left:1.1rem;border-left:3px solid var(--r)}
+.f-sous-title{font-size:.98rem;font-weight:700;color:var(--r);margin-bottom:.6rem;padding-bottom:.25rem;border-bottom:1px dotted var(--rb)}
+.f-sous2{margin-bottom:1rem;padding-left:.9rem;border-left:2px solid var(--rb)}
+.f-sous2-title{font-size:.9rem;font-weight:700;color:var(--gf);margin-bottom:.4rem}
+.f-text{font-size:.92rem;color:var(--gf);line-height:1.75;margin-bottom:.55rem}
+.f-list{list-style:none;padding:0;margin:.3rem 0 .6rem .1rem}
+.f-list li{font-size:.91rem;color:var(--gf);line-height:1.65;padding:.15rem 0 .15rem 1.1rem;position:relative}
+.f-list li::before{content:'—';position:absolute;left:0;color:var(--r);font-weight:700}
+.f-list li strong{color:var(--r)}
+.f-list-sub{list-style:none;padding:0;margin:.2rem 0 .2rem .8rem}
+.f-list-sub li{font-size:.87rem;color:#555;line-height:1.6;padding:.1rem 0 .1rem .9rem;position:relative}
+.f-list-sub li::before{content:'·';position:absolute;left:0;color:var(--r);font-weight:700}
+.f-alerte{background:#fffbf0;border-left:4px solid #c47900;padding:.75rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;color:var(--gf)}
+.f-alerte strong{color:#9a5e00;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.25rem}
+.f-exemple{background:var(--gc);border-left:3px solid #888;padding:.7rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;color:var(--g)}
+.f-exemple strong{color:var(--gf);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.f-key{background:var(--rp);border:1.5px solid var(--rb);padding:.65rem 1rem;margin:.5rem 0 .9rem;font-size:.91rem;line-height:1.65;color:var(--gf);display:flex;align-items:baseline;gap:.6rem}
+.f-key::before{content:'→';color:var(--r);font-weight:700;flex-shrink:0;font-size:1rem}
+.f-table-wrap{overflow-x:auto;margin:.6rem 0 .9rem}
+.f-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.f-table thead tr{background:var(--n);color:#fff}
+.f-table thead th{padding:.5rem .8rem;text-align:left;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.f-table tbody tr:nth-child(even){background:var(--gc)}
+.f-table tbody td{padding:.45rem .8rem;border-bottom:1px solid var(--rb);vertical-align:top}
+.f-table tbody td:first-child{font-weight:700;color:var(--r)}
+.f-retenir{background:var(--rp);border-left:4px solid var(--r);padding:.9rem 1.1rem;margin-top:1.8rem;font-size:.91rem;line-height:1.7;color:var(--gf)}
+.f-retenir strong{color:var(--r);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.f-retenir ul{list-style:none;padding:0;margin:.3rem 0}
+.f-retenir ul li{padding:.1rem 0 .1rem 1rem;position:relative;font-size:.9rem}
+.f-retenir ul li::before{content:'✓';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.78rem}
+.fiche-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rb)}
+.fiche-nav label{color:var(--rv);cursor:pointer;font-size:.85rem}
+.f-vs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 1rem}
+.f-vs-col{padding:.7rem .9rem;font-size:.86rem;border:1.5px solid var(--rb)}
+.f-vs-col-title{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--r);margin-bottom:.4rem}
+
+.f-steps{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}
+.f-step{background:var(--r);color:#fff;padding:.3rem .7rem;font-size:.8rem;font-weight:600}
+
+/* quote style */
+.f-quote{border-left:3px solid var(--r);padding:.5rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;font-style:italic;color:var(--g);background:var(--rp)}
+.f-quote cite{display:block;font-style:normal;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--r);margin-top:.3rem}
+
+footer{background:var(--n);color:#777;text-align:center;padding:1.2rem;font-size:.78rem;letter-spacing:.05em;border-top:3px solid var(--r);margin-top:2rem}
+footer span{color:#B22222}
+
+@media(max-width:900px){
+  .mindmap-scroll{min-width:unset}
+  main{padding:1.4rem .9rem 4rem}
+  header{padding:1.2rem 1rem 1rem}
+  nav label{padding:.55rem .5rem;font-size:.68rem}
+  #home{padding:1.8rem 1rem 3rem}
+  .cards-grid{grid-template-columns:1fr 1fr}
+  .f-vs{grid-template-columns:1fr}
+}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<input type="radio" name="page" class="nav-radio" id="r-home" checked>
+<input type="radio" name="page" class="nav-radio" id="r-plan">
+<input type="radio" name="page" class="nav-radio" id="r-f1">
+<input type="radio" name="page" class="nav-radio" id="r-f2">
+<input type="radio" name="page" class="nav-radio" id="r-f3">
+<input type="radio" name="page" class="nav-radio" id="r-f4">
+<input type="radio" name="page" class="nav-radio" id="r-f5">
+<input type="radio" name="page" class="nav-radio" id="r-f6">
+<input type="radio" name="page" class="nav-radio" id="r-f7">
+<input type="radio" name="page" class="nav-radio" id="r-f8">
+<input type="radio" name="page" class="nav-radio" id="r-f9">
+<input type="radio" name="page" class="nav-radio" id="r-f10">
+
+<div class="wrap">
+<header>
+  <label for="r-home" style="text-decoration:none;color:inherit;display:block;cursor:pointer">
+    <h1>Droit <span>International Public</span></h1>
+    <small>Les sources du droit international · 10 fiches de révision · Partie 1</small>
+  </label>
+</header>
+<nav>
+  <ul>
+    <li><label class="nav-home" for="r-home">Accueil</label></li>
+    <li><label class="nav-plan" for="r-plan">Plan du cours</label></li>
+    <li><label class="nav-f1" for="r-f1">#1 Introduction</label></li>
+    <li><label class="nav-f2" for="r-f2">#2 Intro traités</label></li>
+    <li><label class="nav-f3" for="r-f3">#3 Définition &amp; formation</label></li>
+    <li><label class="nav-f4" for="r-f4">#4 Réserves</label></li>
+    <li><label class="nav-f5" for="r-f5">#5 Validité</label></li>
+    <li><label class="nav-f6" for="r-f6">#6 Vie &amp; mort</label></li>
+    <li><label class="nav-f7" for="r-f7">#7 Coutume</label></li>
+    <li><label class="nav-f8" for="r-f8">#8 PGD</label></li>
+    <li><label class="nav-f9" for="r-f9">#9 Actes unilatéraux</label></li>
+    <li><label class="nav-f10" for="r-f10">#10 Moyens auxiliaires &amp; équité</label></li>
+  </ul>
+</nav>
+
+<!-- ACCUEIL -->
+<div id="home-content">
+<div id="home">
+  <div class="home-intro">
+    <h2>Droit International Public</h2>
+    <p>Partie 1 — Les sources du droit international · 10 fiches complètes + plan · 2 questions de cours à l'examen</p>
+  </div>
+
+  <div class="home-section-title">Navigation générale</div>
+  <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));max-width:520px">
+    <label class="card-plan" for="r-plan">
+      <div class="card-num">Vue d'ensemble</div>
+      <h3>Plan du cours</h3>
+      <p>Structure complète — Introduction + Titre I (traités) + Titre II (autres sources) — liens directs vers les fiches</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Introduction générale</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f1">
+      <div class="card-num">Fiche #1</div>
+      <h3>Introduction au DIP</h3>
+      <p>Définition · Histoire (Westphalie 1648) · Théories · Spécificités · Sources formelles vs matérielles · Article 38 CIJ</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Titre I — Les traités internationaux</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f2">
+      <div class="card-num">Fiche #2</div>
+      <h3>Introduction sur les traités</h3>
+      <p>CVDT 1969 · Formes et structure · Effet à l'égard des parties &amp; des tiers · Effet en droit français (art. 55 C.)</p>
+    </label>
+    <label class="card" for="r-f3">
+      <div class="card-num">Fiche #3</div>
+      <h3>Définition et formation</h3>
+      <p>3 conditions · 4 étapes d'élaboration · Forme simplifiée vs solennelle · Pratique française · Entrée en vigueur</p>
+    </label>
+    <label class="card" for="r-f4">
+      <div class="card-num">Fiche #4</div>
+      <h3>Réserves aux traités</h3>
+      <p>Définition · Liberté encadrée (art. 19 CVDT) · 4 options des États · Opposabilité · Validité · Déclarations interprétatives</p>
+    </label>
+    <label class="card" for="r-f5">
+      <div class="card-num">Fiche #5</div>
+      <h3>Conditions de validité</h3>
+      <p>Vices du consentement : ratification imparfaite, erreur, dol, corruption, contrainte · Jus cogens · Erga omnes</p>
+    </label>
+    <label class="card" for="r-f6">
+      <div class="card-num">Fiche #6</div>
+      <h3>Vie et mort des traités</h3>
+      <p>Interprétation · Modification · Extinction &amp; suspension · Dénonciation · Rebus sic standibus · Exécution impossible</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Titre II — Les autres sources</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f7">
+      <div class="card-num">Fiche #7</div>
+      <h3>La coutume internationale</h3>
+      <p>Notion · Élément matériel (pratique) : répétée, uniforme, générale · Opinio juris · Coutumes régionales &amp; bilatérales</p>
+    </label>
+    <label class="card" for="r-f8">
+      <div class="card-num">Fiche #8</div>
+      <h3>Les principes généraux du droit</h3>
+      <p>Art. 38 §1c · Origine · Rôle comblateur · Exemples · Distinction avec coutume et traités</p>
+    </label>
+    <label class="card" for="r-f9">
+      <div class="card-num">Fiche #9</div>
+      <h3>Les actes unilatéraux</h3>
+      <p>États : reconnaissance, protestation, notification, renonciation, promesse · Organisations internationales : résolutions</p>
+    </label>
+    <label class="card" for="r-f10">
+      <div class="card-num">Fiche #10</div>
+      <h3>Moyens auxiliaires &amp; équité</h3>
+      <p>Jurisprudence internationale · Doctrine · Rôle subsidiaire · L'équité : infra, praeter et contra legem</p>
+    </label>
+  </div>
+</div>
+</div>
+
+<!-- PAGE PLAN -->
+<div class="page-content" id="page-plan"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Plan complet du cours</div>
+    <h2>DIP — Les sources du droit international</h2>
+  </div>
+
+  <div class="mindmap-container"><div class="mindmap-scroll">
+  <div class="root-node"><div class="node-box">DROIT INTERNATIONAL PUBLIC<small>Partie 1 — Les sources du droit international · Art. 38 CIJ</small></div></div>
+  <div class="single-col">
+
+    <div class="partie-block">
+      <div class="partie-header">Introduction générale</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Histoire et théories <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§1</span><span class="section-name">Développement historique</span><div class="para-list"><div class="para-item">Accord Ramses II / Hittites 1292 av. JC · Vrai DIP né 1648 (Westphalie)</div><div class="para-item">Triple phénomène : expansion matérielle + institutionnalisation + complexification</div></div></div>
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">Théories</span><div class="para-list"><div class="para-item">Droit naturel (Grotius, Vitoria) · Positivisme volontariste (Triepel, Anzilotti)</div><div class="para-item">Normativisme (Kelsen) · Objectivisme sociologique (Scelle) · Théories critiques</div></div></div>
+            <label class="plan-fiche-link" for="r-f1">→ Fiche #1</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Caractéristiques générales <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§1</span><span class="section-name">Existence du DIP — critiques et réponses</span></div>
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">Spécificités : système anarchique · droit produit par ses destinataires · mise en œuvre décentralisée</span></div>
+            <div class="section-item"><span class="section-label">Art.38</span><span class="section-name">Sources formelles : traités · coutume · PGD · actes unilatéraux · moyens auxiliaires (JP + doctrine)</span></div>
+            <label class="plan-fiche-link" for="r-f1">→ Fiche #1</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Titre I — Les traités internationaux (Chap. 1 à 4)</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 1 — Définition &amp; formation <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">S.1</span><span class="section-name">Notion de traité</span><div class="para-list"><div class="para-item">§1 Définition : 3 conditions (écrit + régit DI + droits/obligations)</div><div class="para-item">§2 Forme : bilatéral/multilatéral · normatif/institutionnel · traité-loi/contrat · simplifié/solennel</div></div></div>
+            <div class="section-item"><span class="section-label">S.2</span><span class="section-name">Conclusion des traités</span><div class="para-list"><div class="para-item">§1 4 étapes : plénipotentiaires → négociation → adoption → authentification</div><div class="para-item">§2 Consentement : forme simplifiée (signature) vs solennelle (signature + ratification)</div><div class="para-item">§3 Pratique française : art. 52-54 Constitution · autorisation législative art. 53 · contrôle CC</div><div class="para-item">§4 Entrée en vigueur · adhésion</div></div></div>
+            <label class="plan-fiche-link" for="r-f3">→ Fiche #3</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">+ Effet des traités (Section 3 &amp; 4) <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">S.3</span><span class="section-name">Effet à l'égard des parties</span><div class="para-list"><div class="para-item">Pacta sunt servanda (art. 26 CVDT) · non-invocabilité du droit interne (art. 27)</div><div class="para-item">Effet temporel (pro futuro) · effet territorial</div></div></div>
+            <div class="section-item"><span class="section-label">S.3</span><span class="section-name">Effet à l'égard des tiers (art. 34 CVDT)</span><div class="para-list"><div class="para-item">Principe : res inter alios acta · Exceptions : accord collatéral · stipulation pour autrui · situations objectives</div></div></div>
+            <div class="section-item"><span class="section-label">S.4</span><span class="section-name">Effet en droit français</span><div class="para-list"><div class="para-item">Dualisme vs monisme · Art. 55 C° : supérieur à la loi, inférieur à la C°</div><div class="para-item">Conditions de forme : ratification régulière (CE Blotzheim 1998) + publication (Prosagor 1964)</div><div class="para-item">Conditions de fond : réciprocité (CE Cheriet 2010) + effet direct (CE GISTI 2012)</div></div></div>
+            <label class="plan-fiche-link" for="r-f2">→ Fiche #2</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 2 — Réserves <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">S.1</span><span class="section-name">Notion (art. 2§1d CVDT) · ≠ déclaration interprétative</span></div>
+            <div class="section-item"><span class="section-label">S.2</span><span class="section-name">Régime juridique</span><div class="para-list"><div class="para-item">§1 Liberté encadrée (art. 19) : 3 cas (interdites / déterminées / compatibilité objet-but)</div><div class="para-item">§2 Effet : 4 options (acceptation · objection simple · aggravée · supermaximum) · dialogue réservataire</div><div class="para-item">B. Validité : réserve invalide ≠ opposable même si acceptée</div></div></div>
+            <label class="plan-fiche-link" for="r-f4">→ Fiche #4</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 3 — Validité (nullités) <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">S.1</span><span class="section-name">Vices du consentement</span><div class="para-list"><div class="para-item">§1 Ratification imparfaite (art. 46) · §2 Erreur (art. 48) · §3 Dol (art. 49)</div><div class="para-item">§4 Corruption (art. 50) · §5 Contrainte sur représentant (art. 51) / sur l'État (art. 52)</div></div></div>
+            <div class="section-item"><span class="section-label">S.2</span><span class="section-name">Jus cogens (art. 53 CVDT)</span><div class="para-list"><div class="para-item">Norme impérative · liste non exhaustive · nullité absolue · ≠ erga omnes</div></div></div>
+            <label class="plan-fiche-link" for="r-f5">→ Fiche #5</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 4 — Vie et mort des traités <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">S.1</span><span class="section-name">Vie des traités</span><div class="para-list"><div class="para-item">§1 Interprétation (art. 31 CVDT : bonne foi + sens ordinaire + objet/but)</div><div class="para-item">§2 Modification : clause de révision · amendement · cas Charte ONU</div></div></div>
+            <div class="section-item"><span class="section-label">S.2</span><span class="section-name">Extinction &amp; suspension</span><div class="para-list"><div class="para-item">§1 Volonté des parties (consentement exprès / désuétude)</div><div class="para-item">§2 Dénonciation : clause de retrait (art. 54) / sans clause (art. 56)</div><div class="para-item">§3 Violation substantielle (art. 60) · §4 Conflit armé (art. 73)</div><div class="para-item">§5 Exécution impossible (art. 61) · §6 Rebus sic standibus (art. 62)</div></div></div>
+            <label class="plan-fiche-link" for="r-f6">→ Fiche #6</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Titre II — Les autres sources (Chap. 1 à 4)</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 1 — La coutume internationale <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">S.1</span><span class="section-name">Définition</span><div class="para-list"><div class="para-item">§1 Notion : source non écrite, valeur ≠ instrument, comportements des États</div><div class="para-item">§2 Deux éléments constitutifs : pratique générale + opinio juris</div></div></div>
+            <div class="section-item"><span class="section-label">S.2</span><span class="section-name">Identification de la coutume</span><div class="para-list"><div class="para-item">A. Pratique : répétée + uniforme + générale (quantitatif + qualitatif)</div><div class="para-item">Coutumes régionales et bilatérales (CIJ, Droit de passage en territoire indien)</div><div class="para-item">B. Opinio juris : conscience d'agir en vertu d'une obligation juridique</div></div></div>
+            <div class="section-item"><span class="section-label">S.3</span><span class="section-name">Portée : coutume opposable à l'objecteur persistant · coutume et traités en parallèle</span></div>
+            <label class="plan-fiche-link" for="r-f7">→ Fiche #7</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 2 — Les PGD <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">Art.38§1c</span><span class="section-name">Principes reconnus par les nations civilisées · rôle comblateur des lacunes</span><div class="para-list"><div class="para-item">Exemples : res judicata, bonne foi, abus de droit, dommages-intérêts, estoppel</div></div></div>
+            <label class="plan-fiche-link" for="r-f8">→ Fiche #8</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 3 — Les actes unilatéraux <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">États</span><span class="section-name">Reconnaissance · protestation · notification · renonciation · promesse</span></div>
+            <div class="section-item"><span class="section-label">OI</span><span class="section-name">Résolutions (obligatoires / recommandatoires) · décisions</span></div>
+            <label class="plan-fiche-link" for="r-f9">→ Fiche #9</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Chapitre 4 — Moyens auxiliaires &amp; équité <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">Art.38§2</span><span class="section-name">JP internationale + doctrine : aident à identifier les sources, ne créent pas de droit</span></div>
+            <div class="section-item"><span class="section-label">Équité</span><span class="section-name">Infra legem · Praeter legem · Contra legem</span></div>
+            <label class="plan-fiche-link" for="r-f10">→ Fiche #10</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+  </div></div>
+
+  <div class="fiche-nav"><label for="r-home">← Accueil</label><label for="r-f1">Fiche #1 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 1 -->
+<div class="page-content" id="page-f1"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #1 — Introduction générale</div>
+    <h2>Le droit international public</h2>
+    <div class="fiche-intro">Le DIP est un droit singulier car créé par ses propres destinataires. Il n'existe aucune entité au-dessus des États pour l'imposer. Cette spécificité explique toutes ses caractéristiques : anarchie, décentralisation, consentement comme fondement.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Définition</span> Qu'est-ce que le DIP ?</div>
+    <div class="f-key">Le DIP régit la société internationale et les relations entre les États (et d'autres sujets). Comme rien n'est au-dessus de l'État, rien ne peut lui imposer du droit : le droit international naît essentiellement de l'accord de l'État lui-même. C'est un droit créé par ses destinataires.</div>
+    <div class="f-text">Le terme « droit international » vient de J. Bentham (inter-national), par opposition au droit interne (municipal law). À distinguer du droit international <em>privé</em> (relations entre personnes physiques/morales comportant un élément d'extranéité) et des relations internationales (qui dépassent le seul droit).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Histoire du DIP</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Date</th><th>Événement</th><th>Importance</th></tr></thead><tbody>
+      <tr><td>1292 av. JC</td><td>Accord Ramsès II / Hittites</td><td>Premier traité connu de l'histoire</td></tr>
+      <tr><td>1648</td><td>Traités de Westphalie</td><td>Naissance du vrai DIP : formalisation du principe de souveraineté des États</td></tr>
+      <tr><td>1945</td><td>Décolonisation</td><td>Multiplication des États → besoin de règles multilatérales</td></tr>
+      <tr><td>1969</td><td>Convention de Vienne (CVDT)</td><td>Codification du droit des traités</td></tr>
+    </tbody></table></div>
+    <div class="f-text">Depuis Westphalie, le DIP a connu un <strong>triple phénomène</strong> : expansion matérielle (tous les domaines sont couverts) · institutionnalisation (création des OI) · complexification.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Théories du DIP</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>École</th><th>Fondement du DIP</th><th>Auteurs clés</th></tr></thead><tbody>
+      <tr><td>Droit naturel</td><td>Conformité à la raison droite (Grotius : laïcisation) ou à la morale religieuse</td><td>Vitoria, Suarez, Pufendorf, Grotius</td></tr>
+      <tr><td>Positivisme volontariste</td><td>Volonté des États (accords explicites ou tacites) — théorie dominante</td><td>Triepel, Anzilotti</td></tr>
+      <tr><td>Normativisme</td><td>Norme hypothétique supérieure justifiant l'existence du DIP</td><td>Kelsen</td></tr>
+      <tr><td>Objectivisme sociologique</td><td>Nécessité sociale : les États ont besoin du DIP pour coexister</td><td>Scelle</td></tr>
+      <tr><td>Théories critiques</td><td>Le DIP comme outil de domination d'une catégorie sur une autre</td><td>Courants récents (TWAIL…)</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§§ 1-2</span> Caractéristiques générales — Existe-t-il vraiment ?</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Critiques de l'existence du DIP</div>
+      <div class="f-alerte"><strong>Critique 1 (Spinoza, Austin, Morgenthau…)</strong>Le DIP n'existerait pas car il n'est pas respecté → RÉPONSE : faire du respect le critère d'existence du droit est une idée fausse. Le droit interne aussi est violé. Ce qui compte c'est la conséquence de la violation.</div>
+      <div class="f-alerte"><strong>Critique 2</strong>Pas de législateur, pas de juge, pas de sanction → RÉPONSE : <em>Législateur</em> = les États eux-mêmes. <em>Juge</em> = CIJ et juridictions spécialisées (mais avec consentement des États). <em>Sanction</em> = contre-mesures des autres États (optionnel mais réel).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Les spécificités du DIP</div>
+      <ul class="f-list">
+        <li><strong>Système anarchique</strong> : pas de hiérarchie entre États, pas d'entité supérieure</li>
+        <li><strong>Droit produit par ses destinataires</strong> : les États créent les règles pour eux-mêmes → réticents à créer des règles défavorables</li>
+        <li><strong>Pas de hiérarchie des normes</strong> (sauf <em>jus cogens</em>) : toutes les règles se valent en principe</li>
+        <li><strong>Mise en œuvre décentralisée</strong> : un État ne peut être jugé qu'avec son consentement</li>
+        <li><strong>Sanction optionnelle</strong> : elle provient des autres États, au coût politique parfois prohibitif</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Sources</span> L'article 38 du Statut de la CIJ</div>
+    <div class="f-key">L'article 38 est la liste officielle des sources du droit international. Il distingue les sources formelles (qui donnent force obligatoire à une norme) des sources matérielles (raisons sociales, morales, économiques qui suscitent la création du droit).</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Source formelle</th><th>Définition</th><th>Fiche</th></tr></thead><tbody>
+      <tr><td>Traités internationaux</td><td>Accords écrits entre États (ou OI) — source la plus courante</td><td>#2 à #6</td></tr>
+      <tr><td>Coutume internationale</td><td>Pratique généralisée acceptée comme étant du droit (non écrite)</td><td>#7</td></tr>
+      <tr><td>Principes généraux du droit</td><td>Reconnus par les nations civilisées — rôle comblateur</td><td>#8</td></tr>
+      <tr><td>Actes unilatéraux</td><td>Non prévus en 1945 — État crée du droit pour lui seul</td><td>#9</td></tr>
+      <tr><td>JP + Doctrine</td><td>⚠️ Pas des sources ! Moyens auxiliaires de détermination</td><td>#10</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Distinction cruciale</strong>La JP et la doctrine (art. 38 §1 d) NE SONT PAS des sources du droit international. Ce sont des <em>moyens auxiliaires</em> qui aident à identifier si une source formelle existe. Elles ne créent pas de règle obligatoire par elles-mêmes.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>DIP = droit créé par ses destinataires (les États) en raison du principe de souveraineté</li>
+      <li>Westphalie 1648 = naissance du vrai DIP (souveraineté formalisée)</li>
+      <li>Théorie dominante = positivisme volontariste (Triepel, Anzilotti)</li>
+      <li>4 sources formelles : traités · coutume · PGD · actes unilatéraux</li>
+      <li>JP et doctrine = moyens AUXILIAIRES seulement (art. 38 §1d)</li>
+      <li>CVDT 1969 = droit des traités mais pas ratifiée par tous (règles valent aussi comme coutume)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-plan">← Plan du cours</label><label for="r-f2">Fiche #2 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 2 -->
+<div class="page-content" id="page-f2"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #2 — Titre I, Chapitre 1 (Sections 3 &amp; 4)</div>
+    <h2>Introduction sur les traités internationaux</h2>
+    <div class="fiche-intro">Les traités sont la source formelle la plus ancienne et la plus courante (+ de 6 000 en vigueur). Une fois conclus, ils lient les parties selon le principe pacta sunt servanda. Leur effet en droit français est encadré par l'article 55 de la Constitution.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Section 3</span> L'effet des traités à l'égard des parties</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Le principe pacta sunt servanda</div>
+      <div class="f-quote">« Tout traité en vigueur lie les parties et doit être exécuté par elles de bonne foi. »<cite>Article 26 CVDT</cite></div>
+      <div class="f-quote">Un État ne peut se prévaloir de son droit interne pour justifier la non-application d'un traité.<cite>Article 27 CVDT</cite></div>
+      <div class="f-key">Non-respect d'un traité → engagement de la responsabilité internationale de l'État + obligation de réparation + possibilité de contre-mesures par les autres États.</div>
+      <div class="f-text"><strong>Effet temporel :</strong> les traités n'ont d'effet que pro futuro (pour l'avenir). Présomption de non-rétroactivité. Une clause de rétroactivité expresse peut y déroger.</div>
+      <div class="f-text"><strong>Effet territorial :</strong> le traité s'applique sur l'intégralité du territoire de l'État, sauf clause contraire (clauses coloniales/fédérales).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">L'effet à l'égard des tiers (art. 34 CVDT)</div>
+      <div class="f-quote">« Un traité ne crée ni obligations ni droits pour un État tiers sans son consentement. »<cite>Article 34 CVDT — Res inter alios acta</cite></div>
+      <div class="f-exemple"><strong>Illustration — Affaire de l'île de Clipperton 1930</strong>Le Mexique tentait d'opposer à la France un article de l'Acte de Berlin (1885). La juridiction a refusé : 1° le traité est postérieur à l'occupation française ; 2° le Mexique n'est pas signataire de l'Acte de Berlin → effet relatif des traités.</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Exception</th><th>Mécanisme</th><th>Consentement requis ?</th></tr></thead><tbody>
+        <tr><td>Accord collatéral</td><td>L'État tiers accepte expressément une obligation née d'un traité auquel il n'est pas partie</td><td>Oui — par écrit</td></tr>
+        <tr><td>Stipulation pour autrui</td><td>Un droit est conféré à un État tiers par le traité</td><td>Présomption d'acceptation</td></tr>
+        <tr><td>Situations objectives / Erga omnes</td><td>Traités opposables à tous car ils créent des situations que tous doivent respecter (canaux, Antarctique)</td><td>Non requis</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Section 4</span> Effet des traités dans l'ordre juridique français</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Dualisme vs Monisme</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Dualisme</div>DI et droit interne = systèmes séparés, hermétiques. Le traité doit être transposé en droit interne pour y avoir valeur. (Triepel, Anzilotti)</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Monisme</div>Unité des ordres juridiques. Le traité s'applique automatiquement dès son entrée en vigueur internationale, sans transposition. La France est moniste (Kelsen). Variante : à supériorité du DI ou du droit interne.</div>
+      </div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — La place dans la hiérarchie française (Art. 55 C°)</div>
+      <div class="f-quote">« Les traités ou accords régulièrement ratifiés ou approuvés ont, dès leur publication, une autorité supérieure à celle des lois, sous réserve, pour chaque accord ou traité, de son application par l'autre partie. »<cite>Article 55 de la Constitution française</cite></div>
+      <div class="f-key">Position : TRAITÉS &gt; LOIS &gt; Actes règlementaires MAIS Constitution &gt; Traités. La France est moniste à supériorité du DI sur la loi, mais inférieur à la Constitution.</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Rapport</th><th>Règle</th><th>Jurisprudence</th></tr></thead><tbody>
+        <tr><td>Traités vs Constitution</td><td>Constitution supérieure (contrôle préventif art. 54)</td><td>CE Sarran 1998 · Cass. Fraisse 2000</td></tr>
+        <tr><td>Traités vs lois</td><td>Traités supérieurs (art. 55) — contrôle de conventionnalité</td><td>Cass. J.Vabre 1975 · CE Nicolo 1989</td></tr>
+        <tr><td>Contrôle conventionnalité</td><td>Appartient au juge ordinaire (CE + Cass.) — pas au CC (IVG 1975)</td><td>CC refuse d'examiner (DC 75-54)</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Tension constitutionnelle</strong>Si la France refuse d'exécuter un traité parce qu'il est contraire à la Constitution, elle ne peut pas justifier cette inexécution par son droit interne en droit international (art. 27 CVDT). En respectant la Constitution, elle viole potentiellement le DI.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — Les 4 conditions d'invocabilité (Art. 55)</div>
+      <div class="f-text"><strong>CONDITIONS DE FORME</strong></div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">1° Ratification / approbation régulière</div>
+        <div class="f-text">Ratification = Président de la République. Approbation = Ministre des Affaires étrangères. Les juridictions contrôlent désormais la réalité ET la régularité (art. 53 C° respecté ?).</div>
+        <div class="f-exemple"><strong>CE, Parc d'activité de Blotzheim, 1998</strong> — Renversement de JP : le CE vérifie désormais si l'autorisation législative requise par l'art. 53 a bien été obtenue avant ratification. La Cour de cassation a suivi.</div>
+      </div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">2° Publication</div>
+        <div class="f-text">Le traité doit avoir été publié (décret de publication signé par le Président ou le MAE). Un traité ratifié mais non publié n'a pas d'effet en droit interne français. La publication n'est pas automatique.</div>
+        <div class="f-exemple"><strong>CE, Prosagor, 1964</strong> — Les juridictions contrôlent la réalité ET la régularité de la publication.</div>
+      </div>
+      <div class="f-text"><strong>CONDITIONS DE FOND</strong></div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">3° Réciprocité</div>
+        <div class="f-text">Le traité ne prime sur la loi que si l'autre partie l'applique aussi. Condition difficile à vérifier → présomption de réciprocité.</div>
+        <div class="f-exemple"><strong>CEDH, Chevrol 2003</strong> → pratique du renvoi au MAE jugée contraire à l'art. 6 CEDH (procès équitable). <strong>CE, Cheriet-Benseghir 2010</strong> → c'est désormais aux juridictions d'apprécier la réciprocité elles-mêmes. Exception : traités à obligations intégrales (droits de l'homme) dispensés.</div>
+      </div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">4° Effet direct</div>
+        <div class="f-text">Deux critères cumulatifs :</div>
+        <ul class="f-list">
+          <li>La disposition ne régit pas exclusivement les relations entre États → elle confère des droits aux individus</li>
+          <li>La disposition ne requiert pas d'intervention supplémentaire de l'État pour produire des effets à l'égard des particuliers</li>
+        </ul>
+        <div class="f-exemple"><strong>CE, GISTI et FAPIL, 2012</strong> — Arrêt de référence pour les deux critères de l'effet direct. Exemple : Charte des NU = pas d'effet direct (régit États) ; CEDH = effet direct (droits des individus).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Pacta sunt servanda (art. 26) · droit interne inopposable (art. 27) · effet pro futuro</li>
+      <li>Effet relatif des traités (art. 34) — 3 exceptions : accord collatéral · stipulation pour autrui · situations objectives</li>
+      <li>Art. 55 C° : traités &gt; lois mais &lt; Constitution · contrôle conventionnalité = juge ordinaire (CE + Cass.)</li>
+      <li>4 conditions art. 55 : ratification régulière (Blotzheim) + publication (Prosagor) + réciprocité (Cheriet 2010) + effet direct (GISTI 2012)</li>
+      <li>Doctrine Matter abandonnée en 1975 (J.Vabre) et 1989 (Nicolo) → traités supérieurs même aux lois postérieures</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f1">← Fiche #1</label><label for="r-f3">Fiche #3 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 3 -->
+<div class="page-content" id="page-f3"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #3 — Chapitre 1, Sections 1 &amp; 2</div>
+    <h2>Définition et formation des traités internationaux</h2>
+    <div class="fiche-intro">Un traité est un acte consensuel par excellence : il naît de la volonté des États. Sa définition repose sur 3 conditions cumulatives. Sa formation passe par 4 étapes. L'expression du consentement distingue la forme simplifiée (signature seule) de la forme solennelle (signature + ratification).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Définition du traité — 3 conditions cumulatives</div>
+    <div class="f-key">Un traité est une manifestation de volonté concordante imputable à deux ou plusieurs sujets de droit international, destinée à produire des effets de droit selon les règles du droit international.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Condition</th><th>Contenu</th><th>Nuance</th></tr></thead><tbody>
+      <tr><td>Accord écrit</td><td>Texte formalisé (même les notes verbales retranscrites)</td><td>Un accord oral entre chefs d'État ≠ traité. Accord soumis au droit privé ≠ traité (ex. : contrats d'emprunt)</td></tr>
+      <tr><td>Créer des droits et obligations</td><td>Volonté de s'engager juridiquement</td><td>Une déclaration post-conférence (Yalta) peut être écrite mais ne créer aucune obligation → pas un traité. <em>CIJ, Gabon/Guinée éq. 2025 : Convention de Bata ≠ traité</em></td></tr>
+      <tr><td>Imputable à des sujets de DI</td><td>États (art. 6 CVDT) + OI (CVDT 1986) + entités sui generis</td><td>Personnes physiques/morales privées ≠ parties à un traité → contrat de droit interne seulement</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Entités sui generis</strong>Vatican (concordats), CICR, CIO, Ordre de Malte → peuvent conclure des traités même sans être États ni OI. MLN (Mouvements de Libération Nationale) → accorded de dévolution sur le territoire qu'ils représentent (ex. FNL).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Les formes du traité</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Classification</th><th>Catégories</th></tr></thead><tbody>
+      <tr><td>Nombre de parties</td><td>Bilatéraux (majorité) · multilatéraux · universels</td></tr>
+      <tr><td>Objet</td><td>Normatifs (créent des règles) · institutionnels (créent une OI)</td></tr>
+      <tr><td>Généralité</td><td>Traité-loi (obligations générales, non réciproques ex. CEDH) · traité-contrat (obligations réciproques ex. commerce)</td></tr>
+      <tr><td>Mode de conclusion</td><td>Forme simplifiée (signature) · forme solennelle (signature + ratification)</td></tr>
+    </tbody></table></div>
+    <div class="f-text"><strong>Structure d'un traité :</strong> Préambule (pas d'obligations, sert à l'interprétation) → Dispositif (articles = cœur des obligations) → Clauses finales (vie du traité, adhésion, fin) → Annexes / Protocoles (même valeur que le traité).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Les 4 étapes d'élaboration</div>
+    <div class="f-steps">
+      <div class="f-step">① Plénipotentiaires</div>
+      <div class="f-step">② Négociation</div>
+      <div class="f-step">③ Adoption</div>
+      <div class="f-step">④ Authentification</div>
+    </div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Étape</th><th>Contenu</th><th>Détail</th></tr></thead><tbody>
+      <tr><td>① Plénipotentiaires</td><td>Preuve que la personne a les pleins pouvoirs</td><td>Dispensés : chef d'État, chef de gouvernement, MAE, ambassadeurs (dans leur ressort)</td></tr>
+      <tr><td>② Négociation</td><td>Discussion du contenu — bonne foi obligatoire</td><td>Simple : bilatéral direct. Complexe : grandes conférences (200 États), méthode de l'amendement sur un projet préalable</td></tr>
+      <tr><td>③ Adoption</td><td>Fin des négociations — texte figé</td><td>En principe par consensus ; pour grandes conventions : majorité des 2/3. Texte ne sera plus modifié après.</td></tr>
+      <tr><td>④ Authentification</td><td>Vérification que le texte est bien celui négocié</td><td>Par paraphe (initiales) ou signature du texte</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> L'expression du consentement à être lié</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Traité en forme simplifiée</div>La signature seule engage définitivement l'État. Majorité des traités actuels. Créé pour combler la lenteur de la forme solennelle. Art. 12 CVDT.</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Traité en forme solennelle</div>Signature + ratification ultérieure obligatoire. La signature seule ne lie pas. Art. 14 CVDT. Maintenu pour donner de la solennité ou pour impliquer le Parlement.</div>
+    </div>
+    <div class="f-key">Entre signature et ratification (forme solennelle) : obligation de bonne foi de ne pas priver le traité de son objet ou de son but (art. 18 CVDT). La signature n'implique aucune obligation de ratifier.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> La pratique française (art. 52-54 C°)</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Question</th><th>Réponse constitutionnelle</th></tr></thead><tbody>
+      <tr><td>Qui négocie et ratifie ?</td><td>Traités : Président de la République (art. 52). Accords : Ministre des Affaires étrangères (approbation)</td></tr>
+      <tr><td>Quand faut-il une autorisation législative ?</td><td>Art. 53 : traités de paix, commerce, OI, finances de l'État, dispositions législatives, état des personnes, cession/échange de territoire</td></tr>
+      <tr><td>Quelle loi ?</td><td>Loi ordinaire (majorité des cas) ou loi référendaire (art. 11 C° : ex. Maastricht 1992, Constitution pour l'Europe)</td></tr>
+      <tr><td>Contrôle constitutionnel ?</td><td>Art. 54 : saisine facultative du CC (Président, PM, Présidents des assemblées, 60 parlementaires). Si contraire à C° → révision avant ratification (ex. CPI 1999)</td></tr>
+      <tr><td>L'autorisation oblige-t-elle à ratifier ?</td><td>Non — la ratification reste un pouvoir propre du Président, même après autorisation du Parlement</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Si le traité est déclaré contraire à la Constitution</strong>3 options : ① Réviser la Constitution (art. 54) ② Modifier le traité ③ Ne pas ratifier. Exemple : Statut de la CPI → clause sur la responsabilité du chef d'État contraire à la C° → révision constitutionnelle avec ajout d'un article spécifique.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 4</span> Entrée en vigueur et adhésion</div>
+    <div class="f-text">Exprimer son consentement ≠ rendre le traité obligatoire. Le traité ne lie les États qu'à partir de son entrée en vigueur, dont les conditions sont fixées dans le traité lui-même.</div>
+    <div class="f-exemple"><strong>Accord de Paris sur le Climat 2015</strong>Condition d'entrée en vigueur : ratification par 55 États représentant au minimum 55% des émissions mondiales de GES. Double condition qualitative et quantitative.</div>
+    <div class="f-text"><strong>À défaut de clause</strong> : le traité entre en vigueur lorsque tous les États ayant participé à la négociation ont donné leur consentement.</div>
+    <div class="f-text"><strong>Adhésion</strong> : un État peut rejoindre un traité après son entrée en vigueur si le traité est « ouvert ». Pour les traités constitutifs d'OI, il faut faire une candidature et être accepté (ex. OTAN).</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>3 conditions du traité : écrit + régit DI + droits/obligations → quelle que soit sa dénomination</li>
+      <li>4 étapes : plénipotentiaires → négociation → adoption → authentification</li>
+      <li>Forme simplifiée = signature seule · Forme solennelle = signature + ratification</li>
+      <li>Art. 18 CVDT : entre signature et ratification → obligation de bonne foi (ne pas vider le traité de sa substance)</li>
+      <li>France art. 53 : liste des traités nécessitant autorisation législative avant ratification</li>
+      <li>Adhésion ≠ entrée en vigueur : un État peut adhérer à un traité déjà en vigueur si le traité est ouvert</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f2">← Fiche #2</label><label for="r-f4">Fiche #4 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 4 -->
+<div class="page-content" id="page-f4"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #4 — Chapitre 2</div>
+    <h2>Les réserves aux traités internationaux</h2>
+    <div class="fiche-intro">La réserve est née de la tension entre l'adoption à la majorité des 2/3 (depuis le XXe s.) et la nécessité d'une participation large. Elle permet à un État de devenir partie à un traité sans en appliquer certaines dispositions — mais avec des limites strictes.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Contexte</span> Pourquoi les réserves ont-elles été inventées ?</div>
+    <div class="f-text">Avant les années 1950 : adoption des traités à l'unanimité. Avec la multiplication des États (décolonisation) : impossible → passage à la majorité des 2/3. Conséquence : 1/3 des États ne vote pas pour un traité souvent parce qu'ils n't pas d'accord avec une seule disposition.</div>
+    <div class="f-key">La réserve permet à cet État de devenir quand même partie au traité en échange de la non-application de la disposition contestée. Risque : participation illusoire si trop de réserves → il faut un équilibre.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Définition (Art. 2§1d CVDT)</div>
+    <div class="f-quote">« Déclaration unilatérale, quel que soit sa dénomination, faite par un État au moment où il signe, ratifie (…) un traité par laquelle il vise à exclure ou modifier l'effet juridique de certaines dispositions du traité. »<cite>Art. 2§1d CVDT</cite></div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Critère</th><th>Explication</th></tr></thead><tbody>
+      <tr><td>Déclaration unilatérale</td><td>Faite par un État pour lui-même, non négociée avec les autres parties</td></tr>
+      <tr><td>Au moment de signature ou ratification</td><td>Forme simplifiée : au moment de la signature. Forme solennelle : entre signature et ratification. En principe pas après → mais pratique fréquente d'États qui le font quand même.</td></tr>
+      <tr><td>Exclure ou modifier l'effet</td><td>Réserve d'exclusion (enlève une disposition) ou réserve modificative (change son sens). Peut être transversale (porte sur plusieurs dispositions).</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Réserve ≠ Déclaration interprétative</strong>La déclaration interprétative précise ou clarifie le sens d'une disposition sans modifier ses effets. Elle est autorisée. Mais si une déclaration interprétative a en réalité pour effet d'exclure/modifier → elle sera requalifiée en réserve par le juge. Stratégie utilisée par des États quand le traité interdit les réserves.</div>
+    <div class="f-exemple"><strong>Réserve d'exclusion — Congo (PIDCP)</strong>« Le Gouvernement de la République populaire du Congo déclare qu'il ne se sent pas lié par les dispositions de l'article 11. »<br><strong>Réserve modificative — Japon (Convention aide alimentaire)</strong>Ajout d'une modalité d'exécution : paiement en riz produit dans des pays non membres.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> La liberté encadrée d'émettre des réserves (Art. 19 CVDT)</div>
+    <div class="f-text">Principe de liberté : on a le droit de faire des réserves. Mais cette liberté est encadrée par 3 cas.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Cas</th><th>Règle</th><th>Exemple</th></tr></thead><tbody>
+      <tr><td>Cas 1</td><td>Traité interdit TOUTE réserve</td><td>Art. 120 Statut de la CPI : « Le présent Statut n'admet aucune réserve. »</td></tr>
+      <tr><td>Cas 2</td><td>Traité contient une clause de réserves déterminées (autorisées ou interdites)</td><td>Art. 12 Conv. plateau continental (1958) : réserves possibles sauf articles 1-3. Art. 57 CEDH : réserves particulières autorisées mais pas réserves générales.</td></tr>
+      <tr><td>Cas 3</td><td>Traité silencieux → réserve possible si compatible avec l'objet et le but du traité</td><td>CIJ, Avis consultatif 1951 (Convention génocide) : pose la règle objet-but. CIJ, RDC c/ Rwanda 2006 : réserve sur art. 9 (clause juridictionnelle) compatible car ne touche pas aux obligations de fond sur le génocide lui-même.</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> L'effet des réserves — Le dialogue réservataire</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. L'opposabilité des réserves (Art. 20 CVDT)</div>
+      <div class="f-text">L'État auteur ne peut imposer sa réserve aux autres. Le traité tel que modifié ne devient opposable qu'entre les États qui acceptent la réserve. Chaque État répond individuellement → les relations conventionnelles varient entre chaque paire d'États.</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Réaction de l'État B à la réserve de A</th><th>Effet</th></tr></thead><tbody>
+        <tr><td>Acceptation (ou silence 12 mois)</td><td>Traité en vigueur entre A et B tel que modifié par la réserve. Effet réciproque.</td></tr>
+        <tr><td>Objection simple</td><td>Traité en vigueur entre A et B, SAUF sur la disposition réservée. B n'est pas lié par la version modifiée.</td></tr>
+        <tr><td>Objection aggravée</td><td>Refus de l'entrée en vigueur du traité dans son entièreté entre A et B. Doit être explicite.</td></tr>
+        <tr><td>Objection à effet supermaximum</td><td>Pratique nordique : traité en vigueur mais SANS le bénéfice de la réserve. Portée juridique contestée.</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Exceptions au dialogue réservataire</strong>① Réserves à un acte constitutif d'OI → c'est l'organisation qui accepte/rejette (pas les États membres individuellement). ② Traités bilatéraux/restreints → acceptation unanime requise ; sinon l'État auteur ne devient pas partie. ③ Clauses de réserves déterminées → les réserves autorisées sont acceptées par avance.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. La validité des réserves</div>
+      <div class="f-key">Une réserve invalide ne peut pas être opposable, même si elle a été acceptée par d'autres États. Réserve invalide = interdite par le traité, contraire à l'objet et au but, ou contraire au jus cogens.</div>
+      <div class="f-exemple"><strong>Affaire Kennedy — Comité des droits de l'homme</strong>Un État avait réservé l'application du procès équitable pour les condamnés à mort. Réserve invalide. Question : que se passe-t-il ? ① Appliquer quand même la réserve (invalide → non) ② L'annuler = annuler le consentement → l'État perd la qualité de partie ③ Déclarer la réserve nulle → le traité s'applique intégralement.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Réserve = déclaration unilatérale au moment de la signature ou ratification visant à exclure/modifier</li>
+      <li>Réserve ≠ déclaration interprétative (mais requalifiable si elle modifie en réalité)</li>
+      <li>3 cas art. 19 : interdite / déterminée / libre si compatible avec objet et but</li>
+      <li>4 réactions possibles : acceptation · objection simple · aggravée · supermaximum</li>
+      <li>Silence 12 mois = acceptation tacite</li>
+      <li>Réserve invalide ≠ opposable même si acceptée</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f3">← Fiche #3</label><label for="r-f5">Fiche #5 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 5 -->
+<div class="page-content" id="page-f5"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #5 — Chapitre 3</div>
+    <h2>Les conditions de validité des traités</h2>
+    <div class="fiche-intro">Un traité peut avoir l'apparence d'un traité valide tout en étant frappé de nullité en raison des circonstances de sa conclusion. La nullité peut être relative (seul l'État victime peut l'invoquer) ou absolue (tout État peut l'invoquer — contrainte, jus cogens).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Intro</span> Principes généraux de la nullité</div>
+    <div class="f-text"><strong>Nullité = suppression rétroactive</strong> de l'acte juridique. Le traité est supposé n'avoir jamais existé.</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Nullité relative</div>Ne peut être invoquée que par l'État victime de la nullité. → Tous les cas sauf contrainte et jus cogens.</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Nullité absolue</div>Peut être invoquée par tous les États. → Cas : contrainte exercée sur l'État (art. 52) + violation du jus cogens (art. 53).</div>
+    </div>
+    <div class="f-text"><strong>Procédure (art. 65 CVDT) :</strong> notification aux autres États → 3 mois pour répondre → négociation (1 an) → commission de conciliation. Si objet = jus cogens → saisie de la CIJ possible. Cette procédure est théorique car jamais vraiment utilisée.</div>
+    <div class="f-alerte"><strong>Perte du droit d'invoquer la nullité (art. 45 CVDT)</strong>Un État peut perdre le droit d'invoquer la nullité s'il a acquiescé à l'existence du traité malgré sa nullité initiale. Le traité continue alors d'exister.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Section 1</span> Les vices du consentement</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — La ratification imparfaite (Art. 46 CVDT)</div>
+      <div class="f-text">L'État a ratifié le traité en violant son propre droit interne de manière grave. On considère qu'il n'a pas vraiment donné son consentement.</div>
+      <div class="f-text"><strong>3 conditions cumulatives :</strong></div>
+      <ul class="f-list">
+        <li>Violation <strong>manifeste</strong> = objectivement évidente pour tous les États</li>
+        <li>D'une règle d'<strong>importance fondamentale</strong> = rang constitutionnel</li>
+        <li>Concernant la <strong>compétence pour conclure des traités</strong> = violation procédurale, pas substantielle</li>
+      </ul>
+      <div class="f-exemple"><strong>CIJ, Cameroun c/ Nigéria 2002 (péninsule de Bakassi)</strong>Le Nigéria tentait de faire annuler un traité frontalier signé par son chef d'État sans ratification parlementaire (alors requise par sa Constitution). La CIJ a refusé : il n'était pas « manifeste » dans les relations internationales qu'un chef d'État ne puisse pas signer un traité sans ratification ultérieure → barre très haute.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — L'erreur (Art. 48 CVDT)</div>
+      <div class="f-text">Erreur sur un fait ou une situation qui a constitué une <strong>base essentielle du consentement</strong>. L'État qui a contribué à sa propre erreur perd le droit de l'invoquer.</div>
+      <div class="f-exemple"><strong>CIJ, Temple de Preah Vihear, 1962</strong>La Thaïlande invoquait une erreur sur une carte lors de la conclusion d'un traité frontalier avec le Cambodge (lui attribuant le temple). La CIJ a refusé : la Thaïlande avait utilisé la carte pendant des décennies → elle avait contribué à sa propre erreur ou ne pouvait ignorer l'inexactitude. Erreur admise très rarement.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 3 — Le dol (Art. 49 CVDT)</div>
+      <div class="f-text">Conduite frauduleuse d'un autre État ayant amené l'État à conclure le traité. Extrêmement rare en pratique (admettre le dol = admettre avoir été dupé).</div>
+      <div class="f-exemple"><strong>Exemples historiques</strong>Traité de Wouchalé 1889 (Italie/Éthiopie) — texte différent en amharique et en italien sur la nature de l'engagement. Accords de Munich 1938 — promesses non tenues par Hitler.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 4 — La corruption (Art. 50 CVDT)</div>
+      <div class="f-text">Corruption directe ou indirecte du représentant de l'État par un autre État participant à la négociation. 2 conditions : ① la corruption vise le représentant ② il a signé/ratifié un traité qu'il n'aurait pas signé sans l'avantage.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 5 — La contrainte (Art. 51 et 52 CVDT)</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Art. 51 — Contrainte sur le représentant</div>Menaces ou actes dirigés contre le représentant personnel de l'État → traité privé de tout effet juridique.</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Art. 52 — Contrainte sur l'État</div>Menace ou emploi de la force en violation des principes de la Charte des NU → traité nul. Nullité ABSOLUE (invocable par tous).</div>
+      </div>
+      <div class="f-key">La contrainte conforme au DI (ex. légitime défense) ≠ cause de nullité. Seule la contrainte contraire au DI rend le traité nul. Des États ont tenté d'étendre la notion à la contrainte économique ou politique → non retenu à ce jour en droit positif.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Section 2</span> L'illicéité de l'objet — Le Jus Cogens (Art. 53 CVDT)</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — La notion de jus cogens</div>
+      <div class="f-quote">« Est nul tout traité qui, au moment de sa conclusion, est en conflit avec une norme impérative du droit international général. Une norme impérative est une norme acceptée et reconnue par la communauté internationale des États dans son ensemble en tant que norme à laquelle aucune dérogation n'est permise et qui ne peut être modifiée que par une nouvelle norme du même caractère. »<cite>Article 53 CVDT</cite></div>
+      <div class="f-text">Le jus cogens est la seule limite objective au consentement de l'État et à sa souveraineté. Il introduit une hiérarchie des normes dans le DI.</div>
+      <div class="f-text"><strong>3 caractéristiques d'une norme de jus cogens :</strong></div>
+      <ul class="f-list">
+        <li>C'est une norme <strong>coutumière</strong></li>
+        <li>Reconnue comme <strong>indérogeable</strong></li>
+        <li>Acceptée par la <strong>communauté internationale dans son ensemble</strong></li>
+      </ul>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th colspan="2">Liste non exhaustive des règles de jus cogens</th></tr></thead><tbody>
+        <tr><td>Interdiction de l'agression armée</td><td>Interdiction du génocide</td></tr>
+        <tr><td>Interdiction des crimes contre l'humanité</td><td>Règles fondamentales du DIH</td></tr>
+        <tr><td>Interdiction de la discrimination raciale et de l'apartheid</td><td>Interdiction de l'esclavage</td></tr>
+        <tr><td>Interdiction de la torture</td><td>Droit à l'autodétermination des peuples</td></tr>
+      </tbody></table></div>
+      <div class="f-exemple"><strong>Première application en juge international</strong>Affaire Guinée-Bissau / Sénégal 1989 (tribunal arbitral). CIJ : affaire RDC c/ Rwanda 2006 (après 40 ans de réticence à froisser les États).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — Régime juridique &amp; ≠ Erga omnes</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Jus cogens</div>Norme à laquelle aucune dérogation par traité n'est permise. Sert à vérifier la <strong>validité</strong> d'un traité. Tout traité contraire = nul (art. 53). Jus cogens superveniens = extinction du traité existant (art. 64).</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Erga omnes</div>Obligation due à l'ensemble des États. Sert à vérifier <strong>qui a été affecté</strong> par la violation. Toute norme de jus cogens implique une obligation erga omnes, mais l'inverse n'est pas vrai.</div>
+      </div>
+      <div class="f-key">Art. 64 CVDT : si une nouvelle règle de jus cogens survient, tout traité existant en conflit avec elle devient nul et prend fin (≠ effet rétroactif comme l'art. 53 : extinction à partir du moment de la nouvelle norme).</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Nullité relative (vices du consentement) vs absolue (contrainte art. 52 + jus cogens art. 53)</li>
+      <li>Ratification imparfaite art. 46 : violation manifeste + fondamentale + relative à la procédure</li>
+      <li>Erreur art. 48 : base essentielle du consentement · perdue si l'État y a contribué</li>
+      <li>Contrainte art. 52 : force armée contraire à la Charte ONU → nullité absolue</li>
+      <li>Jus cogens : norme coutumière indérogeable reconnue par la communauté internationale dans son ensemble</li>
+      <li>Jus cogens ≠ erga omnes (champ différent : validité vs responsabilité)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f4">← Fiche #4</label><label for="r-f6">Fiche #6 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 6 -->
+<div class="page-content" id="page-f6"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #6 — Chapitre 4</div>
+    <h2>Vie et mort des traités internationaux</h2>
+    <div class="fiche-intro">Un traité en vigueur peut être interprété, modifié, suspendu ou éteint. L'extinction (fin définitive) et la suspension (fin temporaire) peuvent résulter de la volonté des parties ou de faits exogènes — violences, impossibilité, changement radical de circonstances.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Section 1</span> La vie des traités</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — L'interprétation (Art. 31 CVDT)</div>
+      <div class="f-quote">« Un traité doit être interprété de bonne foi suivant le sens ordinaire à attribuer aux termes du traité dans leur contexte et à la lumière de son objet et de son but. »<cite>Article 31 CVDT</cite></div>
+      <div class="f-text">Si l'art. 31 ne suffit pas → recours aux <strong>moyens complémentaires</strong> : travaux préparatoires du traité (art. 32 CVDT). Les juridictions françaises se reconnaissent désormais le droit d'interpréter directement un traité (plus de renvoi préjudiciel au MAE).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — La modification (amendement)</div>
+      <div class="f-text">Si une clause de révision existe → on l'utilise. L'amendement doit être adopté puis ratifié par les États.</div>
+      <div class="f-key">Principe : une fois l'amendement entré en vigueur (après ratification par 2/3 des parties), il ne s'applique qu'entre les États ayant ratifié l'amendement. Entre les États n'ayant pas ratifié → ancienne version du traité toujours applicable.</div>
+      <div class="f-alerte"><strong>Cas particulier : Charte des Nations Unies</strong>Révision = majorité 2/3 de l'Assemblée générale + 2/3 incluant les 5 membres permanents du Conseil de sécurité. Les 5 membres permanents ont donc un veto de facto sur toute révision. Une fois adoptée, la révision s'impose à TOUS les membres des NU y compris ceux n'ayant pas ratifié → entorse au consensualisme.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Section 2</span> L'extinction et la suspension</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — Conformément à la volonté des parties</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Extinction</div>Fin définitive. Les États sont libérés de leurs obligations.</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Suspension</div>Libération temporaire. L'exécution reprend ultérieurement.</div>
+      </div>
+      <div class="f-text"><strong>Modes :</strong> consentement exprès de toutes les parties (déclaration commune ou nouveau traité) OU consentement implicite (désuétude : absence prolongée d'application).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — La dénonciation unilatérale</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Hypothèse</th><th>Règle</th></tr></thead><tbody>
+        <tr><td>Clause de dénonciation (art. 54)</td><td>Retrait possible selon les conditions prévues : délai de notification + délai de préavis + notification au dépositaire + conditions financières éventuelles</td></tr>
+        <tr><td>Pas de clause (art. 56)</td><td>En principe, pas de dénonciation possible SAUF si on prouve l'intention implicite des parties OU si la nature du traité implique la possibilité de dénonciation</td></tr>
+      </tbody></table></div>
+      <div class="f-text">Existent-ils des traités éternels ? En principe oui, sans clause de dénonciation. Mais l'art. 56 prévoit des exceptions étroites.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 3 — La violation substantielle (Art. 60 CVDT)</div>
+      <div class="f-key">Exception d'inexécution : un État peut suspendre ou mettre fin à un traité si l'autre partie a commis une violation substantielle (violation d'une disposition essentielle).</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Type de traité</th><th>Conséquence de la violation substantielle</th></tr></thead><tbody>
+        <tr><td>Bilatéral</td><td>L'État victime peut mettre fin au traité</td></tr>
+        <tr><td>Multilatéral</td><td>Soit : tous les États s'accordent à mettre fin unanimement OU à l'égard de l'État auteur seulement</td></tr>
+        <tr><td>Obligations intégrales (droits de l'homme, DIH)</td><td>Exception → pas de suspension possible car obligations dues à l'humanité, pas à réciprocité</td></tr>
+      </tbody></table></div>
+      <div class="f-exemple"><strong>CIJ, Affaire de la Namibie (Avis consultatif 1971)</strong> — A consacré l'exception d'inexécution en droit international.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 4 — Conflit armé (Art. 73 CVDT)</div>
+      <div class="f-text">La CVDT ne règle pas cette question (les États n'ont pas pu s'accorder → clause sans préjudice art. 73). En pratique :</div>
+      <ul class="f-list">
+        <li><strong>Traités continuant de s'appliquer</strong> : droits de l'homme, DIH (Conventions de Genève), frontières, environnement, relations diplomatiques</li>
+        <li><strong>Traités automatiquement suspendus</strong> : traités bilatéraux entre les belligérants</li>
+        <li><strong>En cas de doute</strong> : intention des parties — présomption de non-continuité pouvant être renversée</li>
+      </ul>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 5 — L'exécution devenue impossible (Art. 61 CVDT)</div>
+      <div class="f-text">Disparition ou destruction définitive d'un objet indispensable à l'exécution → suspension si temporaire, extinction si permanente (≈ force majeure).</div>
+      <div class="f-alerte"><strong>Condition sine qua non</strong>L'impossibilité ne peut pas être invoquée si elle résulte d'une violation du traité par la partie qui l'invoque elle-même.</div>
+      <div class="f-exemple"><strong>CIJ, Gabcikovo-Nagymaros, 1997</strong>La Hongrie refusait de construire le barrage alors qu'elle s'y était engagée. Elle invoquait l'impossibilité d'exécution. Rejeté : c'est son propre non-respect du traité qui avait créé la situation. On ne peut pas se prévaloir de son propre manquement.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 6 — Le changement fondamental de circonstances — Rebus sic standibus (Art. 62 CVDT)</div>
+      <div class="f-key">Les choses ont évolué de manière si substantielle depuis la conclusion du traité que le consentement initial n'est plus valable. Clause admise mais à conditions strictes pour préserver la stabilité des traités.</div>
+      <div class="f-text"><strong>4 conditions cumulatives (art. 62) :</strong></div>
+      <ul class="f-list">
+        <li>Le changement a <strong>transformé radicalement</strong> la portée des obligations restant à exécuter</li>
+        <li>Le changement concerne une circonstance qui a constitué une <strong>base essentielle du consentement</strong></li>
+        <li>L'État ne doit pas être à <strong>l'origine</strong> du changement</li>
+        <li>Ne s'applique <strong>pas aux traités de frontières</strong> (stabilité territoriale)</li>
+      </ul>
+      <div class="f-exemple"><strong>Admis très rarement</strong>Un des rares cas : guerre d'ex-Yougoslavie. La clause rebus sic standibus reste une exception dans la pratique internationale.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Interprétation : bonne foi + sens ordinaire + contexte + objet/but (art. 31) → travaux préparatoires en subsidiaire (art. 32)</li>
+      <li>Amendement : s'impose seulement aux États l'ayant ratifié (≠ Charte ONU qui s'impose à tous)</li>
+      <li>Dénonciation sans clause : principe d'interdiction sauf intention implicite ou nature du traité</li>
+      <li>Violation substantielle : ouvre l'exception d'inexécution — sauf traités à obligations intégrales</li>
+      <li>Rebus sic standibus : 4 conditions + ne s'applique pas aux traités de frontières</li>
+      <li>Exécution impossible : l'auteur du manquement ne peut pas l'invoquer (Gabcikovo)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f5">← Fiche #5</label><label for="r-f7">Fiche #7 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 7 -->
+<div class="page-content" id="page-f7"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #7 — Titre II, Chapitre 1</div>
+    <h2>La coutume internationale</h2>
+    <div class="fiche-intro">La coutume est une source non écrite du DI. Elle naît des comportements des États eux-mêmes. Elle n'est pas plus faible qu'un traité : elle peut lui être parallèle, le précéder ou s'appliquer là où aucun traité n'existe encore.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> La notion de coutume</div>
+    <div class="f-key">La coutume existe dès lors qu'il y a une preuve d'une pratique généralisée acceptée comme étant du droit. Sa valeur ne réside pas dans un instrument écrit mais dans le comportement des États. Elle s'auto-détermine : elle fixe elle-même ses propres règles d'existence.</div>
+    <div class="f-text"><strong>Coutume et traités en parallèle :</strong> il n'est pas rare qu'une même règle soit à la fois coutumière et conventionnelle (ex. interdiction du génocide). La France, non partie à la CVDT, doit quand même en respecter les règles en tant que droit coutumier.</div>
+    <div class="f-exemple"><strong>Immunités des États — Affaire Allemagne c/ Italie (CIJ, 2012)</strong>Aucun traité général sur les immunités des États n'est en vigueur. La seule option pour l'Allemagne était de démontrer l'existence d'une coutume interdisant aux États de poursuivre un autre État devant leurs juridictions nationales. La CIJ l'a reconnu et a condamné l'Italie pour violation du droit coutumier.</div>
+    <div class="f-alerte"><strong>Fondement du caractère obligatoire — débat doctrinal</strong>Volontaristes : la coutume résulte de la volonté implicite des États (en la pratiquant, ils y consentent). Naturalistes (Scelle) : la coutume est obligatoire non par volonté mais par nécessité sociale — les États ont besoin qu'elle naisse.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Les deux éléments constitutifs</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. L'élément matériel — La pratique générale</div>
+      <div class="f-text">Pour identifier la pratique : actes diplomatiques, correspondances, comportements dans les OI, lois nationales, décrets, décisions de juridictions nationales, déclarations officielles…</div>
+      <div class="f-text">La pratique doit remplir <strong>3 critères cumulatifs</strong> :</div>
+
+      <div class="f-sous2">
+        <div class="f-sous2-title">① Répétée dans le temps</div>
+        <div class="f-text">Naissance progressive à mesure que les actes se répètent. Mais une coutume peut naître rapidement (coutume « sauvage » ou instantanée) si les autres critères sont remplis.</div>
+        <div class="f-exemple"><strong>CIJ, Plateau continental de la mer du Nord, 1969</strong>La Cour reconnaît qu'un laps de temps bref ne s'oppose pas à la formation d'une coutume dès lors que les actes sont fréquents et uniformes. (Contexte : ZEE et plateau continental)</div>
+      </div>
+
+      <div class="f-sous2">
+        <div class="f-sous2-title">② Uniforme (cohérente)</div>
+        <div class="f-text">Les actes doivent représenter une certaine similitude entre eux. Une pratique contradictoire ne constitue pas une coutume.</div>
+        <div class="f-exemple"><strong>CIJ, Droit d'asile, 1950</strong>La Colombie tentait de démontrer l'existence d'une coutume sur l'asile diplomatique (recueillir des réfugiés dans une ambassade). Rejet : la pratique existait mais était loin d'être uniforme — certains États accordaient l'asile, d'autres le refusaient, parfois pour des raisons purement politiques. Absence de pratique suffisamment cohérente.</div>
+      </div>
+
+      <div class="f-sous2">
+        <div class="f-sous2-title">③ Générale</div>
+        <div class="f-text">Pas besoin de l'unanimité, mais la pratique doit être établie par une large majorité d'États représentatifs. Double exigence :</div>
+        <ul class="f-list">
+          <li><strong>Élément quantitatif :</strong> large majorité d'États susceptibles de pratiquer la coutume</li>
+          <li><strong>Élément qualitatif :</strong> la pratique doit inclure les États <em>particulièrement intéressés</em> par la règle (ex. pour une coutume sur les armes nucléaires → les puissances nucléaires doivent y participer)</li>
+        </ul>
+        <div class="f-alerte"><strong>Coutumes régionales et bilatérales</strong>Reconnues par la CIJ dans l'affaire <em>Droit de passage en territoire indien</em> (Portugal c/ Inde). Le Portugal a démontré une pratique bilatérale de droit de passage héritée de l'époque coloniale. Pour ces coutumes → unanimité requise (bilatérale : les 2 États ; régionale : unanimité dans la région).</div>
+      </div>
+
+      <div class="f-text">Les actes contraires à la pratique ne détruisent pas nécessairement la coutume s'ils sont marginaux. Un État qui viole une coutume en la reconnaissant implicitement contribue paradoxalement à la prouver. <em>CIJ, Activités militaires au Nicaragua, 1986.</em></div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. L'élément psychologique — L'opinio juris</div>
+      <div class="f-key">L'opinio juris est la conviction que les États agissent de la sorte parce qu'ils s'y sentent juridiquement obligés, et non par simple courtoisie (comitas gentium) ou par intérêt. C'est ce qui distingue la coutume de la simple habitude.</div>
+      <div class="f-text">Difficile à prouver directement → on l'infère de la pratique elle-même (si uniforme et générale → présomption d'opinio juris). Peut aussi être établi par des déclarations officielles, résolutions de l'Assemblée générale de l'ONU, etc.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Portée</span> Opposabilité et objecteur persistant</div>
+    <div class="f-text">En principe, une coutume générale s'applique à tous les États, y compris ceux n'ayant pas participé à sa formation. Exception : l'<strong>objecteur persistant</strong> — l'État qui, dès le stade de formation de la coutume, a manifesté de manière constante et explicite son opposition à la règle ne sera pas lié par elle.</div>
+    <div class="f-text">L'objecteur persistant doit avoir protesté tôt, de manière continue et publique. La protestation tardive (après cristallisation de la coutume) est sans effet.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Coutume = pratique générale + opinio juris (les deux sont cumulatifs)</li>
+      <li>Pratique : répétée + uniforme + générale (quantitatif + qualitatif/intéressés)</li>
+      <li>Coutume peut naître rapidement (coutume sauvage) dès lors que les critères sont remplis (Plateau continental 1969)</li>
+      <li>Pratique non uniforme → pas de coutume (Droit d'asile 1950)</li>
+      <li>Coutumes bilatérales/régionales possibles (Droit de passage 1960) → unanimité requise dans ce cas</li>
+      <li>Objecteur persistant : opposition dès la formation, continue et explicite → exemption de la coutume</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f6">← Fiche #6</label><label for="r-f8">Fiche #8 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 8 -->
+<div class="page-content" id="page-f8"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #8 — Titre II, Chapitre 2</div>
+    <h2>Les principes généraux du droit</h2>
+    <div class="fiche-intro">Les PGD constituent la troisième source formelle de l'art. 38. Ce sont des principes communs aux grands systèmes juridiques internes, transposés au plan international. Leur rôle est essentiellement comblateur : ils pallient les lacunes du DI conventionnel et coutumier.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Art. 38 §1c</span> Définition et fondement</div>
+    <div class="f-quote">« La Cour (CIJ) […] applique les principes généraux de droit reconnus par les nations civilisées. »<cite>Article 38 §1c du Statut de la CIJ</cite></div>
+    <div class="f-text">L'expression « nations civilisées » est datée et ethnocentrique — elle correspond au contexte de 1945. Elle signifie aujourd'hui : principes communs aux principaux systèmes juridiques du monde (common law, droit civil, droit islamique, droit coutumier africain…).</div>
+    <div class="f-key">Les PGD ne sont pas une création spécifique du DI. Ce sont des principes existant dans les droits internes que l'on transpose à l'ordre international quand ni le traité ni la coutume ne fournissent de réponse. Rôle : combler les lacunes du DI → éviter le non liquet (refus de juger faute de droit applicable).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Exemples</span> Principaux PGD reconnus</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Principe</th><th>Signification en DI</th></tr></thead><tbody>
+      <tr><td>Res judicata (autorité de la chose jugée)</td><td>Une décision définitive ne peut être rejugée par le même tribunal</td></tr>
+      <tr><td>Bonne foi</td><td>Les États doivent exécuter leurs obligations de bonne foi (repris dans la CVDT)</td></tr>
+      <tr><td>Abus de droit</td><td>L'exercice d'un droit ne peut conduire à une conséquence manifestement abusive</td></tr>
+      <tr><td>Obligation de réparer le préjudice</td><td>Toute violation d'une obligation internationale engage à réparation</td></tr>
+      <tr><td>Estoppel</td><td>Un État ne peut se contredire au détriment d'un autre qui s'est fié à son comportement antérieur (≈ venire contra factum proprium)</td></tr>
+      <tr><td>Lex specialis</td><td>La norme spéciale prime sur la norme générale</td></tr>
+      <tr><td>Lex posterior</td><td>La norme plus récente prime sur la norme plus ancienne</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Distinction</span> PGD vs Coutume vs Traité</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Critère</th><th>Traité</th><th>Coutume</th><th>PGD</th></tr></thead><tbody>
+      <tr><td>Origine</td><td>Accord exprès des États</td><td>Pratique + opinio juris des États</td><td>Transposition de principes communs aux droits internes</td></tr>
+      <tr><td>Forme</td><td>Écrit</td><td>Non écrit (comportements)</td><td>Non écrit (principalement)</td></tr>
+      <tr><td>Application</td><td>Aux parties seulement</td><td>Erga omnes (coutume générale)</td><td>Universel — au moins en principe</td></tr>
+      <tr><td>Rôle</td><td>Source principale</td><td>Source principale</td><td>Source subsidiaire / comblateur de lacunes</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Attention à ne pas confondre</strong>Certains auteurs distinguent les PGD au sens de l'art. 38 (extraits des droits internes) et les « principes du DI » qui sont des règles coutumières fondamentales (souveraineté, non-intervention, égalité des États). Ces derniers sont en réalité de la coutume, pas des PGD au sens strict.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>PGD = art. 38 §1c · « nations civilisées » = principaux systèmes juridiques mondiaux</li>
+      <li>Rôle : combler les lacunes du DI — éviter le non liquet</li>
+      <li>Pas une création du DI : transposition de principes communs aux droits internes</li>
+      <li>Exemples fondamentaux : res judicata, bonne foi, abus de droit, estoppel, obligation de réparer</li>
+      <li>Source subsidiaire (utilisée quand ni traité ni coutume ne répondent)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f7">← Fiche #7</label><label for="r-f9">Fiche #9 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 9 -->
+<div class="page-content" id="page-f9"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #9 — Titre II, Chapitre 3</div>
+    <h2>Les actes unilatéraux</h2>
+    <div class="fiche-intro">Les actes unilatéraux ne sont pas mentionnés dans l'art. 38 du Statut de la CIJ (rédigé en 1945), mais constituent une source du DI à part entière. Un État peut créer des obligations juridiques pour lui-même par un acte unilatéral, sans aucun accord réciproque. Les organisations internationales produisent aussi des actes unilatéraux — avec des forces obligatoires variables.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Partie 1</span> Les actes unilatéraux des États</div>
+    <div class="f-key">Un acte unilatéral d'un État est une manifestation de volonté émanant d'un seul État, sans contre-partie, susceptible de produire des effets juridiques en droit international. L'État crée du droit uniquement pour lui-même.</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Les principales catégories</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Acte unilatéral</th><th>Définition</th><th>Exemple</th></tr></thead><tbody>
+        <tr><td>Reconnaissance</td><td>Un État reconnaît un fait, un droit ou une situation ayant une réalité juridique (naissance d'un État, gouvernement, situation frontière…)</td><td>Reconnaissance de l'État de Palestine par la France en 2024</td></tr>
+        <tr><td>Protestation</td><td>Un État déclare qu'il refuse de considérer comme légale une situation ou un acte d'un autre État. Préserve ses droits.</td><td>Protestation contre une revendication maritime d'un voisin</td></tr>
+        <tr><td>Notification</td><td>Un État porte officiellement à la connaissance d'un autre État un fait ou une situation pour lui rendre opposable</td><td>Notification de la dénonciation d'un traité au dépositaire</td></tr>
+        <tr><td>Renonciation</td><td>Un État abandonne volontairement un droit ou une prétention</td><td>Renonciation à une réclamation d'indemnités</td></tr>
+        <tr><td>Promesse (engagement unilatéral)</td><td>Un État s'engage à adopter un comportement déterminé sans contre-partie</td><td>Affaire des essais nucléaires (CIJ 1974)</td></tr>
+      </tbody></table></div>
+      <div class="f-exemple"><strong>Affaire des essais nucléaires — CIJ, 1974</strong>La France avait fait des déclarations publiques (à la radio, en conférence de presse) annonçant la fin de ses essais nucléaires atmosphériques. La CIJ a jugé que ces déclarations unilatérales d'un chef d'État ou de gouvernement, faites publiquement avec l'intention de s'engager, créaient des obligations juridiques contraignantes pour la France — même sans contrepartie et sans acceptation par un autre État.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Conditions de validité</div>
+      <ul class="f-list">
+        <li>Émanation d'une autorité habilitée à engager l'État (chef d'État, chef de gouvernement, MAE)</li>
+        <li>Intention claire et non équivoque de s'engager juridiquement</li>
+        <li>Publicité de l'acte</li>
+        <li>Licéité de l'objet</li>
+      </ul>
+      <div class="f-key">Un État ne peut pas revenir sur un engagement unilatéral si des tiers se sont fiés à cet engagement et ont agi en conséquence (principe de l'estoppel). La confiance légitime protège les destinataires de l'acte.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Partie 2</span> Les actes unilatéraux des organisations internationales</div>
+    <div class="f-text">Les OI produisent des actes unilatéraux qui peuvent créer des obligations pour les États membres. La force obligatoire de ces actes dépend du traité constitutif de l'OI.</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Les résolutions de l'Assemblée générale des Nations Unies</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Résolutions recommandatoires</div>La majorité des résolutions de l'AG sont des recommandations → pas de force juridique contraignante. Mais elles peuvent constituer des indices de pratique et d'opinio juris contribuant à la formation de la coutume.</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Résolutions obligatoires (Conseil de sécurité)</div>Les résolutions du Conseil de sécurité adoptées sous Chapitre VII de la Charte (menace à la paix, acte d'agression) sont <strong>obligatoires</strong> pour tous les membres des Nations Unies.</div>
+      </div>
+      <div class="f-key">Les résolutions de l'AG (notamment la Déclaration des principes de DI de 1970 — résolution 2625) ont contribué à la cristallisation de règles coutumières, même si elles ne sont pas juridiquement contraignantes par elles-mêmes.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Les décisions des OI</div>
+      <div class="f-text">Certaines OI ont le pouvoir de prendre des décisions contraignantes pour leurs membres dans le cadre de leur mandat. Ex. : règlements de la Commission européenne (droit UE), décisions du Conseil de l'OACI (aviation civile), résolutions du Conseil de sécurité.</div>
+      <div class="f-alerte"><strong>Actes unilatéraux et souveraineté</strong>La capacité des OI à créer des actes obligatoires pour les États sans leur consentement individuel représente une évolution significative du DI classique fondé sur le consentement. Elle marque le passage d'un DI purement interétatique à un DI institutionnalisé.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Acte unilatéral = source non prévue à l'art. 38 mais reconnue en pratique</li>
+      <li>5 catégories étatiques : reconnaissance, protestation, notification, renonciation, promesse</li>
+      <li>Affaire essais nucléaires 1974 : déclaration publique d'un chef d'État = engagement obligatoire sans contrepartie</li>
+      <li>Actes OI : résolutions AG → recommandatoires (mais indice de coutume) / résolutions CS chap. VII → obligatoires</li>
+      <li>Conditions de validité : autorité compétente + intention claire + publicité + licéité</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f8">← Fiche #8</label><label for="r-f10">Fiche #10 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 10 -->
+<div class="page-content" id="page-f10"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #10 — Titre II, Chapitre 4</div>
+    <h2>Moyens auxiliaires de détermination de la règle de droit &amp; l'équité</h2>
+    <div class="fiche-intro">L'art. 38 mentionne la jurisprudence et la doctrine comme « moyens auxiliaires » — ils ne créent pas de droit mais aident à identifier les sources existantes. L'équité est un outil correcteur ou comblateur, utilisé avec parcimonie pour éviter les rigidités du droit strict.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Art. 38 §1d</span> Jurisprudence et doctrine — statut de « moyens auxiliaires »</div>
+    <div class="f-key">La jurisprudence et la doctrine NE SONT PAS des sources formelles du DI. Elles sont des moyens auxiliaires de détermination de la règle de droit : leur fonction est d'aider à identifier si une source formelle (traité, coutume, PGD) existe et quel est son contenu.</div>
+    <div class="f-alerte"><strong>Différence fondamentale avec le droit interne</strong>En droit interne (notamment en common law), la jurisprudence crée du droit (règle du précédent ou stare decisis). En DI, il n'existe pas de précédent obligatoire. La CIJ n'est pas liée par ses propres décisions antérieures (art. 59 du Statut : « La décision de la Cour n'est obligatoire que pour les parties en litige »).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Jurisprudence</span> Rôle et portée</div>
+    <div class="f-sous">
+      <div class="f-sous-title">Les juridictions internationales</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Juridiction</th><th>Compétence</th><th>Nature de ses décisions</th></tr></thead><tbody>
+        <tr><td>CIJ</td><td>Différends entre États (avec consentement) · Avis consultatifs</td><td>Obligatoires inter partes seulement (art. 59 Statut) mais autorité morale considérable</td></tr>
+        <tr><td>TIDM</td><td>Droit de la mer (CNUDM)</td><td>Obligatoires pour les parties</td></tr>
+        <tr><td>CPI</td><td>Crimes internationaux (génocide, crimes guerre, humanité, agression)</td><td>Obligatoires pour les États membres du Statut de Rome</td></tr>
+        <tr><td>Tribunaux arbitraux</td><td>Consentement des parties</td><td>Obligatoires inter partes · contribuent à préciser le droit</td></tr>
+        <tr><td>Juridictions régionales (CEDH, CJUE…)</td><td>Dans leur ressort régional</td><td>Contraignantes pour les États membres</td></tr>
+      </tbody></table></div>
+      <div class="f-text">En pratique, la CIJ cite abondamment ses propres arrêts antérieurs et les autres tribunaux suivent la jurisprudence de la CIJ → un précédent de facto se développe, même sans effet de jure.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">La doctrine</div>
+      <div class="f-text">L'art. 38 §1d vise « la doctrine des publicistes les plus qualifiés des différentes nations ». La doctrine (les écrits des internationalistes) aide à interpréter le DI, à identifier les règles coutumières, à clarifier les PGD.</div>
+      <div class="f-text">Son rôle a diminué avec le développement des juridictions internationales. Elle reste utile dans les domaines émergents où la jurisprudence est rare.</div>
+      <div class="f-exemple"><strong>Commission du DI (CDI)</strong>Organe d'experts créé par l'AG de l'ONU pour codifier et développer progressivement le DI. Ses travaux (projets d'articles) ont souvent influencé la formation de traités (ex. CVDT) ou la reconnaissance de règles coutumières. La CDI est un organe de codification, pas une juridiction.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">L'équité</span> Outil correcteur et comblateur</div>
+    <div class="f-text">L'équité permet au juge international de tempérer ou de compléter le droit strict lorsque son application mécanique mènerait à des résultats injustes ou lorsqu'il n'existe pas de règle applicable.</div>
+    <div class="f-quote">« La Cour dont la fonction est de décider conformément au droit international les différends qui lui sont soumis, applique […] si les parties sont d'accord, les principes généraux d'équité. »<cite>Article 38 §2 du Statut de la CIJ (mention expresse de l'équité)</cite></div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Les 3 modes d'utilisation de l'équité</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Mode</th><th>Définition</th><th>Exemple / Portée</th></tr></thead><tbody>
+        <tr><td>Infra legem (dans la loi)</td><td>L'équité sert à interpréter et appliquer le droit existant de façon équitable. L'utilisation la plus fréquente.</td><td>Le juge applique la règle en tenant compte des circonstances particulières pour éviter une solution trop rigide</td></tr>
+        <tr><td>Praeter legem (au-delà de la loi)</td><td>L'équité comble les lacunes du droit lorsqu'aucune règle n'est applicable. Rôle similaire aux PGD.</td><td>Délimitation des frontières maritimes en l'absence de règle précise — CIJ, Plateau continental, 1969</td></tr>
+        <tr><td>Contra legem (contre la loi)</td><td>L'équité écarte l'application d'une règle existante car son application serait manifestement injuste. Le plus controversé.</td><td>Réservé aux cas extrêmes — seulement si les parties ont expressément consenti à ce que la CIJ statue en équité (art. 38 §2)</td></tr>
+      </tbody></table></div>
+      <div class="f-key">L'équité infra legem est utilisée couramment. L'équité praeter legem est admise mais limitée. L'équité contra legem est exceptionnelle et nécessite le consentement exprès des parties (art. 38 §2 : « si les parties sont d'accord »).</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Synthèse</span> Hiérarchie pratique des sources en DI</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Rang pratique</th><th>Source</th><th>Remarque</th></tr></thead><tbody>
+      <tr><td>1 — Primaires</td><td>Traités · Coutume · PGD</td><td>Sources formelles de l'art. 38 §1. Pas de hiérarchie formelle entre elles. Jus cogens = limite absolue.</td></tr>
+      <tr><td>2 — Supplémentaire</td><td>Actes unilatéraux</td><td>Non prévu art. 38 mais reconnu. États + OI.</td></tr>
+      <tr><td>3 — Auxiliaires</td><td>Jurisprudence · Doctrine</td><td>Art. 38 §1d. Identifient les sources, ne créent pas de droit.</td></tr>
+      <tr><td>4 — Correcteur</td><td>Équité</td><td>Art. 38 §2. Infra/praeter/contra legem. Contra legem = consentement exprès requis.</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>JP et doctrine = moyens AUXILIAIRES (art. 38 §1d) → identifient, n'créent pas de droit</li>
+      <li>Art. 59 Statut CIJ : décisions obligatoires inter partes seulement → pas de précédent obligatoire en DI</li>
+      <li>CIJ → autorité morale considérable malgré l'absence de précédent de jure</li>
+      <li>Équité : 3 modes — infra legem (courant) · praeter legem (lacunes) · contra legem (exceptionnel, consentement exprès)</li>
+      <li>CDI = organe de codification de l'AG ONU → influence sur la formation du droit coutumier et conventionnel</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f9">← Fiche #9</label><label for="r-home">Retour à l'accueil</label></div>
+</div>
+</main></div>
+
+<footer>
+  <p>Droit <span>International Public</span> — Les sources du droit international · Fiches de révision 2025-2026 · Partie 1</p>
+</footer>
+
+</div><!-- end .wrap -->
+</body>
+</html>
