@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Droit du Travail — Révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+:root{
+  --r:#8B0000;--rv:#B22222;--rp:#fdf0f0;--rb:#e8c8c8;
+  --n:#1a1a1a;--gf:#2d2d2d;--g:#555;--gc:#f6f8fb;--b:#fefefe;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--b);color:var(--n);font-size:17px;line-height:1.75}
+header{background:var(--n);color:#fff;padding:1.8rem 2rem 1.4rem;border-bottom:4px solid var(--r);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+header h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:600}
+header h1 span{color:#B22222}
+header small{color:#aaa;font-size:.82rem;letter-spacing:.06em;display:block;margin-top:.2rem}
+nav{background:var(--r);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav ul{list-style:none;display:flex;flex-wrap:nowrap;min-width:max-content}
+.nav-radio{display:none}
+nav label{display:block;padding:.65rem .85rem;color:rgba(255,255,255,.82);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
+.page-content{display:none}
+#home-content{display:block}
+
+#r-home:checked~.wrap #home-content,
+#r-plan:checked~.wrap #home-content,
+#r-f1:checked~.wrap #home-content,
+#r-f2:checked~.wrap #home-content,
+#r-f3:checked~.wrap #home-content,
+#r-f4:checked~.wrap #home-content,
+#r-f5:checked~.wrap #home-content,
+#r-f6:checked~.wrap #home-content,
+#r-f7:checked~.wrap #home-content,
+#r-f8:checked~.wrap #home-content,
+#r-f9:checked~.wrap #home-content,
+#r-f10:checked~.wrap #home-content{display:none}
+#r-home:checked~.wrap #home-content{display:block}
+#r-plan:checked~.wrap #page-plan{display:block}
+#r-f1:checked~.wrap #page-f1{display:block}
+#r-f2:checked~.wrap #page-f2{display:block}
+#r-f3:checked~.wrap #page-f3{display:block}
+#r-f4:checked~.wrap #page-f4{display:block}
+#r-f5:checked~.wrap #page-f5{display:block}
+#r-f6:checked~.wrap #page-f6{display:block}
+#r-f7:checked~.wrap #page-f7{display:block}
+#r-f8:checked~.wrap #page-f8{display:block}
+#r-f9:checked~.wrap #page-f9{display:block}
+#r-f10:checked~.wrap #page-f10{display:block}
+
+#r-home:checked~.wrap .nav-home,
+#r-plan:checked~.wrap .nav-plan,
+#r-f1:checked~.wrap .nav-f1,
+#r-f2:checked~.wrap .nav-f2,
+#r-f3:checked~.wrap .nav-f3,
+#r-f4:checked~.wrap .nav-f4,
+#r-f5:checked~.wrap .nav-f5,
+#r-f6:checked~.wrap .nav-f6,
+#r-f7:checked~.wrap .nav-f7,
+#r-f8:checked~.wrap .nav-f8,
+#r-f9:checked~.wrap .nav-f9,
+#r-f10:checked~.wrap .nav-f10{color:#fff!important;background:rgba(255,255,255,.15)!important;border-bottom-color:#fff!important}
+
+#home{padding:2.5rem 2.5rem 4rem}
+.home-intro{text-align:center;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--rb)}
+.home-intro h2{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:700;margin-bottom:.4rem}
+.home-intro p{color:var(--g);font-size:.95rem;max-width:520px;margin:0 auto}
+.home-section-title{font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin:2rem 0 .9rem;padding-bottom:.3rem;border-bottom:1px solid var(--rb)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+label.card{display:block;background:var(--b);border:1.5px solid var(--rb);border-top:4px solid var(--r);padding:1.2rem 1.1rem 1rem;cursor:pointer;color:inherit;transition:box-shadow .15s}
+label.card:hover{box-shadow:0 4px 18px rgba(139,0,0,.13)}
+label.card .card-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.3rem}
+label.card h3{font-size:.95rem;font-weight:700;color:var(--r);margin-bottom:.2rem;line-height:1.35}
+label.card p{font-size:.8rem;color:var(--g);line-height:1.4}
+label.card-plan{display:block;background:var(--n);border-top:4px solid var(--r);padding:1.2rem 1.1rem 1rem;cursor:pointer;color:#fff;transition:opacity .15s}
+label.card-plan:hover{opacity:.9}
+label.card-plan .card-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:.3rem}
+label.card-plan h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+label.card-plan p{font-size:.8rem;color:#aaa;line-height:1.4}
+
+main{max-width:100%;margin:0 auto;padding:2.2rem 2.5rem 5rem}
+label.btn-home{display:inline-block;background:transparent;border:1.5px solid rgba(139,0,0,.3);color:var(--rv);padding:.4rem 1rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+
+.mindmap-container{width:100%;overflow-x:auto;padding:1.5rem 0}
+.mindmap-scroll{min-width:900px}
+.root-node{display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+.root-node .node-box{background:var(--n);color:#fff;padding:.9rem 2rem;font-size:1.1rem;font-weight:700;letter-spacing:.04em;text-align:center;border-bottom:3px solid var(--r)}
+.root-node .node-box small{display:block;color:#aaa;font-size:.72rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem}
+.single-col{display:flex;flex-direction:column;gap:1.5rem;align-items:stretch}
+.partie-block{border:2px solid var(--r);background:#fff}
+.partie-header{background:var(--r);color:#fff;padding:.6rem 1rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.partie-body{padding:.8rem;display:flex;flex-direction:column;gap:.7rem}
+.chap-block{border:1px solid var(--rb);background:#fff}
+.chap-header{background:var(--gc);border-bottom:1px solid var(--rb);padding:.35rem .7rem;font-size:.73rem;font-weight:700;color:var(--r);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;list-style:none}
+.chap-header::-webkit-details-marker{display:none}
+.chap-toggle::after{content:'▸';color:var(--r);font-size:.8rem}
+details[open] .chap-toggle::after{content:'▾'}
+.chap-body{padding:.55rem .7rem;display:flex;flex-direction:column;gap:.3rem}
+.section-item{padding:.28rem .5rem .28rem .85rem;border-left:2px solid var(--rb);font-size:.82rem;color:var(--gf);display:flex;flex-direction:column;gap:.18rem}
+.section-label{font-weight:700;color:var(--rv);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.section-name{font-size:.84rem;color:var(--gf);font-weight:600}
+.para-list{margin-top:.22rem;padding-left:.7rem;display:flex;flex-direction:column;gap:.12rem}
+.para-item{font-size:.78rem;color:var(--g);position:relative;padding-left:.9rem;line-height:1.4}
+.para-item::before{content:'§';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.7rem}
+.sub-list{margin-top:.1rem;padding-left:.8rem}
+.sub-item{font-size:.74rem;color:#777;position:relative;padding-left:.7rem;line-height:1.4}
+.sub-item::before{content:'–';position:absolute;left:0;color:var(--r)}
+.intro-block{border:1.5px solid var(--rb);background:var(--rp);margin-bottom:1rem}
+.intro-block-header{background:#555;color:#fff;padding:.45rem .8rem;font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.intro-block-body{padding:.6rem .75rem;display:flex;flex-direction:column;gap:.28rem}
+.intro-topic{font-size:.82rem;color:var(--gf);padding-left:.85rem;border-left:2px solid #aaa;font-weight:600}
+.plan-fiche-link{display:inline-block;margin-top:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--r);padding:.18rem .55rem;cursor:pointer;border:none;font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem;padding:.75rem 1rem;background:var(--gc);border:1px solid var(--rb);font-size:.78rem;color:var(--g)}
+.legend-item{display:flex;align-items:center;gap:.35rem}
+.legend-dot{width:12px;height:12px;flex-shrink:0}
+
+/* FICHES */
+.fiche-page{max-width:840px;margin:0 auto}
+.fiche-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid var(--r)}
+.fiche-meta{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem}
+.fiche-header h2{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--n)}
+.fiche-loc{margin-top:.7rem;background:var(--n);color:#aaa;padding:.55rem .9rem;font-size:.76rem;line-height:1.6;border-left:3px solid var(--r)}
+.fiche-loc strong{color:#fff;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.fiche-loc span{color:#ccc}
+.fiche-intro{margin-top:.9rem;font-size:.93rem;color:var(--g);line-height:1.65;font-style:italic;padding:.7rem 1rem;background:var(--gc);border-left:3px solid var(--rb)}
+
+.f-bloc{margin-bottom:2.4rem}
+.f-bloc-title{font-size:1.05rem;font-weight:700;color:#fff;background:var(--n);padding:.5rem .9rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem}
+.f-bloc-title .f-num{background:var(--r);padding:.1rem .5rem;font-size:.75rem;letter-spacing:.07em}
+.f-sous{margin-bottom:1.5rem;padding-left:1.1rem;border-left:3px solid var(--r)}
+.f-sous-title{font-size:.98rem;font-weight:700;color:var(--r);margin-bottom:.6rem;padding-bottom:.25rem;border-bottom:1px dotted var(--rb)}
+.f-sous2{margin-bottom:1rem;padding-left:.9rem;border-left:2px solid var(--rb)}
+.f-sous2-title{font-size:.9rem;font-weight:700;color:var(--gf);margin-bottom:.4rem}
+.f-item{margin-bottom:1rem}
+.f-item-title{font-size:.93rem;font-weight:700;color:var(--gf);margin-bottom:.4rem;display:flex;align-items:baseline;gap:.45rem}
+.f-item-title .f-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--rv);flex-shrink:0;margin-bottom:2px}
+.f-text{font-size:.92rem;color:var(--gf);line-height:1.75;margin-bottom:.55rem}
+.f-list{list-style:none;padding:0;margin:.3rem 0 .6rem .1rem}
+.f-list li{font-size:.91rem;color:var(--gf);line-height:1.65;padding:.15rem 0 .15rem 1.1rem;position:relative}
+.f-list li::before{content:'—';position:absolute;left:0;color:var(--r);font-weight:700}
+.f-list li strong{color:var(--r)}
+.f-list-sub{list-style:none;padding:0;margin:.2rem 0 .2rem .8rem}
+.f-list-sub li{font-size:.87rem;color:#555;line-height:1.6;padding:.1rem 0 .1rem .9rem;position:relative}
+.f-list-sub li::before{content:'·';position:absolute;left:0;color:var(--r);font-weight:700}
+.f-alerte{background:#fffbf0;border-left:4px solid #c47900;padding:.75rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;color:var(--gf)}
+.f-alerte strong{color:#9a5e00;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.25rem}
+.f-exemple{background:var(--gc);border-left:3px solid #888;padding:.7rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;color:var(--g)}
+.f-exemple strong{color:var(--gf);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.f-key{background:var(--rp);border:1.5px solid var(--rb);padding:.65rem 1rem;margin:.5rem 0 .9rem;font-size:.91rem;line-height:1.65;color:var(--gf);display:flex;align-items:baseline;gap:.6rem}
+.f-key::before{content:'→';color:var(--r);font-weight:700;flex-shrink:0;font-size:1rem}
+.f-table-wrap{overflow-x:auto;margin:.6rem 0 .9rem}
+.f-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.f-table thead tr{background:var(--n);color:#fff}
+.f-table thead th{padding:.5rem .8rem;text-align:left;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.f-table tbody tr:nth-child(even){background:var(--gc)}
+.f-table tbody td{padding:.45rem .8rem;border-bottom:1px solid var(--rb);vertical-align:top}
+.f-table tbody td:first-child{font-weight:700;color:var(--r)}
+.f-retenir{background:var(--rp);border-left:4px solid var(--r);padding:.9rem 1.1rem;margin-top:1.8rem;font-size:.91rem;line-height:1.7;color:var(--gf)}
+.f-retenir strong{color:var(--r);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.f-retenir ul{list-style:none;padding:0;margin:.3rem 0}
+.f-retenir ul li{padding:.1rem 0 .1rem 1rem;position:relative;font-size:.9rem}
+.f-retenir ul li::before{content:'✓';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.78rem}
+.fiche-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rb)}
+.fiche-nav label{color:var(--rv);cursor:pointer;font-size:.85rem}
+
+/* SCHÉMAS / TIMELINE */
+.f-schema{background:var(--gc);border:1px solid var(--rb);padding:1rem 1.2rem;margin:.7rem 0 1rem;font-size:.88rem}
+.f-schema-title{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--g);margin-bottom:.6rem}
+.f-timeline{display:flex;flex-direction:column;gap:.4rem}
+.f-tl-item{display:flex;gap:.8rem;align-items:flex-start}
+.f-tl-dot{width:14px;height:14px;border-radius:50%;background:var(--r);flex-shrink:0;margin-top:.3rem}
+.f-tl-content{flex:1}
+.f-tl-date{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--r);text-transform:uppercase}
+.f-tl-text{font-size:.85rem;color:var(--gf);line-height:1.5}
+.f-steps{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}
+.f-step{background:var(--r);color:#fff;padding:.3rem .7rem;font-size:.8rem;font-weight:600;position:relative}
+.f-step:not(:last-child)::after{content:'→';color:var(--r);font-weight:700;position:absolute;right:-.75rem;top:50%;transform:translateY(-50%);font-size:.9rem}
+.f-step-wrap{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:.5rem 0 1rem}
+.f-badge{display:inline-block;background:var(--n);color:#fff;padding:.15rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-right:.3rem;margin-bottom:.3rem}
+.f-badge-r{background:var(--r)}
+.f-badge-g{background:#2a7a2a}
+.f-vs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 1rem}
+.f-vs-col{padding:.7rem .9rem;font-size:.86rem;border:1.5px solid var(--rb)}
+.f-vs-col-title{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--r);margin-bottom:.4rem}
+
+footer{background:var(--n);color:#777;text-align:center;padding:1.2rem;font-size:.78rem;letter-spacing:.05em;border-top:3px solid var(--r);margin-top:2rem}
+footer span{color:#B22222}
+
+@media(max-width:900px){
+  .mindmap-scroll{min-width:unset}
+  main{padding:1.4rem .9rem 4rem}
+  header{padding:1.2rem 1rem 1rem}
+  nav label{padding:.55rem .5rem;font-size:.68rem}
+  #home{padding:1.8rem 1rem 3rem}
+  .cards-grid{grid-template-columns:1fr 1fr}
+  .f-vs{grid-template-columns:1fr}
+}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<input type="radio" name="page" class="nav-radio" id="r-home" checked>
+<input type="radio" name="page" class="nav-radio" id="r-plan">
+<input type="radio" name="page" class="nav-radio" id="r-f1">
+<input type="radio" name="page" class="nav-radio" id="r-f2">
+<input type="radio" name="page" class="nav-radio" id="r-f3">
+<input type="radio" name="page" class="nav-radio" id="r-f4">
+<input type="radio" name="page" class="nav-radio" id="r-f5">
+<input type="radio" name="page" class="nav-radio" id="r-f6">
+<input type="radio" name="page" class="nav-radio" id="r-f7">
+<input type="radio" name="page" class="nav-radio" id="r-f8">
+<input type="radio" name="page" class="nav-radio" id="r-f9">
+<input type="radio" name="page" class="nav-radio" id="r-f10">
+
+<div class="wrap">
+<header>
+  <label for="r-home" style="text-decoration:none;color:inherit;display:block;cursor:pointer">
+    <h1>Droit <span>du Travail</span></h1>
+    <small>Fiches de révision — 10 fiches + Plan du cours · Examen QCM</small>
+  </label>
+</header>
+<nav>
+  <ul>
+    <li><label class="nav-home" for="r-home">Accueil</label></li>
+    <li><label class="nav-plan" for="r-plan">Plan du cours</label></li>
+    <li><label class="nav-f1" for="r-f1">#1 Introduction</label></li>
+    <li><label class="nav-f2" for="r-f2">#2 Précontractuel &amp; Essai</label></li>
+    <li><label class="nav-f3" for="r-f3">#3 Définition CT</label></li>
+    <li><label class="nav-f4" for="r-f4">#4 Santé &amp; Sécurité</label></li>
+    <li><label class="nav-f5" for="r-f5">#5 Sanctions disciplinaires</label></li>
+    <li><label class="nav-f6" for="r-f6">#6 Garanties salariés</label></li>
+    <li><label class="nav-f7" for="r-f7">#7 Modification CT</label></li>
+    <li><label class="nav-f8" for="r-f8">#8 Suspension CT</label></li>
+    <li><label class="nav-f9" for="r-f9">#9 Licenciement personnel</label></li>
+    <li><label class="nav-f10" for="r-f10">#10 Ruptures salarié</label></li>
+  </ul>
+</nav>
+
+<!-- ACCUEIL -->
+<div id="home-content">
+<div id="home">
+  <div class="home-intro">
+    <h2>Droit du Travail</h2>
+    <p>10 fiches de révision complètes + plan du cours · Tout le programme CM · Examen QCM 40 questions</p>
+  </div>
+
+  <div class="home-section-title">Navigation générale</div>
+  <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));max-width:520px">
+    <label class="card-plan" for="r-plan">
+      <div class="card-num">Vue d'ensemble</div>
+      <h3>Plan du cours</h3>
+      <p>Structure complète — introduction, chapitre I, II, III, IV — avec accès direct aux fiches</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Introduction &amp; Bases</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f1">
+      <div class="card-num">Fiche #1</div>
+      <h3>Introduction</h3>
+      <p>Histoire du DDT · Sources internationales, nationales &amp; professionnelles · OIT · UE · Règlement intérieur</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Chapitre I — Le contrat de travail</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f2">
+      <div class="card-num">Fiche #2</div>
+      <h3>Phase précontractuelle &amp; Essai</h3>
+      <p>Recrutement · Clause NC · Période d'essai : validité, renouvellement, rupture</p>
+    </label>
+    <label class="card" for="r-f3">
+      <div class="card-num">Fiche #3</div>
+      <h3>Définition du contrat de travail</h3>
+      <p>Indisponibilité de la qualification · Présomptions · 3 éléments : rémunération, prestation, subordination</p>
+    </label>
+    <label class="card" for="r-f4">
+      <div class="card-num">Fiche #4</div>
+      <h3>Santé &amp; Sécurité au travail</h3>
+      <p>Obligation de prévention · Droit de retrait · Obligation de sécurité employeur · Risques psychosociaux</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Chapitre II — Le droit disciplinaire</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f5">
+      <div class="card-num">Fiche #5</div>
+      <h3>Les sanctions disciplinaires</h3>
+      <p>Échelle des sanctions · Fautes légère/sérieuse/grave/lourde · Choix de la sanction · Procédure</p>
+    </label>
+    <label class="card" for="r-f6">
+      <div class="card-num">Fiche #6</div>
+      <h3>Les garanties offertes aux salariés</h3>
+      <p>Interdiction sanctions discriminatoires &amp; pécuniaires · Non-cumul · Prescription · Droit à l'oubli</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Chapitres III &amp; IV — Exécution &amp; Rupture</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f7">
+      <div class="card-num">Fiche #7</div>
+      <h3>Modification du contrat de travail</h3>
+      <p>Modification vs changement · Rémunération, temps, fonctions, lieu · Procédure &amp; refus</p>
+    </label>
+    <label class="card" for="r-f8">
+      <div class="card-num">Fiche #8</div>
+      <h3>Suspension du contrat de travail</h3>
+      <p>Maladie, accident du travail · Grève : conditions &amp; faute lourde · Obligations subsistantes</p>
+    </label>
+    <label class="card" for="r-f9">
+      <div class="card-num">Fiche #9</div>
+      <h3>Licenciement pour motif personnel</h3>
+      <p>Cause réelle &amp; sérieuse · Procédure en 3 étapes · Indemnités de droit · Réparation si non-conforme</p>
+    </label>
+    <label class="card" for="r-f10">
+      <div class="card-num">Fiche #10</div>
+      <h3>Modes de rupture à l'initiative du salarié</h3>
+      <p>Démission · Prise d'acte · Résiliation judiciaire · Rupture conventionnelle</p>
+    </label>
+  </div>
+</div>
+</div><!-- end home-content -->
+
+<!-- PAGE PLAN -->
+<div class="page-content" id="page-plan"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Plan complet du cours</div>
+    <h2>Droit du Travail — Structure générale</h2>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--n)"></div> Partie / Chapitre</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--r)"></div> Section</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--rb)"></div> Paragraphe / sous-section</div>
+  </div>
+
+  <div class="mindmap-container"><div class="mindmap-scroll">
+  <div class="root-node"><div class="node-box">DROIT DU TRAVAIL<small>Relation salarié — employeur · contrat de travail</small></div></div>
+  <div class="single-col">
+
+    <div class="partie-block">
+      <div class="partie-header">Introduction — Origine et sources du droit du travail</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Liberté du travail et réglementation <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">Hist.</span><span class="section-name">De l'Antiquité à la Révolution industrielle</span><div class="para-list"><div class="para-item">Loi Le Chapelier 1791 — interdiction syndicats &amp; droit de grève</div><div class="para-item">Révolution industrielle — naissance de la question sociale</div><div class="para-item">XIXe s. — Napoléon III, IIIe République, premières lois ouvrières</div><div class="para-item">1936 FP — congés payés, 40h / 1944 CNR — préambule 1946</div><div class="para-item">Mitterrand — 39h, lois Auroux / Aubry — 35h</div></div></div>
+            <label class="plan-fiche-link" for="r-f1">→ Fiche #1</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Sources internationales <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">OIT — Organisation Internationale du Travail</span><div class="para-list"><div class="para-item">Tripartite : États + syndicats + employeurs — légitimité des normes</div><div class="para-item">Convention 158 — barème Macron &amp; durée d'essai raisonnable</div></div></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Conseil de l'Europe — CEDH &amp; Charte sociale européenne</span></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">UE — droit primaire, dérivé (directives), CJUE</span></div>
+            <label class="plan-fiche-link" for="r-f1">→ Fiche #1</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 3 — Sources nationales <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">A</span><span class="section-name">Constitution — bloc constitutionnalité : droit de grève, liberté syndicale…</span></div>
+            <div class="section-item"><span class="section-label">B</span><span class="section-name">Lois &amp; règlements — Code du travail · ordre public absolu / relatif · principe de faveur</span></div>
+            <div class="section-item"><span class="section-label">C</span><span class="section-name">Jurisprudence sociale — Ch. sociale Cour de cassation</span></div>
+            <label class="plan-fiche-link" for="r-f1">→ Fiche #1</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 4 — Sources professionnelles <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">A</span><span class="section-name">Sources négociées : contrat de travail · conventions collectives / accords collectifs</span><div class="para-list"><div class="para-item">3 champs : professionnel, territorial, personnel</div><div class="para-item">Arrêté d'extension / élargissement</div></div></div>
+            <div class="section-item"><span class="section-label">B</span><span class="section-name">Sources unilatérales : usage · engagement unilatéral · règlement intérieur</span><div class="para-list"><div class="para-item">Usage : volontaire, ancien, constant, général, licite — procédure dénonciation</div><div class="para-item">RI : obligatoire dès 50 salariés — contenu impératif &amp; facultatif</div></div></div>
+            <label class="plan-fiche-link" for="r-f1">→ Fiche #1</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre I — Le contrat de travail</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Phase précontractuelle &amp; essai <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Modes de recrutement valides</span><div class="para-list"><div class="para-item">Interdiction discrimination à l'embauche · CSE informé</div><div class="para-item">Offre obligatoirement en français · Priorités d'accès</div></div></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Négociation contractuelle</span><div class="para-list"><div class="para-item">A. Conditions de forme (CDI verbal possible) &amp; de fond (consentement)</div><div class="para-item">B. Clause de non-concurrence : écrit + accord + limité temps/espace + intérêt légitime + contrepartie €</div></div></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">Période d'essai</span><div class="para-list"><div class="para-item">A. Validité : clause CDI, durées légales (2/3/4 mois ouvriers/AM/cadres)</div><div class="para-item">B. Renouvellement : 5 conditions cumulatives</div><div class="para-item">C. Rupture : libre mais délai de prévenance · motifs illicites interdits · salariés protégés</div></div></div>
+            <label class="plan-fiche-link" for="r-f2">→ Fiche #2</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Définition du contrat de travail <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Indisponibilité de la qualification — Arrêt Labanne 2001</span></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Présomptions légales : salariat (VRP, artistes) / non-salariat (RCS, métiers)</span></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">Éléments constitutifs</span><div class="para-list"><div class="para-item">A. Rémunération (même en nature, esp. d'une rémunération future)</div><div class="para-item">B. Prestation de travail (effectif, personnel, au profit de l'employeur)</div><div class="para-item">C. Lien de subordination juridique — Arrêt Sté Générale 1996 — Triptyque D/C/S</div></div></div>
+            <label class="plan-fiche-link" for="r-f3">→ Fiche #3</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 3 — Santé &amp; sécurité au travail <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Obligation de prévention — 9 principes Art. L4121-2</span></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Obligation de sécurité</span><div class="para-list"><div class="para-item">A. À la charge du salarié : droit de retrait (danger grave &amp; imminent)</div><div class="para-item">B. À la charge de l'employeur : obligation de moyen renforcé (Arrêt Air France 2015)</div></div></div>
+            <label class="plan-fiche-link" for="r-f4">→ Fiche #4</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre II — Le droit disciplinaire</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Les sanctions disciplinaires <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Notion de sanction — Art. L1331-1</span><div class="para-list"><div class="para-item">A. Échelle : avertissement · blâme · mise à pied · rétrogradation · mutation · licenciement</div><div class="para-item">B. Fautes : légère / sérieuse / grave / lourde (intention de nuire)</div><div class="para-item">C. Choix de la sanction : pouvoir discrétionnaire employeur sauf harcèlement</div></div></div>
+            <label class="plan-fiche-link" for="r-f5">→ Fiche #5</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Garanties offertes aux salariés <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Garanties fondamentales</span><div class="para-list"><div class="para-item">A. Interdiction des sanctions discriminatoires — preuve aménagée</div><div class="para-item">B. Prohibition des sanctions pécuniaires</div><div class="para-item">C. Non-cumul des sanctions (non bis in idem)</div></div></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Garanties procédurales</span><div class="para-list"><div class="para-item">A. Entretien préalable (sauf avertissement) — convocation 5j min. avant</div><div class="para-item">B. Notification de la sanction — 2j ouvrables min. / 1 mois max.</div></div></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">Effacement des fautes : prescription 2 mois · amnistie 3 ans</span></div>
+            <label class="plan-fiche-link" for="r-f6">→ Fiche #6</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre III — Modification &amp; Suspension du contrat de travail</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — La modification du contrat <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Changement vs Modification (1996)</span><div class="para-list"><div class="para-item">A. Rémunération : tout changement contractuel = modification</div><div class="para-item">B. Temps de travail : horaires = changement / durée = modification</div><div class="para-item">C. Fonctions : même nature = changement / appauvrissement = modification</div><div class="para-item">D. Lieu : même secteur géographique = changement (sauf clause de fixité)</div></div></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Procédure : information (LR) + délai de réflexion · silence ≠ acceptation</span></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">Conséquences du refus : vrai droit au refus (modification) / faute (changement)</span></div>
+            <label class="plan-fiche-link" for="r-f7">→ Fiche #7</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — La suspension du contrat <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Arrêt maladie &amp; accident du travail</span><div class="para-list"><div class="para-item">Maladie ordinaire : protection faible / indemnisation 50%</div><div class="para-item">Accident du travail : protection renforcée / indemnisation 60% puis 80%</div></div></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Grève : cessation totale + concertée + revendication professionnelle</span><div class="para-list"><div class="para-item">Licenciement interdit sauf faute LOURDE (intention de nuire)</div><div class="para-item">Incidence proportionnée à la durée de la grève</div></div></div>
+            <label class="plan-fiche-link" for="r-f8">→ Fiche #8</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre IV — La rupture du contrat de travail</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Licenciement pour motif personnel <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Motif : cause réelle &amp; sérieuse — Art. L1232-1</span><div class="para-list"><div class="para-item">Types : disciplinaire · inaptitude · trouble objectif</div></div></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Procédure : convocation → entretien → notification</span></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">Indemnités de droit</span><div class="para-list"><div class="para-item">Indemnité de licenciement (≥8 mois ancienneté) · Compensatrice préavis · Solde congés payés</div></div></div>
+            <div class="section-item"><span class="section-label">§ 4</span><span class="section-name">Réparation si non-conforme : irrégulier / sans CRS (barème Macron) / nul (≥6 mois + réintégration)</span></div>
+            <label class="plan-fiche-link" for="r-f9">→ Fiche #9</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Modes de rupture à l'initiative du salarié <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§ 1</span><span class="section-name">Démission : volonté claire &amp; non équivoque · pas de motif requis · préavis court</span></div>
+            <div class="section-item"><span class="section-label">§ 2</span><span class="section-name">Prise d'acte : rupture immédiate aux torts employeur — risque "quitte ou double"</span></div>
+            <div class="section-item"><span class="section-label">§ 3</span><span class="section-name">Résiliation judiciaire : le juge prononce la rupture — contrat maintenu pendant l'instance</span></div>
+            <div class="section-item"><span class="section-label">§ 4</span><span class="section-name">Rupture conventionnelle : accord bilatéral — consentement libre · homologation DREETS</span></div>
+            <label class="plan-fiche-link" for="r-f10">→ Fiche #10</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+  </div></div>
+
+  <div class="fiche-nav"><label for="r-home">← Accueil</label><label for="r-f1">Fiche #1 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 1 -->
+<div class="page-content" id="page-f1"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #1 — Introduction</div>
+    <h2>Origine et sources du droit du travail</h2>
+    <div class="fiche-intro">Le droit du travail est une branche du droit privé qui régit la relation entre le salarié et l'employeur. Il naît d'une inégalité de fait et vise à la compenser par des droits. Ses sources sont multiples et hiérarchisées.</div>
+  </div>
+
+  <!-- BLOC 1 -->
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Sect. 1</span> Histoire du droit du travail</div>
+    <div class="f-key">Un salarié n'est pas un synonyme d'employé. Salarié = tout travailleur sous contrat de travail. Employé = simple dénomination d'un poste.</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">La Révolution et ses conséquences</div>
+      <div class="f-text">La <strong>Loi Le Chapelier (14-17 juin 1791)</strong> abolit les corporations et créé un délit : le fait de se regrouper en tant que travailleurs. Résultat : pas de syndicat, pas de grève, et une inégalité de fait masquée par une égalité juridique fictive.</div>
+      <div class="f-alerte"><strong>Conséquence pratique</strong>L'art. 1781 ancien du Code civil posait que le patron était cru sur parole en cas de litige sur le salaire versé. Le livret ouvrier était retenu par l'employeur, l'empêchant de démissionner librement.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Chronologie des conquêtes sociales</div>
+      <div class="f-timeline">
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">1864 — Loi Ollivier</div><div class="f-tl-text">Napoléon III supprime le délit de coalition : naissance du droit de grève (sous conditions)</div></div></div>
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">1874 / 1884</div><div class="f-tl-text">Création de l'inspection du travail · Loi Waldeck-Rousseau : syndicats librement constitués</div></div></div>
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">1898</div><div class="f-tl-text">Responsabilité sans faute pour les accidents du travail (indemnisation forfaitaire)</div></div></div>
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">1936 — Front Populaire</div><div class="f-tl-text">Congés payés par l'employeur · semaine de 40h</div></div></div>
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">1944-1946</div><div class="f-tl-text">CNR → Préambule de 1946 : droit de grève, droit syndical, droit à la santé, retraite, repos</div></div></div>
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">1981 — Mitterrand</div><div class="f-tl-text">39h · 5e semaine congés payés · Lois Auroux (droits défense disciplinaire) · CHSCT</div></div></div>
+        <div class="f-tl-item"><div class="f-tl-dot"></div><div class="f-tl-content"><div class="f-tl-date">Fin XXe — Loi Aubry</div><div class="f-tl-text">35h · début de la dérégulation par inflation législative</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOC 2 -->
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Sect. 2</span> Sources internationales</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — L'OIT (Organisation Internationale du Travail)</div>
+      <div class="f-text">Créée par le <strong>Traité de Versailles 1919</strong>, plus ancienne que l'ONU. Siège à Genève. Sa devise : <em>« Si tu veux la paix, prépare la justice sociale »</em>.</div>
+      <div class="f-key">L'OIT est <strong>tripartite</strong> : États + syndicats + représentants des employeurs. Cette composition lui confère une légitimité unique. Ses normes ne s'imposent qu'après ratification par l'État.</div>
+      <div class="f-exemple"><strong>Illustration concrète</strong>La Convention 158 sur la rupture du contrat : l'OIT a jugé le CPE (2006) et le barème Macron (2017) non conformes. La Cour de cassation a suivi l'OIT pour le CPE. Pour le barème Macron, le gouvernement n'a pas cédé.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — Conseil de l'Europe</div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">CEDH — Convention européenne des droits de l'Homme</div>
+        <div class="f-text">Le juge de la CEDH est créatif : il protège le <strong>droit de grève par ricochet</strong> via l'art. 11 (liberté d'association), alors même que la grève n'y est pas mentionnée. Arrêt <em>Demir &amp; Baykara c/ Turquie</em> 2008 : condamnation sur la base d'instruments non ratifiés par la Turquie.</div>
+      </div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">Charte sociale européenne</div>
+        <div class="f-text">Mentionne expressément le droit de grève. Pas de juridiction contraignante (comité de contrôle seulement). Le barème Macron a été déclaré non conforme — sans effet car la Cour de cassation a neutralisé toute invocabilité directe.</div>
+      </div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 3 — L'Union européenne</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Source</th><th>Portée</th><th>Exemples DDT</th></tr></thead><tbody>
+        <tr><td>Droit primaire (traités)</td><td>Directement applicable</td><td>Libre circulation des travailleurs</td></tr>
+        <tr><td>Règlements UE</td><td>S'imposent sans transposition</td><td>Détachement de travailleurs</td></tr>
+        <tr><td>Directives</td><td>Objectif à atteindre, moyens libres</td><td>Non-discrimination, congés, temps de travail</td></tr>
+        <tr><td>CJUE</td><td>Interprétation s'impose aux États</td><td>Droit au repos incompressible, congés payés</td></tr>
+      </tbody></table></div>
+      <div class="f-key">La compétence en droit du travail appartient aux États membres, pas à l'UE. Mais l'UE impulse des dynamiques via les directives et la CJUE.</div>
+    </div>
+  </div>
+
+  <!-- BLOC 3 -->
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Sect. 3</span> Sources nationales</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Hiérarchie et articulation</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Rang</th><th>Source</th><th>Contenu DDT</th></tr></thead><tbody>
+        <tr><td>1</td><td>Constitution / Bloc constitutionnalité</td><td>Droit de grève, liberté syndicale, égalité H/F, droit à la santé</td></tr>
+        <tr><td>2</td><td>Traités internationaux (art. 55 C.)</td><td>OIT, CEDH, droit UE</td></tr>
+        <tr><td>3</td><td>Loi (Code du travail)</td><td>Licenciement, SMIC, durée du travail…</td></tr>
+        <tr><td>4</td><td>Règlements (décrets)</td><td>Montant exact du SMIC, conditions d'application</td></tr>
+        <tr><td>5</td><td>Convention collective / Accord collectif</td><td>Salaires, congés spéciaux, primes de branche…</td></tr>
+        <tr><td>6</td><td>Usages / Engagements unilatéraux</td><td>Prime de fin d'année, avantages en nature…</td></tr>
+        <tr><td>7</td><td>Contrat de travail</td><td>Salaire individuel, clauses spéciales…</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Principes clés depuis 2016</strong>Depuis les ordonnances Macron (2017) : le principe de faveur s'efface partiellement. Un accord de branche peut déroger in peius (moins favorable) à la loi dans de nombreux domaines. Un APC (accord de performance collective) peut même modifier unilatéralement certains éléments contractuels.</div>
+    </div>
+  </div>
+
+  <!-- BLOC 4 -->
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Sect. 4</span> Sources professionnelles — Focus RI &amp; Usages</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">L'usage d'entreprise</div>
+      <div class="f-text">Pratique établie de façon <strong>constante</strong> dans une entreprise. Cinq critères cumulatifs :</div>
+      <ul class="f-list">
+        <li><strong>Volontaire</strong> — pas une erreur</li>
+        <li><strong>Ancien</strong></li>
+        <li><strong>Constant</strong> dans le temps (le montant peut varier, pas la nature)</li>
+        <li><strong>Général</strong> — concerne un collectif ou une catégorie objective de salariés</li>
+        <li><strong>Licite</strong></li>
+      </ul>
+      <div class="f-alerte"><strong>Procédure de dénonciation de l'usage</strong>① Informer individuellement tous les salariés concernés ② Consulter les représentants du personnel ③ Respecter un délai de prévenance raisonnable (≥ 3 mois en pratique). Si un critère manque → l'usage reste en vigueur. Voie rapide : négocier un accord collectif sur le même objet.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Le règlement intérieur</div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">Obligatoire dès 50 salariés (pendant 12 mois consécutifs)</div>
+        <div class="f-text">Sans RI alors que l'entreprise compte 50+ salariés : risque pénal (contravention) + perte du pouvoir de sanction graduée.</div>
+      </div>
+      <div class="f-sous2">
+        <div class="f-sous2-title">Contenu impératif (Art. L1321-1)</div>
+        <ul class="f-list">
+          <li>Mesures d'application en matière de santé et sécurité</li>
+          <li>Règles générales et permanentes relatives à la discipline + <strong>échelle des sanctions avec durée maximale de la mise à pied</strong></li>
+          <li>Droits de la défense des salariés</li>
+          <li>Prévention du harcèlement (moral et sexuel) + protection lanceurs d'alerte</li>
+        </ul>
+      </div>
+      <div class="f-key">Test systématique : toute restriction dans le RI doit être <strong>justifiée par la nature de la tâche</strong> ET <strong>proportionnée au but recherché</strong> (Art. L1121-1). Ces deux conditions sont cumulatives.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Salarié ≠ employé — salarié = tout travailleur sous contrat de travail</li>
+      <li>OIT tripartite · ses normes nécessitent ratification pour être opposables</li>
+      <li>Convention 158 OIT : durée d'essai raisonnable &amp; juste indemnité de rupture</li>
+      <li>Principe de faveur depuis 2016 : s'efface entre loi et accord de branche dans certains domaines</li>
+      <li>RI : obligatoire 50 salariés · sans mention durée max mise à pied → sanction annulée</li>
+      <li>Usage : 5 critères · dénonciation : information individuelle + consultation RP + délai ≥ 3 mois</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-plan">← Plan du cours</label><label for="r-f2">Fiche #2 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 2 -->
+<div class="page-content" id="page-f2"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #2 — Chapitre I, Section 1</div>
+    <h2>La phase précontractuelle et l'essai</h2>
+    <div class="fiche-intro">Avant même la signature du contrat, des règles impératives encadrent le recrutement. La période d'essai, quant à elle, est un mécanisme dérogatoire au régime normal du licenciement — mais strictement encadré.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Les modes de recrutement valides</div>
+    <div class="f-text">Principe : liberté d'entreprendre → liberté de recruter. Le CT est <em>intuitu personae</em> (conclu en raison des qualités de la personne).</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Règles impératives à l'embauche</div>
+      <ul class="f-list">
+        <li>Informer le candidat des <strong>méthodes de recrutement</strong> utilisées</li>
+        <li>Informer le <strong>CSE</strong> des méthodes et techniques de recrutement</li>
+        <li>Toute question posée au candidat doit avoir un <strong>lien direct et nécessaire</strong> avec l'emploi</li>
+        <li>Le candidat ne doit répondre de bonne foi qu'aux questions en lien avec le poste — peut légalement taire une grossesse</li>
+        <li>Offre d'emploi obligatoirement <strong>en français</strong></li>
+      </ul>
+      <div class="f-alerte"><strong>Sanction pénale</strong>Offre d'emploi discriminatoire = délit → jusqu'à 3 ans de prison et 45 000 € d'amende. Ex. d'offres illicites : carte électorale demandée, recrutement BBR (blancs seulement), offre pour grévistes remplaçants.</div>
+      <div class="f-key">Le juge apprécie si le critère de sélection constitue une <strong>exigence professionnelle essentielle et déterminante</strong>. Ce spectre s'est réduit avec le temps.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Formes de recrutement autorisées et priorités</div>
+      <ul class="f-list">
+        <li>Aucun CDD pour pourvoir un emploi <strong>permanent</strong></li>
+        <li>Aucun CDD pour remplacer un <strong>gréviste</strong></li>
+        <li>Aucun CDD pour travaux <strong>dangereux</strong></li>
+        <li>Mineur de − 16 ans → <strong>autorisation administrative</strong> obligatoire</li>
+        <li>6% travailleurs handicapés obligatoire dès <strong>20 salariés</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La négociation contractuelle</div>
+    <div class="f-sous">
+      <div class="f-sous-title">A. Conditions de forme du CDI</div>
+      <div class="f-text">Le CDI est la <strong>forme normale et habituelle</strong> du contrat de travail. Il peut être verbal en droit français, mais :</div>
+      <ul class="f-list">
+        <li>Directive du 20 juin 2019 → obligation d'informer par écrit les éléments essentiels <strong>dans les 7 jours</strong></li>
+        <li>Le CT ne peut être rédigé <strong>qu'en français</strong> (termes anglais → traduction annexée)</li>
+      </ul>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Offre d'emploi</div>Si rétractée avant expiration du délai → obstacle à la formation du contrat + responsabilité <strong>extra-contractuelle</strong></div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Promesse unilatérale de CT</div>La révocation n'empêche pas la formation du contrat → responsabilité <strong>contractuelle</strong> si rompue</div>
+      </div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. La clause de non-concurrence</div>
+      <div class="f-key">La clause de NC s'applique après la rupture du CT. Elle restreint la liberté du travail → conditions très strictes.</div>
+      <div class="f-text"><strong>Conditions de forme :</strong> mention par écrit + accord exprès du salarié (la convention collective ne suffit pas).</div>
+      <div class="f-text"><strong>4 conditions de fond cumulatives :</strong></div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Condition</th><th>Contenu</th><th>Sanction si absente</th></tr></thead><tbody>
+        <tr><td>Limitée dans le temps</td><td>Durée précise (ex : 6 mois non-cadre, 2 ans cadre dans import/export)</td><td>Nullité relative</td></tr>
+        <tr><td>Limitée dans l'espace</td><td>Zone géographique précisément définie</td><td>Nullité relative</td></tr>
+        <tr><td>Intérêt légitime de l'entreprise</td><td>Appréciation in concreto selon le poste</td><td>Nullité — le personnel de ménage ≠ directeur commercial</td></tr>
+        <tr><td>Contrepartie pécuniaire</td><td>Condition de validité absolue (PIDESC 2012 confirmé par Cass.)</td><td>Si dérisoire = considérée absente → nullité</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Clause pénale</strong>La CNC peut prévoir le versement d'une somme forfaitaire en cas de violation. Ce n'est pas une sanction pécuniaire prohibée (confirmé par la Ch. sociale). La nullité relative ne peut être soulevée que par la partie lésée (en général le salarié).</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> La période d'essai</div>
+    <div class="f-text">Codifiée aux <strong>art. L1221-19 et s.</strong> (depuis un ANI formalisé en 2008). Permet à l'employeur d'évaluer les compétences et au salarié de vérifier que les fonctions lui conviennent.</div>
+
+    <div class="f-alerte"><strong>Distinguer !</strong>Test probatoire (avant embauche / avant CT) ≠ Période d'essai (à la conclusion du CT) ≠ Période probatoire (en cours d'exécution du CT). Un test probatoire non désigné comme tel et de longue durée = travail dissimulé.</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. La période d'essai — Durées légales maximales</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Catégorie</th><th>Durée initiale max.</th><th>Durée totale max. (si renouvelée)</th></tr></thead><tbody>
+        <tr><td>Ouvriers &amp; employés</td><td>2 mois</td><td>4 mois</td></tr>
+        <tr><td>Agents de maîtrise &amp; techniciens</td><td>3 mois</td><td>6 mois</td></tr>
+        <tr><td>Cadres</td><td>4 mois</td><td>8 mois</td></tr>
+      </tbody></table></div>
+      <div class="f-key">La période d'essai commence dès l'engagement et la rémunération (peu importe la date de prise de poste effective). Un arrêt maladie ou accident du travail <strong>suspend</strong> et proroge la période d'essai. En revanche, une formation dans le cadre du CT ne la proroge pas.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Le renouvellement — 5 conditions cumulatives</div>
+      <ol class="f-list">
+        <li><strong>Autorisé par un accord de branche étendu</strong></li>
+        <li><strong>Mentionné dans le CT</strong> (la faculté ne se présume pas)</li>
+        <li>Respect des <strong>durées légales maximales</strong></li>
+        <li><strong>Accord exprès et non équivoque</strong> du salarié — ne peut pas être donné à l'avance ni tacitement</li>
+        <li><strong>Pas de renouvellement tacite</strong> possible (même d'un commun accord)</li>
+      </ol>
+      <div class="f-alerte"><strong>Attention</strong>Si la convention collective prévoit une procédure plus stricte (ex. : proposition de renouvellement 15j avant échéance), son non-respect rend l'intégralité du renouvellement invalide → le salarié est définitivement embauché.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. La rupture de la période d'essai</div>
+      <div class="f-text">Chaque partie dispose d'un <strong>droit de résiliation discrétionnaire</strong> sans motif à fournir. Les règles du licenciement ne s'appliquent pas. Toutefois :</div>
+      <ul class="f-list">
+        <li>La finalité (évaluation) ne doit pas être détournée → sinon <strong>abus de droit</strong></li>
+        <li>Motif illicite ou discriminatoire → rupture <strong>nulle</strong> (art. L1132 et s.)</li>
+        <li>Motif disciplinaire → procédure disciplinaire à respecter</li>
+        <li>Salarié protégé → <strong>autorisation administrative obligatoire</strong> + consultation CSE si membre</li>
+        <li>Femme enceinte → <strong>prohibition spéciale</strong></li>
+      </ul>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Auteur rupture</th><th>Délai de prévenance</th></tr></thead><tbody>
+        <tr><td>Employeur — essai &lt; 8j</td><td>24h</td></tr>
+        <tr><td>Employeur — 8j à 1 mois</td><td>48h</td></tr>
+        <tr><td>Employeur — 1 à 3 mois</td><td>2 semaines</td></tr>
+        <tr><td>Employeur — &gt; 3 mois</td><td>1 mois</td></tr>
+        <tr><td>Salarié — essai &lt; 8j</td><td>24h</td></tr>
+        <tr><td>Salarié — essai ≥ 8j</td><td>48h</td></tr>
+      </tbody></table></div>
+      <div class="f-key">La rupture doit être portée à la connaissance du salarié <strong>avant l'expiration</strong> de la période d'essai. Passé ce délai → contrat consolidé en CDI. Si l'employeur dépasse le délai de prévenance : indemnité = salaire dû pendant le délai non respecté.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>CNC : 4 conditions cumulatives — temps + espace + intérêt légitime + contrepartie €</li>
+      <li>Période d'essai : mention dans CT + durées légales (2/3/4 mois) + commencement à l'embauche</li>
+      <li>Renouvellement : 5 conditions dont accord EXPRÈS du salarié, pas de renouvellement tacite</li>
+      <li>Le dernier jour ≠ jour travaillé → n'affecte pas le terme de l'essai</li>
+      <li>Rupture essai = libre MAIS salariés protégés → autorisation administrative obligatoire</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f1">← Fiche #1</label><label for="r-f3">Fiche #3 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 3 -->
+<div class="page-content" id="page-f3"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #3 — Chapitre I, Section 2</div>
+    <h2>La définition du contrat de travail</h2>
+    <div class="fiche-intro">Le contrat de travail n'est pas défini par le Code du travail : c'est une construction jurisprudentielle. Son enjeu est fondamental : être qualifié de salarié ouvre tous les droits du DDT. Les parties ne peuvent pas choisir librement la qualification.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> L'indisponibilité de la qualification</div>
+    <div class="f-key">Arrêt Labanne, 19 décembre 2001 : « L'existence d'une relation de travail ne dépend ni de la volonté exprimée par les parties, ni de la dénomination qu'elles ont donnée à la convention, mais des conditions de fait dans lesquelles est exercée l'activité. »</div>
+    <div class="f-text">Le juge n'est jamais lié par la qualification retenue par les parties. Il requalifie la relation si les conditions de fait correspondent à un CT.</div>
+    <div class="f-exemple"><strong>Jurisprudence récente</strong>Arrêts Uber (4 mars 2020) et Deliveroo : requalification des "auto-entrepreneurs" en salariés, car la plateforme disposait du pouvoir de direction, contrôle et sanction sur les chauffeurs. Le "donneur d'ordres" fixait l'itinéraire, le prix, et pouvait déclasser le chauffeur (note faible = sanction).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Les présomptions légales</div>
+    <div class="f-vs">
+      <div class="f-vs-col">
+        <div class="f-vs-col-title">Présomption de salariat (simple)</div>
+        <ul class="f-list">
+          <li>VRP (voyageur-représentant-placier) → <strong>irréfragable</strong> en pratique</li>
+          <li>Artistes de spectacle · mannequins · journalistes professionnels</li>
+        </ul>
+        <div style="margin-top:.5rem;font-size:.85rem;color:var(--g)">C'est à l'employeur de prouver qu'il n'y a pas de CT.</div>
+      </div>
+      <div class="f-vs-col">
+        <div class="f-vs-col-title">Présomption de NON-salariat (Art. L8221-6)</div>
+        <ul class="f-list">
+          <li>Inscrits au RCS, registre des agents commerciaux, répertoire des métiers, transport routier</li>
+          <li>Exercice d'activité artisanale ou commerciale</li>
+        </ul>
+        <div style="margin-top:.5rem;font-size:.85rem;color:var(--g)">C'est au salarié de prouver l'existence du CT (notamment le lien de subordination).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> Les 3 éléments constitutifs du CT</div>
+    <div class="f-key">Définition canonique : une personne s'engage à exécuter une prestation de travail pour le compte et sous la subordination d'une autre, en contrepartie d'une rémunération.</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. La rémunération</div>
+      <ul class="f-list">
+        <li>Peut prendre <strong>toutes les formes licites</strong> : espèces, virement, chèque, en nature (fruits, logement…)</li>
+        <li>Ne doit pas être dérisoire — respect du SMIC obligatoire</li>
+        <li>La délivrance d'un bulletin de salaire = présomption forte de CT</li>
+        <li>L'espoir d'une rémunération future peut suffire (JP : secrétaire bénévole en attente d'embauche)</li>
+      </ul>
+      <div class="f-text">≠ Bénévolat (prestation + subordination, mais sans rémunération). L'entraide familiale échappe à l'infraction de travail dissimulé dans un contexte familial.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. La prestation de travail</div>
+      <div class="f-text">Souplesse maximale du juge : peut être physique, psychique, manuelle, intellectuelle, artistique, ludique.</div>
+      <div class="f-exemple"><strong>Affaire île de la Tentation — Ch. sociale 3 juin 2009</strong>La participation à une émission de télé-réalité (prouver la fidélité d'un couple face à des tentateurs) constitue une prestation de travail dès lors qu'elle est effectuée sous la direction des producteurs (directives de comportement, planning imposé).</div>
+      <div class="f-text">La prestation doit être : <strong>effective</strong> · <strong>réalisée personnellement</strong> · <strong>au profit de l'employeur</strong>.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. Le lien de subordination juridique — LE critère décisif</div>
+      <div class="f-key">Arrêt Société Générale, 13 novembre 1996 : le lien de subordination est caractérisé par « l'exécution d'un travail sous l'autorité d'un employeur qui a le pouvoir de donner des ordres et des directives, d'en contrôler l'exécution et de sanctionner les éventuels manquements. »</div>
+
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Pouvoir</th><th>Indices concrets</th></tr></thead><tbody>
+        <tr><td>Direction</td><td>Imposition des horaires, tenue, organisation du travail, itinéraire</td></tr>
+        <tr><td>Contrôle</td><td>Pointeuse, badgeuse, surveillance électronique, géolocalisation</td></tr>
+        <tr><td>Sanction</td><td>Observations notifiées, sanctions disciplinaires, déclassement, missions retirées</td></tr>
+      </tbody></table></div>
+
+      <div class="f-text"><strong>Méthode du faisceau d'indices</strong> : aucun indice isolé ne suffit, mais leur réunion prouve la subordination. Indice complémentaire : <em>intégration au sein d'un service organisé</em> (quand l'une des parties détermine unilatéralement les conditions de travail de l'autre).</div>
+
+      <div class="f-exemple"><strong>Cas Uber (illustration du faisceau)</strong>
+        ① La société impose le véhicule et l'application · ② Elle fixe le tarif sans négociation · ③ Elle impose l'itinéraire · ④ Elle connaît en temps réel la position du chauffeur · ⑤ Une note faible entraîne un déclassement (= sanction). → Lien de subordination = salarié dissimulé.</div>
+
+      <div class="f-alerte"><strong>Attention</strong>Le pouvoir de sanction est la composante la plus fragile. Si la seule manifestation est la rupture de la relation commerciale, cela ne suffit généralement pas. Il faut des sanctions en cours d'exécution (blâme, déclassement, participation imposée à une formation…).</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Qualification indisponible : le juge n'est jamais lié par ce que les parties ont appelé leur relation</li>
+      <li>3 éléments cumulatifs : rémunération + prestation personnelle + lien de subordination (D/C/S)</li>
+      <li>Lien de subordination = critère essentiel et unique pour différencier salariat et travail indépendant</li>
+      <li>Faisceau d'indices : aucun indice seul ne suffit, mais leur réunion prouve la subordination</li>
+      <li>VRP → présomption irréfragable de salariat · RCS → présomption de non-salariat</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f2">← Fiche #2</label><label for="r-f4">Fiche #4 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 4 -->
+<div class="page-content" id="page-f4"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #4 — Chapitre I, Section 3</div>
+    <h2>La santé et la sécurité au travail</h2>
+    <div class="fiche-intro">L'employeur est le garant principal de la santé et sécurité de ses salariés. Le salarié a lui aussi des obligations. Le droit de retrait permet au salarié de se soustraire à un danger grave et imminent sans sanction.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> L'obligation de prévention (Art. L4121-2)</div>
+    <div class="f-text">L'employeur doit mettre en œuvre les <strong>9 principes généraux de prévention</strong> :</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>#</th><th>Principe</th></tr></thead><tbody>
+      <tr><td>1</td><td>Éviter les risques</td></tr>
+      <tr><td>2</td><td>Évaluer les risques qui ne peuvent être évités</td></tr>
+      <tr><td>3</td><td>Combattre les risques à la source</td></tr>
+      <tr><td>4</td><td>Adapter le travail à l'homme (conception postes, équipements)</td></tr>
+      <tr><td>5</td><td>Tenir compte de l'état d'évolution de la technique</td></tr>
+      <tr><td>6</td><td>Remplacer le dangereux par le moins dangereux ou non dangereux</td></tr>
+      <tr><td>7</td><td>Planifier la prévention (harcèlement moral et sexuel inclus)</td></tr>
+      <tr><td>8</td><td>Mesures de protection collective > protection individuelle</td></tr>
+      <tr><td>9</td><td>Donner les instructions appropriées aux travailleurs</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Distinction harcèlement sexuel ≠ agissement sexiste</strong>Le harcèlement = répétition. L'agissement sexiste peut être sanctionné dès la première occurrence (art. L1142-2-1).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> L'obligation de sécurité</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. À la charge du salarié</div>
+      <div class="f-text">Chaque salarié doit prendre soin de sa santé et de sa sécurité <strong>ainsi que de celle des autres</strong>. Manquement → sanction disciplinaire pouvant aller jusqu'au <strong>licenciement pour faute grave</strong> si mise en danger d'autrui.</div>
+      <div class="f-exemple"><strong>Exemples de fautes graves</strong>Conducteur d'engin de chantier en état d'ivresse · Employé fumant une cigarette dans une cartonnerie · Chef de chantier refusant de porter son casque</div>
+
+      <div class="f-sous2">
+        <div class="f-sous2-title">Le droit de retrait (Loi du 23 décembre 1982 — Art. L4131-1)</div>
+        <div class="f-text">Le salarié peut se retirer d'une situation s'il a un <strong>motif raisonnable</strong> de penser qu'elle présente un <strong>danger grave et imminent</strong> pour sa vie ou sa santé.</div>
+        <div class="f-key">Arrêt Cass. 12 juin 2024 : l'appréciation du droit de retrait ne consiste pas à vérifier si l'employeur a commis un manquement, mais à déterminer si, au moment de l'exercice du droit, le salarié avait un motif raisonnable de craindre le danger. Même si l'employeur a respecté toutes les réglementations, le droit de retrait peut être justifié.</div>
+        <ul class="f-list">
+          <li>Si justifié → aucune sanction disciplinaire et <strong>maintien de la rémunération</strong></li>
+          <li>Doit être porté à la connaissance de l'employeur le plus vite possible</li>
+          <li>Aucune forme prescrite par le Code</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. À la charge de l'employeur</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Arrêt / Décision</th><th>Régime</th></tr></thead><tbody>
+        <tr><td>Avant Arrêt Air France 2015</td><td>Obligation de <strong>résultat</strong> : employeur responsable même s'il a tout fait pour prévenir</td></tr>
+        <tr><td>Arrêt Air France 2015</td><td>Obligation de <strong>moyen renforcé</strong> : l'employeur peut s'exonérer s'il prouve avoir tout mis en œuvre</td></tr>
+        <tr><td>Ch. sociale 6 déc. 2017</td><td>L'obligation de prévention des risques professionnels reste une obligation de <strong>résultat</strong></td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Prise d'acte de rupture</strong>Si l'employeur manque à son obligation de sécurité, le salarié peut prendre acte de la rupture du CT à ses torts. Le CPH statue en référé dans un délai d'1 mois. Si les faits sont suffisamment graves → effets d'un licenciement sans cause réelle et sérieuse.</div>
+      <div class="f-text">En cas de <strong>faute inexcusable</strong> de l'employeur : responsabilité civile (dommages-intérêts intégraux) et pénale. La faute inexcusable du salarié n'efface pas celle de l'employeur.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Risques psychosociaux et vie personnelle</div>
+      <div class="f-text">Les risques psychosociaux (harcèlement moral, burnout) relèvent de l'obligation de sécurité. L'obligation pèse sur l'employeur même pour des faits nés d'une relation personnelle entre salariés (ex. : ex-amants dont l'un est supérieur hiérarchique).</div>
+      <div class="f-key">Un fait tiré de la vie personnelle peut justifier une sanction s'il : ① se rattache à la sphère professionnelle, ou ② constitue un manquement à l'obligation de loyauté.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>9 principes de prévention — le principe 7 inclut harcèlement moral et sexuel</li>
+      <li>Agissement sexiste = sanctionnable dès la 1ère occurrence (≠ harcèlement qui suppose répétition)</li>
+      <li>Droit de retrait : motif raisonnable de craindre danger grave et imminent → pas de sanction + maintien salaire</li>
+      <li>Obligation employeur : moyen renforcé depuis 2015 (mais résultat pour prévention des risques pros)</li>
+      <li>Faute inexcusable salarié ≠ exonère pas l'employeur de sa propre faute inexcusable</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f3">← Fiche #3</label><label for="r-f5">Fiche #5 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 5 -->
+<div class="page-content" id="page-f5"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #5 — Chapitre II, Section 1</div>
+    <h2>Les sanctions disciplinaires</h2>
+    <div class="fiche-intro">Le pouvoir disciplinaire est l'une des manifestations du lien de subordination. Il est encadré par un régime strict pour éviter l'arbitraire. Plus la notion de "sanction" est large, plus le salarié est protégé.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> La notion de sanction (Art. L1331-1)</div>
+    <div class="f-key">Constitue une sanction : toute mesure, autre que les observations verbales, prise par l'employeur à la suite d'un agissement du salarié considéré par l'employeur comme fautif, pouvant affecter immédiatement ou non sa présence, sa fonction, sa carrière ou sa rémunération.</div>
+    <div class="f-text">L'observation verbale n'est pas une sanction. Toute autre mesure peut l'être, même si elle n'est pas qualifiée de "disciplinaire" par l'employeur. Le juge requalifie si nécessaire.</div>
+    <div class="f-exemple"><strong>Illustration</strong>Une mutation dans un autre atelier, motivée par la "lenteur et la dissipation" du salarié, même non qualifiée de mutation disciplinaire, a été retenue comme sanction par la Ch. sociale.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> L'échelle des sanctions</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Hiérarchie des sanctions</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Sanction</th><th>Caractéristiques</th><th>Effets</th></tr></thead><tbody>
+        <tr><td>Avertissement</td><td>Sanction écrite (≠ observation verbale)</td><td>Aucun effet immédiat sur le contrat</td></tr>
+        <tr><td>Blâme</td><td>Plus lourd que l'avertissement</td><td>Aucun effet immédiat</td></tr>
+        <tr><td>Mise à pied disciplinaire</td><td>Durée max. obligatoirement dans le RI → sinon NULLE</td><td>Suspension temporaire + suspension de la rémunération</td></tr>
+        <tr><td>Mise à pied conservatoire</td><td>⚠️ PAS une sanction — attente d'enquête</td><td>Si enquête negative → salaires dus rétroactivement</td></tr>
+        <tr><td>Rétrogradation / Mutation disciplinaire</td><td>Modifie le contrat → accord OBLIGATOIRE du salarié</td><td>Baisse de qualification et de rémunération</td></tr>
+        <tr><td>Licenciement disciplinaire</td><td>Ultime sanction — selon la gravité de la faute</td><td>Rupture du contrat avec effets variables</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. L'échelle des fautes</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Faute</th><th>Définition</th><th>Conséquences</th></tr></thead><tbody>
+        <tr><td>Légère</td><td>Manquement mineur</td><td>Pas un motif de licenciement seul. Accumulation → faute sérieuse</td></tr>
+        <tr><td>Sérieuse</td><td>Suffisamment grave pour justifier la rupture</td><td>Licenciement possible. Salarié conserve tous ses droits (préavis + indemnités)</td></tr>
+        <tr><td>Grave</td><td>Particulière gravité → éviction immédiate</td><td>Prive du préavis ET de l'indemnité de licenciement. Conserve droits chômage</td></tr>
+        <tr><td>Lourde</td><td>Faute grave + <strong>intention de nuire</strong> à l'employeur ou l'entreprise</td><td>Tous effets de la faute grave + responsabilité civile du salarié</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Règle fondamentale</strong>Sans preuve de l'intention de nuire, quels que soient les faits reprochés, il ne peut y avoir de faute LOURDE. Un vol dans la caisse = faute grave, pas lourde (sauf intention démontrée). La faute lourde s'apprécie strictement car elle engage la responsabilité civile du salarié.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. Le choix de la sanction</div>
+      <div class="f-text">L'employeur est <strong>libre de sanctionner ou non</strong>, et de choisir le niveau de sanction. Il peut moduler selon l'ancienneté, les circonstances… Mais ce choix ne peut pas être discriminatoire.</div>
+      <div class="f-alerte"><strong>Cas où l'employeur DOIT sanctionner : le harcèlement</strong>Si des faits de harcèlement (moral ou sexuel) sont avérés et que l'employeur ne sanctionne pas : ① violation de l'obligation de sécurité ② risque de faute inexcusable → CPAM se retourne contre lui ③ complicité de harcèlement → sanction pénale possible.</div>
+      <div class="f-text">Exception notable au "pénal tient le civil en l'état" : si l'élément matériel du harcèlement est démontré mais que la juridiction répressive n'a pas retenu l'intention (élément moral), l'employeur <strong>peut quand même sanctionner</strong> le salarié harceleur.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Mise à pied sans durée max dans le RI → sanction nulle en cas de contestation</li>
+      <li>Faute lourde = faute grave + intention de nuire (condition nécessaire et suffisante)</li>
+      <li>Rétrogradation et mutation disciplinaire → modification du CT → accord obligatoire du salarié</li>
+      <li>Harcèlement avéré → obligation de sanctionner (sinon complicité + faute inexcusable possible)</li>
+      <li>Harcèlement : le pénal peut ne pas retenir l'intention → l'employeur peut quand même sanctionner civilement</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f4">← Fiche #4</label><label for="r-f6">Fiche #6 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 6 -->
+<div class="page-content" id="page-f6"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #6 — Chapitre II, Section 2</div>
+    <h2>Les garanties offertes aux salariés</h2>
+    <div class="fiche-intro">Trois garanties fondamentales encadrent le pouvoir disciplinaire de l'employeur pour éviter l'arbitraire. Elles sont complétées par des garanties procédurales strictes et un système d'effacement des fautes passées.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Les garanties fondamentales</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Interdiction des sanctions discriminatoires (Art. L1132-1)</div>
+      <div class="f-text">Portée très large : vise toute mesure, y compris les sanctions "déguisées" (changement d'horaire, mutation…) prises pour un motif discriminatoire.</div>
+      <div class="f-key">Preuve aménagée (Art. L1134-1) : le salarié doit présenter des éléments de fait qui laissent supposer la discrimination → l'employeur doit alors justifier ses choix et démontrer l'absence de discrimination. Ce n'est pas un renversement complet de la charge de la preuve.</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Licenciement sans CRS</div>Pas de réintégration (sauf cas marginal) · Indemnisation selon barème Macron</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Licenciement discriminatoire</div>Nullité absolue → <strong>réintégration de droit si demandée</strong> + rappel de tous les salaires NON versés · Minimum 6 mois si refus de réintégration · Pas de barème Macron</div>
+      </div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Prohibition des sanctions pécuniaires (Art. L1331-2)</div>
+      <div class="f-text">Amendes ou retenues sur salaire sont absolument interdites. Toute clause dans le CT, le RI ou la convention collective prévoyant ce type de sanction est réputée non écrite.</div>
+      <div class="f-alerte"><strong>Périmètre large</strong>Si je retire une voiture de fonction, un téléphone, ou modifie les conditions d'un plan de stock-options suite à une faute → c'est une sanction pécuniaire prohibée. La prime d'assiduité est licite uniquement si elle pénalise TOUS les types d'absences (y compris grève). Sinon → discrimination.</div>
+      <div class="f-key">Sanction pécuniaire ≠ baisse de rémunération résultant d'une mise à pied ou d'une rétrogradation acceptée. La retenue pour heures non travaillées (retard, grève au prorata) n'est pas une sanction mais une inexécution réciproque.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. Le non-cumul des sanctions (non bis in idem)</div>
+      <div class="f-text">Un même fait ne peut être sanctionné deux fois. Lorsque l'employeur sanctionne, il <strong>épuise l'intégralité de son pouvoir disciplinaire</strong> sur tous les faits qu'il connaissait à ce moment.</div>
+      <ul class="f-list">
+        <li>Si nouvelle faute <em>ultérieure</em> → nouvelle sanction possible (pas de non-cumul)</li>
+        <li>Si faits plus graves découverts après la première sanction → sanction plus lourde possible si l'employeur prouve qu'il n'avait pas connaissance de la gravité exacte au moment de la première sanction</li>
+      </ul>
+      <div class="f-alerte"><strong>Exception importante</strong>Si le salarié refuse la rétrogradation ou la mutation → l'employeur peut proposer une sanction alternative (blâme) OU licencier pour les mêmes faits fautifs. Ce n'est pas du double punissement : c'est le refus de la modification qui déclenche la réponse, non les faits eux-mêmes.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Les garanties procédurales</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. La convocation à l'entretien préalable</div>
+      <div class="f-text">Obligatoire pour toutes les sanctions sauf <strong>l'avertissement</strong>. Par lettre recommandée ou remise en main propre. La convocation doit mentionner :</div>
+      <ul class="f-list">
+        <li>Lieu, jour, heure de l'entretien</li>
+        <li>Objet (caractère disciplinaire)</li>
+        <li>Faculté de se faire assister par un membre du personnel</li>
+        <li>Niveau de gravité de la sanction envisagée</li>
+        <li>Si licenciement sans représentants du personnel : possibilité de recourir à un <strong>conseiller du salarié</strong></li>
+      </ul>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Délai minimum avant entretien</th><th>Si licenciement</th><th>Autres sanctions</th></tr></thead><tbody>
+        <tr><td>Entre convocation et entretien</td><td>5 jours ouvrables</td><td>Délai raisonnable (JP)</td></tr>
+      </tbody></table></div>
+      <div class="f-key">L'entretien n'est qu'une faculté pour le salarié, pas une obligation. L'absence ne peut pas aggraver la sanction.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. La notification de la sanction</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Délai minimum</th><th>Délai maximum</th><th>Forme</th></tr></thead><tbody>
+        <tr><td>2 jours ouvrables après l'entretien</td><td>1 mois après la date prévue de l'entretien</td><td>LRAR ou remise en main propre</td></tr>
+      </tbody></table></div>
+      <div class="f-text">La notification doit être <strong>motivée</strong> : elle doit restituer la nature exacte des faits, leur qualification fautive et permettre au juge d'exercer son contrôle. La "perte de confiance" seule n'est plus une cause réelle (trop subjective).</div>
+      <div class="f-alerte"><strong>Attention aux jours ouvrables</strong>Jours ouvrables = tous les jours où l'entreprise peut faire travailler ses salariés (y compris le samedi). Si le délai expire un dimanche ou jour férié → report au prochain jour travaillé. La maladie ne suspend pas le délai d'un mois.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> Mécanismes d'effacement</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. La prescription des faits fautifs (Art. L1332-4)</div>
+      <div class="f-key">Aucun fait fautif ne peut donner lieu à des poursuites disciplinaires au-delà de <strong>2 mois</strong> à compter du jour où l'employeur en a eu connaissance. Point de départ : présomption de connaissance = jour de la commission des faits. Point d'arrivée : date d'envoi de la convocation à l'entretien (pas la notification).</div>
+      <div class="f-text">Exception : si les faits font l'objet de poursuites pénales simultanées → le délai de 2 mois est suspendu jusqu'à la décision pénale définitive.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Le droit à l'oubli — Amnistie des sanctions (Art. L1332-5)</div>
+      <div class="f-key">Aucune sanction antérieure de plus de <strong>3 ans</strong> à l'engagement des poursuites disciplinaires ne peut être invoquée. 3 ans et 1 jour = non invocable. Règle appliquée avec une rigueur absolue.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Sanction discriminatoire → nullité + réintégration de droit + 6 mois minimum (pas de barème Macron)</li>
+      <li>Sanction pécuniaire prohibée : vise TOUS les avantages, pas seulement le salaire</li>
+      <li>Prime d'assiduité licite si elle pénalise tous les types d'absences (y compris grève)</li>
+      <li>Non-cumul : connaissance des faits = épuisement du pouvoir disciplinaire pour tous les faits connus</li>
+      <li>Prescription faits fautifs : 2 mois (délai déclenché par envoi de la convocation)</li>
+      <li>Amnistie sanctions : 3 ans (rigueur absolue)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f5">← Fiche #5</label><label for="r-f7">Fiche #7 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 7 -->
+<div class="page-content" id="page-f7"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #7 — Chapitre III, Section 1</div>
+    <h2>La modification du contrat de travail</h2>
+    <div class="fiche-intro">La distinction entre "modification du contrat" et "changement des conditions de travail" est fondamentale : elle détermine si le salarié peut refuser ou non. La modification nécessite son accord ; le changement lui est opposable.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Modification vs Changement (1996)</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Changement des conditions de travail</div>Modalité d'exécution du contrat · Relève du <strong>pouvoir de direction</strong> de l'employeur · Salarié doit l'accepter (refus = faute)</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Modification du contrat de travail</div>Touche un élément <strong>essentiel</strong> · Nécessite l'<strong>accord exprès</strong> du salarié · Le salarié a un vrai droit au refus</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. En matière de rémunération</div>
+      <div class="f-key">Tout élément de rémunération figurant au contrat de travail ne peut être modifié unilatéralement. Y compris si le nouveau mode de calcul serait plus favorable. La modification doit être acceptée par le salarié.</div>
+      <div class="f-alerte"><strong>Attention</strong>Seule la rémunération CONTRACTUELLE est protégée. La prime d'assiduité issue d'un usage peut être dénoncée sans que cela constitue une modification du CT.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. En matière de temps de travail</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Éléments</th><th>Changement ou Modification ?</th></tr></thead><tbody>
+        <tr><td>Horaires de travail</td><td>Changement (sauf clause contractuelle de fixité)</td></tr>
+        <tr><td>Heures supplémentaires</td><td>Changement → le salarié ne peut pas les refuser (sauf motif légitime)</td></tr>
+        <tr><td>Durée du travail (ex. 35h → 27h)</td><td>Modification → accord du salarié obligatoire</td></tr>
+        <tr><td>Passage horaires de jour à nuit</td><td>Modification → accord obligatoire</td></tr>
+        <tr><td>Passage continu → discontinu</td><td>Modification</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. En matière de fonctions</div>
+      <div class="f-text">Le salarié n'a pas de droit imprescriptible à accomplir toujours les mêmes tâches. L'employeur peut en confier, en retirer ou les faire évoluer dans la même nature et au même niveau.</div>
+      <div class="f-exemple"><strong>Exemples de jurisprudence</strong>
+        <strong>Changement :</strong> Salarié affecté à l'emballage des bananes → emballage des citrons (même nature). Femme de ménage des appartements → parties communes de la copropriété.
+        <br><strong>Modification :</strong> Chef de région → adjoint au chef de région · Secrétaire chargée de communication → gestion et réservation de gîtes · Ingénieur contraint aux prestations d'installation chez les clients.</div>
+      <div class="f-key">Indices d'une modification : retrait de responsabilités · réduction à des tâches secondaires · retrait d'une procuration/délégation · baisse de qualification.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">D. En matière de lieu de travail</div>
+      <div class="f-text">La mention d'un lieu de travail dans le CT n'a qu'une valeur informative (sauf clause de fixité).</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Situation</th><th>Qualification</th></tr></thead><tbody>
+        <tr><td>Changement dans le même secteur géographique</td><td>Changement → s'impose au salarié</td></tr>
+        <tr><td>Changement hors secteur géographique</td><td>Modification → accord du salarié</td></tr>
+        <tr><td>Clause de mobilité dans le CT</td><td>Le changement s'impose même hors secteur</td></tr>
+        <tr><td>Clause de fixité dans le CT</td><td>Tout changement = modification</td></tr>
+        <tr><td>Télétravail imposé</td><td>Modification (suppression du lieu fixe) → accord</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Secteur géographique : appréciée in concreto</strong>Indices : distance modérée + desserte transports + même bassin d'emploi. Exemple : Marseille centre → Cabriès = même secteur (JP). Bordeaux → Dax (150 km) = même secteur selon une CA. Appréciation souveraine des juges du fond.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2 &amp; 3</span> Procédure et conséquences du refus</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Procédure</div>
+      <div class="f-text">Pas de procédure légale formelle (sauf motif économique). La JP exige au minimum : <strong>information écrite (LR)</strong> + <strong>délai de réflexion suffisant</strong>. Le silence du salarié ne vaut JAMAIS acceptation tacite.</div>
+      <div class="f-alerte"><strong>Si motif économique</strong>Art. L122-6 CDT : procédure précise + délai de réponse d'1 mois. À défaut de réponse → salarié réputé avoir accepté.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Conséquences selon le type</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Refus d'une vraie modification</div>Droit au refus. Employeur peut : ① renoncer ② passer outre (faute → prise d'acte ou résiliation judiciaire) ③ licencier pour motif disciplinaire ou économique</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Refus d'un simple changement</div>Le refus est <strong>fautif</strong> pour le salarié lambda. Exception : atteinte à une LF → nul + présomption de mauvaise foi. Salarié protégé : accord toujours nécessaire.</div>
+      </div>
+      <div class="f-key">Accord de Performance Collective (APC) depuis 2017 : l'employeur peut modifier certains éléments contractuels via un accord collectif. Si le salarié refuse → licenciement pour cause réelle et sérieuse (motif sui generis). La rémunération horaire doit rester comparable.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Horaires = changement (sauf clause fixité) / Durée du travail = modification</li>
+      <li>Mention du lieu de travail dans CT = informative seulement (sauf clause de fixité)</li>
+      <li>Silence du salarié ≠ acceptation · même s'il travaille aux nouvelles conditions provisoirement</li>
+      <li>Sauf motif économique : délai de réponse + accord exprès obligatoire</li>
+      <li>Refus changement conditions = faute (sauf LF atteinte ou salarié protégé)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f6">← Fiche #6</label><label for="r-f8">Fiche #8 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 8 -->
+<div class="page-content" id="page-f8"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #8 — Chapitre III, Section 2</div>
+    <h2>La suspension du contrat de travail</h2>
+    <div class="fiche-intro">La suspension du CT ne met pas fin aux obligations contractuelles — elle en suspend seulement certaines. Le salarié reste salarié. Il conserve son emploi, son ancienneté et souvent ses mandats de représentation.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Généralités</span> Principes de la suspension</div>
+    <div class="f-text">La suspension porte sur l'<strong>exécution</strong> des obligations, pas sur le contrat lui-même. Certaines obligations subsistent en toutes circonstances :</div>
+    <ul class="f-list">
+      <li><strong>Confidentialité</strong> — révéler un secret de fabrication = délit pénal (jusqu'à 2 ans de prison)</li>
+      <li><strong>Loyauté</strong> — toute activité au profit d'un concurrent est interdite</li>
+      <li><strong>Non-concurrence</strong> — élargissement JP : tout acte de concurrence est interdit pendant l'arrêt</li>
+    </ul>
+    <div class="f-key">Un salarié en arrêt peut être sanctionné seulement si son activité extérieure cause un préjudice à l'employeur. Travailler pour soi pendant un arrêt maladie ne justifie la rupture que si cela porte préjudice à l'employeur.</div>
+    <div class="f-alerte"><strong>Représentants du personnel</strong>La suspension du CT n'affecte pas le mandat. Même en mise à pied disciplinaire, le représentant peut exercer ses fonctions, convoquer des réunions, interroger les salariés et percevoir ses heures de délégation. Seul le médecin apprécie la compatibilité entre état de santé et mandat.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Arrêt de travail pour motif médical</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Maladie ordinaire vs Accident du travail / Maladie professionnelle</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Critère</th><th>Maladie ordinaire</th><th>Accident travail / Maladie pro</th></tr></thead><tbody>
+        <tr><td>Indemnisation</td><td>50% du salaire journalier après 3j carence</td><td>60% immédiat → 80% à partir d'1 mois · Employeur complète à 90% (obligation légale)</td></tr>
+        <tr><td>Protection contre licenciement</td><td>Principe général de non-discrimination</td><td>Renforcée : seule la faute GRAVE ou un motif étranger à l'accident autorise le licenciement</td></tr>
+        <tr><td>CDD</td><td>Standard</td><td>Seule la faute grave ou la force majeure autorise la rupture</td></tr>
+      </tbody></table></div>
+      <div class="f-text"><strong>Accident du travail</strong> : tout événement affectant la santé du salarié, survenu sur le lieu et pendant le temps de travail, quelle qu'en soit l'origine.</div>
+      <div class="f-text"><strong>Maladie professionnelle</strong> : présumée professionnelle si les tableaux (durée d'exposition, activités spécifiques, preuve scientifique) sont remplis.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. La rupture du contrat pendant l'arrêt</div>
+      <div class="f-key">Art. L1226-9 : en cas d'accident du travail ou maladie professionnelle, seule la faute grave ou un motif étranger à l'accident/maladie justifie la rupture. Une faute disciplinaire qui n'est que "sérieuse" ne suffit pas en cas d'AT.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La suspension pour fait de grève</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Définition de la grève — Conditions cumulatives</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Condition</th><th>Détail</th><th>Si non remplie</th></tr></thead><tbody>
+        <tr><td>Cessation totale</td><td>L'arrêt de travail doit être complet</td><td>Pas une grève → susceptible de sanction disciplinaire</td></tr>
+        <tr><td>Concertée</td><td>Plusieurs salariés agissant ensemble</td><td>Exception : salarié unique répondant à un mot d'ordre national</td></tr>
+        <tr><td>Revendications professionnelles</td><td>Liées aux conditions de travail, salaires, etc.</td><td>Mouvement politique → pas une grève</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Effets sur le contrat et protections</div>
+      <ul class="f-list">
+        <li>Le salarié gréviste <strong>conserve son emploi et sa position hiérarchique</strong></li>
+        <li>Licenciement possible <strong>uniquement en cas de faute LOURDE</strong> (intention de nuire)</li>
+        <li>Aucune mesure disciplinaire ne peut être prise pendant la grève</li>
+        <li>Retenue sur salaire strictement proportionnée à la durée de la grève (secteur privé)</li>
+      </ul>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Acte pendant la grève</th><th>Faute lourde ?</th></tr></thead><tbody>
+        <tr><td>Bonbonnes de gaz sur le toit (même sans dégât)</td><td>✓ Faute lourde</td></tr>
+        <tr><td>Entraver l'accès à l'entreprise (même sans violence)</td><td>✓ Faute lourde (entrave à la liberté de travailler)</td></tr>
+        <tr><td>Occuper les locaux</td><td>✓ Faute lourde (atteinte au droit de propriété)</td></tr>
+        <tr><td>Occupation pacifique, sans dégradation, sans violence, ET l'employeur a commis des manquements</td><td>Peut ne pas être faute lourde (JP cas par cas)</td></tr>
+      </tbody></table></div>
+      <div class="f-alerte"><strong>Prime réservée aux non-grévistes</strong>Arrêt 3 avril 2004 : licite si la prime récompense le surplus de travail fourni par les non-grévistes pour maintenir l'activité. Illicite si elle vise à récompenser la non-participation à la grève en tant que telle (discrimination).</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Obligations subsistantes pendant la suspension : confidentialité + loyauté + non-concurrence</li>
+      <li>AT / maladie pro : indemnisation renforcée (60% → 80%) + protection contre licenciement renforcée</li>
+      <li>Grève : cessation totale + concertée + revendications professionnelles (3 conditions cumulatives)</li>
+      <li>Licenciement gréviste : faute LOURDE uniquement (intention de nuire)</li>
+      <li>Représentant du personnel : mandat maintenu pendant toute suspension, y compris mise à pied</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f7">← Fiche #7</label><label for="r-f9">Fiche #9 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 9 -->
+<div class="page-content" id="page-f9"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #9 — Chapitre IV, Section 1</div>
+    <h2>Le licenciement pour motif personnel</h2>
+    <div class="fiche-intro">Le licenciement est un acte juridique unilatéral par lequel l'employeur met fin au CDI. Il doit être justifié, régulier, et respecter scrupuleusement une procédure. C'est la dernière alternative après épuisement des possibilités de conciliation.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Le motif du licenciement</div>
+    <div class="f-key">Art. L1232-1 : tout licenciement pour motif personnel doit être justifié par une cause réelle et sérieuse.</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Types de motifs personnels</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Type</th><th>Définition</th><th>Spécificités</th></tr></thead><tbody>
+        <tr><td>Disciplinaire</td><td>Faute du salarié (légère à lourde)</td><td>Règles procédurales disciplinaires en +</td></tr>
+        <tr><td>Inaptitude</td><td>Constatée par la médecine du travail</td><td>Obligation de reclassement préalable + indemnité doublée</td></tr>
+        <tr><td>Trouble objectif</td><td>Comportement du salarié causant un trouble à l'entreprise même sans faute</td><td>Procédure non disciplinaire — important si motif issu vie personnelle</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. La cause réelle</div>
+      <div class="f-text">Les faits invoqués doivent être <strong>objectifs, exacts et vérifiables</strong>. Pas de doutes ou soupçons. Pas d'appréciation subjective de l'employeur.</div>
+      <div class="f-key">Ch. sociale 31 mars 2004 : la "perte de confiance" n'est plus une cause réelle et sérieuse de licenciement → trop subjective.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Le caractère sérieux</div>
+      <div class="f-text">Le motif doit être suffisamment grave pour rendre <strong>impossible la poursuite du contrat</strong>. Pour le licenciement disciplinaire → preuve par courriers, mauvais résultats, attestations, témoignages. Sans éléments probants → motif non sérieux.</div>
+      <div class="f-text">Pour l'inaptitude → certificat médical de la médecine du travail + <strong>obligation préalable de reclassement</strong> (proposition de poste aménagé ou autre poste dans l'entreprise). Si reclassement possible mais non proposé → licenciement privé de cause réelle et sérieuse.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La procédure du licenciement</div>
+    <div class="f-steps">
+      <div class="f-step">① Convocation</div><div class="f-step">② Entretien</div><div class="f-step">③ Notification</div>
+    </div>
+    <div class="f-text">Le salarié convoqué dans un lieu différent de son lieu habituel de travail → frais de déplacement à la charge de l'employeur. Ne pas se rendre à l'entretien n'est pas une faute — seulement une perte d'opportunité. La notification doit intervenir après un délai de réflexion.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> Les indemnités de droit</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Indemnité de licenciement</div>
+      <div class="f-text">Due à tout salarié avec <strong>au moins 8 mois d'ancienneté</strong>, sauf faute grave ou lourde.</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Ancienneté</th><th>Calcul légal</th></tr></thead><tbody>
+        <tr><td>Jusqu'à 10 ans</td><td>1/4 de mois de salaire par année d'ancienneté</td></tr>
+        <tr><td>Au-delà de 10 ans</td><td>1/3 de mois de salaire par année</td></tr>
+      </tbody></table></div>
+      <div class="f-key">Principe de faveur : on retient la plus favorable entre indemnité légale, conventionnelle et contractuelle. Pour la base de calcul : le plus favorable entre la moyenne des 12 derniers mois ou le 1/3 des 3 derniers mois. L'inaptitude d'origine professionnelle = indemnité doublée.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Indemnité compensatrice de préavis</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Ancienneté</th><th>Durée du préavis</th></tr></thead><tbody>
+        <tr><td>Moins de 6 mois</td><td>Convention collective ou usage</td></tr>
+        <tr><td>6 mois à 2 ans</td><td>1 mois</td></tr>
+        <tr><td>Au-delà de 2 ans</td><td>2 mois</td></tr>
+      </tbody></table></div>
+      <div class="f-text">Si l'employeur dispense le salarié d'effectuer le préavis → il doit quand même payer l'indemnité compensatrice équivalente. En cas de faute grave → pas de droit au préavis. Inaptitude non professionnelle → pas de préavis (absurde de travailler). Inaptitude professionnelle → préavis maintenu.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. Solde de congés payés</div>
+      <div class="f-text">Contrepartie des jours de congés non pris avant la rupture. Méthode : la plus favorable entre ① 1/10e de la rémunération brute totale, ou ② maintien intégral du salaire pour la période de congés.</div>
+      <div class="f-alerte"><strong>CC 2 mars 2016</strong>La retenue de l'indemnité de congés payés en cas de faute lourde par la convention collective a été invalidée par le Conseil Constitutionnel (droit de propriété). Cette indemnité est désormais toujours due, même en cas de faute lourde.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 4</span> La réparation du licenciement non conforme</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Licenciement irrégulier (procédure)</div>
+      <div class="f-text">Cause juste mais formalités non respectées → indemnité au maximum égale à <strong>1 mois de salaire</strong>. Depuis les ordonnances Macron 2017 : si le licenciement est à la fois irrégulier et injustifié → seule la réparation pour licenciement injustifié est octroyée (plus de cumul).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Licenciement sans cause réelle et sérieuse — Barème Macron</div>
+      <div class="f-key">Depuis 2017 : le juge est encadré par un barème fixant des planchers et des plafonds en mois de salaire selon l'ancienneté. La réparation intégrale du préjudice n'est plus le principe. Le montant a été environ divisé par deux par rapport à l'ancien régime.</div>
+      <div class="f-text">La réintégration est théoriquement possible mais jamais pratiquée car elle nécessite le triple accord (juge + salarié + employeur).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">C. Licenciement nul — Hypothèses et effets</div>
+      <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Cause de nullité</th><th>Exemples</th></tr></thead><tbody>
+        <tr><td>Violation d'une liberté fondamentale</td><td>Licenciement pour exercice du droit de grève, liberté d'expression…</td></tr>
+        <tr><td>Motif discriminatoire</td><td>Sexe, origine, religion, grossesse, état de santé…</td></tr>
+        <tr><td>Harcèlement moral / sexuel</td><td>Rupture en représailles au harcèlement</td></tr>
+        <tr><td>Représailles à une action en justice</td><td>Pour égalité H/F ou discrimination</td></tr>
+        <tr><td>Statut protecteur</td><td>Licenciement sans autorisation administrative</td></tr>
+        <tr><td>Protection maternité / paternité</td><td>Licenciement pendant grossesse, congé parental…</td></tr>
+      </tbody></table></div>
+      <div class="f-key">Effets de la nullité : ① Réintégration de droit si demandée (avec rappel de TOUS les salaires non versés) OU ② Minimum 6 mois de salaire + dommages-intérêts sans plafond (pas de barème Macron). Art. L1235-3-1.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Cause réelle = faits objectifs, exacts, vérifiables (la perte de confiance seule ≠ cause réelle)</li>
+      <li>Inaptitude : obligation préalable de reclassement ou justification de son impossibilité</li>
+      <li>Indemnité licenciement : ≥ 8 mois ancienneté · 1/4 puis 1/3 après 10 ans · principe de faveur</li>
+      <li>Barème Macron : s'applique au licenciement sans CRS · pas au licenciement nul</li>
+      <li>Licenciement nul = réintégration de droit OU 6 mois min. sans plafond</li>
+      <li>Indemnité congés payés toujours due même faute lourde (CC 2016)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f8">← Fiche #8</label><label for="r-f10">Fiche #10 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 10 -->
+<div class="page-content" id="page-f10"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #10 — Chapitre IV, Section 2</div>
+    <h2>Les modes de rupture à l'initiative du salarié</h2>
+    <div class="fiche-intro">Le salarié dispose d'une grande diversité de modes de rupture, chacun avec ses effets, ses risques et ses avantages. Le choix dépend de la situation, de la capacité à poursuivre l'exécution du contrat et des griefs à l'encontre de l'employeur.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Vue d'ensemble</span> Les 4 modes de rupture</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Mode</th><th>Initiative</th><th>Contrat rompu quand ?</th><th>Effet si fondé</th><th>Effet si non fondé</th></tr></thead><tbody>
+      <tr><td>Démission</td><td>Salarié seul</td><td>À la manifestation de volonté</td><td>Démission</td><td>Démission (pas de contestation possible)</td></tr>
+      <tr><td>Prise d'acte</td><td>Salarié</td><td>Au moment de la prise d'acte</td><td>Licenciement sans CRS (ou nul)</td><td>Démission (risque !)</td></tr>
+      <tr><td>Résiliation judiciaire</td><td>Salarié (demande au juge)</td><td>Au jour de la décision du CPH</td><td>Licenciement sans CRS (ou nul)</td><td>Rien ne se passe — contrat continue</td></tr>
+      <tr><td>Rupture conventionnelle</td><td>Accord bilatéral</td><td>Après homologation DREETS</td><td>Droit à l'indemnité + chômage</td><td>Nullité si consentement vicié</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> La démission</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Le régime de la démission</div>
+      <div class="f-text">Mode de rupture unilatéral du CDI par le salarié. Conditions :</div>
+      <ul class="f-list">
+        <li><strong>Volonté claire et non équivoque</strong> → la démission ne se présume jamais</li>
+        <li>Aucun motif à fournir, aucune condition de forme légale (mais écrit conseillé)</li>
+        <li>Volonté libre et non viciée</li>
+        <li>L'employeur ne peut jamais refuser une démission — elle s'impose à lui</li>
+      </ul>
+      <div class="f-alerte"><strong>Coup de tête / rétractation</strong>Une démission prononcée dans un coup de chaleur lors d'une réunion houleuse peut être rétractée dans les heures/jours qui suivent. Mais si plusieurs jours s'écoulent, la volonté de démissionner est présumée maintenue. L'employeur n'est plus tenu d'accepter la rétractation.</div>
+      <div class="f-text">Si la démission est motivée par la faute de l'employeur → elle peut être requalifiée en <strong>prise d'acte</strong> par le juge.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Les effets</div>
+      <div class="f-text">La démission prive le salarié des <strong>allocations chômage</strong> (perte volontaire d'emploi). Exceptions légales : motifs familiaux (mariage/PACS, déménagement conjoint), motifs médicaux, projet de reconversion professionnelle.</div>
+      <div class="f-text">Préavis en matière de démission : plus court qu'en matière de licenciement. L'employeur peut dispenser le salarié du préavis. Le CPH condamne très rarement un salarié à payer l'équivalent du préavis non effectué.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La prise d'acte de la rupture</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">A. Le régime</div>
+      <div class="f-key">La prise d'acte est réservée aux salariés. Si l'employeur "prend acte" de la rupture aux torts du salarié, c'est un licenciement — et s'il ne respecte pas la procédure, un licenciement sans CRS.</div>
+      <div class="f-text">Mode de rupture unilatéral par lequel le salarié prend l'initiative de la fin du CT en invoquant des <strong>griefs à l'encontre de son employeur</strong>. Aucune condition de forme, mais l'écrit est recommandé.</div>
+      <div class="f-alerte"><strong>La prise d'acte : un "quitte ou double"</strong>Dès la prise d'acte → le contrat est immédiatement rompu. Le salarié est considéré démissionnaire en attente du jugement. Le CPH statue en formation de jugement direct (dans 1 mois). Le salarié ne peut plus effectuer de préavis, n'est plus lié par les obligations contractuelles (sauf confidentialité).</div>
+      <div class="f-text">Depuis 2014, la Ch. sociale exige que le salarié ait réagi dans des <strong>délais brefs</strong>. Si le salarié tolère des semaines la situation, cela démontre que le manquement n'est pas si grave → prise d'acte non justifiée.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">B. Les effets selon la décision du CPH</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Manquements jugés graves</div>→ Produit les effets d'un <strong>licenciement sans CRS</strong> (voire licenciement nul si LF violée) · Droit aux indemnités de rupture + chômage</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Manquements jugés insuffisants</div>→ Produit les effets d'une <strong>démission</strong> · Pas d'indemnités · Pas de chômage · Et éventuellement redevable du préavis</div>
+      </div>
+      <div class="f-exemple"><strong>Fautes de l'employeur justifiant une prise d'acte</strong>Non-respect du statut de salarié protégé · Atteintes aux libertés fondamentales (discrimination, harcèlement) · Non-paiement des salaires · Violation grave de l'obligation de sécurité</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> La résiliation judiciaire</div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">Comparaison avec la prise d'acte</div>
+      <div class="f-vs">
+        <div class="f-vs-col"><div class="f-vs-col-title">Prise d'acte</div>Contrat rompu <strong>immédiatement</strong> · Salarié présumé démissionnaire pendant l'instance · Urgence · Risque élevé si pas fondée</div>
+        <div class="f-vs-col"><div class="f-vs-col-title">Résiliation judiciaire</div>Contrat <strong>maintenu</strong> jusqu'à la décision du juge · Salarié continue de travailler · Employeur peut régulariser avant le jugement · Si pas fondée → rien ne se passe</div>
+      </div>
+      <div class="f-key">La résiliation judiciaire est fondée sur l'art. 1217 et s. du Code civil. Le salarié demande au juge de prononcer la rupture (pas de la constater). Le terme du contrat = date de la décision du CPH (pas rétroactif à la demande).</div>
+      <div class="f-alerte"><strong>Possibilité de régularisation</strong>L'employeur peut corriger ses manquements jusqu'au dernier moment (ex. : payer les salaires en retard la veille du jugement). Dans ce cas, la demande de résiliation judiciaire devient sans objet. Avantage considérable par rapport à la prise d'acte.</div>
+      <div class="f-text">Pendant la résiliation judiciaire : le salarié peut aussi être licencié, démissionner ou prendre acte. La demande de résiliation n'est alors plus d'actualité.</div>
+      <div class="f-exemple"><strong>Quand choisir quoi ?</strong>Harcèlement ou violence grave → prise d'acte (impossible de continuer à travailler). Non-paiement de salaires depuis 3 mois mais situation financièrement tenable → résiliation judiciaire (moins risquée).</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 4</span> La rupture conventionnelle</div>
+
+    <div class="f-text">Accord bilatéral entre l'employeur et le salarié. La condition sine qua non : un <strong>consentement libre et éclairé</strong> des deux parties. Elle ouvre droit à l'indemnité légale de rupture ET aux allocations chômage.</div>
+
+    <div class="f-alerte"><strong>Arrêt Ch. sociale 19 juin 2024</strong>Un salarié qui dissimule à son employeur son intention de créer une entreprise concurrente au moment de la négociation de la rupture conventionnelle vicie le consentement de l'employeur (dol). Nullité de la rupture → le salarié est réputé démissionnaire → remboursement de l'indemnité de rupture, du préavis et perte des allocations chômage.</div>
+
+    <div class="f-key">La nullité de la rupture conventionnelle peut être demandée par l'une OU l'autre des parties. En cas de nullité → pas de réintégration → le salarié est considéré comme démissionnaire.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir pour l'examen</strong>
+    <ul>
+      <li>Démission : volonté claire et non équivoque · ne se présume jamais · pas de chômage (sauf exceptions)</li>
+      <li>Prise d'acte : rupture immédiate · quitte ou double · réaction dans brefs délais nécessaire</li>
+      <li>Résiliation judiciaire : contrat maintenu · régularisation possible · si infondée = rien (≠ démission)</li>
+      <li>Rupture conventionnelle : bilatérale · consentement libre · droit au chômage + indemnité</li>
+      <li>Salarié dissimulant projet concurrent lors RC → nullité = démission (Cass. 2024)</li>
+    </ul>
+  </div>
+
+  <div class="fiche-nav"><label for="r-f9">← Fiche #9</label><label for="r-home">Retour à l'accueil</label></div>
+</div>
+</main></div>
+
+<footer>
+  <p>Droit <span>du Travail</span> — Fiches de révision 2025-2026 · 10 fiches · Tout le programme · Examen QCM 40 questions</p>
+</footer>
+
+</div><!-- end .wrap -->
+</body>
+</html>
