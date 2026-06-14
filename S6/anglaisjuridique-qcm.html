@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Anglais Juridique</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+:root {
+  --r: #8B0000;
+  --rv: #B22222;
+  --rp: #fdf0f0;
+  --rb: #e8c8c8;
+  --n: #1a1a1a;
+  --g: #555;
+  --gc: #f6f8fb;
+  --b: #fefefe;
+  --green: #1a6b3a;
+  --greenp: #f0faf4;
+  --greenb: #a8d5bc;
+  --orange: #b85c00;
+  --orangep: #fff8f0;
+  --orangeb: #f0d0a0;
+  --gold: #c9a227;
+  --marked: #fff3cd;
+  --markedb: #e6c84a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background: var(--b);
+  color: var(--n);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+header {
+  background: var(--n);
+  color: #fff;
+  padding: 1.4rem 2rem 1.2rem;
+  border-bottom: 4px solid var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: 900;
+  letter-spacing: .01em;
+}
+header h1 span { color: var(--rv); }
+header small { color: #aaa; font-size: .78rem; letter-spacing: .06em; display: block; margin-top: .15rem; }
+
+/* ─── SCREENS ─── */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ─── ACCUEIL / SÉLECTION ─── */
+#screen-home {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.home-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.home-sub { color: var(--g); font-size: .9rem; margin-bottom: 2rem; }
+
+.year-card {
+  border: 1.5px solid var(--rb);
+  border-top: 4px solid var(--r);
+  background: #fff;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+.year-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  background: var(--gc);
+  border-bottom: 1px solid var(--rb);
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.year-card-header:hover { background: var(--rp); }
+.year-card-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--n);
+}
+.year-card-header .meta {
+  font-size: .75rem;
+  color: var(--g);
+  letter-spacing: .05em;
+}
+.year-card-header .toggle {
+  font-size: .8rem;
+  color: var(--r);
+  font-weight: 700;
+  transition: transform .2s;
+}
+.year-card.open .toggle { transform: rotate(90deg); }
+.year-card-body {
+  display: none;
+  padding: 1rem 1.2rem 1.2rem;
+}
+.year-card.open .year-card-body { display: block; }
+
+.subsets { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1rem; }
+.subset-row {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .5rem .7rem;
+  border: 1.5px solid var(--rb);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.subset-row:hover { background: var(--rp); border-color: var(--rv); }
+.subset-row.selected { background: var(--rp); border-color: var(--r); }
+.subset-row input[type=checkbox] { accent-color: var(--r); width: 16px; height: 16px; cursor: pointer; }
+.subset-label { font-size: .88rem; color: var(--n); cursor: pointer; }
+.subset-count { margin-left: auto; font-size: .72rem; color: var(--g); white-space: nowrap; }
+
+.start-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rb);
+}
+.selected-info { font-size: .85rem; color: var(--g); }
+.selected-info strong { color: var(--r); }
+
+.btn {
+  font-family: 'Source Serif 4', serif;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: .55rem 1.3rem;
+  cursor: pointer;
+  border: none;
+  transition: opacity .15s, transform .1s;
+}
+.btn:hover { opacity: .85; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--r); color: #fff; }
+.btn-secondary { background: transparent; border: 1.5px solid var(--r); color: var(--r); }
+.btn-sm { font-size: .74rem; padding: .38rem .9rem; }
+.btn-green { background: var(--green); color: #fff; }
+.btn-disabled { opacity: .4; pointer-events: none; }
+
+/* ─── QUIZ ─── */
+#screen-quiz {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+}
+
+.quiz-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+.quiz-progress-text { font-size: .8rem; color: var(--g); letter-spacing: .05em; }
+.quiz-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--rb);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--r);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+
+.quiz-source {
+  font-size: .7rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--g);
+  margin-bottom: .6rem;
+}
+.quiz-unknown-badge {
+  display: inline-block;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #888;
+  padding: .15rem .5rem;
+  margin-left: .5rem;
+  vertical-align: middle;
+}
+.quiz-question {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 2.5vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--n);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--rb);
+}
+
+.answers { display: flex; flex-direction: column; gap: .7rem; }
+.answer-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+  padding: .85rem 1.1rem;
+  border: 1.5px solid var(--rb);
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Source Serif 4', serif;
+  font-size: .9rem;
+  color: var(--n);
+  line-height: 1.55;
+  transition: border-color .12s, background .12s;
+  width: 100%;
+}
+.answer-btn:hover:not(.answered) { border-color: var(--rv); background: var(--rp); }
+.answer-btn .letter {
+  font-weight: 700;
+  color: var(--r);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  flex-shrink: 0;
+  width: 1.4rem;
+  margin-top: .1rem;
+}
+.answer-btn.correct { border-color: var(--green); background: var(--greenp); }
+.answer-btn.correct .letter { color: var(--green); }
+.answer-btn.wrong { border-color: var(--rv); background: var(--rp); }
+.answer-btn.wrong .letter { color: var(--rv); }
+.answer-btn.reveal { border-color: var(--green); background: var(--greenp); opacity: .7; }
+.answer-btn.reveal .letter { color: var(--green); }
+.answer-btn.unknown-correct { border-color: #888; background: #f5f5f5; }
+
+.feedback {
+  margin-top: 1.2rem;
+  padding: .8rem 1rem;
+  font-size: .88rem;
+  line-height: 1.6;
+  display: none;
+}
+.feedback.show { display: block; }
+.feedback.ok { background: var(--greenp); border-left: 4px solid var(--green); color: #14532d; }
+.feedback.ko { background: var(--rp); border-left: 4px solid var(--rv); color: #7f1d1d; }
+.feedback.unknown-fb { background: #f5f5f5; border-left: 4px solid #888; color: #444; }
+.feedback strong { font-weight: 700; display: block; margin-bottom: .2rem; font-size: .75rem; letter-spacing: .07em; text-transform: uppercase; }
+
+.quiz-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+.mark-btn {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: 'Source Serif 4', serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  padding: .38rem .9rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.mark-btn:hover { background: var(--marked); }
+.mark-btn.marked { background: var(--marked); border-color: var(--markedb); color: #7a5c00; }
+.mark-btn .star { font-size: 1rem; }
+
+/* ─── RÉSULTATS ─── */
+#screen-results {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+.results-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--rb);
+}
+.results-header .score-big {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  color: var(--r);
+  line-height: 1;
+}
+.results-header .score-label {
+  font-size: .85rem;
+  color: var(--g);
+  margin-top: .4rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.results-header .score-detail {
+  font-size: .95rem;
+  color: var(--n);
+  margin-top: .8rem;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.results-stat {
+  text-align: center;
+  padding: 1rem;
+  border: 1.5px solid var(--rb);
+}
+.results-stat .val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.results-stat.good .val { color: var(--green); }
+.results-stat.bad .val { color: var(--rv); }
+.results-stat.neutral .val { color: var(--gold); }
+.results-stat .lbl { font-size: .72rem; color: var(--g); text-transform: uppercase; letter-spacing: .07em; margin-top: .15rem; }
+
+.results-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-bottom: 2.5rem;
+}
+
+.results-list { margin-top: .5rem; }
+.result-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--rb);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.result-item .ri-num { color: var(--g); font-size: .75rem; flex-shrink: 0; width: 1.6rem; padding-top: .1rem; }
+.result-item .ri-icon { flex-shrink: 0; font-size: 1rem; margin-top: .05rem; }
+.result-item .ri-q { color: var(--n); flex: 1; }
+.result-item .ri-star { color: var(--gold); flex-shrink: 0; }
+
+.results-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--n);
+  margin: 2rem 0 .8rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--rb);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  header { padding: 1rem; }
+  #screen-home, #screen-quiz, #screen-results { padding: 1.5rem 1rem 4rem; }
+  .results-grid { grid-template-columns: 1fr 1fr; }
+  .results-grid .results-stat:last-child { grid-column: span 2; }
+  .quiz-question { font-size: .97rem; }
+}
+
+.reliability-bar-wrap {
+  margin: .7rem 0 .5rem;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  flex-wrap: wrap;
+}
+.reliability-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--rb);
+  border-radius: 3px;
+  min-width: 80px;
+  overflow: hidden;
+}
+.reliability-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width .4s ease;
+}
+.reliability-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.reliability-note {
+  font-size: .78rem;
+  color: var(--g);
+  line-height: 1.5;
+  margin-top: .35rem;
+  padding: .4rem .6rem;
+  background: var(--gc);
+  border-left: 3px solid var(--rb);
+}
+
+footer {
+  background: var(--n);
+  color: #777;
+  text-align: center;
+  padding: 1rem;
+  font-size: .75rem;
+  letter-spacing: .05em;
+  border-top: 3px solid var(--r);
+  margin-top: 3rem;
+}
+footer span { color: var(--rv); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Anglais <span>Juridique</span> — Quiz</h1>
+    <small>QCM des années précédentes · AMU Aix-Marseille Université</small>
+  </div>
+  <button class="btn btn-secondary btn-sm" id="btn-home-top" style="display:none" onclick="goHome()">← Accueil</button>
+</header>
+
+<!-- ══════════ ÉCRAN ACCUEIL ══════════ -->
+<div id="screen-home" class="screen active">
+<div id="screen-home-inner">
+  <p class="home-title" style="margin-top:2rem">Choisir un ou plusieurs sujets</p>
+  <p class="home-sub">Sélectionne les QCM que tu veux réviser, puis lance le quiz.</p>
+
+  <div id="year-cards"></div>
+
+  <div class="start-bar">
+    <div class="selected-info">
+      <span id="selected-count">0</span> question<span id="s-plur"></span> sélectionnée<span id="s-plur2"></span>
+    </div>
+    <button class="btn btn-primary" id="btn-start" onclick="startQuiz(false)">Lancer le quiz →</button>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ ÉCRAN QUIZ ══════════ -->
+<div id="screen-quiz" class="screen">
+  <div class="quiz-topbar">
+    <span class="quiz-progress-text" id="quiz-progress-text"></span>
+    <div style="display:flex;gap:.5rem">
+      <button class="btn btn-secondary btn-sm" onclick="goHome()">← Quitter</button>
+    </div>
+  </div>
+  <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+
+  <div class="quiz-source" id="quiz-source"></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="answers" id="quiz-answers"></div>
+  <div class="feedback" id="quiz-feedback"></div>
+
+  <div class="quiz-action-bar">
+    <button class="mark-btn" id="btn-mark" onclick="toggleMark()">
+      <span class="star" id="mark-star">☆</span>
+      <span id="mark-label">Marquer</span>
+    </button>
+    <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="display:none">Question suivante →</button>
+  </div>
+</div>
+
+<!-- ══════════ ÉCRAN RÉSULTATS ══════════ -->
+<div id="screen-results" class="screen">
+  <div class="results-header">
+    <div class="score-big" id="res-score-big"></div>
+    <div class="score-label">Score</div>
+    <div class="score-detail" id="res-score-detail"></div>
+  </div>
+  <div class="results-grid">
+    <div class="results-stat good"><div class="val" id="res-good"></div><div class="lbl">✓ Bonnes</div></div>
+    <div class="results-stat bad"><div class="val" id="res-bad"></div><div class="lbl">✗ Fausses</div></div>
+    <div class="results-stat neutral"><div class="val" id="res-marked"></div><div class="lbl">★ Marquées</div></div>
+  </div>
+
+  <div class="results-actions">
+    <button class="btn btn-secondary" onclick="goHome()">← Choisir d'autres sujets</button>
+    <button class="btn btn-primary" id="btn-retry-wrong" onclick="retryWrong()">Refaire les fausses</button>
+    <button class="btn btn-primary" id="btn-retry-marked" onclick="retryMarked()" style="background:var(--gold)">Refaire les marquées ★</button>
+    <button class="btn btn-secondary" id="btn-retry-wrong-marked" onclick="retryWrongAndMarked()">Fausses + marquées</button>
+    <button class="btn btn-secondary" onclick="startQuiz(false)">Refaire tout</button>
+  </div>
+
+  <div class="results-section-title">Détail des réponses</div>
+  <div class="results-list" id="res-list"></div>
+</div>
+
+<footer><p>Anglais <span>Juridique</span> — Quiz de révision · AMU · QCM années précédentes</p></footer>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// BASE DE DONNÉES DES QCM
+// Légende answer: 0=A,1=B,2=C,3=D ; answer:null = pas de corrigé certain
+// unknown:true = question sans corrigé officiel confirmé par le cours
+// ═══════════════════════════════════════════════════════
+
+const SUBJECTS = [
+  {
+    id: "2024-2025-arles",
+    label: "2024-2025 — Site d'Arles",
+    meta: "Contrôle terminal S6 · 20 questions · Prof. Castel",
+    pctCertain: 100,
+    noteCorrige: "Toutes les questions portent sur les thèmes du cours — corrigé fiable à 100 %.",
+    questions: [
+      { q:"Case law refers to", opts:["precedents","customary law","written law","international law"], answer:0 },
+      { q:"In Masterpiece Cakeshop v. Colorado Civil Rights Commission, Jack Phillips", opts:["refused to hire an orthodox Jew","refused to make a cake for a gay wedding","refused an employee the right to wear a headscarf","refused to sell contraceptives"], answer:1 },
+      { q:"A litigant is a", opts:["defense attorney","prosecution attorney","defendant","plaintiff"], answer:3 },
+      { q:"What is NOT in the definition of affirmative action", opts:["policies or programs to correct the effects of discrimination for minorities","equality of opportunities","redefining merit","color-blindness"], answer:3 },
+      { q:"In Pichon and Sajous v. France, the ECHR ruled that", opts:["business owners have the right to apply their ethical or religious principles at work","France was guilty of denying religious freedom to the plaintiff","exceptions can be made to the laws regarding certain moral, ethical or religious considerations","Freedom of religion protects a person's private sphere of conscience but not any public conduct inspired by it"], answer:3 },
+      { q:"An admission policy that considers many factors such as race, gender, hardships, academic achievement, extracurricular activities is called", opts:["broad based","holistic","complete","heuristic"], answer:1 },
+      { q:"Swann v. Charlotte-Mecklenburg Board of Education", opts:["abolished segregation","overturned affirmative action","upheld the busing system","outlawed the busing system"], answer:2 },
+      { q:"In the USA, separation of church and state is defined in the", opts:["Civil Rights Act","Bill of Rights","Diversity Act","Magna Carta"], answer:1 },
+      { q:"The 14th Amendment states that", opts:["all slaves must be emancipated","everyone must benefit from equal protection of the laws","due process of law can entail contractual servitude","slaves must be gradually emancipated"], answer:1 },
+      { q:"The 1951 Refugee Convention", opts:["defined refoulement of refugees as a right of states","defined non-refoulement as a core principle","defined freedom of movement for refugees as a core principle","limited non-refoulement to situations involving wars"], answer:1 },
+      { q:"In EEOC v. Abercrombie & Fitch, the Supreme Court", opts:["rejected the plaintiff's arguments","ruled against freedom of religion","remanded the case to a lower court for further proceedings","rejected the defendant's arguments"], answer:3 },
+      { q:"Affirmative action was invented", opts:["during WW2 in the US military","by the Supreme Court for black kids at school","by the Civil Rights Act for equal employment","during the New Deal for union workers"], answer:3 },
+      { q:"Under the Dublin III regulation,", opts:["asylum requests must be examined by all member states to determine where asylum seekers can be admitted","no state has the obligation to examine a request for asylum","asylum seekers can choose the state where they want to present their request for asylum","asylum requests must be examined by one and only one member state"], answer:3 },
+      { q:"Habeas Corpus codified", opts:["freedom of religion","freedom of thought","the right to asylum","the right to a fair trial"], answer:3 },
+      { q:"In the 303 creative case, Lorie Smith, the graphic designer argued", opts:["in favour of Colorado's anti-discrimination laws","against freedom of speech","in favour of same-sex couples","in favour of religious freedom"], answer:3 },
+      { q:"Australia's offshore detention centres were in", opts:["Nauru","Tasmania","New Zealand","Southeast Asia"], answer:0 },
+      { q:"In Common Law countries, proceedings in criminal courts of justice are", opts:["inquisitorial","litigious","adversarial","arbitrarial"], answer:2 },
+      { q:"In 2020, which country in the world hosted the most refugees?", opts:["Turkey","Germany","Syria","The USA"], answer:0 },
+      { q:"The Illegal Migration Act was meant to", opts:["curtail legal immigration","encourage illegal migration","stem irregular migration","protect legal migrants"], answer:2 },
+      { q:"Which case is not an affirmative action case?", opts:["Gratz v. Bollinger","Regents of the University of California v. Bakke","Students for Fair Admissions v. Harvard","G4S v. Ashbita"], answer:3 },
+    ]
+  },
+  {
+    id: "2022-2023-init",
+    label: "2022-2023 — Session initiale",
+    meta: "Site d'Aix-en-Provence · 40 questions · Prof. Male",
+    pctCertain: 55,
+    noteCorrige: "Q1–22 : corrigé fiable (cours). Q23–40 : ⚠ droit international public / géopolitique absents du cours — corrigé non garanti, à vérifier.",
+    questions: [
+      { q:"Civil law is mostly based on", opts:["jurisprudence","adversarial trials","codified laws","controversial trials"], answer:2 },
+      { q:"In common law countries, judges are often chosen", opts:["by the people","by jurors","by governors","by the legislature"], answer:1 },
+      { q:"Stare decisis means that", opts:["lower courts can decide to establish their own rulings regardless of precedents","lower courts set precedents that higher courts must abide by","higher courts set precedents that lower courts must abide by","all Supreme Court decisions constitute precedents"], answer:2 },
+      { q:"Statutory law refers to", opts:["customary law","written law","case law","international law"], answer:1 },
+      { q:"The legal system of Scotland is based on", opts:["common law only","civil law only","customary law and religious law","civil law and common law"], answer:3 },
+      { q:"The legal system of California", opts:["is entirely based on common law","is partly based on civil law","derives from indigenous law","is entirely based on civil law"], answer:1 },
+      { q:"In common law countries, the judge", opts:["has inquisitorial authority","can replace or complement prosecutors","can make statutes","arbitrates debates between the prosecution and the defense"], answer:3 },
+      { q:"Habeas corpus means", opts:["court decisions constitute a corpus used as reference","a corpse must be identified to start legal action","no one can be punished without proper judgment","imprisonment without judgment can be justified in specific situations"], answer:2 },
+      { q:"Samantha Elauf", opts:["sued the Equal Employment Opportunity Commission for discrimination in the workplace","asked the Equal Employment Opportunity Commission to sue Abercrombie & Fitch","asked her employer Abercrombie & Fitch to sue the Equal Employment Opportunity Commission","sued Abercrombie & Fitch and the Equal Employment Opportunity Commission for discrimination in the workplace"], answer:1 },
+      { q:"Jack Phillips of Masterpiece Cakeshop", opts:["sued Charlie Craig and David Mullins because of his sexual orientation","was sued by Charlie Craig and David Mullins because he would not accept their sexual orientation","sued the state of Colorado because he was persecuted due to his sexual orientation","sued the Baptist Church because he was denied admission due to his sexual orientation"], answer:1 },
+      { q:"Under the Universal Declaration of Human Rights,", opts:["everyone has the right to freedom of religion","freedom of religion implies states must fund churches","citizens can benefit from freedom of religion providing they register what religion they believe in","everyone has the right to freedom of religion provided religions are officially state religions"], answer:0 },
+      { q:"In the USA, freedom of religion is defined in the", opts:["second Amendment","fourth Amendment","13th Amendment","first Amendment"], answer:3 },
+      { q:"Pennsylvania was founded", opts:["as a colony with a single official religion","under the belief that natives should all become Christians","with religious tolerance being a core principle","by William Penn, a devout member of the Church of England"], answer:2 },
+      { q:"In EEOC v. Abercrombie & Fitch, the Supreme Court ruled that", opts:["Abercrombie & Fitch could not be sued for discriminating against Samantha Elauf","Abercrombie & Fitch had violated Title VII of the Civil Rights Act","Samantha Elauf had violated Title VII of the Civil Rights Act","Title VII of the Civil Rights Act protected prospective employers that refused to hire applicants who claimed to be atheists"], answer:1 },
+      { q:"In Canada, physicians", opts:["can force adults to accept a blood transfusion to save their lives","must perform blood transfusions even if their religious beliefs impose them not to","can never force minors to accept a blood transfusion","can force minors to accept a blood transfusion to save their lives"], answer:3 },
+      { q:"The American Civil War broke out because", opts:["southern states intended to force all other states and territories to enforce slavery","the new territories had to enforce the institution of slavery","northern states intended to secede from the Union to not be compelled to enforce slavery","northern states intended to end slavery in the Union"], answer:3 },
+      { q:"Indentured servants were", opts:["white slaves","blacks who had signed a contract to serve their masters for a given period","whites who had signed a contract to serve their masters to pay for their passage across the Atlantic Ocean","whites who had accepted to become slave holders for a given period"], answer:2 },
+      { q:"The 14th Amendment states that", opts:["all slaves must be emancipated","everyone must benefit from equal protection of the laws","due process of law can entail contractual servitude","slaves must be gradually emancipated and granted citizenship"], answer:1 },
+      { q:"In Plessy v. Ferguson, the Supreme Court ruled that", opts:["the Separate Car Act of Louisiana was not constitutional","colored people could travel separately provided train cars were exactly the same quality for all passengers","colored people could travel separately provided train cars were of a superior quality for white passengers","the Separate Car Act of Louisiana was constitutional"], answer:3 },
+      { q:"The 24th Amendment", opts:["abolished a poll tax","instituted a poll tax","modified the existing poll tax to better accommodate colored voters","extended the poll tax instituted in the southern states to all states of the Union"], answer:0 },
+      { q:"In Regents of the University of California v. Bakke,", opts:["a point system used for admissions was outlawed","the quota system used for admissions was outlawed","the quota system used for admissions was affirmed as it was found to be in keeping with the equal protection clause","universities could choose between a point system or a quota system to determine admissions"], answer:1 },
+      { q:"In California, Proposition 209", opts:["outlawed affirmative action","outlawed holistic reviews in affirmative action","gave preference to low-income students","strengthened affirmative action for Asian Americans who suffered from discrimination"], answer:0 },
+      { q:"In Nicaragua v. United States, the ICJ", opts:["considered that Nicaragua was meddling in the domestic affairs of the USA","supported the non-intervention principle as the USA had refused to support the government of Nicaragua","ordered both states to stop intervening in the domestic affairs of Venezuela","supported the non-intervention principle as the USA had meddled in the domestic affairs of Nicaragua"], answer:3, unknown:true },
+      { q:"Article 4 of the French Constitution of 1790", opts:["stated that France could intervene to support a weakened monarchy","enabled France to intervene to assist in other peoples' struggle for liberty","stated that France would not recur to force to intervene in foreign countries","granted France extensive powers to intervene in the domestic affairs of European monarchies"], answer:1, unknown:true },
+      { q:"Chapter VII of the UN Charter", opts:["defines the principle of non-intervention","bans all interventions even if the Security Council has authorized a specific intervention","legalizes the principle of intervention","states that intervention may be authorized should any other measure fail to end a crisis"], answer:3, unknown:true },
+      { q:"Humanitarian intervention", opts:["is justified when a government needs to impose repression on its own people","is defined as providing assistance to the subjects of a state that persecutes its own people","is necessary when a state, no matter how abusive, must preserve its sovereignty","consists in imposing new welfare policies to a state"], answer:1, unknown:true },
+      { q:"Long-term involvement in humanitarian intervention", opts:["may contribute to fostering self-determination","justifies military invasion and occupation","necessitates imposing a trusteeship on an existing government","implies that a local government must bear the cost of occupation"], answer:0, unknown:true },
+      { q:"\"International law\"", opts:["comprises private international law","is to be distinguished from private international law, which is concerned with the rules of municipal law","incorporates the domestic law of states","focuses on the conflicts of domestic laws"], answer:1, unknown:true },
+      { q:"The UN Security Council", opts:["requires only one permanent member state to veto any use of force","can override the veto of one permanent member state to authorize any use of force","requires at least three permanent member states to veto any use of force","cannot override the veto of permanent member states to authorize any use of force providing they are two at least"], answer:3, unknown:true },
+      { q:"Jus Gentium was invented by the Romans to", opts:["limit integration of foreigners into the Empire","govern the status of foreigners","distinguish Roman law from natural law","better define and expand positive law"], answer:1, unknown:true },
+      { q:"Hugo Grotius", opts:["finally integrated theology into a coherent system of international law","defined how high seas could be claimed by nations","established a clear distinction between theology and international law","founded international law on the core principles of theology"], answer:0, unknown:true },
+      { q:"Decolonization", opts:["enabled to emphasize European-based international law as a foundation principle","introduced new influences in otherwise European-based international law","weakened international law as it was rejected by the newly independent states","changed the legal systems of the newly independent states which became increasingly European-based"], answer:1, unknown:true },
+      { q:"The 1933 Montevideo Convention defined a state as a legal person possessing at least", opts:["a territory that does not need to be defined providing it can enter into diplomatic relations with other states","a government that has to be elected","a population that can be either permanent or temporarily residing in a given territory","a defined territory"], answer:3, unknown:true },
+      { q:"The battle of the Johnson South Reef took place", opts:["because China took the opportunity to gain control of disputed land in the South China Sea to build a military base","between China and Japan to seize the reef formerly occupied by Vietnam","because Japan needed to build an Airforce base for its military operations in the South China Sea","because China wanted to free the islanders from occupying Vietnamese forces"], answer:0, unknown:true },
+      { q:"The Regional Comprehensive Economic Partnership was designed", opts:["to exclude Japan from the economic partnership","to strengthen economic links between the signatories to pave the way for a larger free trade area","to protect the signatories from Western influence","to enable China to have a legal basis for territorial claims"], answer:1, unknown:true },
+      { q:"Under the Shimonoseki Treaty,", opts:["Japan ceded the island of Formosa to China together with all islands pertaining to said Formosa","Japan ceded the senkaku islands to Taiwan","China ceded for a period of 40 years the island of Formosa to Japan together with all islands pertaining to said Formosa","China ceded in perpetuity the island of Formosa to Japan together with all islands pertaining to said Formosa"], answer:3, unknown:true },
+      { q:"The Okinawa Reversion treaty states that", opts:["the USA has an explicit obligation to maintain the integrity of Japan's borders","the USA has an explicit obligation to support the territorial claims of Japan concerning the Senkaku islands","China has an explicit obligation to recognize the integrity of Japan's borders","the USA no longer has an explicit obligation to maintain the integrity of Japan's borders"], answer:0, unknown:true },
+      { q:"The 1982 United Nations Convention on the Law of the Sea", opts:["defined Exclusive Economic Zones as extending not beyond 12 nautical miles from baseline","modified Exclusive Economic Zones to include 50 miles of High Sea","defined Exclusive Economic Zones as extending up to 200 nautical miles from baseline","defined Exclusive Economic Zones as comprising only 200 nautical miles of the continental shelf"], answer:2, unknown:true },
+      { q:"EEZs cannot provide enough elements to sustain territorial claims because", opts:["UNCLOS has been ratified by very few states","China and Japan have not signed UNCLOS","China has signed UNCLOS but excluded EEZs from the agreement","small bodies of water lead to substantial overlap between the EEZs of several countries"], answer:3, unknown:true },
+      { q:"In customary law, a state can claim a territory thanks to the following mechanism:", opts:["occupation with or without intention to act as a sovereign","discovery even if the land is not terra nullius","prescription when a state has acquired the territory and exercised state authority even for a relatively short period of time","cession when the transfer of title has been effected by sale or exchange"], answer:2, unknown:true },
+    ]
+  },
+  {
+    id: "2022-2023-ratt",
+    label: "2022-2023 — Session de rattrapage",
+    meta: "Site d'Aix-en-Provence · 40 questions · Prof. Male",
+    pctCertain: 55,
+    noteCorrige: "55 % des questions (22/40) portent sur les thèmes du cours. Les 18 autres (⚠) touchent au droit international public, géopolitique Asie-Pacifique, droit de la mer — corrigé non garanti.",
+    questions: [
+      { q:"International law was first structured into a comprehensive system by", opts:["Benjamin Franklin","Napoleon Bonaparte","Thomas Cook","Hugo Grotius"], answer:3, unknown:true },
+      { q:"In contrast with international law, municipal law is", opts:["the legal system of a city or town","any law which applies internally within a nation","international law which applies specifically to a city","the legal system of a city which constitutes the foundation of a national legal system"], answer:1, unknown:true },
+      { q:"In common law countries, judges", opts:["lead investigations","prosecute criminals","make laws","arbitrate debates between the prosecution and the defense"], answer:3 },
+      { q:"The idea that people cannot be imprisoned without a fair trial by a jury of their peers is called", opts:["habeas corpus","sui generis","actus reus","acta non verba"], answer:0 },
+      { q:"The adversarial system", opts:["means the defendant is assumed to be guilty","means prosecution and defense are on equal footing","means the defendant is assumed to be innocent","means the judge is the adversary"], answer:1 },
+      { q:"Stare decisis means that", opts:["lower courts can decide to establish their own rulings regardless of precedents","lower courts set precedents that higher courts must abide by","higher courts set precedents that lower courts must abide by","all Supreme Court decisions constitute precedents"], answer:2 },
+      { q:"The legal system of the Republic of Ireland is based on", opts:["common law","civil law","customary and religious law","both civil and common law"], answer:0 },
+      { q:"Jack Phillips, the Colorado baker, was sued for refusing to", opts:["hire a Muslim woman","bake a cake","hire a transgender woman","hire a Jewish man"], answer:1 },
+      { q:"The European Court of Justice ruled that companies may", opts:["impose wearing a specific religious symbol","prohibit religious symbols as part of a general wish to maintain a neutral image","not prohibit wearing religious symbols like a headscarf because that would violate the First Amendment","discriminate on religious grounds"], answer:1 },
+      { q:"The EEOC is the", opts:["European Enforcement Office of Citizenship","European Enforcement Overseas Committee","Equal Enterprise Opportunity Committee","Equal Employment Opportunity Commission"], answer:3 },
+      { q:"The legal definition of a state first appeared in", opts:["the Montevideo Convention in 1933","the Yalta Conference in 1945","the Minsk Agreements in 2014","the Treaty of Tordesillas in 1494"], answer:0, unknown:true },
+      { q:"Subjects of international law", opts:["can be provinces or cantons","must be sovereign states","can be individuals acting as sovereigns","can be private institutions or companies"], answer:2, unknown:true },
+      { q:"Samantha Elauf", opts:["asked her employer Abercrombie & Fitch to sue the EEOC","sued Abercrombie & Fitch and asked the EEOC to sue for discrimination in the workplace","asked the EEOC to sue Abercrombie & Fitch","sued the EEOC for discrimination in the workplace"], answer:2 },
+      { q:"William Penn, the founding father of Pennsylvania,", opts:["instituted a state religion","invented puritanism","imprisoned natives for being animists","considered religious tolerance as a core principle"], answer:3 },
+      { q:"The American Civil War broke out because", opts:["indentured servants had rebelled","California intended to instate slavery","the new territories intended to enforce the institution of slavery in the Union","northern states intended to abolish slavery in the Union"], answer:3 },
+      { q:"The UDHR is", opts:["a treaty, therefore legally binding","a committee designed to implement human rights","an international court of justice","not a treaty, therefore not legally binding"], answer:3 },
+      { q:"The First Amendment to the US Constitution", opts:["establishes freedom to bear arms","details how Americans can benefit from healthcare","defines five basic types of freedom","allows the executive to censor the press"], answer:2 },
+      { q:"The separation between church and state is called", opts:["universalism","secularism","sectarianism","absolutism"], answer:1 },
+      { q:"The Massachusetts Bay Colony", opts:["was ruled by the Anglican Church","was a Quaker colony","was an atheists' colony","was ruled by puritans"], answer:3 },
+      { q:"Nowadays, Americans who consider themselves 'most religious' live mainly in", opts:["the north-east","the north-west","Dixie","California"], answer:2, unknown:true },
+      { q:"In Samantha Elauf's case,", opts:["the District Court forced her to pay $20,000 as damages","the Court of Appeals ruled in her favor","the Court of Appeals imposed even higher damages to be awarded to Abercrombie & Fitch","the District Court awarded her $20,000 in damages"], answer:3, unknown:true },
+      { q:"Scotland", opts:["approves Hijab as official uniform for police officers","bans Hijab as official uniform for police officers","imposes Hijab as official uniform for Muslim police officers","bans all religious symbols in official police uniform"], answer:0, unknown:true },
+      { q:"In the UK,", opts:["adults can force minors to refuse a blood transfusion","minors can refuse a blood transfusion","the authorities can force adults to accept a blood transfusion","minors can be forced to undergo a medical treatment, including a blood transfusion"], answer:3 },
+      { q:"In 1973, Reverend Spencer Parsons", opts:["stated that abortion was murder","stated that the Church should not force any moral judgment upon people regarding abortion","wanted the Church to force its moral judgment upon people","lobbied to have abortion declared a felony"], answer:1, unknown:true },
+      { q:"The Holy Alliance refers to", opts:["a group of revolutionaries who wanted to bring down monarchies","three countries in Europe that claimed the right to intervene against revolutionary movements and regimes","a group of countries that wanted to institute a single religion in Europe","three countries that intended to reinstate the holy inquisition"], answer:1, unknown:true },
+      { q:"The Roosevelt Corollary means that", opts:["the USA could intervene in the domestic affairs of a Latin American country in case of wrongdoing","Theodore Roosevelt introduced an Amendment to the US Constitution","Franklin Delano Roosevelt was granted the right to intervene in Europe in case of wrongdoing","the USA stopped intervening in the domestic affairs of Latin American countries"], answer:0, unknown:true },
+      { q:"Article 42 of the UN Charter stipulates that", opts:["the Security Council can never decide on armed intervention in any country","armed intervention must be decided by a unanimous vote of all UN nations","the Security Council can decide on intervention by armed forces should any other intervention fail","at least five member countries must participate in any armed intervention"], answer:2, unknown:true },
+      { q:"Humanitarian intervention is defined as", opts:["intervention to protect one's own nationals","being similar to counter-intervention","intervention to assist a national community to gain independence from a state whose government the secessionists regard as alien and oppressive","a response to massive human rights violations, justified only as a response to shocking crimes for which there is no other remedy"], answer:3, unknown:true },
+      { q:"Article 51 of the UN Charter", opts:["is problematic because self-defense may legitimize large-scale intervention","is problematic because self-defense can never justify any intervention","is never considered problematic as all resulting interventions are strictly under control of the UN","is never considered problematic because it outlaws any form of self-defense"], answer:0, unknown:true },
+      { q:"The \"Equal Protection Clause\" is a section of the", opts:["Second Amendment","Third Amendment","Twenty-First Amendment","Fourteenth Amendment"], answer:3 },
+      { q:"\"Jim Crow\" refers to", opts:["the first colored Supreme Court Justice","the first colored mayor of a major city","laws promoting racial segregation","laws promoting racial integration"], answer:2 },
+      { q:"The 24th Amendment is about", opts:["the abolition of a poll tax","the abolition of slavery","the abolition of income tax","the abolition of affirmative action"], answer:0 },
+      { q:"The term \"affirmative action\" was first introduced in an executive order signed by", opts:["President Obama","President Lincoln","President Kennedy","President Eisenhower"], answer:2 },
+      { q:"In California, Proposition 209", opts:["banned affirmative action","inscribed affirmative action into the Constitution of the state","introduced affirmative action in the state for the very first time","financed affirmative action in higher education"], answer:0 },
+      { q:"Allan Bakke was", opts:["the President of UCLA","the Head of the Affirmative Action Program at UCLA","a student who benefited from an unusual privilege from the Regular Admissions Program at UCLA","an applicant rejected from the Regular Admissions Program at UCLA"], answer:3 },
+      { q:"The Lough Foyle territorial dispute", opts:["has led to an open conflict between Scotland and England","has remained a dormant conflict for the most part","has finally been resolved in favor of the UK","is Internet fake news"], answer:1, unknown:true },
+      { q:"Concerning territorial waters, France ranks", opts:["first with the USA a distant second","fourth right behind Indonesia","second behind the USA","second behind Argentina"], answer:0, unknown:true },
+      { q:"The Regional Comprehensive Economic Partnership", opts:["excludes China","excludes Japan","includes France thanks to New Caledonia","includes both Japan and China"], answer:3, unknown:true },
+      { q:"The Senkaku/Diaoyu islands", opts:["were first discovered by Japan in the 14th century","were ceded to Japan along with the island of Formosa as described in the Shimonoseki treaty","were ceded to Japan in the San Francisco Peace Treaty","were ceded to Taiwan in the San Francisco Peace Treaty"], answer:2, unknown:true },
+      { q:"An EEZ is", opts:["a zone that defines how far a country can extend its military interventions beyond its borders","a regional international agency that regulates territorial disputes","a zone that defines the territorial waters of a country","a zone also known as the High Sea"], answer:2, unknown:true },
+    ]
+  },
+  {
+    id: "2021-2022-marseille",
+    label: "2021-2022 — Site de Marseille (droit privé)",
+    meta: "Session initiale S6 · 40 questions · Prof. Mattéi",
+    pctCertain: 98,
+    noteCorrige: "39/40 questions corrigées depuis le cours. 1 question ⚠ (Q13 : rôle du juge en Common Law) dont la formulation était ambiguë — à vérifier.",
+    questions: [
+      { q:"The American president who first used the term 'affirmative action' in relation to race was", opts:["Roosevelt","Kennedy","Johnson","Nixon"], answer:1 },
+      { q:"Jack Phillips, the Colorado baker, was sued", opts:["for refusing to hire a Jewish man","for refusing to hire a Muslim woman","for refusing to hire a transgender woman","for refusing to bake a cake"], answer:3 },
+      { q:"The United Kingdom was created through", opts:["the Act of Union","the Partition Act","the Act of Unification","the Act of Unity"], answer:0 },
+      { q:"Pick the correct statement", opts:["In California, race-based affirmative action in college admissions is prohibited","In Texas, race-based affirmative action in college admissions is prohibited","The Supreme Court has ruled race-based affirmative action in college admissions is prohibited","The Supreme Court has ruled race-based quota systems in college admissions are constitutional"], answer:0 },
+      { q:"Pick the correct statement", opts:["Statutes are court decisions","Statutes are laws passed by the legislature","Rulings are laws passed by the legislative branch","Regulations are decided by the Supreme Court"], answer:1 },
+      { q:"Find the odd man out", opts:["Fisher","Bakke","Bollinger","Masterpiece Cakeshop"], answer:3 },
+      { q:"R. v Secretary of State for Exiting the European Union was a case", opts:["ruled by the US Supreme Court","ruled by the European Court of Justice","ruled by the UK Parliament","ruled by the UK Supreme Court"], answer:3 },
+      { q:"Magna Carta", opts:["establishes that countries have a duty to protect citizens fleeing war zones","establishes tyrants may imprison citizens without a fair trial by a jury of their peers","establishes limitations on the power of the King","is a roadmap to crossing the Mediterranean Sea"], answer:2 },
+      { q:"The European Court of Justice ruled that", opts:["companies may prohibit religious symbols as part of a general wish to maintain a neutral image","companies may prohibit wearing a specific religious symbol such as the headscarf to avoid being associated with a specific religion","companies may not prohibit wearing religious symbols like the headscarf because that would violate the First Amendment","companies may discriminate on religious grounds"], answer:0 },
+      { q:"The adversarial system", opts:["means the defendant is assumed to be guilty","means prosecution and defense are on equal footing","means the judge is the enemy","is the same thing as the inquisitorial system"], answer:1 },
+      { q:"The Nauru Island scandal revealed", opts:["Australia's tough migration policies","tough European migration policies","New Zealand's tough migration policies","tough American migration policies"], answer:0 },
+      { q:"Allan Bakke", opts:["was an African American student","was a university president","wanted to get into law school","wanted to get into medical school"], answer:3 },
+      { q:"In Common Law countries, judges", opts:["shape law","enforce laws","prosecute criminals","lead investigations"], answer:1, unknown:true },
+      { q:"Religious freedom is", opts:["not a fundamental right","not defined in the same way in all democracies","defined in the same way in all democracies","synonymous with secularism"], answer:1 },
+      { q:"Non-refoulement is", opts:["a concept protecting employees from religious discrimination","a concept protecting asylum seekers from being sent back to dangerous areas","a concept protecting federal employees from being denied employment because they are unionized","a concept that prevents doctors from denying medical care on religious grounds"], answer:1 },
+      { q:"The 2019 Government shutdown in the US was caused", opts:["by Russian interference in the election process","by labor conflicts with unionized workers","by disagreements over funding the border wall with Mexico","by the Government's inability to fund federal wages"], answer:2 },
+      { q:"An example of externalizing borders is", opts:["Poland","Ukraine","Libya","North Korea"], answer:2 },
+      { q:"In Common Law systems,", opts:["the main source of law is the judicial branch","the main source of law is the legislative branch","the main source of law is the executive branch","defendants are not innocent until proven guilty"], answer:0 },
+      { q:"Choose the correct statement about the Italian deal with Lybia", opts:["Its goal was to curtail the influx of legal immigrants","It was not endorsed by other European leaders","Its goal was to stem the influx of illegal immigrants","It was not controversial"], answer:1 },
+      { q:"Common Law mainly relies on", opts:["codes","customs","precedents","legislation"], answer:2 },
+      { q:"In a 2015 Supreme Court case, the EEOC sued a clothing company", opts:["for religious discrimination","for gender discrimination","for violating labor laws","for refusing to bake a cake for a gay couple"], answer:0 },
+      { q:"Habeas Corpus means", opts:["you can't be convicted","you can't be imprisoned","everyone has a right to freedom of opinion","everyone has a right to a trial"], answer:3 },
+      { q:"In the Common law tradition, judges apply", opts:["a top-bottom approach","a rags-to-riches approach","an inside-out approach","a bottom-top approach"], answer:3 },
+      { q:"Find the odd man out", opts:["EEOC v. Abercrombie","Masterpiece Cakeshop v. Colorado Civil Rights Commission","Grutter v. Bollinger","Ashbita v. G4S Secure Solutions"], answer:2 },
+      { q:"In the US, most students who benefit from preferential treatment in college admissions", opts:["are minority students","are caucasian students","are students with disabilities","are students benefiting from scholarships"], answer:0 },
+      { q:"A holistic approach in college admissions is", opts:["constitutional because it uses racial quota","unconstitutional because it uses racial quota","constitutional because it considers race as a factor","unconstitutional because it is inspired by non conventional medicine"], answer:2 },
+      { q:"Trump's Travel Ban", opts:["was not controversial","was ultimately ruled constitutional because it included countries like Venezuela","was ultimately ruled unconstitutional because it targeted Muslim countries","was not challenged in court"], answer:1 },
+      { q:"In the following list, who cannot be considered a refugee?", opts:["Someone fleeing the effects of climate change","Someone fleeing a war zone","Someone fleeing persecution in their country because of their sexual orientation","Someone fleeing poverty in their own country"], answer:3 },
+      { q:"The EEOC is", opts:["the Equal Employment Opportunity Commission","the European Enforcement Outsized Committee","the Equal Enterprise Opportunity Commission","the European Enforcement Office of Citizenship"], answer:0 },
+      { q:"In college admissions, what is constitutional?", opts:["Using bonus points to try to remedy past discrimination","Using racial quotas to create diversity","Considering race to create diversity","Using bonus points to try to create diversity"], answer:2 },
+      { q:"How many legal systems are there in the UK?", opts:["There is a single legal system","There are two legal systems","There are three legal systems","There are four legal systems"], answer:2 },
+      { q:"The rights of asylum seekers are not protected by", opts:["the Universal Declaration of Human Rights","the Belfast Agreement","the Dublin Agreement","the 1951 Convention"], answer:1 },
+      { q:"The two main political parties in the UK are", opts:["the republican party and the labour party","the conservative party and the democratic party","the conservative party and the labour party","the republican party and the unionist party"], answer:2 },
+      { q:"Color-Blind college admission policies were/are supported by", opts:["The Trump administration","The Biden administration","The Johnson administration","The Obama administration"], answer:0 },
+      { q:"If someone refuses a blood transfusion on religious grounds, a physician may not override that decision", opts:["in the US, if the patient is an adult","in the UK, if a patient is a child","in France, if the patient is an adult","The Equal Protection Clause"], answer:0 },
+      { q:"The Marrakesh Treaty is a non-binding agreement which means", opts:["the states which endorsed the treaty are legally constrained by it","the states which endorsed the treaty have no legal obligation to obey the treaty","the states which endorsed the treaty did not all agree for more cooperation","the states which endorsed the treaty did not all agree on supporting non-regression"], answer:1 },
+      { q:"The separation between church and state is called", opts:["atheism","clericalism","secularism","universalism"], answer:2 },
+      { q:"Which UK nation(s) voted to leave the EU?", opts:["England and Scotland","England and Northern Ireland","England and Wales","England"], answer:3 },
+      { q:"In the recent challenge to Harvard's affirmative action policies, the plaintiffs are", opts:["Black students","Asian American students","Caucasian students","Latino students"], answer:1 },
+      { q:"Find the odd man out", opts:["The 14th Amendment","The Civil Rights Act of 1964","The 3rd Amendment","in Canada, if the patient is a child"], answer:2 },
+    ]
+  },
+  {
+    id: "2020-2021",
+    label: "2020-2021 — Droit privé (avec corrigé officiel)",
+    meta: "40 questions · corrigé officiel disponible",
+    pctCertain: 100,
+    noteCorrige: "Corrigé officiel fourni (grille avec colonne '1'). ATTENTION : '1' ne signifie pas toujours réponse B — j'ai corrigé chaque question depuis le cours. 38/40 confirmées. 2 incertitudes : Q18 (Fisher) et Q19 (Grutter, énoncé avec 2 options identiques A/B dans le PDF — probablement une erreur de mise en page du sujet original).",
+    questions: [
+      // Q1 — Main source of law in Common Law = case law = judicial branch
+      { q:"In Common Law traditions, the main source of law is", opts:["Written documents","The judicial branch","The executive branch","The legislative branch"], answer:1 },
+      // Q2 — Scottish legal system = civil law AND common law (mixte) → pas "only" common law
+      { q:"Which legal system is not based on common law principles only?", opts:["The American legal system","The Scottish legal system","The Australian legal system","The Irish legal system"], answer:1 },
+      // Q3 — A written law = statute
+      { q:"A written law is called", opts:["an executive order","a statute","a precedent","an amendment to the constitution"], answer:1 },
+      // Q4 — In Common Law, judges do NOT lead investigations (procédure adversariale)
+      { q:"In Common law countries, judges do not", opts:["hear cases","lead investigations","shape law","follow precedents"], answer:1 },
+      // Q5 — Civil courts CAN award financial compensation (≠ peine de prison = pénal)
+      { q:"In common law systems, civil courts", opts:["Do not deal with disputes between individuals and companies","Can award financial compensation to victims","Can sentence people to prison","Rely on the work of prosecutors"], answer:1 },
+      // Q6 — Habeas Corpus
+      { q:"The idea that people cannot be imprisoned without a fair trial by a jury of their peers is called", opts:["Carcer Nanum","Habeas Corpus","Magna Carta","Sanus Corpus"], answer:1 },
+      // Q7 — Synonym for lawyer = Attorney (avocat US)
+      { q:"A synonym for lawyer is", opts:["Advocate","Attorney","Activist","Litigant"], answer:1 },
+      // Q8 — Religious freedom in USA = First Amendment
+      { q:"In the USA, religious freedom is guaranteed by", opts:["The 14th amendment","The first amendment","The second amendment","The Civil Rights Act"], answer:1 },
+      // Q9 — Separation church/state = secularism
+      { q:"The separation between church and state is called", opts:["laicism","secularism","agnosticism","clericalism"], answer:1 },
+      // Q10 — ECHR private sphere of conscience = Pichon and Sajous (pharmaciens français) = case involving two pharmacists
+      { q:"The European Court of Human Rights ruled that religious freedom protects a person's private sphere of conscience but not any conduct inspired by that conscience", opts:["In a case involving a French Baker","In a case involving two pharmacists","In a case involving two pregnant women","In a case involving a Belgian engineer"], answer:1 },
+      // Q11 — Jack Phillips said he was discriminated against because he was Christian (sa liberté religieuse bafouée)
+      { q:"In the Colorado Baker case, Jack Phillips", opts:["said he was discriminated against because he was gay","said he was discriminated against because he was Christian","refused to let an employee wear a headscarf","refused to sell contraceptives"], answer:1 },
+      // Q12 — Samantha Elauf = right to wear a headscarf at work
+      { q:"Samantha Elauf's case was about the right to", opts:["refuse medical care","wear a headscarf at work","migrate freely to a European country","follow the shabbat"], answer:1 },
+      // Q13 — Odd man out : G4S/Achbita, Pichon/Sajous, Masterpiece = liberté religieuse. Gratz v. Bollinger = affirmative action → odd man out
+      { q:"Find the odd man out", opts:["G4S v. Achbita","Gratz v. Bollinger","Pichon and Sajous v. France","Masterpiece Cakeshop v. Colorado Civil Rights Commission"], answer:1 },
+      // Q14 — Trump = Race-blind admissions (contre l'affirmative action)
+      { q:"In higher education, the Trump administration was in favour of", opts:["Affirmative action","Race-blind admissions","Socio economic considerations","Race-based quotas"], answer:1 },
+      // Q15 — Discrimination based on race etc. = Civil Rights Act 1964
+      { q:"In the USA, discrimination based on race, color, national origin is prohibited under the", opts:["13th amendment","Civil Rights Act","Diversity Act","8th amendment"], answer:1 },
+      // Q16 — Holistic = Is called holistic
+      { q:"An admission policy that considers many factors such as race, gender, hardships, academic achievement, extracurricular activities", opts:["Is called heuristic","Is called holistic","Is called color-blind","Is called secular"], answer:1 },
+      // Q17 — Challengers à l'AA pour discrimination inverse invoquent le 14e Amendement (Equal Protection Clause)
+      { q:"In challenges to Affirmative Action policies, people claiming that they have been discriminated against because they were white often refer to", opts:["The 13th amendment","The 14th amendment","The first amendment","The 9th amendment"], answer:1 },
+      // Q18 — Fisher v. UT : la Cour Suprême a confirmé que la Top 10% policy + holistic review était constitutionnelle
+      // → "Ruled that the Texas 10% rule was enough to achieve diversity admissions" = C = answer:2
+      { q:"In Fisher v. University of Texas at Austin, the Supreme Court", opts:["Ruled that the Texas 10% rule was unconstitutional","Ruled against quotas in college admissions","Ruled that the Texas 10% rule was enough to achieve diversity admissions","Ruled against quotas in university admissions"], answer:2 },
+      // Q19 — Grutter v. Bollinger : a invalidé le point system (Gratz) mais cette question a 2 fois la même option A et B
+      // Grutter a statué CONTRE les quotas/points automatiques → "the point system" = A ou B (identiques ici) = answer:0
+      { q:"Grutter v. Bollinger ruled against", opts:["the point system in university admissions","the point system in university admissions","English proficiency tests in university admissions","race as a factor in university admissions"], answer:0 },
+      // Q20 — Odd man out : Bakke, Fisher, Harvard = affirmative action. EEOC v. Abercrombie = liberté religieuse → odd man out
+      { q:"Find the odd man out", opts:["Bakke","EEOC v. Abercrombie","Fisher v. U of Texas","Students for Fair Admissions v. Harvard"], answer:1 },
+      // Q21 — Droits des demandeurs d'asile NON protégés par : Treaty of Guadalupe Hidalgo (traité USA-Mexique 1848, hors sujet)
+      { q:"The rights of asylum seekers are not protected by", opts:["The Geneva Convention","The Treaty of Guadalupe Hidalgo","The Dublin Convention","The Universal Declaration of Human Rights"], answer:1 },
+      // Q22 — Marrakech = non-binding agreement for more international cooperation
+      { q:"The Marrakech Agreement", opts:["is a binding agreement for more international cooperation","is a non-binding agreement for more international cooperation","was endorsed by the US","is a non-binding European agreement for more cooperation"], answer:1 },
+      // Q23 — Dublin : premier pays d'entrée UE responsable
+      { q:"In the EU, the country which must process a migrant's asylum claim is the first country entered", opts:["Per the Geneva agreement","Per the Dublin agreement","Per the Externalization agreement","Per the Backstop agreement"], answer:1 },
+      // Q24 — Muslim Ban : was ruled constitutional by the Supreme Court (sécurité nationale)
+      { q:"What people have called the Muslim Ban", opts:["Is a law","Was ruled constitutional by the Supreme Court","Was ruled unconstitutional by the Supreme Court","Involves only countries that are considered Muslim countries"], answer:1 },
+      // Q25 — Depuis 2015, consensus UE = curtail illegal immigration
+      { q:"Ever since the migrant crisis of 2015, EU countries have agreed on the fact that", opts:["They should encourage illegal immigration","They should curtail illegal immigration","They should intercept asylum seekers and send them to detention centres","Asylum should rest on the richest countries in the EU"], answer:1 },
+      // Q26 — MPP "Remain in Mexico" : NOT true = "It was never challenged under Trump" (il a bien été challengé)
+      { q:"Which of the following assertions about The Migrant Protection Protocols is not true?", opts:["It was never challenged under Trump","It was initiated under Obama","Biden has recently put an end to it","it is also known as the 'Remain in Mexico' policy"], answer:0 },
+      // Q27 — Deal Italie-Libye : endorsed by other European leaders (personne n'a protesté)
+      { q:"The Italian deal with Lybia was", opts:["about cutting the influx of legal migrants","endorsed by other European leaders","signed in 2015","not controversial"], answer:1 },
+      // Q28 — Non-refoulement réaffirmé par le Traité de Marrakech
+      { q:"The prohibition of collective expulsion and return of migrants to their country when there is a real risk of death, torture or other cruel, inhuman and degrading punishment was reaffirmed by", opts:["The bilateral agreement between the European Union and Turkey","The Treaty of Marrakech","The Muslim ban","The Geneva Convention"], answer:1 },
+      // Q29 — EU migration solidarity pact NOT true : "It will mean the end of Frontex" = faux
+      { q:"Which of the following assertions about the EU migration solidarity pact is not true?", opts:["It was based on the model of the Marakkesh Treaty","It will mean the end of Frontex","Its goal is shared responsibility between EU member states","It outlines plans for processing asylum claims and returning asylum seekers"], answer:1 },
+      // Q30 — Transfusion refusable : in Canada, if the patient is an adult (le médecin NE PEUT PAS passer outre)
+      { q:"A patient may refuse a blood transfusion on religious grounds", opts:["in France, if the patient is a child","in Canada, if the patient is an adult","in Canada, if the patient is a child","in the UK, if the patient is a child"], answer:1 },
+      // Q31 — Common Law judges apply a bottom-top approach (précédents → règle générale)
+      { q:"In Common Law traditions, judges apply", opts:["An inside-out approach","A bottom-top approach","A side-to-side approach","A top-bottom approach"], answer:1 },
+      // Q32 — NOT true about Bakke : "Allan Bakke promoted racial quotas" = FAUX, il s'y est opposé
+      { q:"Which of the following is not true?", opts:["Allan Bakke went to medical school","Allan Bakke promoted racial quotas at the University of California","Allan Bakke was denied admission to medical school","Allan Bakke sued the University of California"], answer:1 },
+      // Q33 — Devolution UK : pouvoirs transférés du Parlement UK vers les parlements des nations
+      { q:"In the UK, devolution means that", opts:["Various levels of power were transferred from the EU Parliament to the UK nations Parliaments and Assemblies","Various levels of power were transferred from the UK Parliament to the UK nations Parliaments and Assemblies","Various levels of power were transferred from the UK nations Parliaments and Assemblies to the UK Parliament","There is a single Parliament in the UK"], answer:1 },
+      // Q34 — Voted remain : Scotland and Northern Ireland
+      { q:"Which UK nations voted to remain in the EU?", opts:["England and Wales","Scotland and Northern Ireland","Scotland and Wales","Northern Ireland and Wales"], answer:1 },
+      // Q35 — Brexit referendum Cameron : held in a context of economic and immigration worries
+      { q:"The Brexit referendum organized by David Cameron", opts:["Was the first time the UK had one","Was held in a context of economic and immigration worries","Resulted in the victory of the Remainers camp","Was in June 2017"], answer:1 },
+      // Q36 — Regina v. Secretary of State : PM needs Westminster's approval to trigger Art. 50
+      { q:"Regina v. Secretary of State for Exiting the European Union ruled that to trigger article 50, the Prime Minister", opts:["Needs the Queen's approval","Needs Westminster's approval","Does not need Westminster's approval","Needs the Supreme Court's approval"], answer:1 },
+      // Q37 — Good Friday / Belfast Agreement
+      { q:"The Agreement that put an end to the decades of civil unrest in Ireland is known as", opts:["The Dublin agreement","The Belfast agreement","The Galway agreement","The Derry agreement"], answer:1 },
+      // Q38 — Acts of Union 1707 = England + Scotland + Wales (pas Northern Ireland, qui rejoint en 1801)
+      { q:"The Acts of Union of 1707 created the Kingdom of Great Britain made of", opts:["England and the Commonwealth","England Scotland and Wales","England and Wales","England Scotland Wales and Northern Ireland"], answer:1 },
+      // Q39 — UK Constitution = made of several written and unwritten sources (pas codifiée)
+      { q:"The Constitution of the UK is", opts:["Called Magna Carta","Made of several written and unwritten sources","Codified","Called Habeas Corpus"], answer:1 },
+      // Q40 — Northern Ireland Protocol = result of renegotiation of the backstop border solution
+      { q:"The Northern Ireland Protocol", opts:["Has reinstated a physical border between Northern Ireland and Wales","Is the result of a renegotiation of the backstop border solution","Has left Northern Ireland in the EU","Has made the UK exit the EU with no deal"], answer:1 },
+    ]
+  }
+];
+
+
+// ─── ÉTAT ───
+let selectedQuestions = [];
+let quizQueue = [];
+let currentIdx = 0;
+let answered = false;
+let results = []; // {q, opts, answer, userAnswer, marked, unknown}
+let markedSet = new Set();
+
+// ─── DOM ───
+function goHome() {
+  showScreen('home');
+  document.getElementById('btn-home-top').style.display = 'none';
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+// ─── BUILD HOME ───
+(function buildHome() {
+  const container = document.getElementById('year-cards');
+  SUBJECTS.forEach(subj => {
+    const card = document.createElement('div');
+    card.className = 'year-card';
+    card.id = 'card-' + subj.id;
+
+    const nUnk = subj.questions.filter(q => q.unknown).length;
+    const pct = subj.pctCertain;
+    const barColor = pct === 100 ? 'var(--green)' : pct >= 90 ? 'var(--gold)' : 'var(--rv)';
+    const pctLabel = pct === 100 ? '✓ 100 % fiable' : pct >= 90 ? `~${pct} % fiable` : `⚠ ${pct} % fiable`;
+    const pctLabelColor = pct === 100 ? 'var(--green)' : pct >= 90 ? 'var(--gold)' : 'var(--rv)';
+
+    card.innerHTML = `
+      <div class="year-card-header" onclick="toggleCard('${subj.id}')">
+        <div>
+          <h3>${subj.label}</h3>
+          <div class="meta">${subj.meta}</div>
+        </div>
+        <span class="toggle">▶</span>
+      </div>
+      <div class="year-card-body">
+        <div class="reliability-bar-wrap">
+          <span class="reliability-label" style="color:${pctLabelColor}">${pctLabel}</span>
+          <div class="reliability-bar-bg"><div class="reliability-bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+        </div>
+        <div class="reliability-note">${subj.noteCorrige}</div>
+        <div class="subsets" id="subsets-${subj.id}" style="margin-top:.8rem">
+          <label class="subset-row" id="row-${subj.id}-all">
+            <input type="checkbox" id="chk-${subj.id}-all" onchange="updateStartBar()">
+            <span class="subset-label">Toutes les questions</span>
+            <span class="subset-count">${subj.questions.length} questions${nUnk > 0 ? ' · dont ' + nUnk + ' ⚠' : ''}</span>
+          </label>
+        </div>
+      </div>`;
+    container.appendChild(card);
+  });
+  updateStartBar();
+})();
+
+function toggleCard(id) {
+  const card = document.getElementById('card-' + id);
+  card.classList.toggle('open');
+}
+
+function getSelectedQuestions() {
+  let qs = [];
+  SUBJECTS.forEach(subj => {
+    const allChk = document.getElementById('chk-' + subj.id + '-all');
+    if (allChk && allChk.checked) {
+      subj.questions.forEach((q, i) => qs.push({ ...q, subjLabel: subj.label, subjId: subj.id, qIdx: i }));
+    }
+  });
+  return qs;
+}
+
+function updateStartBar() {
+  const qs = getSelectedQuestions();
+  const n = qs.length;
+  document.getElementById('selected-count').textContent = n;
+  document.getElementById('s-plur').textContent = n > 1 ? 's' : '';
+  document.getElementById('s-plur2').textContent = n > 1 ? 's' : '';
+  const btn = document.getElementById('btn-start');
+  if (n === 0) btn.classList.add('btn-disabled'); else btn.classList.remove('btn-disabled');
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function startQuiz(fromSubset, subsetArray) {
+  selectedQuestions = fromSubset ? subsetArray : getSelectedQuestions();
+  if (selectedQuestions.length === 0) return;
+  quizQueue = shuffle([...selectedQuestions]);
+  currentIdx = 0;
+  results = [];
+  markedSet = new Set();
+  showScreen('quiz');
+  document.getElementById('btn-home-top').style.display = 'block';
+  renderQuestion();
+}
+
+function retryWrong() {
+  const wrong = results.filter(r => r.userAnswer !== r.answer);
+  if (wrong.length === 0) return;
+  startQuiz(true, wrong);
+}
+
+function retryMarked() {
+  const marked = results.filter(r => r.marked);
+  if (marked.length === 0) return;
+  startQuiz(true, marked);
+}
+
+function retryWrongAndMarked() {
+  const subset = results.filter(r => r.userAnswer !== r.answer || r.marked);
+  if (subset.length === 0) return;
+  startQuiz(true, subset);
+}
+
+// ─── QUIZ ───
+function renderQuestion() {
+  answered = false;
+  const q = quizQueue[currentIdx];
+  const total = quizQueue.length;
+
+  document.getElementById('quiz-progress-text').textContent = `Question ${currentIdx + 1} / ${total}`;
+  document.getElementById('quiz-progress-fill').style.width = ((currentIdx / total) * 100) + '%';
+
+  const sourceEl = document.getElementById('quiz-source');
+  sourceEl.innerHTML = q.subjLabel + (q.unknown ? ' <span class="quiz-unknown-badge">⚠ Hors cours — non corrigé</span>' : '');
+
+  document.getElementById('quiz-question').textContent = q.q;
+
+  const answersEl = document.getElementById('quiz-answers');
+  answersEl.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.innerHTML = `<span class="letter">${letters[i]}</span><span>${opt}</span>`;
+    btn.onclick = () => selectAnswer(i);
+    answersEl.appendChild(btn);
+  });
+
+  const fb = document.getElementById('quiz-feedback');
+  fb.className = 'feedback';
+  fb.innerHTML = '';
+
+  document.getElementById('btn-next').style.display = 'none';
+
+  // Mark button
+  const markBtn = document.getElementById('btn-mark');
+  const isMarked = markedSet.has(currentIdx);
+  updateMarkBtn(isMarked);
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = quizQueue[currentIdx];
+  const btns = document.querySelectorAll('.answer-btn');
+  const fb = document.getElementById('quiz-feedback');
+
+  btns.forEach(b => b.classList.add('answered'));
+
+  if (q.unknown) {
+    // On ne surligne rien : pas de "bonne réponse" affichée
+    // On marque seulement la réponse choisie comme neutre
+    btns[idx].style.borderColor = '#888';
+    btns[idx].style.background = '#f5f5f5';
+    fb.className = 'feedback unknown-fb show';
+    fb.innerHTML = `<strong>⚠ Question hors cours</strong>Cette question porte sur un thème absent du cours fourni. La réponse proposée dans le quiz est une estimation basée sur la culture générale — <strong>elle peut être fausse</strong>. Non comptabilisée dans ton score. À vérifier avec tes propres notes.`;
+    recordResult(idx);
+  } else {
+    const correct = (idx === q.answer);
+    btns[idx].classList.add(correct ? 'correct' : 'wrong');
+    if (!correct) btns[q.answer].classList.add('reveal');
+    fb.className = 'feedback show ' + (correct ? 'ok' : 'ko');
+    fb.innerHTML = correct
+      ? `<strong>✓ Bonne réponse !</strong>`
+      : `<strong>✗ Fausse réponse</strong>La bonne réponse était : <strong>${['A','B','C','D'][q.answer]}. ${q.opts[q.answer]}</strong>`;
+    recordResult(idx);
+  }
+
+  document.getElementById('btn-next').style.display = 'inline-block';
+}
+
+function recordResult(userAnswer) {
+  const q = quizQueue[currentIdx];
+  results.push({
+    ...q,
+    userAnswer,
+    marked: markedSet.has(currentIdx)
+  });
+}
+
+function toggleMark() {
+  if (markedSet.has(currentIdx)) {
+    markedSet.delete(currentIdx);
+    updateMarkBtn(false);
+  } else {
+    markedSet.add(currentIdx);
+    updateMarkBtn(true);
+  }
+  // Update last recorded result if already answered
+  if (answered && results.length > 0) {
+    results[results.length - 1].marked = markedSet.has(currentIdx);
+  }
+}
+
+function updateMarkBtn(isMarked) {
+  const btn = document.getElementById('btn-mark');
+  btn.classList.toggle('marked', isMarked);
+  document.getElementById('mark-star').textContent = isMarked ? '★' : '☆';
+  document.getElementById('mark-label').textContent = isMarked ? 'Marqué' : 'Marquer';
+}
+
+function nextQuestion() {
+  currentIdx++;
+  if (currentIdx >= quizQueue.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ─── RÉSULTATS ───
+function showResults() {
+  showScreen('results');
+  document.getElementById('quiz-progress-fill').style.width = '100%';
+
+  const total = results.length;
+  const correct = results.filter(r => r.userAnswer === r.answer && !r.unknown).length;
+  const wrong = results.filter(r => r.userAnswer !== r.answer && !r.unknown).length;
+  const unknown = results.filter(r => r.unknown).length;
+  const marked = results.filter(r => r.marked).length;
+
+  const knownTotal = total - unknown;
+  const pct = knownTotal > 0 ? Math.round((correct / knownTotal) * 100) : 0;
+
+  document.getElementById('res-score-big').textContent = pct + '%';
+  document.getElementById('res-score-detail').textContent =
+    `${correct} bonne${correct > 1 ? 's' : ''} sur ${knownTotal} question${knownTotal > 1 ? 's' : ''} corrigée${knownTotal > 1 ? 's' : ''}` +
+    (unknown > 0 ? ` · ${unknown} question${unknown > 1 ? 's' : ''} hors cours (non comptabilisée${unknown > 1 ? 's' : ''})` : '');
+
+  document.getElementById('res-good').textContent = correct;
+  document.getElementById('res-bad').textContent = wrong;
+  document.getElementById('res-marked').textContent = marked;
+
+  // Boutons
+  const btnWrong = document.getElementById('btn-retry-wrong');
+  const btnMarked = document.getElementById('btn-retry-marked');
+  const btnBoth = document.getElementById('btn-retry-wrong-marked');
+  btnWrong.style.display = wrong > 0 ? 'inline-block' : 'none';
+  btnMarked.style.display = marked > 0 ? 'inline-block' : 'none';
+  btnBoth.style.display = (wrong > 0 && marked > 0) ? 'inline-block' : 'none';
+
+  // Liste détail
+  const list = document.getElementById('res-list');
+  list.innerHTML = '';
+  results.forEach((r, i) => {
+    const correct = r.userAnswer === r.answer;
+    const icon = r.unknown ? '⚠' : (correct ? '✓' : '✗');
+    const div = document.createElement('div');
+    div.className = 'result-item';
+    div.innerHTML = `
+      <span class="ri-num">${i + 1}.</span>
+      <span class="ri-icon" style="color:${r.unknown ? '#888' : (correct ? 'var(--green)' : 'var(--rv)')}">${icon}</span>
+      <span class="ri-q">
+        <strong>${r.q}</strong><br>
+        <span style="font-size:.8rem;color:var(--g)">Ta réponse : ${['A','B','C','D'][r.userAnswer]}. ${r.opts[r.userAnswer]}</span>
+        ${(!correct && !r.unknown) ? `<br><span style="font-size:.8rem;color:var(--green)">Bonne réponse : ${['A','B','C','D'][r.answer]}. ${r.opts[r.answer]}</span>` : ''}
+        ${r.unknown ? `<br><span style="font-size:.78rem;color:#888">⚠ Question hors cours — corrigé non garanti</span>` : ''}
+      </span>
+      ${r.marked ? '<span class="ri-star">★</span>' : ''}
+    `;
+    list.appendChild(div);
+  });
+}
+</script>
+</body>
+</html>
