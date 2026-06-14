@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIP après 1789 — Révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+:root{
+  --r:#8B0000;--rv:#B22222;--rp:#fdf0f0;--rb:#e8c8c8;
+  --n:#1a1a1a;--gf:#2d2d2d;--g:#555;--gc:#f6f8fb;--b:#fefefe;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--b);color:var(--n);font-size:17px;line-height:1.75}
+header{background:var(--n);color:#fff;padding:1.8rem 2rem 1.4rem;border-bottom:4px solid var(--r);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+header h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:600}
+header h1 span{color:#B22222}
+header small{color:#aaa;font-size:.82rem;letter-spacing:.06em;display:block;margin-top:.2rem}
+nav{background:var(--r);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav ul{list-style:none;display:flex;flex-wrap:nowrap;min-width:max-content}
+.nav-radio{display:none}
+nav label{display:block;padding:.65rem .85rem;color:rgba(255,255,255,.82);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
+.page-content{display:none}
+#home-content{display:block}
+
+#r-home:checked~.wrap #home-content,
+#r-plan:checked~.wrap #home-content,
+#r-f1:checked~.wrap #home-content,
+#r-f2:checked~.wrap #home-content,
+#r-f3:checked~.wrap #home-content,
+#r-f4:checked~.wrap #home-content,
+#r-f5:checked~.wrap #home-content,
+#r-f6:checked~.wrap #home-content,
+#r-f7:checked~.wrap #home-content,
+#r-f8:checked~.wrap #home-content,
+#r-f9:checked~.wrap #home-content,
+#r-f10:checked~.wrap #home-content,
+#r-f11:checked~.wrap #home-content{display:none}
+#r-home:checked~.wrap #home-content{display:block}
+#r-plan:checked~.wrap #page-plan{display:block}
+#r-f1:checked~.wrap #page-f1{display:block}
+#r-f2:checked~.wrap #page-f2{display:block}
+#r-f3:checked~.wrap #page-f3{display:block}
+#r-f4:checked~.wrap #page-f4{display:block}
+#r-f5:checked~.wrap #page-f5{display:block}
+#r-f6:checked~.wrap #page-f6{display:block}
+#r-f7:checked~.wrap #page-f7{display:block}
+#r-f8:checked~.wrap #page-f8{display:block}
+#r-f9:checked~.wrap #page-f9{display:block}
+#r-f10:checked~.wrap #page-f10{display:block}
+#r-f11:checked~.wrap #page-f11{display:block}
+
+#r-home:checked~.wrap .nav-home,
+#r-plan:checked~.wrap .nav-plan,
+#r-f1:checked~.wrap .nav-f1,
+#r-f2:checked~.wrap .nav-f2,
+#r-f3:checked~.wrap .nav-f3,
+#r-f4:checked~.wrap .nav-f4,
+#r-f5:checked~.wrap .nav-f5,
+#r-f6:checked~.wrap .nav-f6,
+#r-f7:checked~.wrap .nav-f7,
+#r-f8:checked~.wrap .nav-f8,
+#r-f9:checked~.wrap .nav-f9,
+#r-f10:checked~.wrap .nav-f10,
+#r-f11:checked~.wrap .nav-f11{color:#fff!important;background:rgba(255,255,255,.15)!important;border-bottom-color:#fff!important}
+
+#home{padding:2.5rem 2.5rem 4rem}
+.home-intro{text-align:center;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--rb)}
+.home-intro h2{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:700;margin-bottom:.4rem}
+.home-intro p{color:var(--g);font-size:.95rem;max-width:560px;margin:0 auto}
+.home-section-title{font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin:2rem 0 .9rem;padding-bottom:.3rem;border-bottom:1px solid var(--rb)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+label.card{display:block;background:var(--b);border:1.5px solid var(--rb);border-top:4px solid var(--r);padding:1.2rem 1.1rem 1rem;cursor:pointer;color:inherit;transition:box-shadow .15s}
+label.card:hover{box-shadow:0 4px 18px rgba(139,0,0,.13)}
+label.card .card-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.3rem}
+label.card h3{font-size:.95rem;font-weight:700;color:var(--r);margin-bottom:.2rem;line-height:1.35}
+label.card p{font-size:.8rem;color:var(--g);line-height:1.4}
+label.card-plan{display:block;background:var(--n);border-top:4px solid var(--r);padding:1.2rem 1.1rem 1rem;cursor:pointer;color:#fff;transition:opacity .15s}
+label.card-plan:hover{opacity:.9}
+label.card-plan .card-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:.3rem}
+label.card-plan h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+label.card-plan p{font-size:.8rem;color:#aaa;line-height:1.4}
+
+main{max-width:100%;margin:0 auto;padding:2.2rem 2.5rem 5rem}
+
+.mindmap-container{width:100%;overflow-x:auto;padding:1.5rem 0}
+.mindmap-scroll{min-width:900px}
+.root-node{display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+.root-node .node-box{background:var(--n);color:#fff;padding:.9rem 2rem;font-size:1.1rem;font-weight:700;letter-spacing:.04em;text-align:center;border-bottom:3px solid var(--r)}
+.root-node .node-box small{display:block;color:#aaa;font-size:.72rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem}
+.single-col{display:flex;flex-direction:column;gap:1.5rem;align-items:stretch}
+.partie-block{border:2px solid var(--r);background:#fff}
+.partie-header{background:var(--r);color:#fff;padding:.6rem 1rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.partie-body{padding:.8rem;display:flex;flex-direction:column;gap:.7rem}
+.chap-block{border:1px solid var(--rb);background:#fff}
+.chap-header{background:var(--gc);border-bottom:1px solid var(--rb);padding:.35rem .7rem;font-size:.73rem;font-weight:700;color:var(--r);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;list-style:none}
+.chap-header::-webkit-details-marker{display:none}
+.chap-toggle::after{content:'▸';color:var(--r);font-size:.8rem}
+details[open] .chap-toggle::after{content:'▾'}
+.chap-body{padding:.55rem .7rem;display:flex;flex-direction:column;gap:.3rem}
+.section-item{padding:.28rem .5rem .28rem .85rem;border-left:2px solid var(--rb);font-size:.82rem;color:var(--gf);display:flex;flex-direction:column;gap:.18rem}
+.section-label{font-weight:700;color:var(--rv);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.section-name{font-size:.84rem;color:var(--gf);font-weight:600}
+.para-list{margin-top:.22rem;padding-left:.7rem;display:flex;flex-direction:column;gap:.12rem}
+.para-item{font-size:.78rem;color:var(--g);position:relative;padding-left:.9rem;line-height:1.4}
+.para-item::before{content:'§';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.7rem}
+.sub-item{font-size:.74rem;color:#777;position:relative;padding-left:.7rem;line-height:1.4}
+.plan-fiche-link{display:inline-block;margin-top:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--r);padding:.18rem .55rem;cursor:pointer;border:none;font-family:inherit}
+
+.fiche-page{max-width:840px;margin:0 auto}
+.fiche-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid var(--r)}
+.fiche-meta{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem}
+.fiche-header h2{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--n)}
+.fiche-intro{margin-top:.9rem;font-size:.93rem;color:var(--g);line-height:1.65;font-style:italic;padding:.7rem 1rem;background:var(--gc);border-left:3px solid var(--rb)}
+
+.f-bloc{margin-bottom:2.4rem}
+.f-bloc-title{font-size:1.05rem;font-weight:700;color:#fff;background:var(--n);padding:.5rem .9rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem}
+.f-bloc-title .f-num{background:var(--r);padding:.1rem .5rem;font-size:.75rem;letter-spacing:.07em}
+.f-sous{margin-bottom:1.5rem;padding-left:1.1rem;border-left:3px solid var(--r)}
+.f-sous-title{font-size:.98rem;font-weight:700;color:var(--r);margin-bottom:.6rem;padding-bottom:.25rem;border-bottom:1px dotted var(--rb)}
+.f-sous2{margin-bottom:1rem;padding-left:.9rem;border-left:2px solid var(--rb)}
+.f-sous2-title{font-size:.9rem;font-weight:700;color:var(--gf);margin-bottom:.4rem}
+.f-text{font-size:.92rem;color:var(--gf);line-height:1.75;margin-bottom:.55rem}
+.f-list{list-style:none;padding:0;margin:.3rem 0 .6rem .1rem}
+.f-list li{font-size:.91rem;color:var(--gf);line-height:1.65;padding:.15rem 0 .15rem 1.1rem;position:relative}
+.f-list li::before{content:'—';position:absolute;left:0;color:var(--r);font-weight:700}
+.f-list li strong{color:var(--r)}
+.f-alerte{background:#fffbf0;border-left:4px solid #c47900;padding:.75rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;color:var(--gf)}
+.f-alerte strong{color:#9a5e00;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.25rem}
+.f-exemple{background:var(--gc);border-left:3px solid #888;padding:.7rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;line-height:1.65;color:var(--g)}
+.f-exemple strong{color:var(--gf);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.f-key{background:var(--rp);border:1.5px solid var(--rb);padding:.65rem 1rem;margin:.5rem 0 .9rem;font-size:.91rem;line-height:1.65;color:var(--gf);display:flex;align-items:baseline;gap:.6rem}
+.f-key::before{content:'→';color:var(--r);font-weight:700;flex-shrink:0;font-size:1rem}
+.f-quote{border-left:3px solid var(--r);padding:.5rem 1rem;margin:.5rem 0 .9rem;font-size:.88rem;font-style:italic;color:var(--g);background:var(--rp)}
+.f-quote cite{display:block;font-style:normal;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--r);margin-top:.3rem}
+.f-table-wrap{overflow-x:auto;margin:.6rem 0 .9rem}
+.f-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.f-table thead tr{background:var(--n);color:#fff}
+.f-table thead th{padding:.5rem .8rem;text-align:left;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.f-table tbody tr:nth-child(even){background:var(--gc)}
+.f-table tbody td{padding:.45rem .8rem;border-bottom:1px solid var(--rb);vertical-align:top}
+.f-table tbody td:first-child{font-weight:700;color:var(--r)}
+.f-retenir{background:var(--rp);border-left:4px solid var(--r);padding:.9rem 1.1rem;margin-top:1.8rem;font-size:.91rem;line-height:1.7;color:var(--gf)}
+.f-retenir strong{color:var(--r);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.f-retenir ul{list-style:none;padding:0;margin:.3rem 0}
+.f-retenir ul li{padding:.1rem 0 .1rem 1rem;position:relative;font-size:.9rem}
+.f-retenir ul li::before{content:'✓';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.78rem}
+.fiche-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rb)}
+.fiche-nav label{color:var(--rv);cursor:pointer;font-size:.85rem}
+.f-vs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 1rem}
+.f-vs-col{padding:.7rem .9rem;font-size:.86rem;border:1.5px solid var(--rb)}
+.f-vs-col-title{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--r);margin-bottom:.4rem}
+.f-portrait{display:flex;gap:.8rem;margin-bottom:1.2rem;align-items:flex-start}
+.f-portrait-badge{background:var(--n);color:#fff;padding:.5rem .8rem;font-size:.8rem;line-height:1.4;flex-shrink:0;min-width:120px;text-align:center}
+.f-portrait-badge strong{display:block;font-size:1rem;color:var(--rv);margin-bottom:.2rem}
+.f-portrait-body{flex:1;font-size:.88rem;color:var(--g);line-height:1.6}
+
+footer{background:var(--n);color:#777;text-align:center;padding:1.2rem;font-size:.78rem;letter-spacing:.05em;border-top:3px solid var(--r);margin-top:2rem}
+footer span{color:#B22222}
+
+@media(max-width:900px){
+  .mindmap-scroll{min-width:unset}
+  main{padding:1.4rem .9rem 4rem}
+  header{padding:1.2rem 1rem 1rem}
+  nav label{padding:.55rem .5rem;font-size:.68rem}
+  #home{padding:1.8rem 1rem 3rem}
+  .cards-grid{grid-template-columns:1fr 1fr}
+  .f-vs{grid-template-columns:1fr}
+  .f-portrait{flex-direction:column}
+}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<input type="radio" name="page" class="nav-radio" id="r-home" checked>
+<input type="radio" name="page" class="nav-radio" id="r-plan">
+<input type="radio" name="page" class="nav-radio" id="r-f1">
+<input type="radio" name="page" class="nav-radio" id="r-f2">
+<input type="radio" name="page" class="nav-radio" id="r-f3">
+<input type="radio" name="page" class="nav-radio" id="r-f4">
+<input type="radio" name="page" class="nav-radio" id="r-f5">
+<input type="radio" name="page" class="nav-radio" id="r-f6">
+<input type="radio" name="page" class="nav-radio" id="r-f7">
+<input type="radio" name="page" class="nav-radio" id="r-f8">
+<input type="radio" name="page" class="nav-radio" id="r-f9">
+<input type="radio" name="page" class="nav-radio" id="r-f10">
+<input type="radio" name="page" class="nav-radio" id="r-f11">
+
+<div class="wrap">
+<header>
+  <label for="r-home" style="text-decoration:none;color:inherit;display:block;cursor:pointer">
+    <h1>Idées Politiques <span>après 1789</span></h1>
+    <small>Histoire des idées politiques · 11 fiches de révision complètes</small>
+  </label>
+</header>
+<nav>
+  <ul>
+    <li><label class="nav-home" for="r-home">Accueil</label></li>
+    <li><label class="nav-plan" for="r-plan">Plan</label></li>
+    <li><label class="nav-f1" for="r-f1">#1 Intro générale</label></li>
+    <li><label class="nav-f2" for="r-f2">#2 Révolution américaine</label></li>
+    <li><label class="nav-f3" for="r-f3">#3 Matrice Révolution française</label></li>
+    <li><label class="nav-f4" for="r-f4">#4 De Maistre</label></li>
+    <li><label class="nav-f5" for="r-f5">#5 Bonald</label></li>
+    <li><label class="nav-f6" for="r-f6">#6 B. Constant</label></li>
+    <li><label class="nav-f7" for="r-f7">#7 Libéralisme doctrinaire</label></li>
+    <li><label class="nav-f8" for="r-f8">#8 Tocqueville</label></li>
+    <li><label class="nav-f9" for="r-f9">#9 Naissance socialisme</label></li>
+    <li><label class="nav-f10" for="r-f10">#10 Penseurs socialistes</label></li>
+    <li><label class="nav-f11" for="r-f11">#11 Marxisme</label></li>
+  </ul>
+</nav>
+
+<!-- ACCUEIL -->
+<div id="home-content">
+<div id="home">
+  <div class="home-intro">
+    <h2>Histoire des Idées Politiques après 1789</h2>
+    <p>De la Révolution américaine au marxisme · 11 fiches + plan · La formation de la pensée politique contemporaine</p>
+  </div>
+
+  <div class="home-section-title">Navigation générale</div>
+  <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));max-width:520px">
+    <label class="card-plan" for="r-plan">
+      <div class="card-num">Vue d'ensemble</div>
+      <h3>Plan du cours</h3>
+      <p>Chapitre I (Rev. américaine + matrice Rev. française) · Chap. II (conservatisme) · Chap. III (libéralisme) · Chap. IV (socialisme)</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Introduction &amp; Révolutions atlantiques</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f1">
+      <div class="card-num">Fiche #1</div>
+      <h3>Introduction générale</h3>
+      <p>1789 — matrice de la pensée contemporaine · Républicanisme, libéralisme, conservatisme, socialisme · Clivage gauche/droite</p>
+    </label>
+    <label class="card" for="r-f2">
+      <div class="card-num">Fiche #2</div>
+      <h3>Pensée politique de la Révolution américaine</h3>
+      <p>Adams · T. Paine (Common Sense) · Jefferson · Déclaration d'indépendance · Constitution de 1787 · Le Fédéraliste</p>
+    </label>
+    <label class="card" for="r-f3">
+      <div class="card-num">Fiche #3</div>
+      <h3>Matrice des idées politiques — Révolution française</h3>
+      <p>Sieyès · Tiers-État · DDHC · Monarchiens · Burke vs Paine · Girondins · Jacobins · Gouvernement révolutionnaire</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Chapitre II — Conservatisme &amp; Traditionalisme</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f4">
+      <div class="card-num">Fiche #4</div>
+      <h3>Joseph De Maistre</h3>
+      <p>Anti-constitutionnalisme · Providence divine · Contre la table rase · Constitution anglaise comme produit de l'histoire · Ultramontanisme</p>
+    </label>
+    <label class="card" for="r-f5">
+      <div class="card-num">Fiche #5</div>
+      <h3>Louis de Bonald et le traditionalisme</h3>
+      <p>Rev. = châtiment providentiel · Structure ternaire · Monarchie royale absolue · Rejet des Constitutions écrites</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Chapitre III — Le libéralisme</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f6">
+      <div class="card-num">Fiche #6</div>
+      <h3>Benjamin Constant</h3>
+      <p>Liberté des anciens vs liberté des modernes · Gouvernement représentatif · Pouvoir neutre · Constitutionnalisme libéral</p>
+    </label>
+    <label class="card" for="r-f7">
+      <div class="card-num">Fiche #7</div>
+      <h3>Le libéralisme doctrinaire</h3>
+      <p>Royer-Collard · Guizot · Souveraineté de la raison · Nation nouvelle · Suffrage censitaire · Juste milieu</p>
+    </label>
+    <label class="card" for="r-f8">
+      <div class="card-num">Fiche #8</div>
+      <h3>Alexis de Tocqueville</h3>
+      <p>Providentialisme démocratique · Égalité des conditions · Tyrannie de la majorité · Despotisme doux · Remèdes à la démocratie</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Chapitre IV — Le socialisme</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f9">
+      <div class="card-num">Fiche #9</div>
+      <h3>La naissance du socialisme</h3>
+      <p>Origine du mot · Idée commune · Révolte des Canuts 1831 · Cabet (Icarie) · Louis Blanc (Organisation du travail) · Leroux</p>
+    </label>
+    <label class="card" for="r-f10">
+      <div class="card-num">Fiche #10</div>
+      <h3>Les penseurs socialistes</h3>
+      <p>Blanqui (néo-babouvisme) · Proudhon — la propriété c'est le vol · Anarchisme · Mutualisme · Fédéralisme</p>
+    </label>
+    <label class="card" for="r-f11">
+      <div class="card-num">Fiche #11</div>
+      <h3>Le marxisme</h3>
+      <p>Matérialisme historique · Lutte des classes · Manifeste communiste · Le Capital · Plus-value · Dictature du prolétariat</p>
+    </label>
+  </div>
+</div>
+</div>
+
+<!-- PAGE PLAN -->
+<div class="page-content" id="page-plan"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Plan complet du cours</div>
+    <h2>Idées politiques après 1789 — Structure</h2>
+  </div>
+  <div class="mindmap-container"><div class="mindmap-scroll">
+  <div class="root-node"><div class="node-box">IDÉES POLITIQUES APRÈS 1789<small>Formation de la pensée politique contemporaine · 1789 → milieu XIXe s.</small></div></div>
+  <div class="single-col">
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre I — La matrice révolutionnaire de la pensée politique contemporaine</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Pensée politique de la Révolution américaine <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">J. Adams</span><span class="section-name">Science du gouvernement · Régime mixte · Balance des pouvoirs · Souveraineté du peuple</span></div>
+            <div class="section-item"><span class="section-label">T. Paine</span><span class="section-name">Common Sense 1776 · Critique de la Constitution anglaise · Sens commun et droits de l'homme</span></div>
+            <div class="section-item"><span class="section-label">T. Jefferson</span><span class="section-name">Déclaration d'indépendance 4 juillet 1776 · Droits inaliénables (vie, liberté, bonheur) · Droit de résistance · Liberté d'expression illimitée</span></div>
+            <div class="section-item"><span class="section-label">§ Constitution 1787</span><span class="section-name">Hamilton, Jay, Madison — Le Fédéraliste · République ≠ démocratie · Pouvoir fédéral consolidé · Souveraineté du peuple</span></div>
+            <label class="plan-fiche-link" for="r-f2">→ Fiche #2</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Matrice des idées politiques sous la Révolution française <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">Sieyès</span><span class="section-name">Qu'est-ce que le Tiers-État (janv. 1789) · Nation souveraine · Gouvernement représentatif · Suffrage censitaire</span></div>
+            <div class="section-item"><span class="section-label">Monarchiens</span><span class="section-name">Mounier · Modèle britannique · Bicaméralisme · Veto royal · Anti-républicanisme</span></div>
+            <div class="section-item"><span class="section-label">DDHC</span><span class="section-name">26 août 1789 · Liberté + Égalité · Propriété inviolable · Séparation des pouvoirs</span></div>
+            <div class="section-item"><span class="section-label">Burke vs Paine</span><span class="section-name">Burke : contre la table rase / Paine : droits de l'homme · Controverse autour de la Rev. française</span></div>
+            <div class="section-item"><span class="section-label">Girondins</span><span class="section-name">Brissot, Condorcet · République représentative et démocratique · Abolition esclavage · C° Condorcet</span></div>
+            <div class="section-item"><span class="section-label">Jacobins</span><span class="section-name">Robespierre, Saint-Just · C° an I 1793 · Droit au travail · Vertu et Terreur · Gouvernement révolutionnaire</span></div>
+            <label class="plan-fiche-link" for="r-f3">→ Fiche #3</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre II — La pensée contre-révolutionnaire : conservatisme &amp; traditionalisme</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Joseph De Maistre (1753-1821) <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§1</span><span class="section-name">Contre les Constitutions écrites · La raison humaine nulle sans Dieu · Providence divine</span></div>
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">La Constitution anglaise produit de l'histoire · Aristocratie traditionnelle · Ultramontanisme catholique (Du Pape)</span></div>
+            <label class="plan-fiche-link" for="r-f4">→ Fiche #4</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Louis de Bonald (1750-1840) <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">Tradition.</span><span class="section-name">Rev. = châtiment providentiel · Structure ternaire (trinité) · Monarchie royale de droit divin · Rejet des droits de l'homme</span></div>
+            <label class="plan-fiche-link" for="r-f5">→ Fiche #5</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre III — Le libéralisme : nouvelle idéologie dominante</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — Benjamin Constant (1767-1830) <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§1</span><span class="section-name">Parcours · Libéralisme individualiste · Girouettisme apparent</span></div>
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">Liberté des anciens (collective, directe) ≠ liberté des modernes (individuelle, représentative)</span></div>
+            <div class="section-item"><span class="section-label">§3</span><span class="section-name">Gouvernement représentatif · Combiner les deux libertés</span></div>
+            <div class="section-item"><span class="section-label">§4</span><span class="section-name">Pouvoir neutre · Roi médiateur entre les pouvoirs · Constitutionnalisme prudentiel</span></div>
+            <label class="plan-fiche-link" for="r-f6">→ Fiche #6</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Les doctrinaires : Royer-Collard &amp; Guizot <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">PPRC</span><span class="section-name">Raison souveraine · Nation nouvelle · Légitimité monarchique · Classe moyenne comme garantie de l'ordre</span></div>
+            <div class="section-item"><span class="section-label">Guizot</span><span class="section-name">Gouvernement représentatif aristocratique · Électorat = fonction (pas droit) · Juste milieu · « Enrichissez-vous »</span></div>
+            <label class="plan-fiche-link" for="r-f7">→ Fiche #7</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 3 — Tocqueville (1805-1859) <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">Providentialisme démocratique · Égalité des conditions = fait providentiel · Amérique = laboratoire de l'avenir</span></div>
+            <div class="section-item"><span class="section-label">§3</span><span class="section-name">Dangers : individualisme + tyrannie de la majorité + despotisme doux</span></div>
+            <div class="section-item"><span class="section-label">§4</span><span class="section-name">Remèdes : libertés locales · associations · liberté de presse · juristes &amp; juges · religion</span></div>
+            <div class="section-item"><span class="section-label">§5</span><span class="section-name">L'Ancien régime et la Révolution — thèse de la continuité · centralisation = germe de la Rev.</span></div>
+            <label class="plan-fiche-link" for="r-f8">→ Fiche #8</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="partie-block">
+      <div class="partie-header">Chapitre IV — La révolution continuée : socialisme &amp; marxisme</div>
+      <div class="partie-body">
+        <details class="chap-block">
+          <summary class="chap-header">Section 1 — La variété des idées socialistes de 1848 <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">Cabet</span><span class="section-name">Voyage en Icarie · Communisme chrétien · Démocratie graduelle · Communautés Icariennes aux USA</span></div>
+            <div class="section-item"><span class="section-label">L. Blanc</span><span class="section-name">Organisation du travail · Ateliers sociaux · Droit au travail · État social protecteur</span></div>
+            <div class="section-item"><span class="section-label">Leroux</span><span class="section-name">Solidarité (vs charité) · Humanité de l'homme · Religion de l'humanité · Socialisme mutualiste</span></div>
+            <div class="section-item"><span class="section-label">Blanqui</span><span class="section-name">Néo-babouvisme · Révolution par les armes · Avant-garde révolutionnaire · Dictature provisoire</span></div>
+            <label class="plan-fiche-link" for="r-f9">→ Fiche #9</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 2 — Proudhon : de l'anarchisme au fédéralisme <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§1</span><span class="section-name">La propriété c'est le vol · Possession individuelle ≠ propriété absolue · Erreur de compte capitaliste</span></div>
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">Père de l'anarchisme · Anarchie = ordre sans maître · Négation de l'État</span></div>
+            <div class="section-item"><span class="section-label">§3</span><span class="section-name">Contractualisme · Mutualisme · Banque du peuple · Fédéralisme · 12 régions indépendantes</span></div>
+            <label class="plan-fiche-link" for="r-f10">→ Fiche #10</label>
+          </div>
+        </details>
+        <details class="chap-block">
+          <summary class="chap-header">Section 3 — Marx, Engels et le marxisme <span class="chap-toggle"></span></summary>
+          <div class="chap-body">
+            <div class="section-item"><span class="section-label">§1</span><span class="section-name">Matérialisme historique · Dialectique Hegel retournée · Infrastructure → superstructure · 4 stades</span></div>
+            <div class="section-item"><span class="section-label">§2</span><span class="section-name">Manifeste communiste 1848 · Lutte des classes · Idéologie comme voile · Conscience de classe</span></div>
+            <div class="section-item"><span class="section-label">§3</span><span class="section-name">Le Capital 1867 · Plus-value · Surtravail · Profit = extorsion · Dictature du prolétariat</span></div>
+            <label class="plan-fiche-link" for="r-f11">→ Fiche #11</label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+  </div></div>
+  <div class="fiche-nav"><label for="r-home">← Accueil</label><label for="r-f1">Fiche #1 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 1 -->
+<div class="page-content" id="page-f1"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #1 — Introduction générale</div>
+    <h2>La matrice révolutionnaire de la pensée politique contemporaine</h2>
+    <div class="fiche-intro">La période 1789-1815 est capitale : en 25 ans s'accélèrent et se forment tous les grands courants politiques du monde contemporain. La Révolution française est à la fois leur source et leur terrain de bataille.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Contexte</span> Pourquoi 1789 est décisif</div>
+    <div class="f-text">En 9 ans de liberté de la presse naissent les <strong>symboles, concepts et idées politiques</strong> structurant encore aujourd'hui les démocraties. Liberté, égalité, fraternité — droits de l'Homme — constitution écrite — nation — peuple — citoyen au sens antique : des mots qui retrouvent leur sens ou l'inventent.</div>
+    <div class="f-alerte"><strong>À ne pas confondre</strong>Le mot "libéralisme" n'existe pas sous la Révolution. Et aucun philosophe des Lumières n'a pensé à la Révolution : on leur a prêté a posteriori ce rôle de pères fondateurs. Rousseau ne voulait ni République ni démocratie au sens moderne.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Courants</span> Les grands courants nés de la Révolution</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Courant</th><th>Naissance</th><th>Rapport à la Révolution</th></tr></thead><tbody>
+      <tr><td>Républicanisme</td><td>Idéologie motrice de la Rev. — antérieur (Machiavel, Rome)</td><td>Il EST la Révolution</td></tr>
+      <tr><td>Libéralisme</td><td>Postérieur à la Rev. — bourgeois, réaction</td><td>Hérite mais canalise</td></tr>
+      <tr><td>Conservatisme</td><td>Né du choc révolutionnaire (Burke, De Maistre)</td><td>S'y oppose radicalement</td></tr>
+      <tr><td>Nationalisme</td><td>Fils de la nation révolutionnaire</td><td>Peut en être fidèle ou perverti</td></tr>
+      <tr><td>Socialisme/Communisme</td><td>XIXe s. — critique du monde bourgeois issu de la Rev.</td><td>Veut la continuer jusqu'au bout</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Clivage</span> La question fondamentale qui structure tout</div>
+    <div class="f-key">Toute la pensée politique du XIXe s. se positionne par rapport à une seule question : la Révolution est-elle terminée ? Comment la terminer ? Pour ou contre la République ?</div>
+    <div class="f-text"><strong>F. Furet</strong> (1989) : « La Révolution est terminée, c'est un objet mort. » — <strong>F. Fukuyama</strong> : « Fin de l'Histoire » au triomphe de la démocratie libérale. Ces deux visions sont aujourd'hui remises en cause.</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Droite (grosso modo)</div>Contre la Rev. ou pour une version conservatrice. Veut arrêter le mouvement révolutionnaire. Traditions, ordre, religion, hiérarchie.</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Gauche (grosso modo)</div>Pour continuer la Rev. dans ses principes ou au-delà. Démocratie élargie, droits sociaux, égalité réelle.</div>
+    </div>
+    <div class="f-alerte"><strong>Démocratie libérale = oxymore au départ !</strong>Le libéralisme est initialement contre la démocratie. Les libéraux (Guizot, Constant) refusent le suffrage universel, jugé dangereux pour la propriété. C'est Tocqueville qui ouvrira la voie à leur réconciliation.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Précurseurs</span> Les révolutions atlantiques comme contexte</div>
+    <div class="f-text">Il ne faut pas isoler 1789 : les révolutions anglaises (1640, 1688), américaine (1776) et française (1789) forment un mouvement atlantique commun. Les Anglais ont décapité leur roi en premier (1649, Charles Ier Stuart). Les idées circulent : Machiavel, Milton, Sydney, Harrington, Locke sont cités par les révolutionnaires des deux côtés de l'Atlantique.</div>
+    <div class="f-key">Le républicanisme est un courant de pensée antérieur à la Révolution française, qui remonte aux républiques italienne de la Renaissance et à la pensée de Machiavel. Rousseau et Mably en sont les passeurs dans la France du XVIIIe siècle.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>1789-1815 = matrice de toute la pensée politique contemporaine</li>
+      <li>Les 5 grands courants : républicanisme · libéralisme · conservatisme · nationalisme · socialisme</li>
+      <li>Clivage gauche/droite naît de la Révolution (places dans l'Assemblée constituante)</li>
+      <li>Libéralisme est CONTRE la démocratie au départ</li>
+      <li>Ne pas prêter aux philosophes des Lumières une intention révolutionnaire qu'ils n'avaient pas</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-plan">← Plan</label><label for="r-f2">Fiche #2 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 2 -->
+<div class="page-content" id="page-f2"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #2 — Chapitre I, Section 1</div>
+    <h2>La pensée politique de la Révolution américaine</h2>
+    <div class="fiche-intro">La Révolution américaine précède et catalyse la française. Elle invente la constitution écrite moderne, le constitutionnalisme républicain et la déclaration de droits. Trois figures dominent : John Adams (équilibre des pouvoirs), Thomas Paine (républicanisme radical) et Thomas Jefferson (droits naturels et liberté).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Contexte</span> Pourquoi la Révolution américaine ?</div>
+    <div class="f-text">Après la guerre de 7 ans (1756-1763), Londres veut faire payer aux colons américains les dettes militaires → Stamp Act 1765 (nouvelle taxe sur tout document). Les colons, sujets britanniques, refusent : <strong>« No taxation without representation »</strong>. Puis Tea Act → Lois scélérates → point de non-retour.</div>
+    <div class="f-text">Mai 1775 : congrès des colonies. Juin 1775 : George III décrète l'état de rébellion. Les colonies rédigent leurs propres constitutions écrites — révolution constitutionnelle d'abord.</div>
+    <div class="f-key">La Révolution américaine change le sens du mot Constitution : d'une loi du prince, il devient un <strong>pacte originel</strong> issu de la délibération du peuple, ratifié par lui, modifiable seulement par lui.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Adams</span> John Adams — la science du gouvernement</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>John Adams</strong>2e Président des EU · penseur du constitutionnalisme</div>
+      <div class="f-portrait-body">Participe à la rédaction de la Constitution du Massachusetts. En avril 1776 publie « Pensées sur le Gouvernement ». Médite sur la science du gouvernement, héritée des Grecs et des Romains, ressuscitée par Machiavel, Milton, Sydney, Harrington, Locke, Montesquieu.</div>
+    </div>
+    <div class="f-quote">« Une République est un gouvernement des lois et non des hommes. »<cite>John Adams</cite></div>
+    <div class="f-text"><strong>Ses propositions constitutionnelles :</strong></div>
+    <ul class="f-list">
+      <li><strong>Souveraineté du peuple</strong> comme base</li>
+      <li><strong>Représentation</strong> = portrait en miniature du peuple</li>
+      <li><strong>Régime mixte</strong> : Assemblée (élément populaire) + Sénat élu par l'assemblée (élément aristocratique) + Gouverneur élu par les deux avec veto (élément monarchique)</li>
+      <li>Triple balance au sein du législatif pour éviter les décisions hâtives, la corruption et l'impuissance exécutive</li>
+    </ul>
+    <div class="f-alerte"><strong>Adams vs Paine</strong>Adams défend le modèle anglais bicaméral et le régime mixte. Paine le rejette comme tyrannique et plaide pour une assemblée unique.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Paine</span> Thomas Paine — le sens commun et les droits de l'homme</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>Thomas Paine</strong>1737-1809 · Londres · Père du républicanisme moderne</div>
+      <div class="f-portrait-body">Fils de Quakers (égalité religieuse). Rencontre Franklin, s'embarque pour l'Amérique. Autodidacte. Relie les deux révolutions (américaine et française). Citoyen français sous la Convention, siège avec les Girondins.</div>
+    </div>
+    <div class="f-quote">« La cause de l'Amérique est la cause de l'humanité toute entière. »<cite>Thomas Paine, Common Sense, janvier 1776</cite></div>
+    <div class="f-text"><em>Common Sense</em> (1776) : tiré à + de 500 000 exemplaires. Critique radicale de la Constitution anglaise — « vestiges méprisables de deux tyrannies : monarchique et aristocratique ». Propose une Assemblée unique et un président sans réel pouvoir (modèle Constitution de Pennsylvanie). <em>Rights of Men</em> (1792) : répond à Burke en affirmant la continuité des trois révolutions.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Jefferson</span> Thomas Jefferson — les droits inaliénables</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>T. Jefferson</strong>1743-1826 · 3e Président EU · Ambassadeur en France</div>
+      <div class="f-portrait-body">Père de la Déclaration d'indépendance. Le plus francophile des pères fondateurs. Partisan de la révision périodique de la Constitution : « On ne doit pas enchainer les générations futures à un texte. »</div>
+    </div>
+    <div class="f-quote">« Nous tenons pour évidentes par elles-mêmes les vérités suivantes : tous les hommes sont créés égaux ; ils sont dotés par le Créateur de certains droits inaliénables ; parmi ces droits se trouvent la vie, la liberté et la recherche du bonheur. »<cite>Déclaration d'indépendance, 4 juillet 1776</cite></div>
+    <div class="f-text">La trilogie lockéenne (vie, liberté, propriété) devient chez Jefferson : <strong>vie, liberté, recherche du bonheur</strong> — la propriété est écartée du texte définitif. Sources : droit naturel de Locke + républicanisme anglais du XVIIe s. + pensée antique (Polybe, Cicéron, Tite-Live).</div>
+    <div class="f-text">Jefferson critique la Constitution fédérale de 1787 : absence de déclaration de droits (→ 10 premiers amendements) et présidence trop puissante (risque monarchique).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">1787</span> La Constitution fédérale et le Fédéraliste</div>
+    <div class="f-text">La Confédération de 1777 (articles de confédération) manque d'exécutif et de pouvoir contraignant. Hamilton appelle à une Convention → <strong>Convention de Philadelphie, mai 1787</strong> → Constitution ratifiée par le peuple dans chaque État.</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Fédéralistes (Hamilton, Madison, Jay)</div>Renforcement du pouvoir central. L'union nationale prime sur les États. République possible dans un grand pays grâce à la représentation. SU = confisqué par les fédéralistes.</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Anti-fédéralistes (Patrick Henry, Brutus)</div>Attachés aux États fédérés. République = possible seulement en petit territoire. S'inquiètent des tendances monarchiques et aristocratiques du nouveau régime.</div>
+    </div>
+    <div class="f-key">Innovation du Fédéraliste : la République ≠ démocratie. La démocratie est bornée à un petit espace. La République, grâce à la représentation, peut s'étendre à un grand pays.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Stamp Act 1765 → « No taxation without representation » → révolution fiscale → révolution politique</li>
+      <li>Adams : régime mixte · 3 éléments (populaire/aristocratique/monarchique) · balance des pouvoirs</li>
+      <li>Paine : Common Sense 1776 · critique de la C° anglaise · assemblée unique · lien entre les 3 révolutions</li>
+      <li>Jefferson : Déclaration 4 juillet 1776 · droits inaliénables · trilogie vie/liberté/bonheur (≠ propriété de Locke)</li>
+      <li>Le Fédéraliste : République ≠ démocratie · représentation permet la grande échelle</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f1">← Fiche #1</label><label for="r-f3">Fiche #3 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 3 -->
+<div class="page-content" id="page-f3"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #3 — Chapitre I, Section 2</div>
+    <h2>La matrice des idées politiques sous la Révolution française</h2>
+    <div class="fiche-intro">La Révolution française produit en quelques années tous les concepts fondamentaux de la politique moderne. De Sieyès à Robespierre, de la DDHC au gouvernement révolutionnaire, elle forge les outils intellectuels que toute la pensée politique ultérieure utilisera ou combattra.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Sieyès — théoricien de la Nation et du gouvernement représentatif</div>
+    <div class="f-quote">« Qu'est-ce que le Tiers-État ? Tout. Qu'a-t-il été dans l'ordre politique jusqu'à présent ? Rien. Que demande-t-il ? À devenir quelque chose. »<cite>Abbé Sieyès, Qu'est-ce que le Tiers-État ?, janvier 1789</cite></div>
+    <div class="f-text">Sieyès est le <strong>portier de la Révolution</strong> (Camille Desmoulins) : il l'ouvre en 1789 et la ferme en 1799 en allant chercher le sabre de Napoléon.</div>
+    <div class="f-sous">
+      <div class="f-sous-title">Ses exigences pour les États généraux</div>
+      <ul class="f-list">
+        <li>Doublement du nombre de députés du Tiers-État</li>
+        <li>Vote par <strong>tête</strong> (et non par ordre)</li>
+        <li>Disparition des ordres privilégiés pour que nobles et ecclésiastiques puissent faire partie de la Nation</li>
+      </ul>
+    </div>
+    <div class="f-sous">
+      <div class="f-sous-title">Sa théorie de la Nation et de la représentation</div>
+      <ul class="f-list">
+        <li><strong>Nation</strong> = corps d'associés sous une loi commune, représentés par la même législature. Sa volonté est toujours légale, elle est la loi elle-même.</li>
+        <li><strong>Souveraineté nationale</strong> exercée uniquement par des représentants (≠ souveraineté populaire directe)</li>
+        <li><strong>Citoyen actif</strong> (vote, éligible) vs <strong>citoyen passif</strong> (droits civils mais pas politiques) → suffrage censitaire</li>
+        <li>La représentation = art social, division du travail politique</li>
+      </ul>
+      <div class="f-alerte"><strong>Sieyès ≠ libéral classique</strong>Il rejette le bicaméralisme anglais. Il est précurseur du libéralisme mais son modèle est atypique. Il propose aussi une <em>jurie constitutionnelle</em> (ancêtre du Conseil constitutionnel) — non retenue.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Les monarchiens — matrice du constitutionnalisme libéral conservateur</div>
+    <div class="f-text"><strong>Mounier</strong> (député de Grenoble) prend la tête du 1er comité de Constitution. Inspirés par Montesquieu et la Constitution anglaise (Black Stone, Delolme). Veulent une monarchie constitutionnelle avec : parlement bicaméral + roi avec veto absolu partageant le pouvoir législatif.</div>
+    <div class="f-key">Pour les monarchiens, la liberté ≠ participation politique directe. « La liberté n'est que l'entière jouissance de ses propriétés, de ses facultés physiques et morales. » Ils séparent liberté civile et liberté politique.</div>
+    <div class="f-text">Rejetés à la fois par la droite royaliste (Abbé Maury), par Sieyès, et surtout par la gauche républicaine (Robespierre, Desmoulins, Marat) qui les traite de « monarchiens » — le terme devient une critique.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> La DDHC — 26 août 1789</div>
+    <div class="f-text">Proposée par Lafayette, la Déclaration des Droits de l'Homme et du Citoyen est aujourd'hui dans le bloc de constitutionnalité français. <strong>17 articles</strong> — compromis entre différentes tendances.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Article</th><th>Principe</th></tr></thead><tbody>
+      <tr><td>Art. 1</td><td>Les hommes naissent libres et égaux en droits</td></tr>
+      <tr><td>Art. 3</td><td>Souveraineté dans la Nation</td></tr>
+      <tr><td>Art. 10-11</td><td>Liberté d'opinion (même religieuse) · Liberté de la presse</td></tr>
+      <tr><td>Art. 13</td><td>Contribution commune répartie selon les facultés</td></tr>
+      <tr><td>Art. 16</td><td>Séparation des pouvoirs</td></tr>
+      <tr><td>Art. 17</td><td>Propriété inviolable et sacrée (mais expropriable pour utilité publique + juste indemnité)</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Tension centrale</strong>La souveraineté est-elle dans la Nation (Sieyès → représentants souverains) ou dans le Peuple (Robespierre → peuple souverain direct) ? Ce débat structure toute la Révolution.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 4</span> Burke vs Paine — la controverse fondatrice</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Edmund Burke (1790)</div>Réflexions sur la Révolution de France. Whig mais critique radical. La Rev. française ≠ révolution anglaise de 1688 ni américaine. Elle fait table rase de l'histoire. Critique les Lumières. Éloge de la tradition, de l'esprit chevaleresque, du fondement transcendant de l'ordre social. Prophète de la contre-révolution.</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Thomas Paine (1792)</div>Rights of Men. Affirme la continuité des trois révolutions. Droits civils et droits politiques sont indissociables. La souveraineté du peuple est le principe fondateur. Mary Wollstonecraft et James Macintosh répondent aussi à Burke.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 5</span> Le républicanisme révolutionnaire et ses nuances</div>
+    <div class="f-sous">
+      <div class="f-sous-title">A. Les Girondins (Brissot, Condorcet, Roland)</div>
+      <div class="f-text">République représentative et démocratique. Tournés vers l'Amérique (Constitution de Pennsylvanie). Favorables à l'abolition de l'esclavage (Société des amis des noirs). Condorcet : partisans du SFU masculin + projet d'instruction publique + théorie du progrès de l'esprit humain.</div>
+      <div class="f-exemple"><strong>Projet de Constitution Condorcet</strong>République une et indivisible · SFU (masculin) · Corps législatif monocaméral · Conseil exécutif collégial (7 ministres) · Censure populaire des lois · Droit de pétition contre les lois · Responsabilité pénale et politique des ministres devant un jury national.</div>
+    </div>
+    <div class="f-sous">
+      <div class="f-sous-title">B. Les Jacobins (Robespierre, Saint-Just)</div>
+      <div class="f-text">Admiration pour Rome et Sparte. Robespierre : « l'Incorruptible » — partisan du SFU, de l'abolition de la peine de mort (avant 1793...), de la liberté illimitée de la presse.</div>
+      <div class="f-quote">« Le bonheur est une idée neuve en Europe. »<cite>Saint-Just</cite></div>
+      <div class="f-text"><strong>Constitution de l'an I (24 juin 1793)</strong> — jamais appliquée mais mythique : SFU · droit au travail et à l'assistance (art. 21) · droit à l'instruction · devoir d'insurrection en cas d'oppression · démocratie semi-directe (veto populaire sur les lois) · Enfermée dans un cèdre républicain.</div>
+    </div>
+    <div class="f-sous">
+      <div class="f-sous-title">C. Le Gouvernement révolutionnaire — Vertu et Terreur</div>
+      <div class="f-quote">« Le but du gouvernement constitutionnel est la conservation de la République. Celui du gouvernement révolutionnaire est sa fondation. »<cite>Robespierre, 5 nivôse an II</cite></div>
+      <div class="f-text">Décret 14 frimaire an II = charte du Gouvernement révolutionnaire. Tout le pouvoir dans le Comité de salut public. État d'exception justifié par les périls intérieurs et extérieurs. La Terreur = instrument de guerre temporaire contre les ennemis du projet républicain — mais emporte bientôt les plus ardents révolutionnaires eux-mêmes. Se termine le 9 Thermidor (27 juillet 1794) avec la mort de Robespierre et Saint-Just.</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Sieyès : Tiers-État = tout, nation précède tout, vote par tête, représentation = art social</li>
+      <li>Monarchiens : liberté civile ≠ liberté politique · bicaméralisme · veto royal</li>
+      <li>DDHC 26 août 1789 : liberté + égalité + propriété sacrée + souveraineté dans la Nation</li>
+      <li>Burke : table rase = catastrophe / Paine : continuité des 3 révolutions</li>
+      <li>Girondins : Rep. représentative · Condorcet · SFU masculin · C° monocamérale</li>
+      <li>Jacobins : C° an I (jamais appliquée) · droit au travail · SFU · démocratie semi-directe</li>
+      <li>Gouvernement révolutionnaire = état d'exception → Terreur → 9 Thermidor</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f2">← Fiche #2</label><label for="r-f4">Fiche #4 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 4 -->
+<div class="page-content" id="page-f4"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #4 — Chapitre II, Section 1</div>
+    <h2>Joseph De Maistre (1753-1821)</h2>
+    <div class="fiche-intro">Juriste savoyard, magistrat, émigré lors de la conquête de la Savoie par les armées révolutionnaires. Ambassadeur en Russie auprès du Tsar. Lecteur passionné de Burke. De Maistre est le penseur contre-révolutionnaire le plus radical : il oppose à la raison humaine abstraite la Providence divine comme seul fondement légitime de l'ordre politique.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Œuvres</span> Repères bibliographiques</div>
+    <ul class="f-list">
+      <li><em>Considérations sur la France</em> (1796) — première grande œuvre contra-révolutionnaire</li>
+      <li><em>Essai sur le principe générateur des Constitutions politiques</em> (1809/1814)</li>
+      <li><em>Du Pape</em> (1819) — théocratie pontificale · ultramontanisme</li>
+      <li><em>Les Soirées de Saint-Pétersbourg</em> (posthumes)</li>
+    </ul>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Contre les Constitutions écrites et le rationalisme révolutionnaire</div>
+    <div class="f-text">Pour De Maistre, la Révolution est un <strong>mal absolu mais nécessaire</strong> — châtiment divin contre l'orgueil démesuré des révolutionnaires (<em>hubris</em>). Il attribue à Locke autant qu'à Rousseau la production du « monstre révolutionnaire ».</div>
+    <div class="f-quote">« La raison humaine réduite à ses forces individuelles est parfaitement nulle non seulement pour la création mais encore pour la conservation de toute association politique. »<cite>Joseph De Maistre</cite></div>
+    <div class="f-text">Ses arguments contre les Constitutions écrites :</div>
+    <ul class="f-list">
+      <li>Les constitutions des États comme la souveraineté sont des <strong>institutions divines</strong>, non des créations humaines</li>
+      <li>Toute souveraineté est une et absolue — elle vient de Dieu, pas du peuple</li>
+      <li>On ne fait pas une Constitution comme on fait une montre</li>
+      <li><strong>Il n'y a jamais eu ni n'y aura jamais de nation constituée a priori</strong> — c'est l'histoire qui décide</li>
+    </ul>
+    <div class="f-quote">« Il n'y a point d'Homme dans le monde. J'ai vu dans ma vie des Français, des Italiens, des Russes ; mais quant à l'Homme, je ne l'ai jamais rencontré. Donc comme il n'existe pas, les droits de l'Homme n'existent pas non plus. »<cite>Joseph De Maistre</cite></div>
+    <div class="f-key">De Maistre est le premier grand penseur à démontrer qu'il n'existe pas de nature humaine universelle abstraite — critique radicale des droits de l'homme. Sa critique anticipe certaines formes de communitarisme et d'historicisme.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La Constitution anglaise — produit de l'histoire et de la Providence</div>
+    <div class="f-text">De Maistre n'est pas un simple admirateur de l'Angleterre. Il reproche aux rédacteurs de la Charte de 1814 d'avoir trop copié le modèle anglais. Pour lui, la liberté anglaise remonte au Moyen Âge et s'est construite progressivement — elle n'a pas été « décrétée ».</div>
+    <div class="f-quote">« Cet esprit public admirable, unique, infaillible qui mène tout, conserve tout et sauve tout — ce qui est écrit n'est rien. »<cite>De Maistre sur la Constitution anglaise</cite></div>
+    <div class="f-text">C'est l'<strong>aristocratie traditionnelle</strong> (fortune + haut rang + clientèle + influence) qui assure en Angleterre la conservation de la monarchie dans une continuité historique. En France, il faut s'appuyer sur l'aristocratie pour revenir à la monarchie naturelle tempérée par les parlements.</div>
+    <div class="f-alerte"><strong>Ultramontanisme catholique</strong>Dans <em>Du Pape</em>, De Maistre affirme que la marche vers l'unité doit s'incarner dans le Pape, souverain pontife dont le veto supérieur peut retenir tous les États souverains dans les bornes de la justice. Suprématie du pouvoir spirituel sur le temporel.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Révolution = châtiment divin / mal absolu mais nécessaire (providentialisme contre-révolutionnaire)</li>
+      <li>La raison humaine est nulle pour fonder une constitution — seule la Providence divine est légitime</li>
+      <li>Pas de droits de l'Homme : il n'y a que des Français, des Italiens… jamais « l'Homme » abstrait</li>
+      <li>Constitution = produit de l'histoire, pas d'une Assemblée · « ce qui est écrit n'est rien »</li>
+      <li>Ultramontanisme : le Pape au sommet de l'ordre politique européen</li>
+      <li>À distinguer de Bonald : même famille de pensée mais DM plus mystique/papal, Bonald plus systématique</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f3">← Fiche #3</label><label for="r-f5">Fiche #5 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 5 -->
+<div class="page-content" id="page-f5"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #5 — Chapitre II, Section 2</div>
+    <h2>Louis de Bonald (1750-1840) — le traditionalisme</h2>
+    <div class="fiche-intro">Bonald et De Maistre sont liés : « Je n'ai rien pensé que vous n'ayez écrit, je n'ai rien écrit que vous l'ayez pensé. » (De Maistre à Bonald). Mais Bonald est plus systématique : il construit une sociologie de l'ordre monarchique sur la base d'une structure ternaire d'inspiration trinitaire.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Œuvre</span> Théorie du pouvoir politique et religieux</div>
+    <div class="f-text">Œuvre principale : <em>La théorie du pouvoir politique et religieux dans la société civile</em>. Bonald partage avec De Maistre l'idée que la Révolution est un châtiment providentiel. Mais il en cherche la cause plus loin : dans la <strong>Réforme protestante</strong> (Luther, Calvin) qui a rompu l'unité chrétienne.</div>
+    <div class="f-key">La France a manqué à sa mission de « fille ainée de l'Église » — la Révolution est la punition. Mais la chute fait partie d'un dessin providentiel qui conduira au retour de l'ordre monarchique traditionnel.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Structure ternaire</span> Tout s'organise selon la trinité chrétienne</div>
+    <div class="f-text">Bonald organise sa pensée politique autour d'une <strong>structure ternaire</strong> à l'image de la Trinité (Père / Fils / Saint-Esprit) :</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Niveau</th><th>Cause</th><th>Moyen</th><th>Effet</th></tr></thead><tbody>
+      <tr><td>Anthropologique</td><td>Volonté</td><td>Corps</td><td>Action sur le monde</td></tr>
+      <tr><td>Politique</td><td>Roi</td><td>Ministres (noblesse héréditaire)</td><td>Sujets qui obéissent</td></tr>
+      <tr><td>Logique</td><td>Le pouvoir commande</td><td>Les ministres servent</td><td>Les sujets obéissent</td></tr>
+    </tbody></table></div>
+    <div class="f-key">La seule société politique constituée = la <strong>monarchie royale</strong> avec un Roi héréditaire qui commande, une noblesse héréditaire qui sert, et le peuple qui obéit. C'est la monarchie de droit divin, absolue, à l'image de la monarchie de Dieu.</div>
+    <div class="f-alerte"><strong>Bonald rejette la balance des pouvoirs !</strong>Il qualifie le régime mixte de « polygamie politique ». La Charte de 1814 lui semble insatisfaisante car ses rédacteurs ont « singé les Anglais ». Les libertés publiques accordées par la Charte recèlent des dangers qui peuvent conduire à la guerre civile.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Critique</span> Son analyse de la Révolution et de son héritage</div>
+    <div class="f-text">Bonald est un bon analyste du phénomène révolutionnaire : il comprend que la Révolution est avant tout une <strong>guerre idéologique</strong> — le Directoire cherche à répandre ses principes en Europe via les Républiques sœurs.</div>
+    <div class="f-text">Il refuse de croire que ce changement sera durable. À cette désorganisation, il oppose le <strong>système de la nature</strong> dans l'organisation des sociétés tel qu'il résulte de l'histoire — fondé avant tout sur la religion (les Écritures Saintes, les 10 commandements).</div>
+    <div class="f-quote">« L'homme ne peut rien sur l'homme que par Dieu, il ne doit rien à l'homme que pour Dieu. »<cite>Louis de Bonald</cite></div>
+    <div class="f-text">En 1820, il juge que l'erreur des constituants de 1814 est d'avoir imité la Constitution anglaise au lieu de rétablir la constitution française originelle (renouer avec « la chaîne des temps »). En 1830 (Révolution de Juillet), il s'inquiète à nouveau du principe de souveraineté populaire qui consacre une « monarchie démocratique » au lieu de la monarchie royale traditionnelle.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Structure ternaire = trinité chrétienne appliquée à la politique : Roi → noblesse → peuple</li>
+      <li>Monarchie absolue de droit divin = seule société politique constituée possible</li>
+      <li>Rejet de la balance des pouvoirs (≠ régime mixte) = « polygamie politique »</li>
+      <li>Révolution = châtiment pour avoir abandonné la mission chrétienne de la France</li>
+      <li>Sources de la politique : Écritures Saintes, non la raison humaine</li>
+      <li>Bonald ≠ De Maistre : Bonald plus systématique, structuré ; DM plus providentiellement mystique</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f4">← Fiche #4</label><label for="r-f6">Fiche #6 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 6 -->
+<div class="page-content" id="page-f6"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #6 — Chapitre III, Section 1</div>
+    <h2>Benjamin Constant (1767-1830)</h2>
+    <div class="fiche-intro">Protestant suisse, formé en Écosse aux Lumières écossaises (Hume, Adam Smith). Père fondateur du libéralisme européen. Sa distinction entre liberté des anciens et liberté des modernes est une arme idéologique fondatrice qui structure toute la pensée libérale jusqu'à aujourd'hui.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Un parcours « girouette » révélateur du libéralisme</div>
+    <div class="f-text">Constant a soutenu la Révolution, les Girondins, le Directoire, s'est opposé à Napoléon… puis a rédigé la « Benjamine » (Constitution de l'Empire) un mois après l'avoir traité d'« odieux et terrible ». Ce girouettisme apparent révèle une caractéristique profonde du libéralisme :</div>
+    <div class="f-key">Le libéralisme accorde une importance assez faible à la <em>forme</em> du régime politique (monarchie, république) pourvu qu'il permette l'épanouissement des libertés individuelles. Cela induit un relativisme qui peut conduire à tolérer un régime d'autorité si ce dernier préserve la représentation des élites.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La liberté des anciens et la liberté des modernes (Discours de 1819)</div>
+    <div class="f-text">Constant ne l'a pas inventée (il cite Sismondi et les républiques italiennes), mais il l'a popularisée comme outil idéologique. Son objectif : rejeter à la fois les ultras royalistes, les jacobins, les bonapartistes et proposer un programme libéral pour la Restauration.</div>
+    <div class="f-vs">
+      <div class="f-vs-col"><div class="f-vs-col-title">Liberté des Anciens (Grecs, Romains)</div>Participative et collective. Délibérer sur la place publique, voter les lois, juger, rendre des comptes. <strong>Mais</strong> : l'individu est esclave dans tous ses rapports privés. Opinions, industrie, religion : tout est soumis à la collectivité. → La liberté collective implique l'assujettissement individuel.</div>
+      <div class="f-vs-col"><div class="f-vs-col-title">Liberté des Modernes</div>Individuelle et privée. Droit à la sûreté · liberté d'opinion · libre choix de son activité · propriété · liberté de religion · contrôle du gouvernement par le suffrage. <strong>Mais</strong> : la souveraineté politique est restreinte, suspendue entre deux élections.</div>
+    </div>
+    <div class="f-alerte"><strong>La mécanique idéologique</strong>Constant a besoin de rejeter le républicanisme révolutionnaire du côté des Anciens (démocratie directe, souveraineté populaire) pour récupérer l'héritage de 1789 du côté libéral (liberté individuelle). L'erreur de la Convention jacobine ? Avoir voulu instaurer la liberté des Anciens dans un monde moderne.</div>
+    <div class="f-quote">« La génèse de la liberté des modernes : le commerce, qui s'est substitué à la guerre, occupation principale et collective des citoyens de l'Antiquité. »<cite>Benjamin Constant</cite></div>
+    <div class="f-text">Le « doux commerce » (Montesquieu) est l'activité économique qui désenclave l'individu moderne des contraintes pesant sur l'homme libre de l'Antiquité. Constant s'oppose à la conscription militaire : on doit pouvoir payer quelqu'un pour faire son service à sa place.</div>
+    <div class="f-key">Chez Isaiah Berlin (XXe s.) : liberté négative (= liberté des modernes de Constant) et liberté positive (= liberté des anciens). La distinction de Constant est donc fondatrice du libéralisme contemporain.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> Le gouvernement représentatif — seule solution pour les modernes</div>
+    <div class="f-quote">« L'exercice de la liberté politique ne peut s'exercer chez les peuples modernes que dans le cadre du système représentatif qui convient à tous les États quelle que soit la forme de leur gouvernement. »<cite>Benjamin Constant</cite></div>
+    <div class="f-text">Définition : le gouvernement représentatif = organisation à l'aide de laquelle une nation se décharge sur quelques individus de ce qu'elle ne peut ou ne veut faire elle-même. Procuration + risque + révocabilité.</div>
+    <div class="f-text"><strong>Le danger</strong> : dans une démocratie moderne, les individus absorbés par leurs intérêts privés et leurs jouissances matérielles finissent par renoncer totalement à leur liberté politique et laissent d'autres gérer les affaires publiques.</div>
+    <div class="f-quote">« Il faut donc pour éviter le retour de l'arbitraire, combiner ces deux libertés. »<cite>Constant — conclusion du Discours de 1819</cite></div>
+    <div class="f-text">Constant rejette le suffrage universel : « La propriété seule rend les hommes capables de l'exercice des droits politiques. L'indigence retient la classe laborieuse dans une éternelle dépendance. »</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 4</span> Le constitutionnalisme libéral et la quête du pouvoir neutre</div>
+    <div class="f-text">Constant ne croit pas à Rousseau : la loi n'est pas l'expression de la volonté générale. La constitution est un acte de défiance envers l'autorité — une garantie des libertés individuelles contre le pouvoir.</div>
+    <div class="f-key">Au sommet de l'édifice constitutionnel : un <strong>pouvoir neutre</strong>. Après avoir cherché en Angleterre, puis en France, Constant le trouve dans le Roi — autorité neutre et intermédiaire, héréditaire donc irresponsable, au-dessus des trois pouvoirs. Il peut les dissoudre, les destituer, tempérer les décisions judiciaires par son droit de grâce.</div>
+    <div class="f-quote">« Pendant 40 ans j'ai défendu la liberté en tout : en religion, en philosophie, en littérature, en industrie, en politique. »<cite>Benjamin Constant, 1829</cite></div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Liberté des anciens = collective, directe → assujettissement individuel (Jacobins ont fait cette erreur)</li>
+      <li>Liberté des modernes = individuelle, privée → participation politique réduite (représentation)</li>
+      <li>Gouvernement représentatif = seul système adapté aux sociétés modernes</li>
+      <li>Danger de la liberté des modernes : individualisme → abandon de la liberté politique</li>
+      <li>Solution : combiner les deux libertés · Pouvoir neutre = Roi médiateur irresponsable</li>
+      <li>Constant refuse le SFU : la propriété seule qualifie pour la vie politique</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f5">← Fiche #5</label><label for="r-f7">Fiche #7 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 7 -->
+<div class="page-content" id="page-f7"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #7 — Chapitre III, Section 2</div>
+    <h2>Le libéralisme doctrinaire</h2>
+    <div class="fiche-intro">Les doctrinaires forment un courant libéral conservateur sous la Restauration et la Monarchie de Juillet. Centrés autour de Pierre Paul Royer-Collard et François Guizot, ils inventent la souveraineté de la raison — ni le Roi, ni le peuple ne sont souverains, mais la Raison — et défendent la classe moyenne comme classe dirigeante naturelle.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Contexte</span> Qui sont les doctrinaires ?</div>
+    <div class="f-text"><strong>PPRC</strong> (1763-1845), <strong>Guizot</strong> (1787-1874), Victor de Broglie, Camille Jourdan. Minorité numériquement faible mais influence théorique majeure. Le terme « doctrinaire » est péjoratif au départ (moquerie du <em>Nain Jaune</em> belge), repris à leur compte.</div>
+    <div class="f-key">Guizot se définit : « Un mélange d'élévation philosophique et de modération politique, un ensemble de doctrine à la fois nouvelle et conservatrice, anti-révolutionnaire sans être rétrograde. » Continuité des monarchiens, mais adaptée à la Restauration.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Royer-Collard — La raison souveraine et la nation nouvelle</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>PPRC</strong>1763-1845 · Spiritualiste · Contre les Lumières</div>
+      <div class="f-portrait-body">Refuse la raison humaine coupée de la transcendance religieuse. La raison souveraine est extérieure aux hommes, pas pleinement accessible à l'intelligence humaine — elle a un côté transcendant.</div>
+    </div>
+    <div class="f-text">En 1817, PPRC annonce l'arrivée d'une <strong>nation nouvelle</strong> — née de la Révolution, elle ne veut plus inventorier le passé mais cherche la légitimité, l'ordre et la liberté dans la monarchie des Bourbons.</div>
+    <div class="f-key">La Révolution a creusé dans les plis les plus secrets de l'ordre civil l'idée d'égalité. La <strong>classe moyenne</strong> (haute bourgeoisie commerçante, industrielle, intellectuelle) représente une garantie du maintien de l'ordre social — elle doit être intégrée au pouvoir. C'est la nouvelle aristocratie.</div>
+    <div class="f-quote">« L'influence de la classe moyenne est un fait puissant et redoutable. Les siècles l'ont préparé, la Révolution l'a déclaré. »<cite>Royer-Collard</cite></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Guizot — Le gouvernement représentatif aristocratique produit de la civilisation</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>François Guizot</strong>1787-1874 · Historien · 1er Ministre</div>
+      <div class="f-portrait-body">Historien de la civilisation. Homme fort du gouvernement sous la Monarchie de Juillet. Roturier qui ne renie pas la dynamique sociale de 1789 : « je suis de ceux que l'élan de 1789 a élevé et qui ne consentiront point à descendre. »</div>
+    </div>
+    <div class="f-key">La raison est le seul souverain légitime. Ni le Roi, ni le peuple (la majorité), ni aucune autre autorité humaine ne peut prétendre à la pleine souveraineté. Le gouvernement représentatif électif permet la révélation de la capacité politique.</div>
+    <div class="f-text"><strong>Capacité à gouverner</strong> = faculté d'agir selon la raison. Seuls ceux qui ont une propriété et une certaine capacité intellectuelle sont reconnus aptes au gouvernement → <strong>suffrage censitaire</strong> (100 000 puis 200 000 électeurs sous la Monarchie de Juillet).</div>
+    <div class="f-text">L'électorat n'est pas un droit naturel : c'est une <strong>fonction politique</strong> qui permet de sélectionner une nouvelle aristocratie gouvernementale fondée sur les inégalités naturelles et les capacités individuelles.</div>
+    <div class="f-alerte"><strong>L'idéologie du « juste milieu »</strong>Objectif : empêcher l'invasion des principes démocratiques par une modération fondamentalement conservatrice. Guizot déclare être un ennemi décidé du SFU « dangereux pour les libertés et l'ordre public ». Sa formule fatale en 1843 : « Enrichissez-vous par le travail et par l'épargne et vous deviendrez électeur. » → Révolte de 1848.</div>
+    <div class="f-quote">« La raison seule est souveraine. Il faut chercher dans chaque état de la société une combinaison qui assure le règne de la justice et de la raison. »<cite>Guizot / Rémusat, mai 1830</cite></div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Souveraineté de la raison (≠ souveraineté du peuple, ≠ souveraineté du roi seul)</li>
+      <li>Nation nouvelle = classe moyenne (haute bourgeoisie) = nouvelle aristocratie naturelle</li>
+      <li>Électorat = fonction (pas droit naturel) → suffrage censitaire très restreint</li>
+      <li>Juste milieu : refus des ultras ET du jacobinisme ET de la démocratie</li>
+      <li>Guizot : « Enrichissez-vous » → blocage de la réforme électorale → Révolution de 1848</li>
+      <li>Constitution anglaise = modèle par excellence pour la France, produit de la civilisation</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f6">← Fiche #6</label><label for="r-f8">Fiche #8 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 8 -->
+<div class="page-content" id="page-f8"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #8 — Chapitre III, Section 3</div>
+    <h2>Alexis de Tocqueville (1805-1859)</h2>
+    <div class="fiche-intro">Aristo légitimiste qui se rallie à la démocratie par la raison (pas par le cœur). « J'ai pour les institutions démocratiques un goût de tête mais je suis aristo par l'instinct. » Premier libéral à regarder l'Amérique plutôt que l'Angleterre. Prophète de l'avènement inévitable de la démocratie et de ses dangers.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Itinéraire intellectuel</div>
+    <div class="f-text">Issu d'une famille légitimiste, magistrat, il se rallie à Louis-Philippe en 1830. En 1831, mission aux États-Unis pour étudier le régime des prisons. Résultat : <em>De la démocratie en Amérique</em> (1835 et 1840), son chef-d'œuvre. Élu député de la Manche (1839). Hostile au coup d'État de Napoléon III. Rédige l'<em>Ancien Régime et la Révolution</em> (inachevé).</div>
+    <div class="f-alerte"><strong>Sa position politique paradoxale</strong>Pas vraiment socialiste de cœur (refuse le droit au travail, approuve la répression de juin 1848) mais favorable à l'abolition de l'esclavage. Républicain de raison, non de cœur. Hostile au jacobinisme social comme au conservatisme aveugle de Guizot.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> Le providentialisme démocratique — leçons de l'expérience américaine</div>
+    <div class="f-quote">« À mesure que j'étudiais la société américaine, je voyais de plus en plus dans l'égalité des conditions le fait générateur dont chaque fait particulier semblait descendre. »<cite>Tocqueville, De la démocratie en Amérique</cite></div>
+    <div class="f-text">Ce que les libéraux avant lui (Constant, Guizot) refusaient de voir : l'avènement de la démocratie n'est pas un accident de l'histoire mais un <strong>fait providentiel</strong>, universel, durable. La montée inévitable de l'égalité des conditions caractérise la démocratie.</div>
+    <div class="f-key">Tocqueville retourne l'argument des conservateurs et traditionalistes : ce n'est pas la monarchie qui est voulue par la Providence, c'est la <strong>démocratie</strong>. 700 ans de grands événements ont tourné au profit de l'égalité. L'Amérique n'est que le laboratoire du futur européen.</div>
+    <div class="f-text">La démocratie = « la montée inévitable de l'égalité des conditions » + droit de suffrage + liberté politique. Mais liberté et égalité doivent marcher ensemble — l'une sans l'autre est impossible.</div>
+    <div class="f-quote">« La démocratie : liberté combinée avec l'égalité. »<cite>Tocqueville</cite></div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> Les dangers qui pèsent sur les sociétés démocratiques</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Danger</th><th>Mécanisme</th></tr></thead><tbody>
+      <tr><td>Individualisme égoïste</td><td>La passion de l'égalité conduit chacun à se retirer dans sa vie privée, indifférent à la destinée des autres. Risque d'anarchie par délitement du lien civique.</td></tr>
+      <tr><td>Tyrannie de la majorité</td><td>La majorité devient toute-puissante. L'opinion publique trace un cercle autour de la pensée. Conformisme intellectuel. La démocratie produit moins de grande liberté d'expression que les sociétés aristocratiques.</td></tr>
+      <tr><td>Despotisme doux</td><td>Un pouvoir immense et tutélaire qui assure la jouissance des individus à leur place. Absolu, détaillé, prévoyant, doux → despotisme mou ≠ tyrannies antiques. L'État providence menace la liberté.</td></tr>
+    </tbody></table></div>
+    <div class="f-quote">« Le peuple démocratique lui apparaît comme une foule innombrable d'hommes semblables et égaux qui tournent sans repos sur eux-mêmes pour se procurer de petits et vulgaires plaisirs. Au-dessus, un pouvoir immense et tutélaire qui se charge seul d'assurer jouissance et veiller sur leur sort. »<cite>Tocqueville</cite></div>
+    <div class="f-key">Tocqueville renverse l'opinion dominante : le risque de la démocratie n'est pas la faiblesse du gouvernement mais sa force irrésistible, car tous les pouvoirs émanent du peuple et de l'opinion publique sur laquelle s'appuie la majorité.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 4</span> Remèdes — « une science politique nouvelle à un monde tout nouveau »</div>
+    <div class="f-text">Pour contrer les dérives inhérentes à la démocratie, Tocqueville propose, d'après l'exemple américain :</div>
+    <ul class="f-list">
+      <li><strong>Gouvernement local</strong> = décentralisation au niveau communal : « l'école de la liberté » qui met la liberté à portée du peuple</li>
+      <li><strong>Liberté d'association</strong> illimitée : contre-pouvoir, participation civique, brise l'apathie individualiste</li>
+      <li><strong>Liberté de la presse</strong> : dénonce l'arbitraire des gouvernants, éveille les citoyens</li>
+      <li><strong>Institution du jury</strong> : participation populaire à la justice</li>
+      <li><strong>Les juristes et juges</strong> : esprit aristocratique et conservateur qui ralentit les dérives égalitaires · La Cour suprême = contrepoids majeur</li>
+      <li><strong>La religion</strong> : régule les mœurs, frein au pouvoir public</li>
+      <li><strong>Fédéralisme</strong> : « libre et heureuse comme une petite nation, glorieuse et forte comme une grande »</li>
+    </ul>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 5</span> Thèse de la continuité — L'Ancien Régime et la Révolution</div>
+    <div class="f-quote">« La Révolution a achevé soudainement, par un effort convulsif et douloureux, sans transition, précaution, égard, ce qui se serait achevé peu à peu de soi-même à la longue. »<cite>Tocqueville, L'Ancien Régime et la Révolution</cite></div>
+    <div class="f-text">Grande thèse provocatrice : la Révolution n'est pas une rupture mais un <strong>parachèvement</strong>. Le processus de nivellement social vers l'égalité des conditions et de centralisation administrative avait commencé sous la monarchie absolue de Louis XIV (l'intendant = préfiguration du préfet napoléonien).</div>
+    <div class="f-key">« La centralisation n'a point péri dans la révolution, c'est qu'elle était elle-même le commencement de la révolution et son signe. » La véritable rupture de la Révolution est de nature <strong>idéologique</strong> : les écrivains du XVIIIe siècle ont introduit l'esprit de l'égalité dans la noblesse elle-même.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Providentialisme démocratique : l'avènement de la démocratie est inévitable (≠ les libéraux conservateurs qui veulent l'arrêter)</li>
+      <li>Démocratie = montée de l'égalité des conditions + liberté politique</li>
+      <li>3 dangers : individualisme · tyrannie de la majorité · despotisme doux</li>
+      <li>Remèdes : gouvernement local · associations · presse · juristes · religion · fédéralisme</li>
+      <li>Thèse de la continuité : Révolution = parachèvement du mouvement d'égalisation commencé sous la monarchie</li>
+      <li>Tocqueville = « libéral d'une espèce nouvelle » — réconcilie libéralisme et démocratie</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f7">← Fiche #7</label><label for="r-f9">Fiche #9 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 9 -->
+<div class="page-content" id="page-f9"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #9 — Chapitre IV, Section 1 (partie 1)</div>
+    <h2>La naissance du socialisme</h2>
+    <div class="fiche-intro">Novembre 1831 : révolte des Canuts de Lyon — premier grand soulèvement ouvrier en France. C'est le point de départ idéologique du socialisme français. Le mot « socialisme » apparaît pour la première fois sous la plume du pasteur protestant Alexandre Vinet, en opposition à l'individualisme.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Contexte</span> Pourquoi le socialisme naît en 1830-1848</div>
+    <div class="f-text">Le triomphe de la bourgeoisie des classes moyennes (cher à Guizot) en 1830, dans une France qui s'enfonce dans la crise économique, entraîne une <strong>radicalisation sociale</strong>. Les socialismes flirtent avec les républicains démocrates (SFU, égalité politique) — cette alliance produit la Révolution de 1848.</div>
+    <div class="f-key">Idée commune à tous les socialismes : révéler aux travailleurs l'injustice de leurs conditions et combattre le système d'inégalité et d'exploitation de l'Homme par l'Homme caractéristique du nouvel ordre bourgeois et capitaliste. Le dénominateur commun = combat pour l'<strong>égalité sociale réelle</strong> (dignité) et non plus seulement l'égalité juridique formelle des libéraux.</div>
+    <div class="f-text">Beaucoup de ces socialismes sont <strong>chrétiens</strong> : Cabet voit dans le Christ le premier communiste. Leroux invente une « religion de l'humanité ». La fraternité (3e terme de la devise) renvoie à cette fraternité chrétienne.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Cabet</span> Étienne Cabet (1788-1856) — le communisme chrétien et le Voyage en Icarie</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>Étienne Cabet</strong>1788-1856 · Juriste · Dijon</div>
+      <div class="f-portrait-body">Avocat, défend les républicains. Député démocrate 1831. Exilé en Angleterre. Exilé aux USA en 1848 pour fonder ses communautés icariennes en Illinois puis à Saint-Louis. Mort en 1856.</div>
+    </div>
+    <div class="f-text"><em>Le Voyage en Icarie</em> (1839) : roman utopique. Icarie est une île libérée de la domination des nobles, prêtres et bourgeois par une révolution conduite par Icare (figure de Jésus + Robespierre). Icare refuse la violence, met en place « l'inégalité décroissante » conduisant progressivement à l'égalité parfaite par la <strong>propriété commune</strong>.</div>
+    <div class="f-text">Icarie intègre le progrès industriel (chemin de fer, sous-marin, ascenseurs) mais impose un uniforme commun, des horaires collectifs, un seul journal. Démocratie directe au niveau communal.</div>
+    <div class="f-alerte"><strong>Limite du modèle</strong>Aucune liberté de la presse en Icarie. Cabet est très moraliste (réprime l'adultère, l'alcool, le tabac) — ≠ Fourier qui dénonçait le mariage bourgeois comme prostitution légale. En 1847 il lance son appel « Qui veut venir avec moi en Icarie ? » → premières communautés au Texas, puis Illinois.</div>
+    <div class="f-text">Programme graduel : suppression des successions en ligne collatérale · suppression des testaments et donations · organisation du travail · réglementation des salaires · progressivité de l'impôt. La démocratie ordinaire (République, SFU, instruction publique) doit conduire au communisme par étapes.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">L. Blanc</span> Louis Blanc (1811-1882) — L'organisation du travail</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>Louis Blanc</strong>1811-1882 · Journaliste · Ministre sans portefeuille en 1848</div>
+      <div class="f-portrait-body">Origine royaliste. Journaliste républicain (La revue du progrès). Membre du gouvernement provisoire de 1848. Président de la Commission du Luxembourg.</div>
+    </div>
+    <div class="f-text"><em>L'organisation du travail</em> (1840 et 1847) : la concurrence économique = « système d'extermination ». La concurrence entre travailleurs pousse les salaires vers le bas → misère → cercle vicieux (indigence → vice → crime → dissolution des mœurs). De plus, la concurrence concentre les capitaux en monopoles — elle menace la bourgeoisie elle-même.</div>
+    <div class="f-key">Solution : <strong>ateliers sociaux</strong> créés par l'État dans chaque branche, financés et encadrés par lui, mais destinés à devenir autonomes grâce à une dynamique associative interne. Élection à tous les échelons. Tendance à l'égalité salariale. Objectif : « à chacun selon ses besoins ».</div>
+    <div class="f-text">Blanc croit en un État social fort et protecteur — « banquier des pauvres et des associations » — et en un véritable <strong>droit au travail</strong> (pas seulement à l'assistance). Ce qui préfigure l'État providence du XXe siècle.</div>
+    <div class="f-alerte"><strong>L'échec de 1848</strong>Les ateliers nationaux créés par le ministre Marie ne sont que la caricature des ateliers sociaux de Blanc. Le SFU donne la victoire aux monarchistes et républicains conservateurs. Les ateliers nationaux ferment le 21 juin 1848 → 23 juin : barricades à Paris → répression sanglante par Cavaignac. Blanc s'exile en Angleterre.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Leroux</span> Pierre Leroux (1797-1871) — La solidarité et la démocratie sociale</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>Pierre Leroux</strong>1797-1871 · Ouvrier typographe · Inventeur du mot solidarité</div>
+      <div class="f-portrait-body">Renonce à Polytechnique faute de ressources. Revendicateur (à tort) de l'invention du mot « socialisme ». Lié à George Sand. Ami de Victor Hugo en exil. Influence sur Jaurès.</div>
+    </div>
+    <div class="f-key">Leroux invente le concept de <strong>solidarité</strong> pour désigner la charité organisée par la société (≠ charité individuelle chrétienne). La solidarité doit rendre possible la combinaison de la liberté et de l'égalité. Elle est supérieure au christianisme car elle concilie amour de soi et amour d'autrui.</div>
+    <div class="f-text"><em>De l'Humanité</em> (1840) : l'Homme individuel est attaché à l'humanité par un lien nécessaire — pas simplement un lien social (qui n'empêche ni l'égoïsme ni le despotisme) mais un lien humain universel. Son socialisme part de l'individu pour rejoindre l'humanité.</div>
+    <div class="f-text">La <strong>fausse propriété</strong> (qui permet de disposer du travail des autres) est responsable de la concurrence et du paupérisme. Leroux prône des formes associantes de propriété. Il n'est pas anti-État : il conçoit la réforme dans le cadre étatique, avec un droit tutélaire de l'État pour protéger la liberté contractuelle contre le despotisme économique.</div>
+    <div class="f-quote">« Nous sommes socialistes si l'on entend par socialisme la doctrine qui ne sacrifiera aucun des termes de la formule : liberté, fraternité, unité, mais les conciliera tous. »<cite>Pierre Leroux, 1834</cite></div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Révolte des Canuts (nov. 1831) = point de départ symbolique du socialisme en France</li>
+      <li>Socialisme = combat pour l'égalité sociale RÉELLE (≠ égalité juridique formelle des libéraux)</li>
+      <li>Cabet : communisme chrétien · Voyage en Icarie · gradualisme · communautés aux USA</li>
+      <li>Louis Blanc : ateliers sociaux · droit au travail · État social protecteur · précurseur de l'État-providence</li>
+      <li>Leroux : inventeur du concept de solidarité · humanité de l'homme · religion de l'humanité</li>
+      <li>Juin 1848 : fermeture des ateliers nationaux → barricades → répression → fin du rêve républicain social</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f8">← Fiche #8</label><label for="r-f10">Fiche #10 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 10 -->
+<div class="page-content" id="page-f10"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #10 — Chapitre IV, Sections 1&amp;2 (suite)</div>
+    <h2>Les penseurs socialistes — Blanqui et Proudhon</h2>
+    <div class="fiche-intro">Deux penseurs socialistes radicaux et originaux, très différents l'un de l'autre. Blanqui incarne la révolution en acte — avant-garde armée, dictature provisoire. Proudhon est le plus grand penseur socialiste français — il pense contre les socialistes, contre les républicains, contre l'État. Il invente l'anarchisme et finit fédéraliste.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Blanqui</span> Auguste Blanqui (1805-1881) — le néo-babouvisme révolutionnaire</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>A. Blanqui</strong>1805-1881 · « L'Enfermé » · 37 ans en prison</div>
+      <div class="f-portrait-body">Fils d'un conventionnel devenu préfet d'empire. Éducation soignée. Adhère à la Charbonnerie, Société des amis du peuple, Société des saisons. Deux fois condamné à mort, gracié. Incarne la révolution par les armes.</div>
+    </div>
+    <div class="f-text">Héritier de Babeuf (« conjuration des égaux » sous le Directoire) et du néo-babouvisme. Sa pensée : <em>La Critique Sociale</em> (1885, posthume) = adaptation du babouvisme révolutionnaire à la Révolution industrielle. La lutte des classes = « un duel à mort entre le revenu et le salaire ».</div>
+    <div class="f-key">Blanqui ne croit pas à l'efficacité du suffrage universel, ni à la réforme graduelle (contrairement à Blanc, Leroux). Il prône l'insurrection armée et pense que les masses sont ignorantes — il faut une <strong>avant-garde révolutionnaire</strong> pour les éclairer. Prendre le contrôle du pouvoir d'État d'abord, puis anéantir la société bourgeoise.</div>
+    <div class="f-alerte"><strong>Influence</strong>Ses idées sont au cœur de la Commune de Paris (1870-1871). Son modèle d'avant-garde révolutionnaire influencera Lénine. Traite Leroux et Blanc d'« endormeurs » qui débattent indéfiniment sans franchir l'obstacle.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Proudhon</span> Pierre-Joseph Proudhon (1809-1865) — de l'anarchisme au fédéralisme</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>P.-J. Proudhon</strong>1809-1865 · Besançon · Père de l'anarchisme</div>
+      <div class="f-portrait-body">Fils d'un débitant de bière. Bourse d'études au collège royal. Rejet des humiliations de classe. Ouvrier typographe. Sa formule « la propriété c'est le vol ! » (1840) le rend immédiatement célèbre. Rencontre Bakounine et Marx (dispute irréconciliable).</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 1 — La propriété c'est le vol ! (1840)</div>
+      <div class="f-quote">« Qu'est-ce que la propriété ? La propriété c'est le vol ! »<cite>Proudhon, Mémoire, 1840 — comparé par Marx au Qu'est-ce que le Tiers-État de Sieyès</cite></div>
+      <div class="f-text">Proudhon ne rejette pas toute propriété — il est attaché au « tien et au mien », à la famille, à la liberté individuelle. Ce qu'il rejette : la <strong>propriété absolue</strong> (jus in re) et l'abusus — le droit de jouir et de disposer à son gré, y compris du fruit du travail d'autrui.</div>
+      <div class="f-key">Erreur de compte capitaliste : le patron est quitte lorsqu'il a payé le salaire individuel de chaque ouvrier. MAIS il n'a pas payé le produit spécifique du travail <strong>collectif</strong> de l'ensemble des ouvriers (qui résulte de la combinaison de leurs efforts). Ce surtravail collectif non payé = vol.</div>
+      <div class="f-text">Solution : la <strong>possession individuelle</strong> (≠ propriété absolue). Droit transmissible, échangeable, mais limité — sans l'abusus qui permet de jouir du fruit du travail d'autrui.</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 2 — Père de l'anarchisme</div>
+      <div class="f-quote">« Vous êtes républicains ? — Oui. Démocrates ? — Non. Monarchistes ? — Non. Constitutionnels ? — Dieu m'en garde. Aristocrates ? — Point du tout. Qu'êtes-vous donc ? — Je suis anarchiste. »<cite>Proudhon</cite></div>
+      <div class="f-text">Pour Proudhon, l'anarchie n'est pas le désordre : c'est <strong>l'absence de maître, de souverain</strong>. « La souveraineté du droit par rapport au pouvoir. » L'ordre naturel (lois scientifiques) contre les commandements humains.</div>
+      <div class="f-text">Proudhon rejette autant la propriété privée absolue que le communisme des biens. Le communisme étatique conduit l'humanité « sur la route de la servitude » — anticipation du totalitarisme stalinien !</div>
+    </div>
+
+    <div class="f-sous">
+      <div class="f-sous-title">§ 3 — Contractualisme, mutualisme, fédéralisme</div>
+      <div class="f-text">À la fin de sa vie, Proudhon abandonne l'idée d'abolition totale de l'État. Il accepte le gouvernement comme mal nécessaire et aboutit à l'idée de <strong>fédération politique</strong>.</div>
+      <div class="f-text"><em>Idées générales de la Révolution au XIXe siècle</em> (1851) : remplacer les lois par des contrats. <strong>Mutuellisme</strong> : économie nouvelle fondée sur des accords mutuels, crédit gratuit (banque du peuple). <em>Du Principe fédératif</em> (1863) : France divisée en 12 régions indépendantes + parlement fédéral bilatéral (chambre des régions + chambre des professions).</div>
+      <div class="f-alerte"><strong>Le tournant conservateur</strong>Dans <em>De la justice dans la Révolution et dans l'Église</em> (1858), Proudhon se révèle réactionnaire sur la famille et la femme : « la femme est une matrice, sa place est au foyer, ni dans l'atelier ni dans la cité. » Proudhon est révolutionnaire sur la propriété, réactionnaire sur la famille.</div>
+      <div class="f-key">Sur le SFU : « Le plus sûr moyen de faire mentir le peuple. » Proudhon est encore plus radical que Blanqui dans sa critique du parlementarisme — mais sa voie est contractuelle et non révolutionnaire violente. Il dit à Marx : « Je préfère faire brûler la propriété à petit feu plutôt que de lui donner une nouvelle force en faisant une Saint-Barthélemy des propriétaires. »</div>
+    </div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Blanqui : néo-babouvisme · avant-garde révolutionnaire · insurrection armée · dictature provisoire · influence sur Lénine</li>
+      <li>Proudhon : « La propriété c'est le vol » (1840) — mais pas communiste (possession individuelle ≠ propriété collective)</li>
+      <li>Erreur de compte capitaliste : le travail collectif non payé = vol</li>
+      <li>Anarchie ≠ désordre = absence de maître = ordre naturel sans commandement humain</li>
+      <li>Évolution : anarchisme → contractualisme → mutualisme → fédéralisme (à la fin de sa vie)</li>
+      <li>SFU = « le plus sûr moyen de faire mentir le peuple »</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f9">← Fiche #9</label><label for="r-f11">Fiche #11 →</label></div>
+</div>
+</main></div>
+
+<!-- FICHE 11 -->
+<div class="page-content" id="page-f11"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #11 — Chapitre IV, Section 3</div>
+    <h2>Le marxisme — Marx, Engels et le socialisme scientifique</h2>
+    <div class="fiche-intro">Marx et Engels se définissent contre le « socialisme utopique » (Cabet, Saint-Simon, Proudhon) et fondent le « socialisme scientifique ». Trois piliers : la philosophie allemande (Hegel retourné), le socialisme français (sources idéologiques), l'économie politique classique britannique (Adam Smith, Ricardo). Leur doctrine = matérialisme historique + lutte des classes + critique du capitalisme.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Contexte</span> Formation de Marx et Engels</div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>Karl Marx</strong>1818-1883 · Trèves · Famille juive bourgeoise</div>
+      <div class="f-portrait-body">Études de droit puis philosophie à Berlin. Découvre Hegel en 1837. Critique de la philosophie hégélienne du droit (1843). Rencontre Engels en 1844 → amitié et collaboration jusqu'à la mort de Marx.</div>
+    </div>
+    <div class="f-portrait">
+      <div class="f-portrait-badge"><strong>Friedrich Engels</strong>1820-1895 · Manchester · Fils d'industriel textile</div>
+      <div class="f-portrait-body">Père l'envoie se former aux affaires en Angleterre. Observe les usines → <em>La situation des classes laborieuses en Angleterre</em> (1845). Financera Marx toute sa vie. Publiera les tomes II et III du Capital après la mort de Marx.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 1</span> Le matérialisme historique</div>
+    <div class="f-text">Expression forgée par Engels dans <em>L'Anti-Dühring</em> (1877-78) — Marx lui-même ne l'a jamais employée. Marx retient de Hegel la <strong>méthode dialectique</strong> (thèse-antithèse-synthèse) mais la retourne : Hegel faisait du monde réel l'expression de l'idée. Marx fait l'inverse.</div>
+    <div class="f-key">Ce n'est pas la conscience qui détermine la vie — c'est la <strong>vie qui détermine la conscience</strong>. L'infrastructure économique (mode de production, rapports sociaux de production) détermine la superstructure juridique et politique.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Stade historique</th><th>Mode de production (infrastructure)</th></tr></thead><tbody>
+      <tr><td>Tribal</td><td>Communauté primitive des biens</td></tr>
+      <tr><td>Antique</td><td>Esclavage — la force productive = les esclaves</td></tr>
+      <tr><td>Féodal</td><td>Servage médiéval dans les fiefs</td></tr>
+      <tr><td>Bourgeois</td><td>Capitalisme moderne</td></tr>
+      <tr><td>Prolétaire (à venir)</td><td>Socialisme → communisme (dépérissement de l'État)</td></tr>
+    </tbody></table></div>
+    <div class="f-text">L'<strong>idéologie</strong> (concept transformé par Marx) : pour lui ce n'est plus la « science des idées » (Destutt de Tracy). C'est la production d'idées morales, religieuses, politiques qui jettent un masque sur les vrais rapports sociaux de domination. « Les hommes marchent tête en bas » — l'idéologie les présente à l'envers.</div>
+    <div class="f-alerte"><strong>La religion = « opium du peuple »</strong>Les idéologies comme la religion ne sont que des moyens idéels de résoudre idéellement les contradictions terrestres. Leur contenu n'est que le produit de ces contradictions. Il faut partir du processus de vie réelle et non de l'illusion.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 2</span> La lutte des classes et le Manifeste communiste (1848)</div>
+    <div class="f-quote">« L'histoire de toute société jusqu'à nos jours n'a été que l'histoire de la lutte des classes. »<cite>Marx &amp; Engels, Manifeste du parti communiste, 1848</cite></div>
+    <div class="f-quote">« Prolétaires de tous pays, unissez-vous ! »<cite>Manifeste communiste, 1848 — derniers mots</cite></div>
+    <div class="f-text">Pour que l'histoire se mette en marche, il faut la <strong>conscience de classe</strong> des prolétaires. Les socialistes utopiques n'avaient pas perçu la force révolutionnaire spontanée du prolétariat. Marx innove : le communisme ne peut être que le produit du développement de la lutte des classes.</div>
+    <div class="f-text">Dans le Manifeste, deux issues possibles à la lutte bourgeoisie/prolétariat :</div>
+    <ul class="f-list">
+      <li>Transformation révolutionnaire de la société toute entière</li>
+      <li>Destruction des deux classes en lutte</li>
+    </ul>
+    <div class="f-text">La bourgeoisie a joué un rôle révolutionnaire : elle a « noyé les frissons sacrés de l'extase religieuse, de l'enthousiasme chevaleresque » pour mettre à la place une exploitation ouvrière « éhontée, ouverte, directe, brutale ». Ce faisant, elle a <strong>forgé ses propres fossoyeurs</strong> — les prolétaires qui utiliseront les armes que la bourgeoisie leur a données.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">§ 3</span> Le Capital (1867) — critique de l'économie politique classique</div>
+    <div class="f-text">L'énigme du profit que l'économie classique (Smith, Ricardo) laisse dans l'ombre : pourquoi un système basé sur l'échange libre produit-il des crises de plus en plus violentes et la misère croissante ?</div>
+    <div class="f-key">Réponse de Marx : la <strong>plus-value</strong>. Dans la journée de travail, une partie seulement est payée par le salaire (ce qui permet au travailleur de reproduire sa force de travail). La partie restante — le <strong>surtravail</strong> — va directement dans la poche du capitaliste. Ce « vol » déguisé constitue la base du <strong>profit</strong>.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Concept</th><th>Définition</th></tr></thead><tbody>
+      <tr><td>Plus-value</td><td>Quantité de valeur produite par le surtravail non payé au travailleur</td></tr>
+      <tr><td>Surtravail</td><td>Partie de la journée de travail non rémunérée par le salaire</td></tr>
+      <tr><td>Profit</td><td>Ce que le capitaliste propriétaire de l'outil productif tire de cette extorsion déguisée</td></tr>
+      <tr><td>Accumulation du capital</td><td>Concentration progressive dans un petit nombre de mains → chômage → misère → crises</td></tr>
+    </tbody></table></div>
+    <div class="f-text">La <strong>dictature du prolétariat</strong> (théorisée dans <em>Luttes de classes en France</em>) : stade de transition nécessaire pour supprimer la différence des classes et parvenir à une société sans classe. Objectif final : rendre les prolétaires maîtres des moyens de production, substituer la valeur d'usage à la valeur d'échange.</div>
+    <div class="f-exemple"><strong>La Commune de Paris (1870-1871)</strong>Marx la soutient totalement a posteriori et y voit un exemple paradigmatique de la dictature du prolétariat. Dans <em>La guerre civile en France</em> (1871), il tire les leçons : briser l'appareil d'État bourgeois · abolir police et armée permanente · fonctionnaires et magistrats élus et révocables · communes autonomes = cellule de base de la reconstruction.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-bloc-title"><span class="f-num">Héritage</span> Marx aujourd'hui</div>
+    <div class="f-text">Le paradoxe : des économistes libéraux rouvrent le Capital après la crise des subprimes (2008) pour comprendre les crises du capitalisme et sa tendance monopolistique. Thomas Piketty reprend les termes marxistes dans <em>Le Capital au XXIe siècle</em> (même s'il s'en défend). La juriste Katharina Pistor (<em>Le Code du Capital</em>, 2019) montre comment le droit crée et concentre la richesse capitaliste — dans la lignée de Proudhon et de Marx.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>À retenir</strong>
+    <ul>
+      <li>Matérialisme historique : infrastructure économique → superstructure juridique/politique</li>
+      <li>4 stades : tribal → antique (esclavage) → féodal (servage) → bourgeois (capitalisme) → prolétaire (à venir)</li>
+      <li>Idéologie = voile qui masque les vrais rapports de domination · conscience de classe = condition de la lutte</li>
+      <li>Manifeste 1848 : lutte des classes = moteur de l'histoire · bourgeoisie forge ses propres fossoyeurs</li>
+      <li>Plus-value = surtravail non payé = base du profit = extorsion déguisée</li>
+      <li>Dictature du prolétariat = stade transitoire vers la société sans classe</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f10">← Fiche #10</label><label for="r-home">Retour à l'accueil</label></div>
+</div>
+</main></div>
+
+<footer>
+  <p>Histoire des idées politiques <span>après 1789</span> — Fiches de révision 2025-2026 · 11 fiches complètes</p>
+</footer>
+
+</div><!-- end .wrap -->
+</body>
+</html>
