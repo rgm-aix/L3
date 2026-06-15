@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Droit Judiciaire Privé — Révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+:root{
+  --r:#8B0000;--rv:#B22222;--rp:#fdf0f0;--rb:#e8c8c8;
+  --n:#1a1a1a;--gf:#2d2d2d;--g:#555;--gc:#f6f8fb;--b:#fefefe;
+  --green:#1a5e1a;--greenl:#e8f5e8;--blue:#003580;--bluel:#e8eef8;
+  --orange:#7a3800;--orangel:#fff3e0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--b);color:var(--n);font-size:17px;line-height:1.75}
+header{background:var(--n);color:#fff;padding:1.8rem 2rem 1.4rem;border-bottom:4px solid var(--r)}
+header h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:600}
+header h1 span{color:#B22222}
+header small{color:#aaa;font-size:.82rem;letter-spacing:.06em;display:block;margin-top:.2rem}
+nav{background:var(--r);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav ul{list-style:none;display:flex;flex-wrap:nowrap;min-width:max-content}
+.nav-radio{display:none}
+nav label{display:block;padding:.65rem .85rem;color:rgba(255,255,255,.82);font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
+.page-content{display:none}
+#home-content{display:block}
+
+/* Radio nav logic for 15 fiches + home */
+#r-home:checked~.wrap .nav-home,
+#r-f1:checked~.wrap .nav-f1,
+#r-f2:checked~.wrap .nav-f2,
+#r-f3:checked~.wrap .nav-f3,
+#r-f4:checked~.wrap .nav-f4,
+#r-f5:checked~.wrap .nav-f5,
+#r-f6:checked~.wrap .nav-f6,
+#r-f7:checked~.wrap .nav-f7,
+#r-f8:checked~.wrap .nav-f8,
+#r-f9:checked~.wrap .nav-f9,
+#r-f10:checked~.wrap .nav-f10,
+#r-f11:checked~.wrap .nav-f11,
+#r-f12:checked~.wrap .nav-f12,
+#r-f13:checked~.wrap .nav-f13,
+#r-f14:checked~.wrap .nav-f14,
+#r-f15:checked~.wrap .nav-f15{color:#fff!important;background:rgba(255,255,255,.18)!important;border-bottom-color:#fff!important}
+
+#r-home:checked~.wrap #home-content{display:block}
+#r-f1:checked~.wrap #page-f1,
+#r-f2:checked~.wrap #page-f2,
+#r-f3:checked~.wrap #page-f3,
+#r-f4:checked~.wrap #page-f4,
+#r-f5:checked~.wrap #page-f5,
+#r-f6:checked~.wrap #page-f6,
+#r-f7:checked~.wrap #page-f7,
+#r-f8:checked~.wrap #page-f8,
+#r-f9:checked~.wrap #page-f9,
+#r-f10:checked~.wrap #page-f10,
+#r-f11:checked~.wrap #page-f11,
+#r-f12:checked~.wrap #page-f12,
+#r-f13:checked~.wrap #page-f13,
+#r-f14:checked~.wrap #page-f14,
+#r-f15:checked~.wrap #page-f15{display:block}
+
+/* Hide home when any fiche is selected */
+#r-f1:checked~.wrap #home-content,
+#r-f2:checked~.wrap #home-content,
+#r-f3:checked~.wrap #home-content,
+#r-f4:checked~.wrap #home-content,
+#r-f5:checked~.wrap #home-content,
+#r-f6:checked~.wrap #home-content,
+#r-f7:checked~.wrap #home-content,
+#r-f8:checked~.wrap #home-content,
+#r-f9:checked~.wrap #home-content,
+#r-f10:checked~.wrap #home-content,
+#r-f11:checked~.wrap #home-content,
+#r-f12:checked~.wrap #home-content,
+#r-f13:checked~.wrap #home-content,
+#r-f14:checked~.wrap #home-content,
+#r-f15:checked~.wrap #home-content{display:none}
+
+/* ---- HOME ---- */
+#home{padding:2.5rem 2.5rem 4rem}
+.home-intro{text-align:center;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--rb)}
+.home-intro h2{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:700;margin-bottom:.4rem}
+.home-intro p{color:var(--g);font-size:.95rem;max-width:600px;margin:0 auto}
+.home-section-title{font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin:2rem 0 .9rem;padding-bottom:.3rem;border-bottom:1px solid var(--rb)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+label.card{display:block;background:var(--b);border:1.5px solid var(--rb);border-top:4px solid var(--r);padding:1.1rem 1rem .9rem;cursor:pointer;color:inherit;transition:box-shadow .15s}
+label.card:hover{box-shadow:0 4px 18px rgba(139,0,0,.13)}
+label.card .card-num{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.25rem}
+label.card h3{font-size:.9rem;font-weight:700;color:var(--r);margin-bottom:.2rem;line-height:1.3}
+label.card p{font-size:.77rem;color:var(--g);line-height:1.35}
+
+/* ---- FICHE LAYOUT ---- */
+main{max-width:100%;margin:0 auto;padding:2.2rem 2.5rem 5rem}
+.fiche-page{max-width:860px;margin:0 auto}
+.fiche-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid var(--r)}
+.fiche-meta{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem}
+.fiche-header h2{font-size:clamp(1.2rem,3vw,1.65rem);font-weight:700;color:var(--n)}
+.fiche-intro{margin-top:.9rem;font-size:.93rem;color:var(--g);line-height:1.65;padding:.75rem 1.1rem;background:var(--gc);border-left:4px solid var(--rb)}
+
+/* ---- CONTENT BLOCKS ---- */
+.f-bloc{margin-bottom:2.6rem}
+.f-h1{font-size:1.05rem;font-weight:700;color:#fff;background:var(--n);padding:.5rem .9rem;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.f-h1 .f-num{background:var(--r);padding:.1rem .5rem;font-size:.72rem;letter-spacing:.06em;flex-shrink:0}
+.f-h2{font-size:.98rem;font-weight:700;color:var(--r);margin:1.2rem 0 .6rem;padding-bottom:.25rem;border-bottom:1px dotted var(--rb);padding-left:1rem;border-left:3px solid var(--r)}
+.f-h3{font-size:.92rem;font-weight:700;color:var(--gf);margin:.9rem 0 .4rem;padding-left:1.8rem;position:relative}
+.f-h3::before{content:'▸';position:absolute;left:.8rem;color:var(--r);font-size:.8rem;top:.1rem}
+.f-text{font-size:.92rem;color:var(--gf);line-height:1.78;margin-bottom:.6rem;padding-left:1rem}
+.f-list{list-style:none;padding:0;margin:.3rem 0 .7rem 1rem}
+.f-list li{font-size:.9rem;color:var(--gf);line-height:1.65;padding:.12rem 0 .12rem 1.2rem;position:relative}
+.f-list li::before{content:'—';position:absolute;left:0;color:var(--r);font-weight:700}
+.f-list li strong{color:var(--r)}
+
+/* Colored boxes */
+.f-key{background:var(--rp);border:1.5px solid var(--rb);padding:.75rem 1.1rem;margin:.5rem 0 .9rem 1rem;font-size:.91rem;line-height:1.65;color:var(--gf);display:flex;gap:.6rem;align-items:baseline}
+.f-key::before{content:'→';color:var(--r);font-weight:700;flex-shrink:0;font-size:1.1rem}
+.f-alerte{background:#fffbf0;border-left:4px solid #c47900;padding:.75rem 1rem;margin:.5rem 0 .9rem 1rem;font-size:.88rem;line-height:1.65;color:var(--gf)}
+.f-alerte strong{color:#9a5e00;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.25rem}
+.f-exemple{background:var(--gc);border-left:3px solid #888;padding:.7rem 1rem;margin:.5rem 0 .9rem 1rem;font-size:.88rem;line-height:1.65;color:var(--g)}
+.f-exemple strong{color:var(--gf);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.f-success{background:var(--greenl);border-left:4px solid var(--green);padding:.7rem 1rem;margin:.5rem 0 .9rem 1rem;font-size:.88rem;line-height:1.65;color:#1a3a1a}
+.f-success strong{color:var(--green);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.f-info{background:var(--bluel);border-left:4px solid var(--blue);padding:.7rem 1rem;margin:.5rem 0 .9rem 1rem;font-size:.88rem;line-height:1.65;color:#001a3a}
+.f-info strong{color:var(--blue);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+
+/* Image / schema boxes */
+.f-schema{border:1.5px solid var(--rb);background:var(--gc);padding:1rem 1.2rem;margin:.7rem 0 1rem 1rem;font-size:.87rem}
+.f-schema-title{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.6rem}
+.f-flow{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:.4rem 0}
+.f-flow-item{background:var(--r);color:#fff;padding:.3rem .7rem;font-size:.82rem;font-weight:600;border-radius:2px}
+.f-flow-arrow{color:var(--r);font-size:1.1rem;font-weight:700}
+.f-grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 1rem 1rem}
+.f-grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin:.5rem 0 1rem 1rem}
+.f-cell{border:1.5px solid var(--rb);padding:.65rem .8rem;font-size:.85rem}
+.f-cell-title{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--r);margin-bottom:.3rem}
+
+/* Table */
+.f-table-wrap{overflow-x:auto;margin:.5rem 0 .9rem 1rem}
+.f-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.f-table thead tr{background:var(--n);color:#fff}
+.f-table thead th{padding:.45rem .75rem;text-align:left;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+.f-table tbody tr:nth-child(even){background:var(--gc)}
+.f-table tbody td{padding:.42rem .75rem;border-bottom:1px solid var(--rb);vertical-align:top;font-size:.88rem}
+.f-table tbody td:first-child{font-weight:700;color:var(--r)}
+
+/* Retenir box */
+.f-retenir{background:var(--rp);border-left:4px solid var(--r);padding:.9rem 1.1rem;margin-top:2rem;font-size:.91rem;line-height:1.7;color:var(--gf)}
+.f-retenir strong{color:var(--r);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.f-retenir ul{list-style:none;padding:0;margin:.3rem 0}
+.f-retenir ul li{padding:.08rem 0 .08rem 1.2rem;position:relative;font-size:.9rem}
+.f-retenir ul li::before{content:'✓';position:absolute;left:0;color:var(--r);font-weight:700;font-size:.78rem}
+
+/* Illustration boxes */
+.f-illus{background:var(--orangel);border:1.5px solid #c47900;padding:.8rem 1rem;margin:.5rem 0 .9rem 1rem;font-size:.88rem;line-height:1.65;color:var(--orange)}
+.f-illus strong{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.25rem}
+
+/* Nav */
+.fiche-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rb)}
+.fiche-nav label{color:var(--rv);cursor:pointer;font-size:.85rem;text-decoration:underline}
+
+footer{background:var(--n);color:#777;text-align:center;padding:1.2rem;font-size:.78rem;letter-spacing:.05em;border-top:3px solid var(--r);margin-top:2rem}
+footer span{color:#B22222}
+
+@media(max-width:900px){
+  main{padding:1.4rem .9rem 4rem}
+  header{padding:1.2rem 1rem 1rem}
+  nav label{padding:.55rem .5rem;font-size:.66rem}
+  #home{padding:1.5rem .9rem 3rem}
+  .cards-grid{grid-template-columns:1fr 1fr}
+  .f-grid2,.f-grid3{grid-template-columns:1fr}
+  .f-text,.f-list,.f-key,.f-alerte,.f-exemple,.f-success,.f-info,.f-illus,.f-table-wrap,.f-schema,.f-retenir{padding-left:.6rem;margin-left:.5rem}
+}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<!-- Radio inputs for all pages -->
+<input type="radio" name="page" class="nav-radio" id="r-home" checked>
+<input type="radio" name="page" class="nav-radio" id="r-f1">
+<input type="radio" name="page" class="nav-radio" id="r-f2">
+<input type="radio" name="page" class="nav-radio" id="r-f3">
+<input type="radio" name="page" class="nav-radio" id="r-f4">
+<input type="radio" name="page" class="nav-radio" id="r-f5">
+<input type="radio" name="page" class="nav-radio" id="r-f6">
+<input type="radio" name="page" class="nav-radio" id="r-f7">
+<input type="radio" name="page" class="nav-radio" id="r-f8">
+<input type="radio" name="page" class="nav-radio" id="r-f9">
+<input type="radio" name="page" class="nav-radio" id="r-f10">
+<input type="radio" name="page" class="nav-radio" id="r-f11">
+<input type="radio" name="page" class="nav-radio" id="r-f12">
+<input type="radio" name="page" class="nav-radio" id="r-f13">
+<input type="radio" name="page" class="nav-radio" id="r-f14">
+<input type="radio" name="page" class="nav-radio" id="r-f15">
+
+<div class="wrap">
+<header>
+  <label for="r-home" style="cursor:pointer;display:block">
+    <h1>Droit <span>Judiciaire Privé</span></h1>
+    <small>15 fiches de révision · Pédagogiques avec illustrations · Code de procédure civile</small>
+  </label>
+</header>
+<nav>
+  <ul>
+    <li><label class="nav-home" for="r-home">Accueil</label></li>
+    <li><label class="nav-f1" for="r-f1">#1 Compétence</label></li>
+    <li><label class="nav-f2" for="r-f2">#2 Notion d'action</label></li>
+    <li><label class="nav-f3" for="r-f3">#3 Caractères de l'action</label></li>
+    <li><label class="nav-f4" for="r-f4">#4 Intérêt &amp; qualité</label></li>
+    <li><label class="nav-f5" for="r-f5">#5 Conditions objectives</label></li>
+    <li><label class="nav-f6" for="r-f6">#6 Capacité &amp; pouvoir</label></li>
+    <li><label class="nav-f7" for="r-f7">#7 Sanctions</label></li>
+    <li><label class="nav-f8" for="r-f8">#8 La demande</label></li>
+    <li><label class="nav-f9" for="r-f9">#9 Effets demande</label></li>
+    <li><label class="nav-f10" for="r-f10">#10 Défenses</label></li>
+    <li><label class="nav-f11" for="r-f11">#11 Lien juridique</label></li>
+    <li><label class="nav-f12" for="r-f12">#12 Principes directeurs</label></li>
+    <li><label class="nav-f13" for="r-f13">#13 Déroulement</label></li>
+    <li><label class="nav-f14" for="r-f14">#14 Procédures &amp; incidents</label></li>
+    <li><label class="nav-f15" for="r-f15">#15 Jugement &amp; recours</label></li>
+  </ul>
+</nav>
+
+<!-- ===== ACCUEIL ===== -->
+<div id="home-content">
+<div id="home">
+  <div class="home-intro">
+    <h2>Droit Judiciaire Privé</h2>
+    <p>Les règles du jeu du procès civil expliquées simplement · Toutes les notions du cours · Illustrations &amp; exemples · Aucune impasse</p>
+  </div>
+
+  <div class="home-section-title">Titre préliminaire — La compétence</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f1">
+      <div class="card-num">Fiche #1</div>
+      <h3>La compétence</h3>
+      <p>Attribution · Territoriale · TJ, TC, CPH · Taux ressort · Prorogation · Clauses</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Partie 1 — L'action (Notion)</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f2">
+      <div class="card-num">Fiche #2</div>
+      <h3>Notion d'action en justice</h3>
+      <p>Droit ≠ action ≠ demande · Définition art. 30 CPC · Classification des actions · Droit fondamental</p>
+    </label>
+    <label class="card" for="r-f3">
+      <div class="card-num">Fiche #3</div>
+      <h3>Caractères de l'action</h3>
+      <p>Facultatif (MARD, arbitrage) · Libre (abus) · Gratuit (dépens, art. 700, AJ)</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Partie 1 — L'action (Conditions)</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f4">
+      <div class="card-num">Fiche #4</div>
+      <h3>Intérêt à agir &amp; qualité</h3>
+      <p>Conditions subjectives · Intérêt : né, actuel, légitime, personnel · Qualité : actions attitrées</p>
+    </label>
+    <label class="card" for="r-f5">
+      <div class="card-num">Fiche #5</div>
+      <h3>Conditions objectives</h3>
+      <p>Prescription · Forclusion · Chose jugée (Césaréo 2006) · Non-incohérence (estoppel)</p>
+    </label>
+    <label class="card" for="r-f6">
+      <div class="card-num">Fiche #6</div>
+      <h3>Capacité &amp; pouvoir d'agir</h3>
+      <p>Capacité d'exercice &amp; jouissance · Pouvoir d'agir · Représentation ad agundum &amp; ad litem</p>
+    </label>
+    <label class="card" for="r-f7">
+      <div class="card-num">Fiche #7</div>
+      <h3>Sanctions des conditions</h3>
+      <p>Nullité de fond (art. 117) · Abus de droit → DI · Amende civile (art. 32-1)</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Partie 1 — L'action (Mise en œuvre)</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f8">
+      <div class="card-num">Fiche #8</div>
+      <h3>La demande en justice</h3>
+      <p>Initiale (assignation, requête) · Incidentes : reconventionnelle, additionnelle, intervention</p>
+    </label>
+    <label class="card" for="r-f9">
+      <div class="card-num">Fiche #9</div>
+      <h3>Effets de la demande</h3>
+      <p>Effets processuels · Interruption de prescription · Transmissibilité du droit · Mise en demeure</p>
+    </label>
+    <label class="card" for="r-f10">
+      <div class="card-num">Fiche #10</div>
+      <h3>Moyens de défense</h3>
+      <p>Défenses au fond · Exceptions de procédure (in limine litis) · Fins de non-recevoir (art. 122)</p>
+    </label>
+  </div>
+
+  <div class="home-section-title">Partie 2 — L'instance</div>
+  <div class="cards-grid">
+    <label class="card" for="r-f11">
+      <div class="card-num">Fiche #11</div>
+      <h3>Le lien juridique d'instance</h3>
+      <p>Parties · Tiers · Représentation · Objet du litige · Cause (Césaréo) · Principe de concentration</p>
+    </label>
+    <label class="card" for="r-f12">
+      <div class="card-num">Fiche #12</div>
+      <h3>Principes directeurs du procès</h3>
+      <p>Contradictoire (art. 14-16) · Rôle du juge (faits, droit, Dauvin) · Coopération (décret 2025)</p>
+    </label>
+    <label class="card" for="r-f13">
+      <div class="card-num">Fiche #13</div>
+      <h3>Déroulement de l'instance</h3>
+      <p>Procédure ordinaire TJ · Introduction · Instruction (conventionnelle / judiciaire) · Plaidoiries</p>
+    </label>
+    <label class="card" for="r-f14">
+      <div class="card-num">Fiche #14</div>
+      <h3>Procédures particulières &amp; incidents</h3>
+      <p>Référé · Requête · Défaut · Jonction/disjonction · Interruption · Suspension · Péremption · Désistement</p>
+    </label>
+    <label class="card" for="r-f15">
+      <div class="card-num">Fiche #15</div>
+      <h3>Jugement &amp; voies de recours</h3>
+      <p>Existence · Effets · Exécution provisoire · Appel · Opposition · Cassation · Tierce opposition</p>
+    </label>
+  </div>
+</div>
+</div>
+
+<!-- ===== FICHE 1 ===== -->
+<div class="page-content" id="page-f1"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #1 — Titre préliminaire</div>
+    <h2>La compétence — Attribution et territoriale</h2>
+    <div class="fiche-intro">Avant tout procès, il faut répondre à deux questions : <strong>quelle matière</strong> relève de quel juge (compétence d'attribution) et <strong>dans quelle ville</strong> (compétence territoriale) ? Ce sont les règles d'orientation vers la bonne juridiction.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Compétence d'attribution — Quel juge pour quelle matière ?</div>
+
+    <div class="f-illus"><strong>Illustration</strong>Imaginez la justice comme un grand hôpital avec des services spécialisés. On n'amène pas une jambe cassée aux urgences cardiaques. La compétence d'attribution, c'est ça : trouver le bon service.</div>
+
+    <div class="f-h2">A. Le Tribunal Judiciaire (TJ) — le juge de droit commun</div>
+    <div class="f-text">Né en 2020 de la fusion de l'ancien TGI et de l'ancien TI, le TJ est la juridiction <strong>de droit commun</strong> : il est compétent pour tout ce qui n'est pas attribué à une autre juridiction (<em>compétence résiduelle</em>).</div>
+    <div class="f-text">Il a aussi des compétences <strong>exclusives</strong> (art. L211-4 COJ) : état et capacité des personnes, droit immobilier, nationalité, réparation de préjudices corporels, divorces…</div>
+
+    <div class="f-schema">
+      <div class="f-schema-title">Au sein du TJ — qui fait quoi ?</div>
+      <div class="f-table-wrap"><table class="f-table" style="margin:0"><thead><tr><th>Juge spécialisé</th><th>Compétence</th></tr></thead><tbody>
+        <tr><td>JAF</td><td>Divorces, séparations, autorité parentale</td></tr>
+        <tr><td>JEX</td><td>Exécution des jugements, saisies</td></tr>
+        <tr><td>JCP</td><td>Personnes vulnérables, litiges ≤ 10 000 €</td></tr>
+        <tr><td>JME</td><td>Gestion de la mise en état de l'affaire (procédure écrite)</td></tr>
+        <tr><td>Chambre de proximité</td><td>Litiges civils/mobiliers &lt; 10 000 €</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="f-h2">B. Les juridictions d'exception</div>
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Tribunal de Commerce (TC)</div>
+        Litiges entre commerçants, actes de commerce, procédures collectives. Composé de commerçants élus par leurs pairs.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Conseil de Prud'hommes (CPH)</div>
+        Litiges nés d'un contrat de travail entre employeur et salarié. Compétence <strong>exclusive</strong>. Tentative de conciliation obligatoire préalable.
+      </div>
+    </div>
+
+    <div class="f-h2">C. Le taux du ressort — appel possible ou non ?</div>
+    <div class="f-key">Le <strong>taux du ressort</strong> est fixé à <strong>5 000 €</strong>. En-dessous : jugement en dernier ressort (pas d'appel). Au-dessus : jugement en 1er ressort (appel possible). Ce seuil va peut-être passer à 10 000 € (projet de décret Rivage 2025).</div>
+    <div class="f-text">Au TJ, le taux du ressort détermine aussi la procédure :</div>
+    <div class="f-grid2">
+      <div class="f-cell"><div class="f-cell-title">≤ 10 000 €</div>Procédure orale · Pas d'avocat obligatoire</div>
+      <div class="f-cell"><div class="f-cell-title">&gt; 10 000 €</div>Procédure écrite · Avocat obligatoire</div>
+    </div>
+
+    <div class="f-h2">D. Calcul du montant de la demande</div>
+    <div class="f-text"><strong>Principe :</strong> chaque prétention est appréciée isolément (art. 35 CPC).</div>
+    <div class="f-text"><strong>Exceptions :</strong></div>
+    <ul class="f-list">
+      <li>Si plusieurs prétentions <strong>connexes</strong> contre le même adversaire → valeur totale</li>
+      <li>Si plusieurs prétentions fondées sur un <strong>titre commun</strong> (même acte juridique) → montant de la plus élevée</li>
+      <li>Demandes reconventionnelles fondées sur la demande initiale + frais art. 700 → non comptabilisés</li>
+    </ul>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Compétence territoriale — Dans quelle ville ?</div>
+
+    <div class="f-illus"><strong>Illustration</strong>Si vous avez un litige avec quelqu'un à Lyon, faut-il aller plaider à Paris ou à Lyon ? La règle générale : on va chez le défendeur. C'est lui qui subit le procès, pas lui qui le choisit.</div>
+
+    <div class="f-h2">A. Règle de principe (art. 42 CPC)</div>
+    <div class="f-key">La juridiction compétente est celle du lieu où <strong>réside le défendeur</strong>. Pour une personne morale = lieu du siège social (ou de la succursale impliquée dans le litige).</div>
+
+    <div class="f-h2">B. Options de compétence — quand le demandeur a le choix</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Matière</th><th>Options supplémentaires (art. 46 CPC)</th></tr></thead><tbody>
+      <tr><td>Contractuelle</td><td>Lieu de livraison de la chose OU lieu d'exécution de la prestation</td></tr>
+      <tr><td>Délictuelle</td><td>Lieu du fait dommageable OU lieu du préjudice subi</td></tr>
+      <tr><td>Aliments</td><td>Lieu où demeure le créancier (victime)</td></tr>
+      <tr><td>Mixte (droit personnel + réel)</td><td>Lieu de l'immeuble</td></tr>
+      <tr><td>Consommateur</td><td>Lieu où habitait au moment du contrat ou du dommage</td></tr>
+    </tbody></table></div>
+
+    <div class="f-h2">C. Compétences exclusives — un seul juge possible</div>
+    <ul class="f-list">
+      <li><strong>Matière successorale</strong> : juridiction du lieu d'ouverture de la succession (art. 45)</li>
+      <li><strong>Matière réelle immobilière</strong> : juridiction du lieu de l'immeuble (art. 44)</li>
+    </ul>
+
+    <div class="f-alerte"><strong>Référé &amp; mesures d'instruction préventives (art. 145)</strong>Depuis le décret Magico Bus II (8 juillet 2025), la compétence territoriale pour l'article 145 est au choix du demandeur : soit la juridiction susceptible de connaître du fond, soit celle du lieu d'exécution de la mesure. Exception : si la mesure porte sur un immeuble → uniquement le juge du lieu de l'immeuble.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> Prorogation de compétence — Élargir les pouvoirs d'un juge</div>
+
+    <div class="f-h2">A. Prorogation légale</div>
+    <div class="f-text">Pour éviter le morcellement des litiges, un juge saisi d'une demande peut connaître de tous les moyens de défense et toutes les demandes incidentes qui s'y rattachent, même si normalement une autre juridiction serait compétente — sauf compétence exclusive.</div>
+
+    <div class="f-h2">B. Prorogation conventionnelle (clauses attributives)</div>
+    <div class="f-text">Les parties peuvent insérer dans leur contrat une clause pour choisir à l'avance un tribunal. Mais attention : ces clauses sont très encadrées.</div>
+
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Clauses sur la compétence d'attribution (art. 41)</div>
+        Valables seulement si le litige est <strong>déjà né</strong>. Concerne le choix entre chambre de proximité et siège du TJ.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Clauses sur la compétence territoriale (art. 48)</div>
+        Valables seulement si : ① toutes les parties ont contracté en tant que <strong>commerçants</strong> ② la clause est <strong>très apparente</strong> dans le contrat.
+      </div>
+    </div>
+    <div class="f-alerte"><strong>Cas d'un acte mixte</strong>Si l'une des parties n'est pas commerçante (ex. un particulier qui achète à un commerçant), la clause attributive de compétence lui est inopposable.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #1 Compétence</strong>
+    <ul>
+      <li>TJ = juge de droit commun (compétence résiduelle) · TC = litiges commerciaux · CPH = litiges de travail</li>
+      <li>Taux du ressort = 5 000 € (appel si au-dessus) · Seuil procédure écrite TJ = 10 000 €</li>
+      <li>Compétence territoriale : lieu du défendeur par défaut (art. 42)</li>
+      <li>Contrat → aussi lieu de livraison / prestation · Délit → aussi lieu du dommage</li>
+      <li>Successoral = lieu d'ouverture · Immeuble = lieu de l'immeuble (exclusif)</li>
+      <li>Clause attributive territoriale = valable seulement entre commerçants + clause très apparente</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-home">← Accueil</label><label for="r-f2">Fiche #2 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 2 ===== -->
+<div class="page-content" id="page-f2"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #2 — Partie 1, Titre 1</div>
+    <h2>La notion d'action en justice</h2>
+    <div class="fiche-intro">Trois mots à ne jamais confondre en DJP : le <strong>droit</strong> (votre créance, votre propriété), l'<strong>action</strong> (le droit de demander au juge d'examiner votre cas) et la <strong>demande</strong> (l'acte concret qui saisit le juge). Comprendre cette trilogie, c'est comprendre 30% du cours.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Définition de l'action — Art. 30 CPC</div>
+    <div class="f-key">L'action est le <strong>droit d'être entendu sur le fond d'une prétention</strong>, afin que le juge la dise bien ou mal fondée. Pour l'adversaire : le droit de <em>discuter</em> le bien-fondé de cette prétention.</div>
+
+    <div class="f-illus"><strong>Métaphore du guichet</strong>Vous êtes propriétaire d'un appartement (= le droit). Votre locataire ne paie plus. L'action en justice, c'est votre droit d'entrer dans le guichet du tribunal pour faire examiner votre problème. La demande, c'est le formulaire que vous remplissez pour passer ce guichet.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Le droit ≠ L'action — une distinction fondamentale</div>
+
+    <div class="f-h2">A. Historiquement : la confusion</div>
+    <div class="f-text">Pendant longtemps, on confondait les deux. On disait : « l'action, c'est le droit mis en mouvement » (Demolombe). Problème : cette vision était fausse car :</div>
+    <ul class="f-list">
+      <li>Il existe des <strong>droits sans action</strong> : ex. une obligation naturelle (vous devez moralement rembourser quelqu'un mais juridiquement vous n'y êtes pas forcé) → pas d'action possible</li>
+      <li>Il existe des <strong>actions sans droit</strong> : ex. l'action du Ministère Public pour défendre l'ordre public — il n'a aucun droit subjectif à défendre</li>
+    </ul>
+
+    <div class="f-h2">B. La distinction moderne — Motulsky et Vizioz</div>
+    <div class="f-key">L'action et le droit sont deux choses distinctes. On peut être <strong>recevable</strong> à agir (avoir le droit d'action) mais être <strong>mal fondé</strong> (ne pas avoir le droit substantiel). Ex. : je peux saisir le tribunal valablement, mais le juge peut décider que ma créance n'existe pas.</div>
+
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Recevabilité (≠ fond)</div>
+        A-t-on le droit d'être <em>entendu</em> ? → Conditions de l'action (intérêt, qualité, délais…). Examiné en premier.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Bien-fondé</div>
+        A-t-on <em>raison</em> sur le fond ? → Le juge examine si le droit invoqué existe. Examiné après recevabilité.
+      </div>
+    </div>
+
+    <div class="f-alerte"><strong>Conséquence pratique cruciale</strong>Si le juge déclare l'action <em>irrecevable</em>, il ne regarde pas du tout si vous avez raison sur le fond. Il rend sa décision uniquement sur le défaut de condition d'existence de l'action (pas d'intérêt, délai expiré…).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> L'action ≠ La demande</div>
+
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">L'action</div>
+        Droit abstrait de saisir le juge. Existe indépendamment de tout acte. Peut ne jamais se concrétiser si vous préférez négocier.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">La demande</div>
+        Acte concret par lequel vous exercez votre action (une assignation, une requête). Elle déclenche la procédure.
+      </div>
+    </div>
+
+    <div class="f-illus"><strong>Image</strong>L'action = votre droit de conduire une voiture (permis de conduire). La demande = le fait de démarrer le moteur ce matin-là et de prendre la route.</div>
+
+    <div class="f-text"><strong>Attention :</strong> la demande peut exister (et produire des effets !) même si l'action est irrecevable. Ex. : si vous déposez une demande en justice alors que votre délai a expiré, la demande <em>interrompt quand même la prescription</em> pendant un temps, avant que le juge ne la déclare irrecevable.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">4</span> Classification des actions</div>
+
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Type d'action</th><th>Objet du droit invoqué</th><th>Particularités</th></tr></thead><tbody>
+      <tr><td>Action personnelle</td><td>Droit de créance (contractuel ou délictuel)</td><td>Ne s'exerce qu'entre les parties (effet relatif) · Prescription 5 ans (art. 2224)</td></tr>
+      <tr><td>Action réelle</td><td>Droit réel (propriété, servitude…)</td><td>Opposable à tous · Juge compétent = lieu de la chose · Prescription 30 ans (art. 2227)</td></tr>
+      <tr><td>Action mixte</td><td>Droit personnel ET réel nés de la même opération (ex. vente immobilière)</td><td>Option de compétence : domicile défendeur OU lieu de l'immeuble</td></tr>
+      <tr><td>Action mobilière</td><td>Bien meuble</td><td>Prescription 5 ans</td></tr>
+      <tr><td>Action immobilière</td><td>Bien immeuble</td><td>Prescription 30 ans</td></tr>
+    </tbody></table></div>
+
+    <div class="f-exemple"><strong>Exemple d'action mixte</strong>Vous achetez un appartement. Le vendeur tarde à vous remettre les clés. Vous avez : ① une action personnelle (créance de délivrance en tant qu'acheteur) ② une action réelle (vous êtes déjà propriétaire, vous revendiquez l'immeuble). Cette combinaison = action mixte. Vous choisissez entre le TJ du domicile du vendeur ou celui du lieu de l'appartement.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">5</span> L'action comme droit fondamental</div>
+    <div class="f-text">Grâce à la CEDH (art. 6§1 : droit au procès équitable) et aux QPC devant le Conseil constitutionnel, l'action en justice est reconnue comme un <strong>droit fondamental</strong>.</div>
+    <div class="f-info"><strong>Conséquence</strong>Un État ne peut pas rendre l'accès au juge impossible ou excessivement difficile. La France a été condamnée par la CEDH pour « formalisme excessif incompatible avec l'effectivité de l'accès au juge » (arrêt Xavier Lucas c/ France, 9 mai 2022).</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #2 Notion d'action</strong>
+    <ul>
+      <li>Action ≠ droit substantiel : on peut être recevable à agir mais mal fondé (et vice versa)</li>
+      <li>Action ≠ demande : l'action est abstraite, la demande est l'acte concret qui saisit le juge</li>
+      <li>La demande peut produire des effets (interruption prescription) même si l'action sera déclarée irrecevable</li>
+      <li>Action personnelle (5 ans) / réelle (30 ans) / mixte (option de compétence)</li>
+      <li>Action = droit fondamental (art. 6§1 CEDH)</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f1">← Fiche #1</label><label for="r-f3">Fiche #3 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 3 ===== -->
+<div class="page-content" id="page-f3"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #3 — Partie 1, Titre 1, Chapitre 3</div>
+    <h2>Les caractères de l'action en justice</h2>
+    <div class="fiche-intro">L'action en justice est à la fois <strong>facultative</strong> (personne ne vous oblige à aller en justice), <strong>libre</strong> (vous ne pouvez pas être puni pour avoir agi, sauf abus), et <strong>gratuite</strong> (la justice est un service public, mais des frais existent).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Le caractère facultatif — Le procès n'est pas obligatoire</div>
+    <div class="f-text">Nul ne peut être contraint d'agir en justice. Et on ne peut pas reprocher à quelqu'un de ne pas avoir agi. Le législateur encourage les <strong>Modes Amiables de Règlement des Différends (MARD)</strong>.</div>
+
+    <div class="f-h2">Les principaux MARD</div>
+    <div class="f-grid3">
+      <div class="f-cell"><div class="f-cell-title">Conciliation</div>Menée par un <em>conciliateur de justice</em> (bénévole). Durée max. 5 mois + prorogation de 3 mois.</div>
+      <div class="f-cell"><div class="f-cell-title">Médiation</div>Menée par un <em>médiateur</em> (rémunéré). Même durée. Neutre et impartial.</div>
+      <div class="f-cell"><div class="f-cell-title">Procédure participative</div>Les parties + leurs avocats négocient directement (convention écrite).</div>
+    </div>
+    <div class="f-cell" style="margin:0 0 .8rem 1rem">
+      <div class="f-cell-title">Audience de Règlement Amiable (ARA) — nouveauté décret 18 juillet 2025</div>
+      Un juge qui ne siège pas dans la formation de jugement reçoit les parties pour tenter de trouver un accord. Disponible devant toutes les juridictions sauf le CPH.
+    </div>
+    <div class="f-info"><strong>Décret 18 juillet 2025 — Révolution procédurale !</strong>Désormais, <strong>l'instruction conventionnelle (par les parties) est le principe</strong>, et l'instruction judiciaire (par le juge) est l'exception. C'est un renversement total de paradigme. Art. 21 CPC modifié : le juge doit déterminer avec les parties le mode de résolution le plus adapté.</div>
+
+    <div class="f-alerte"><strong>MARD obligatoire avant certains procès (art. 750-1 CPC)</strong>Pour les demandes ≤ 5 000 € ou pour les conflits de voisinage / troubles anormaux du voisinage → tentative de conciliation, médiation ou procédure participative <strong>obligatoire</strong> avant de saisir le TJ, à peine d'irrecevabilité (non régularisable). Arrêt mixte chambre « Saint-Valentin » 14 février 2003 : le non-respect d'une clause de médiation contractuelle → fin de non-recevoir.</div>
+
+    <div class="f-h2">L'arbitrage — justice privée</div>
+    <div class="f-text">Alternative au tribunal : les parties choisissent un <em>arbitre</em> (non magistrat) qui tranche en droit ou en équité. Sa décision (sentence arbitrale) a l'autorité de la chose jugée mais nécessite une <em>exequatur</em> (décision du TJ) pour être exécutée de force.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Le caractère libre — On peut agir sans risquer d'être puni</div>
+    <div class="f-text">Agir en justice et perdre son procès ne constitue pas une faute. On ne peut pas condamner quelqu'un à des dommages-intérêts simplement parce qu'il a eu tort.</div>
+    <div class="f-alerte"><strong>Exception : l'abus de droit d'agir</strong>L'action peut dégénérer en faute si elle constitue un acte de mauvaise foi ou une erreur grossière équipollente au dol (= presque intentionnelle). Sanction : dommages-intérêts à l'adversaire + amende civile jusqu'à 10 000 € (art. 32-1 CPC). <strong>Attention :</strong> l'abus est rare car la liberté d'agir est forte. Même l'exercice d'un appel peut être abusif.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> Le caractère gratuit — La justice est un service public</div>
+    <div class="f-text">L'accès au juge est <em>gratuit</em>, mais des frais existent.</div>
+
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Les dépens</div>
+        Frais indispensables au procès fixés par la loi : frais de commissaire de justice (huissier), d'expertise judiciaire, de greffe… → mis à la charge du <strong>perdant</strong> en principe.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Les frais irrépétibles (art. 700 CPC)</div>
+        Frais non compris dans les dépens = honoraires d'avocat principalement. Le juge peut condamner la partie perdante à payer une somme (pouvoir <strong>discrétionnaire</strong> selon équité et situations économiques).
+      </div>
+    </div>
+
+    <div class="f-success"><strong>Aide Juridictionnelle (AJ)</strong>Instaurée par la loi du 10 juillet 1991 pour permettre aux personnes sans ressources suffisantes d'accéder à la justice. L'AJ couvre tout ou partie des frais de procédure. La demande d'AJ <strong>interrompt le délai de prescription</strong> et oblige le juge à surseoir à statuer.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #3 Caractères de l'action</strong>
+    <ul>
+      <li>Facultatif : personne n'est forcé d'agir · MARD encouragés (conciliation, médiation, participative, ARA)</li>
+      <li>Décret 18 juillet 2025 : instruction conventionnelle = principe · judiciaire = exception</li>
+      <li>MARD obligatoire avant TJ pour litiges ≤ 5 000 € et conflits de voisinage</li>
+      <li>Libre : perdre n'est pas une faute · Abus = rare (mauvaise foi ou erreur grossière) → DI + amende ≤ 10 000 €</li>
+      <li>Gratuit (justice SP) mais frais existent : dépens (légaux) + frais irrépétibles (art. 700)</li>
+      <li>AJ : aide pour les personnes sans ressources · interrompt la prescription</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f2">← Fiche #2</label><label for="r-f4">Fiche #4 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 4 ===== -->
+<div class="page-content" id="page-f4"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #4 — Partie 1, Titre 2, Chapitre 1</div>
+    <h2>L'intérêt à agir et la qualité pour agir</h2>
+    <div class="fiche-intro">Pour que votre action en justice soit recevable, vous devez avoir un <strong>intérêt</strong> à agir (ce procès doit vous apporter quelque chose) et parfois une <strong>qualité</strong> (être la personne spécialement habilitée par la loi). Ces conditions sont des conditions subjectives liées aux parties.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> L'intérêt à agir — Le « à quoi bon ? »</div>
+
+    <div class="f-illus"><strong>Image simple</strong>Votre voisin casse la vitrine du commerce d'à côté. Vous n'avez pas subi de dommage, vous n'avez rien à gagner à porter l'affaire en justice. Vous n'avez pas <em>intérêt à agir</em>. Si c'était votre vitrine à vous, si.</div>
+
+    <div class="f-key">L'intérêt à agir = le profit, l'avantage que l'action peut procurer au demandeur. A intérêt à agir celui qui souffre d'un mal auquel le procès peut apporter un remède.</div>
+
+    <div class="f-h2">A. L'intérêt doit être né et actuel</div>
+    <div class="f-text">L'intérêt doit <strong>exister au jour de la formation de la demande</strong>. Pas de procès préventif à titre général.</div>
+    <ul class="f-list">
+      <li><strong>Actions interrogatoires</strong> : forcer l'adversaire qui dispose d'un délai à agir maintenant → irrecevable</li>
+      <li><strong>Actions provocatoires / de jactance</strong> : forcer quelqu'un qui se vante d'un droit à le prouver → irrecevable</li>
+    </ul>
+
+    <div class="f-success"><strong>Exceptions — quand le futur devient actuel</strong>La JP admet que l'intérêt peut résulter d'une <em>menace actuelle d'un trouble futur</em> :
+→ Art. 145 CPC : mesures d'instruction préventives si « motif légitime » avant tout procès.
+→ Juge des référés pour dommage imminent.
+→ Actions déclaratoires : demander au juge de préciser une situation juridique incertaine (même sans litige actuel) → recevables pour sécurité juridique.</div>
+
+    <div class="f-h2">B. L'intérêt doit être légitime</div>
+    <div class="f-text">L'intérêt ne doit pas être contraire à l'ordre public ou aux bonnes mœurs. Condition critiquée car elle conduit le juge à apprécier le fond alors qu'il devrait rester au stade de la recevabilité.</div>
+
+    <div class="f-h2">C. L'intérêt doit être personnel</div>
+    <div class="f-text">Nul ne plaide par procureur : on ne peut agir que pour défendre ses propres intérêts, pas ceux d'autrui en général.</div>
+    <div class="f-text">Cas des groupements : une association peut agir pour défendre l'intérêt collectif de ses membres dans le cadre de son objet social. Un syndicat peut agir pour défendre l'intérêt collectif de la profession.</div>
+    <div class="f-info"><strong>Action de groupe (class action)</strong>Depuis la loi du 30 avril 2025, certaines entités habilitées peuvent exercer une action de groupe au nom d'un ensemble de consommateurs ou de victimes, permettant une réparation collective.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> La qualité pour agir — Être la bonne personne</div>
+
+    <div class="f-illus"><strong>Image</strong>Vous n'êtes pas chirurgien, vous ne pouvez pas opérer. De même, dans certaines actions, il faut être la personne désignée par la loi. Avoir un intérêt ne suffit pas toujours.</div>
+
+    <div class="f-h2">A. Actions banales — la règle générale</div>
+    <div class="f-key">En principe, toute personne (physique ou morale) qui justifie d'un intérêt à agir a qualité pour agir. L'intérêt absorbe la qualité : si vous avez un intérêt, vous avez la qualité.</div>
+
+    <div class="f-h2">B. Actions attitrées — la règle dérogatoire</div>
+    <div class="f-text">Certaines actions ne sont ouvertes <strong>qu'à des personnes spécialement désignées par la loi</strong>, même si d'autres pourraient avoir un intérêt. La qualité résulte d'une habilitation légale expresse.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Action attitrée</th><th>Qui peut agir</th></tr></thead><tbody>
+      <tr><td>Action en divorce</td><td>Seulement les époux (pas leurs enfants ni parents)</td></tr>
+      <tr><td>Nullité relative d'un contrat (vice du consentement)</td><td>Seulement la victime du vice</td></tr>
+      <tr><td>Action en recherche de paternité</td><td>L'enfant, représenté par sa mère</td></tr>
+      <tr><td>Action UT SINGULI (pour la société)</td><td>Un associé peut agir à la place de la société</td></tr>
+      <tr><td>Action individuelle d'un salarié</td><td>Un syndicat peut agir avec accord du salarié</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #4 Intérêt &amp; qualité</strong>
+    <ul>
+      <li>Intérêt = profit que le procès peut apporter → doit être né, actuel, légitime, personnel</li>
+      <li>Action préventive = irrecevable (sauf menace actuelle de trouble futur ou mesures art. 145)</li>
+      <li>Action déclaratoire (clarifier une situation juridique) = recevable</li>
+      <li>Nul ne plaide par procureur : on ne peut défendre que ses intérêts propres</li>
+      <li>Action banale : intérêt suffit · Action attitrée : habilitation légale expresse requise</li>
+      <li>Divorce = seulement les époux · Nullité relative = seulement la victime</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f3">← Fiche #3</label><label for="r-f5">Fiche #5 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 5 ===== -->
+<div class="page-content" id="page-f5"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #5 — Partie 1, Titre 2, Chapitre 2</div>
+    <h2>Les conditions objectives de l'action</h2>
+    <div class="fiche-intro">En plus de l'intérêt et de la qualité (conditions subjectives), l'action doit remplir trois conditions objectives : pas de délai expiré, pas de chose déjà jugée, pas de comportement incohérent. Ces conditions relèvent du droit et non des personnes.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> L'absence de prescription — le temps ne doit pas être écoulé</div>
+
+    <div class="f-illus"><strong>Image</strong>Vous avez été victime d'un accident de voiture le 1er janvier 2020. Si vous attendez le 2 janvier 2025 pour saisir le tribunal, c'est trop tard. Votre droit d'agir est prescrit.</div>
+
+    <div class="f-h2">A. La prescription extinctive (art. 2224 CC)</div>
+    <div class="f-key">Délai de droit commun : <strong>5 ans</strong> à compter du moment où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant d'agir.</div>
+    <div class="f-text">Exceptions : certaines prescriptions spéciales restent à <strong>30 ans</strong> (ex. actions immobilières réelles, art. 2227).</div>
+
+    <div class="f-h2">B. La forclusion — délais impératifs pour des actions spéciales</div>
+    <div class="f-text">La forclusion est un délai <strong>préfix</strong> : passé ce délai, toute action est impossible, même invoquer un moyen de défense. Ex. : délai pour exercer une voie de recours, délai pour déclarer une créance dans une procédure collective.</div>
+
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Prescription</div>
+        Après écoulement : ① l'action est irrecevable ② MAIS on peut encore invoquer le droit comme moyen de <strong>défense</strong> (exception). FNR non relevable d'office par le juge.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Forclusion (délai préfix)</div>
+        Après écoulement : ① l'action est irrecevable ② ET aucun moyen de défense n'est possible non plus. Juge doit la relever d'office si d'ordre public.
+      </div>
+    </div>
+
+    <div class="f-success"><strong>Comment interrompre la prescription ? (art. 2241 CC)</strong>La demande en justice interrompt les délais de prescription et de forclusion. Même si le juge saisi est incompétent, même si la demande est nulle → l'effet interruptif joue quand même ! Il repart à zéro après la décision définitive.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> L'absence de chose jugée — ne pas rejouer le match perdu</div>
+
+    <div class="f-illus"><strong>Image</strong>Vous avez demandé 10 000 € à votre voisin pour un préjudice. Le juge vous a donné tort. Vous ne pouvez pas recommencer le même procès pour les mêmes 10 000 €. C'est la chose jugée.</div>
+
+    <div class="f-key">Une fois qu'un litige a été définitivement tranché par un juge, on ne peut plus soumettre la même prétention au même juge. Cela se heurte à une <strong>fin de non-recevoir</strong> (art. 122 CPC).</div>
+
+    <div class="f-h2">L'arrêt Césaréo — Assemblée plénière 7 juillet 2006 ⭐</div>
+    <div class="f-alerte"><strong>Principe de concentration des moyens</strong>Le demandeur doit présenter <em>dès la première instance</em> l'ensemble des moyens qu'il estime de nature à fonder sa demande, à peine d'irrecevabilité tirée de la chose jugée s'il veut renouveler la demande sur un autre fondement juridique.<br><br>Exemple : vous avez agi en responsabilité délictuelle (art. 1240 CC) et perdu. Vous ne pouvez PAS revenir avec les mêmes faits en invoquant cette fois la responsabilité contractuelle (art. 1147 CC). La cause = les faits générateurs (et non plus le fondement juridique).</div>
+    <div class="f-text">Conséquence pratique majeure : <strong>pensez à présenter toutes vos prétentions dès le départ</strong> (en principal + subsidiaire) car vous ne pourrez plus les invoquer après.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> L'absence d'incohérence — la règle de l'estoppel</div>
+
+    <div class="f-illus"><strong>Image</strong>Une entreprise demande à être jugée par un arbitre. Elle participe à la procédure arbitrale pendant 6 mois. Puis, elle prétend que l'arbitre était incompétent. Trop tard : vous ne pouvez pas vous contredire.</div>
+
+    <div class="f-key">La Cour de cassation a consacré le principe selon lequel <strong>nul ne peut se contredire au détriment d'autrui</strong> (estoppel). Une partie qui a adopté un comportement donné ne peut plus s'en prévaloir de façon contradictoire dans la même procédure.</div>
+
+    <div class="f-text">Attention : la Cour de cassation a aussi précisé que la seule contradiction ne suffit pas nécessairement à entraîner une fin de non-recevoir — il faut que cela soit au détriment d'autrui de façon significative.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #5 Conditions objectives</strong>
+    <ul>
+      <li>3 conditions objectives : absence de prescription + absence de chose jugée + absence d'incohérence</li>
+      <li>Délai de droit commun = 5 ans (art. 2224 CC) · Certaines immobilières = 30 ans</li>
+      <li>Prescription vs forclusion : après prescription → défense possible / après forclusion → rien du tout</li>
+      <li>La demande en justice interrompt la prescription (même si juge incompétent ou acte nul)</li>
+      <li>Arrêt Césaréo 2006 : concentrez tous vos moyens dès le départ ! Cause = faits (pas fondement juridique)</li>
+      <li>Estoppel : interdiction de se contredire au détriment d'autrui</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f4">← Fiche #4</label><label for="r-f6">Fiche #6 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 6 ===== -->
+<div class="page-content" id="page-f6"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #6 — Partie 1, Titre 3, Chapitre 1</div>
+    <h2>La capacité et le pouvoir d'agir</h2>
+    <div class="fiche-intro">Même si vous avez un intérêt à agir et que vos délais ne sont pas expirés, encore faut-il être capable d'agir (conditions d'exercice). Deux conditions : la <strong>capacité</strong> (aptitude personnelle) et le <strong>pouvoir</strong> (habilitation pour agir à la place d'autrui ou pour les actes formels).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> La capacité d'ester en justice</div>
+
+    <div class="f-illus"><strong>Image</strong>Un enfant de 12 ans veut attaquer son école en justice. Il a peut-être un intérêt, mais il n'a pas la capacité de le faire seul. Ses parents agissent à sa place.</div>
+
+    <div class="f-h2">A. Capacité d'exercice (art. 117 CPC)</div>
+    <div class="f-text">Les <strong>mineurs</strong> n'agissent qu'à travers leur représentant légal (parents ou tuteur).</div>
+    <div class="f-text">Pour les <strong>majeurs protégés</strong>, trois régimes :</div>
+    <div class="f-grid3">
+      <div class="f-cell"><div class="f-cell-title">Sauvegarde de justice</div>La personne peut agir seule mais sa capacité peut être remise en question.</div>
+      <div class="f-cell"><div class="f-cell-title">Curatelle</div>Assistance requise pour les actes importants. En procédure : assistance du curateur.</div>
+      <div class="f-cell"><div class="f-cell-title">Tutelle</div>La personne ne peut pas agir seule. Représentation par le tuteur obligatoire.</div>
+    </div>
+
+    <div class="f-h2">B. Capacité de jouissance</div>
+    <div class="f-text">Aptitude à être titulaire d'un droit d'action.</div>
+    <ul class="f-list">
+      <li><strong>Personne décédée</strong> : une assignation au nom ou contre une personne décédée est nulle. Si décès en cours d'instance → interruption de l'instance (si action transmissible)</li>
+      <li><strong>Groupement sans personnalité morale</strong> : ne peut pas agir en justice en principe (ex. société de fait, tribu). Exception : peut se défendre si attaqué.</li>
+    </ul>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Le pouvoir d'agir — Agir à la place d'autrui</div>
+
+    <div class="f-h2">A. La représentation à l'action (ad agundum) — agir à la place</div>
+    <div class="f-illus"><strong>Image</strong>Une société anonyme ne peut pas se lever elle-même pour saisir un tribunal. C'est son directeur général qui le fait en son nom. C'est la représentation à l'action.</div>
+    <div class="f-text">Le représentant agit <em>à la place</em> du titulaire incapable. Sources du pouvoir :</div>
+    <ul class="f-list">
+      <li><strong>Légale</strong> : tuteur pour le mineur, mandataire judiciaire dans les procédures collectives</li>
+      <li><strong>Judiciaire</strong> : désigné par le juge</li>
+      <li><strong>Conventionnelle</strong> : mandat par procuration écrite et spéciale</li>
+    </ul>
+    <div class="f-key">⚠️ Règle : dans tous les actes de procédure, le nom du représenté doit apparaître. Sans cela = vice de forme. Mais si le représentant n'a aucun pouvoir du tout = vice de fond (nullité plus grave, art. 117 CPC).</div>
+
+    <div class="f-h2">B. La représentation à l'instance (ad litem) — accomplir les actes</div>
+    <div class="f-text">C'est la représentation <em>technique</em> pour accomplir les actes de procédure. Même une personne capable peut être représentée par un avocat pour les actes formels.</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Juridiction</th><th>Représentation obligatoire</th></tr></thead><tbody>
+      <tr><td>TJ (procédure écrite &gt; 10 000 €)</td><td>Avocat obligatoire</td></tr>
+      <tr><td>Cour d'appel</td><td>Avocat obligatoire</td></tr>
+      <tr><td>Cour de cassation</td><td>Avocat au Conseil obligatoire</td></tr>
+      <tr><td>TJ (procédure orale ≤ 10 000 €)</td><td>Pas d'avocat obligatoire · aussi conjoint ou défenseur syndical</td></tr>
+      <tr><td>TC (demande &gt; 10 000 €)</td><td>Avocat obligatoire</td></tr>
+    </tbody></table></div>
+
+    <div class="f-alerte"><strong>Une règle + une règle = sécurité</strong>La représentation ad agundum (pouvoir d'agir) et la représentation ad litem (avocat) peuvent se combiner. Ex. : les parents d'un mineur (ad agundum) se font représenter par un avocat (ad litem) devant le TJ en procédure écrite.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #6 Capacité &amp; pouvoir</strong>
+    <ul>
+      <li>Capacité d'exercice : mineur → représentant légal · Tutelle → tuteur obligatoire · Curatelle → assistance</li>
+      <li>Personne décédée → assignation nulle · Groupement sans PM → ne peut pas agir (sauf pour se défendre)</li>
+      <li>Pouvoir ad agundum (à l'action) : légal, judiciaire ou conventionnel</li>
+      <li>Nom du représenté absent = vice de forme · Pas de pouvoir du tout = vice de fond (art. 117)</li>
+      <li>Pouvoir ad litem (à l'instance) = avocat · obligatoire devant TJ écrit, CA, Cass.</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f5">← Fiche #5</label><label for="r-f7">Fiche #7 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 7 ===== -->
+<div class="page-content" id="page-f7"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #7 — Partie 1, Titre 3, Chapitre 2</div>
+    <h2>Les sanctions des conditions de l'action</h2>
+    <div class="fiche-intro">Que se passe-t-il quand on n'a pas rempli les conditions d'existence (intérêt, qualité, délai, chose jugée) ou d'exercice (capacité, pouvoir) ? Des sanctions différentes selon ce qui manque. Et si on a toutes les conditions mais qu'on agit de manière abusive ?</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Sanction de l'exercice irrégulier — la nullité de fond</div>
+
+    <div class="f-illus"><strong>Image</strong>Un tuteur signe un acte de procédure au nom de son pupille mais il n'a pas les pouvoirs requis. L'acte est nul. C'est comme signer un chèque sans en avoir l'autorisation.</div>
+
+    <div class="f-key">Art. 117 CPC — Irrégularités de fond : défaut de capacité d'ester, défaut de pouvoir d'une partie ou de son représentant. Ces nullités sont plus graves que les nullités de forme.</div>
+
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Nullité de forme (vice de forme)</div>
+        Nécessite de prouver un <strong>grief</strong> (préjudice) pour être prononcée. Peut être couverte (si l'autre partie a déjà conclu au fond). Doit être invoquée avant toute défense au fond.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Nullité de fond (art. 117)</div>
+        <strong>Sans grief</strong> à prouver. Peut être soulevée en tout état de cause. Doit être relevée d'office par le juge si d'ordre public ou en cas de défaut de capacité.
+      </div>
+    </div>
+
+    <div class="f-success"><strong>La régularisation possible (art. 121 CPC)</strong>La nullité pour irrégularité de fond ne sera pas prononcée si la cause a disparu au moment où le juge statue. Ex. : un mineur devient majeur en cours d'instance → plus besoin de représentant.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Sanction de l'exercice abusif — quand on utilise la justice pour nuire</div>
+
+    <div class="f-h2">A. Les dommages-intérêts pour abus de droit</div>
+    <div class="f-text">Si l'action en justice est exercée avec mauvaise foi ou par erreur grossière équipollente au dol, la partie adverse peut obtenir des dommages-intérêts.</div>
+    <div class="f-alerte"><strong>Condition stricte</strong>La barre est haute. Perdre son procès = pas une faute. Même un appel mal fondé n'est pas systématiquement abusif. Il faut une intention de nuire ou une légèreté très blâmable.</div>
+
+    <div class="f-h2">B. L'amende civile (art. 32-1 CPC)</div>
+    <div class="f-key">Celui qui agit de manière <strong>dilatoire</strong> (pour gagner du temps) ou <strong>abusive</strong> peut être condamné par le juge à une amende civile de <strong>maximum 10 000 €</strong>, sans préjudice des dommages-intérêts à verser à l'adversaire.</div>
+    <div class="f-text">Points importants :</div>
+    <ul class="f-list">
+      <li>L'amende est payée à l'État (≠ des DI qui vont à l'adversaire)</li>
+      <li>Le juge peut la prononcer d'office (sans attendre la demande d'une partie)</li>
+      <li>S'applique aussi en appel ou pour toute voie de recours abusive</li>
+    </ul>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #7 Sanctions</strong>
+    <ul>
+      <li>Nullité de fond (art. 117) : défaut de capacité ou de pouvoir → sans grief à prouver · en tout état de cause</li>
+      <li>Nullité de forme : vice formel → grief à prouver · couverte si conclusion au fond préalable</li>
+      <li>Régularisation possible si la cause disparaît avant que le juge statue (art. 121)</li>
+      <li>Abus de droit : mauvaise foi ou erreur grossière équipollente au dol → dommages-intérêts (1240 CC)</li>
+      <li>Amende civile : art. 32-1 · max. 10 000 € · payée à l'État · d'office possible · action dilatoire ou abusive</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f6">← Fiche #6</label><label for="r-f8">Fiche #8 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 8 ===== -->
+<div class="page-content" id="page-f8"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #8 — Partie 1, Titre 4, Chapitre 1</div>
+    <h2>La demande en justice</h2>
+    <div class="fiche-intro">La demande, c'est l'acte concret qui déclenche le procès ou enrichit un procès en cours. Il existe la demande initiale (qui ouvre l'instance) et les demandes incidentes (qui se greffent sur une instance déjà lancée).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> La demande initiale — celle qui ouvre le procès</div>
+
+    <div class="f-h2">A. L'assignation</div>
+    <div class="f-key">L'assignation est un acte de commissaire de justice (huissier) par lequel le demandeur cite son adversaire à comparaître devant le juge. C'est la forme principale devant le TJ.</div>
+    <div class="f-text">Elle doit contenir (art. 56 CPC) :</div>
+    <ul class="f-list">
+      <li>Identification précise des parties</li>
+      <li>La juridiction saisie</li>
+      <li>L'objet de la demande + <strong>exposé des moyens en fait et en droit</strong></li>
+      <li>Les modalités de comparution + avertissement des risques en cas de défaut</li>
+      <li>L'indication des pièces sur lesquelles la demande est fondée</li>
+    </ul>
+
+    <div class="f-h2">B. La requête</div>
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Requête conjointe</div>
+        Les deux parties soumettent ensemble leurs prétentions au juge. Accord mutuel sur le fait d'aller en justice. Peu utilisée en pratique.
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Requête unilatérale</div>
+        Le demandeur saisit seul le tribunal, sans informer l'adversaire. Réservée aux cas où la surprise est nécessaire (mesures sur requête, art. 145 CPC). Doit indiquer identification des parties + objet.
+      </div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Les demandes incidentes — qui se greffent en cours de procès</div>
+
+    <div class="f-illus"><strong>Image</strong>Un procès a déjà commencé. Des éléments nouveaux apparaissent, ou les parties veulent ajouter, modifier, faire intervenir quelqu'un. Les demandes incidentes permettent cela sans ouvrir un nouveau procès.</div>
+
+    <div class="f-key">Règle commune de recevabilité (art. 70 CPC) : une demande incidente doit se rattacher aux prétentions originaires par un <strong>lien suffisant</strong>. Cette FNR n'est pas relevable d'office par le juge.</div>
+
+    <div class="f-h2">A. La demande reconventionnelle</div>
+    <div class="f-key">C'est la contre-attaque du défendeur : il ne se contente pas de se défendre, il demande lui-même quelque chose. (Art. 64 CPC)</div>
+    <div class="f-exemple"><strong>Exemples</strong>
+— Le vendeur demande le paiement du prix. L'acheteur répond en demandant la nullité du contrat et les restitutions → demande reconventionnelle.
+— Le créancier demande le remboursement. Le débiteur demande des DI pour les préjudices causés par l'inexécution du créancier → demande reconventionnelle.</div>
+    <div class="f-text">Règle : seul le défendeur originel peut formuler une demande reconventionnelle, dirigée contre le demandeur initial. Ancienne règle « reconvention sur reconvention ne vaut » = abandonnée par la Cour de cassation.</div>
+
+    <div class="f-h2">B. L'intervention</div>
+    <div class="f-grid2">
+      <div class="f-cell">
+        <div class="f-cell-title">Intervention volontaire</div>
+        Un tiers choisit de rejoindre le procès.<br>• <em>Principale</em> : il a ses propres prétentions (peut survivre à la demande initiale) → doit avoir le droit d'agir<br>• <em>Accessoire</em> : il appuie l'une des parties (disparaît avec la demande initiale) → suffit d'avoir un intérêt
+      </div>
+      <div class="f-cell">
+        <div class="f-cell-title">Intervention forcée</div>
+        Une partie amène un tiers dans le procès contre son gré. Il doit être appelé en temps utile pour préparer sa défense. Souvent utilisée pour l'appel en garantie (faire condamner un tiers à sa place).
+      </div>
+    </div>
+
+    <div class="f-h2">C. La demande additionnelle</div>
+    <div class="f-text">Elle permet à une partie de modifier, ajouter ou augmenter ses prétentions initiales en cours de procès. Peut être utilisée par le demandeur comme par le défendeur (sur sa reconventionnelle) et par l'intervenant principal.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #8 La demande</strong>
+    <ul>
+      <li>Assignation = acte de commissaire de justice · inclut exposé des moyens en fait et en droit</li>
+      <li>Requête conjointe (ensemble) · Requête unilatérale (seul, sans prévenir l'adversaire)</li>
+      <li>Demande incidente : lien suffisant requis avec prétention originaire (art. 70)</li>
+      <li>Reconventionnelle : contre-attaque du défendeur · demande quelque chose en plus du rejet</li>
+      <li>Intervention volontaire : principale (propres prétentions) ou accessoire (appui d'une partie)</li>
+      <li>Intervention forcée : tiers amené contre son gré · souvent = appel en garantie</li>
+      <li>Additionnelle : modifier ou augmenter ses prétentions en cours de route</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f7">← Fiche #7</label><label for="r-f9">Fiche #9 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 9 ===== -->
+<div class="page-content" id="page-f9"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #9 — Partie 1, Titre 4, Chapitre 1 (suite)</div>
+    <h2>Les effets de la demande en justice</h2>
+    <div class="fiche-intro">Déposer une demande en justice n'est pas un acte neutre. Elle produit deux catégories d'effets : des effets processuels (liés au procès lui-même) et des effets substantiels (sur le droit matériel des parties). Ces derniers sont particulièrement importants et s'appliquent même si la demande est finalement déclarée irrecevable.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Les effets processuels</div>
+
+    <div class="f-h2">Du côté du demandeur</div>
+    <div class="f-text">Le demandeur a la charge de faire placer (enrôler) sa demande : remettre une copie de l'assignation au greffe du tribunal. Si ce placement n'est pas fait dans le délai imparti → <strong>caducité de l'assignation</strong>.</div>
+    <div class="f-text">Délais d'enrôlement : 4 mois devant le TJ · 8 jours avant l'audience devant le TC.</div>
+
+    <div class="f-h2">Du côté du défendeur</div>
+    <div class="f-text">Le défendeur doit <strong>comparaître</strong> : constituer avocat devant le TJ (procédure écrite) ou se présenter à l'audience. S'il ne le fait pas → risque d'un jugement prononcé contre lui sur les seuls arguments du demandeur.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Les effets substantiels — les plus importants en pratique</div>
+
+    <div class="f-h2">A. L'interruption de la prescription</div>
+    <div class="f-key">La demande en justice interrompt le délai de prescription qui court contre le demandeur. L'effet interruptif s'applique même si le juge saisi est incompétent, même si l'acte est nul. Il efface le délai écoulé et fait partir un nouveau délai entier.</div>
+
+    <div class="f-illus"><strong>Exemple concret</strong>Votre créance de 5 000 € date du 1er janvier 2020. Prescription en 5 ans = 1er janvier 2025. Vous déposez une assignation le 31 décembre 2024 (la veille !). La prescription est interrompue. Même si votre assignation est finalement annulée pour vice de forme, l'effet interruptif a joué. Vous pouvez recommencer dans un nouveau délai de 5 ans.</div>
+
+    <div class="f-text">L'effet interruptif dure tant que le litige n'a pas trouvé sa solution définitive. Il disparaît si :</div>
+    <ul class="f-list">
+      <li>La demande est définitivement rejetée</li>
+      <li>Le demandeur se désiste</li>
+      <li>L'instance est frappée de péremption</li>
+      <li>L'assignation devient caduque à défaut d'enrôlement</li>
+    </ul>
+
+    <div class="f-h2">B. La transmissibilité du droit litigieux</div>
+    <div class="f-text">La demande en justice rend le droit litigieux <em>transmissible</em>. Ainsi, si le demandeur décède après avoir formé sa demande, ses héritiers héritent aussi de ce droit d'action, même si par nature l'action aurait été non transmissible sans cette saisine.</div>
+
+    <div class="f-h2">C. La mise en demeure du débiteur</div>
+    <div class="f-text">La demande en justice vaut mise en demeure automatiquement, comme une sommation. Conséquences :</div>
+    <ul class="f-list">
+      <li>Les <strong>intérêts moratoires</strong> commencent à courir (intérêts de retard au taux légal)</li>
+      <li>Le débiteur d'un corps certain devient comptable des fruits de la chose</li>
+      <li>Le risque de perte de la chose est transféré au défendeur débiteur</li>
+    </ul>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #9 Effets de la demande</strong>
+    <ul>
+      <li>Effet processuel demandeur : obligation d'enrôler (4 mois TJ, 8 jours TC) sous peine de caducité</li>
+      <li>Effet processuel défendeur : obligation de comparaître · défaut = jugement possible contre lui</li>
+      <li>Interruption de la prescription : même si juge incompétent ou acte nul · efface le délai écoulé</li>
+      <li>Transmissibilité : la demande rend le droit litigieux transmissible aux héritiers</li>
+      <li>Mise en demeure automatique : intérêts moratoires courent à compter de la demande</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f8">← Fiche #8</label><label for="r-f10">Fiche #10 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 10 ===== -->
+<div class="page-content" id="page-f10"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #10 — Partie 1, Titre 4, Chapitre 2</div>
+    <h2>Les moyens de défense</h2>
+    <div class="fiche-intro">Face à une demande, le défendeur dispose de trois types de moyens pour se défendre. Selon le type choisi, les règles (moment de présentation, effets) sont radicalement différentes. C'est un domaine crucial de la procédure civile.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">Vision d'ensemble</span> Les 3 types de moyens de défense</div>
+    <div class="f-schema">
+      <div class="f-schema-title">Comparaison des 3 moyens de défense</div>
+      <div class="f-table-wrap"><table class="f-table" style="margin:0"><thead><tr><th>Type</th><th>Objectif</th><th>Examen</th><th>Moment de présentation</th></tr></thead><tbody>
+        <tr><td>Défense au fond</td><td>Faire rejeter la demande comme non justifiée</td><td>Fond du droit (fond examiné)</td><td>En tout état de cause · y compris en appel</td></tr>
+        <tr><td>Exception de procédure</td><td>Paralyser l'instance (irrégularité ou extinction)</td><td>Procédure (pas le fond)</td><td><strong>Avant tout</strong> défense au fond ou FNR (in limine litis)</td></tr>
+        <tr><td>Fin de non-recevoir</td><td>Faire déclarer le demandeur irrecevable</td><td>Conditions d'existence de l'action (pas le fond)</td><td>En tout état de cause</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Les défenses au fond</div>
+    <div class="f-key">La défense au fond = tout moyen qui tend à faire rejeter la prétention après examen au fond. « Non, vous n'avez pas raison sur le fond. »</div>
+    <div class="f-exemple"><strong>Exemples</strong>— Le demandeur réclame le paiement d'une facture → défense : « J'ai déjà payé. » — Le demandeur réclame des DI pour vice caché → défense : « La chose n'avait pas de vice au moment de la vente. »</div>
+    <div class="f-text">Particularité : peut être soulevée <strong>en tout état de cause</strong>, même après que l'on a soulevé des exceptions, même en appel, même devant la Cour de cassation si le moyen est de pur droit.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Les exceptions de procédure</div>
+    <div class="f-key">L'exception de procédure = moyen qui tend à faire déclarer la procédure irrégulière, éteinte ou suspendue. On ne conteste pas le fond : on veut paralyser ou retarder l'instance.</div>
+
+    <div class="f-h2">Types d'exceptions</div>
+    <div class="f-grid2">
+      <div class="f-cell"><div class="f-cell-title">Exception d'incompétence</div>Ce juge n'est pas le bon. Doit être soulevée immédiatement (avant tout), à peine d'irrecevabilité. Sauf si incompétence d'ordre public (peut être soulevée d'office à tout moment).</div>
+      <div class="f-cell"><div class="f-cell-title">Exception de litispendance / connexité</div>La même affaire est déjà pendante devant une autre juridiction (litispendance) ou les affaires sont suffisamment liées pour être jointes (connexité).</div>
+      <div class="f-cell"><div class="f-cell-title">Exception dilatoire</div>Demander un délai avant de plaider. Ex. : délai pour appeler un garant. Ne s'oppose pas aux autres exceptions ensuite.</div>
+      <div class="f-cell"><div class="f-cell-title">Exception de nullité</div>Vice de forme (avec grief) ou vice de fond (sans grief). La nullité de fond peut être soulevée en tout état de cause.</div>
+    </div>
+
+    <div class="f-alerte"><strong>Règle capitale — In limine litis (art. 74 CPC)</strong>Toutes les exceptions de procédure doivent être soulevées <strong>avant toute défense au fond ou fin de non-recevoir</strong>, et toutes ensemble. Si vous avez d'abord conclu au fond, vous perdez le droit de soulever une exception de procédure (sauf nullité de fond et connexité qui peuvent être soulevées en tout état de cause).</div>
+
+    <div class="f-illus"><strong>Image</strong>In limine litis = « au seuil de l'instance ». Imaginez que vous arrivez à une porte fermée. Soit vous signalez que la porte est mal posée (exception) avant d'entrer. Soit vous entrez directement (défense au fond) et vous ne pourrez plus revenir pour dire que la porte était mal posée.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> Les fins de non-recevoir (FNR)</div>
+    <div class="f-key">La FNR = moyen de défense qui tend à faire déclarer le demandeur <strong>irrecevable dans sa demande</strong>, sans examen au fond. On dit que le demandeur n'a pas le droit d'être entendu. (Art. 122 CPC)</div>
+
+    <div class="f-exemple"><strong>Exemples de FNR (liste non limitative, art. 122)</strong>
+— Défaut de qualité pour agir (action attitrée exercée par la mauvaise personne)
+— Défaut d'intérêt à agir
+— Prescription / forclusion
+— Chose jugée (demande déjà tranchée)
+— Non-respect d'une clause contractuelle de médiation préalable (chambre mixte 2003)</div>
+
+    <div class="f-h2">Régime des FNR</div>
+    <ul class="f-list">
+      <li>Peut être soulevée <strong>en tout état de cause</strong> (y compris en appel, y compris après une défense au fond)</li>
+      <li>Ne nécessite pas de prouver un grief pour être accueillie</li>
+      <li>Certaines FNR d'ordre public <strong>doivent</strong> être relevées d'office par le juge (art. 125)</li>
+      <li>D'autres peuvent être relevées d'office (faculté)</li>
+      <li>La régularisation est possible si la cause disparaît avant la décision du juge (art. 126). Mais pas toujours : la FNR pour violation d'une clause de médiation ne peut pas être régularisée (Cass. 12 déc. 2014).</li>
+    </ul>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #10 Moyens de défense</strong>
+    <ul>
+      <li>3 moyens : défense au fond (fond examiné) · exception de procédure (procédure) · FNR (irrecevabilité)</li>
+      <li>Défense au fond : en tout état de cause · même en appel</li>
+      <li>Exception de procédure : in limine litis (avant tout le reste) · toutes ensemble · sinon irrecevable</li>
+      <li>Exception d'incompétence = avant tout · nullité de fond et connexité = en tout état de cause</li>
+      <li>FNR : en tout état de cause · sans grief · relevable d'office si ordre public</li>
+      <li>Régularisation des FNR possible (art. 126) SAUF si la FNR résulte d'une clause de médiation</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f9">← Fiche #9</label><label for="r-f11">Fiche #11 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 11 ===== -->
+<div class="page-content" id="page-f11"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #11 — Partie 2, Titre 1</div>
+    <h2>Le lien juridique d'instance</h2>
+    <div class="fiche-intro">L'instance est le rapport juridique qui naît entre les parties et le juge une fois la demande introduite. Pour bien la comprendre : qui sont les parties (et qui sont les tiers) ? Et sur quoi porte ce rapport (objet et fondement de la prétention) ?</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Les parties à l'instance</div>
+
+    <div class="f-h2">A. Comment définit-on une « partie » ?</div>
+    <div class="f-text">La partie est définie selon deux critères cumulatifs :</div>
+    <div class="f-grid2">
+      <div class="f-cell"><div class="f-cell-title">Critère formel</div>Figure à l'instance car elle a pris l'initiative (demandeur), a été citée (défendeur), ou est intervenue (tiers intervenant).</div>
+      <div class="f-cell"><div class="f-cell-title">Critère matériel</div>A une prétention à soutenir (art. 4 et 31 CPC). Un témoin ou un expert qui participe à l'instance <strong>n'est pas</strong> une partie.</div>
+    </div>
+    <div class="f-alerte"><strong>Pourquoi c'est important ?</strong>Seules les parties peuvent exercer une voie de recours (appel, cassation). Les tiers ne peuvent pas faire appel d'une décision dont ils n'étaient pas parties. Ils peuvent seulement former une <em>tierce opposition</em>.</div>
+
+    <div class="f-h2">B. Les tiers</div>
+    <div class="f-text">Les tiers = tous ceux qui ne sont pas parties. Ils peuvent néanmoins être mêlés à l'instance (témoins, experts, détenteurs de pièces). Ils peuvent aussi devenir parties (par intervention volontaire ou forcée). L'effet relatif du jugement s'applique : un jugement ne peut ni nuire ni profiter aux tiers.</div>
+
+    <div class="f-h2">C. La représentation en instance</div>
+    <div class="f-grid2">
+      <div class="f-cell"><div class="f-cell-title">Ad agundum (à l'action)</div>Représenter l'incapable qui ne peut agir seul. Le représentant agit à sa place. Ex. : parents pour un mineur, tuteur pour un majeur protégé.</div>
+      <div class="f-cell"><div class="f-cell-title">Ad litem (à l'instance)</div>Accomplir les actes de procédure. La partie figure en son nom propre mais un avocat accomplit les actes. Ex. : avocat devant le TJ en procédure écrite.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> L'objet du litige — sur quoi porte l'instance ?</div>
+
+    <div class="f-key">L'objet du litige est déterminé par les prétentions respectives des parties exprimées dans l'acte introductif d'instance et les conclusions. Art. 4 CPC. Le juge ne peut statuer que sur ce qui lui est demandé.</div>
+
+    <div class="f-illus"><strong>Image</strong>Si vous demandez au juge 10 000 €, il ne peut pas vous en accorder 15 000 € (ultra petita = trop) ni rester muet sur une partie de votre demande (infra petita = pas assez).</div>
+
+    <div class="f-text">L'objet peut évoluer en cours d'instance via les demandes incidentes, à condition qu'elles se rattachent aux prétentions originaires par un lien suffisant (art. 70 CPC).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> La cause de la demande — le fondement</div>
+
+    <div class="f-h2">L'arrêt Césaréo — AP 7 juillet 2006 ⭐ (à retenir absolument)</div>
+    <div class="f-alerte"><strong>Avant 2006 :</strong> la cause = le fondement juridique. Donc, si vous aviez agi sur la base de l'article 1240 (responsabilité délictuelle) et perdu, vous pouviez recommencer sur l'article 1242 → deux causes différentes.<br><br><strong>Depuis Césaréo 2006 :</strong> la cause = les faits générateurs du litige. Vous devez invoquer <em>tous</em> vos fondements juridiques dès la première instance. Après, la chose jugée s'y oppose même si vous changez de fondement.</div>
+
+    <div class="f-exemple"><strong>Conséquence pratique</strong>Votre voisin vous cause un dommage. Vous l'attaquez en responsabilité délictuelle → vous perdez. Vous ne pouvez plus l'attaquer sur la base d'un trouble anormal du voisinage pour les mêmes faits. La cause (les faits) est identique → chose jugée.<br><br>Solution : présenter dès le début toutes vos prétentions, en principal ET en subsidiaire.</div>
+
+    <div class="f-alerte"><strong>Arrêt Dauvin — AP 21 décembre 2007</strong>Le juge n'a pas l'obligation de changer le fondement juridique de la demande → mais il doit requalifier les faits si la qualification choisie par les parties est manifestement erronée. C'est un pouvoir/devoir, pas une obligation systématique de rechercher un meilleur fondement.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #11 Lien juridique d'instance</strong>
+    <ul>
+      <li>Partie = critère formel (figure à l'instance) + critère matériel (a une prétention)</li>
+      <li>Tiers : ne peut pas faire appel · peut faire tierce opposition</li>
+      <li>Représentation ad agundum (remplace l'incapable) ≠ ad litem (avocat pour les actes)</li>
+      <li>Objet du litige = prétentions des parties · le juge ne peut ni plus ni moins (infra/ultra petita)</li>
+      <li>Cause = faits (depuis Césaréo 2006) → concentrez TOUS vos fondements dès la 1ère instance</li>
+      <li>Dauvin 2007 : le juge requalifie si erreur manifeste mais ne cherche pas spontanément un meilleur fondement</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f10">← Fiche #10</label><label for="r-f12">Fiche #12 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 12 ===== -->
+<div class="page-content" id="page-f12"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #12 — Partie 2, Titre 2</div>
+    <h2>Les principes directeurs du procès</h2>
+    <div class="fiche-intro">Les 24 premiers articles du CPC posent les principes fondamentaux qui gouvernent tout procès civil. Ces principes sont d'ordre public, ils s'imposent aux parties et au juge. Ils traduisent la conception française du procès équitable.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Le principe du contradictoire — L'âme du procès</div>
+
+    <div class="f-key">Art. 14 CPC : « Nulle partie ne peut être jugée sans avoir été entendue ou appelée. » Le contradictoire garantit que chaque partie a pu connaître et discuter les arguments de l'adversaire avant que le juge ne statue.</div>
+
+    <div class="f-illus"><strong>Image</strong>Imaginez un match de tennis. Si un joueur sert, l'autre doit avoir le droit de renvoyer. Si quelqu'un décide du résultat avant que les deux joueurs aient joué, c'est injuste. Le contradictoire, c'est le droit de renvoyer la balle.</div>
+
+    <div class="f-h2">A. Le contradictoire entre les parties</div>
+    <ul class="f-list">
+      <li><strong>Au seuil de l'instance</strong> : l'adversaire doit être informé du procès qui lui est fait (via l'assignation, qui doit exposer clairement les moyens et être signifiée avec délai de comparution suffisant)</li>
+      <li><strong>En cours d'instance</strong> : obligation de communication réciproque des pièces et conclusions en temps utile (art. 15 CPC) → les pièces communiquées tardivement peuvent être écartées</li>
+    </ul>
+
+    <div class="f-h2">B. Le contradictoire et le juge</div>
+    <div class="f-key">Art. 16 CPC : Le juge ne peut fonder sa décision sur des moyens de droit qu'il aurait relevés d'office sans inviter préalablement les parties à présenter leurs observations. Il doit lui-même observer le contradictoire.</div>
+    <div class="f-exemple"><strong>Exemple</strong>Le juge veut appliquer l'article 1242 CC (responsabilité du fait d'autrui) alors que les parties n'ont invoqué que l'article 1240 CC (responsabilité personnelle). Il doit inviter les parties à s'expliquer sur ce moyen AVANT de rendre sa décision. Sinon : nullité d'ordre public du jugement.</div>
+
+    <div class="f-alerte"><strong>Contrôle différé du contradictoire</strong>Parfois, le contradictoire immédiat est impossible :<br>• Si une partie fait défaut (ne comparaît pas) → voie de recours spéciale (opposition) rétablit le contradictoire<br>• Si une mesure doit être prise à l'insu d'une partie (art. 17) → un recours approprié doit exister après pour rétablir le contradictoire</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> Les rôles respectifs du juge et des parties</div>
+
+    <div class="f-h2">A. Au regard de l'instance</div>
+    <div class="f-grid2">
+      <div class="f-cell"><div class="f-cell-title">Les parties (art. 1 et 2 CPC)</div>Les parties introduisent l'instance et conduisent son déroulement. C'est le principe dispositif : le procès est leur affaire.</div>
+      <div class="f-cell"><div class="f-cell-title">Le juge (art. 3 CPC)</div>Veille au bon déroulement dans un délai raisonnable. Peut impartir des délais, ordonner des mesures, prononcer des injonctions assorties d'astreintes.</div>
+    </div>
+    <div class="f-info"><strong>Décret 18 juillet 2025 — Art. 21 CPC modifié</strong>Nouveau principe de coopération : le juge et les parties déterminent <em>ensemble</em> le mode de résolution du litige (amiable ou judiciaire) selon un principe de proportionnalité procédurale. L'instruction conventionnelle devient le principe.</div>
+
+    <div class="f-h2">B. Au regard des faits</div>
+    <div class="f-key">Principe : les parties ont la charge exclusive d'alléguer les faits (art. 6 CPC). Le juge ne peut fonder sa décision sur des faits non débattus. MAIS il peut prendre en compte les faits adventices (ceux qui résultent des débats sans avoir été spécialement invoqués, art. 7 al. 2 CPC).</div>
+    <div class="f-text">Pour la preuve des faits : chaque partie prouve ce qu'elle allègue (art. 9 CPC). Le juge peut ordonner une mesure d'instruction si une partie manque de preuves, mais jamais pour suppléer à sa carence (art. 146 al. 2 CPC).</div>
+
+    <div class="f-h2">C. Au regard du droit</div>
+    <div class="f-key">Art. 12 al. 1 : le juge tranche le litige selon les règles de droit applicables. Il doit donner ou restituer leur exacte qualification aux faits (devoir de requalification).</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Situation</th><th>Obligation du juge</th></tr></thead><tbody>
+      <tr><td>Pas de fondement juridique invoqué par les parties</td><td>Doit qualifier les faits et trouver la règle applicable</td></tr>
+      <tr><td>Fondement erroné invoqué</td><td>Doit requalifier si erreur manifeste (mais pas chercher un meilleur fondement si le bon était utilisable)</td></tr>
+      <tr><td>Bon fondement invoqué</td><td>Pas d'obligation de chercher si une autre base juridique serait possible</td></tr>
+      <tr><td>Règle d'ordre public</td><td>Doit la relever d'office même si les parties ne l'ont pas invoquée</td></tr>
+    </tbody></table></div>
+
+    <div class="f-success"><strong>Assemblée plénière 25 juin 2025 — Perte de chance</strong>Nouvelles précisions : quand une partie demande réparation de son entier préjudice, le juge peut (et doit si les conditions sont réunies) rechercher l'existence d'une simple perte de chance, même si elle n'a pas été demandée expressément. Il doit d'abord inviter les parties à présenter leurs observations sur ce point.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #12 Principes directeurs</strong>
+    <ul>
+      <li>Contradictoire = âme du procès · art. 14-16 · information + communication loyale + possibilité de répliquer</li>
+      <li>Juge relevait un moyen d'office → doit d'abord inviter les parties à s'exprimer (sinon nullité d'ordre public)</li>
+      <li>Parties : conduisent l'instance (dispositif) · Juge : veille au bon déroulement</li>
+      <li>Décret 2025 : coopération juge/parties pour choisir mode de résolution · instruction conventionnelle = principe</li>
+      <li>Faits : à la charge des parties · preuve aussi · juge peut prendre en compte faits adventices</li>
+      <li>Droit : juge doit requalifier les faits · peut relever moyens d'ordre public d'office · Dauvin 2007</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f11">← Fiche #11</label><label for="r-f13">Fiche #13 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 13 ===== -->
+<div class="page-content" id="page-f13"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #13 — Partie 2, Titre 3, Section 1</div>
+    <h2>Le déroulement de l'instance — Procédure ordinaire</h2>
+    <div class="fiche-intro">Comment se déroule concrètement un procès devant le Tribunal Judiciaire (TJ) ? De l'introduction de la demande jusqu'aux plaidoiries, voici les étapes de la procédure ordinaire. Deux grandes voies : la procédure écrite (&gt; 10 000 €, avec avocat) et la procédure orale (≤ 10 000 €, sans avocat obligatoire).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">Étape 1</span> Introduction de l'instance</div>
+
+    <div class="f-h2">A. Tentative amiable obligatoire (art. 750-1 CPC)</div>
+    <div class="f-text">Avant de saisir le TJ pour les litiges ≤ 5 000 € ou les conflits de voisinage → tentative obligatoire de conciliation, médiation ou procédure participative. Exceptions : urgence manifeste, impossibilité du conciliateur dans les 3 mois, etc.</div>
+
+    <div class="f-h2">B. L'assignation et la saisine</div>
+    <div class="f-flow">
+      <div class="f-flow-item">Rédaction de l'assignation</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Signification au défendeur (commissaire de justice)</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Enrôlement au greffe du TJ (dans les 4 mois)</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Le TJ est saisi</div>
+    </div>
+    <div class="f-alerte"><strong>Défaut d'enrôlement dans les 4 mois → caducité de l'assignation</strong>Si le demandeur ne remet pas une copie au greffe dans les 4 mois, l'assignation est caduque. Il doit recommencer.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">Étape 2</span> L'audience d'orientation</div>
+    <div class="f-text">L'affaire est appelée devant le juge qui s'entretient avec les avocats. Trois circuits possibles :</div>
+    <div class="f-grid3">
+      <div class="f-cell"><div class="f-cell-title">Circuit court</div>L'affaire est prête → renvoi direct à l'audience de plaidoiries. Clôture immédiate de l'instruction.</div>
+      <div class="f-cell"><div class="f-cell-title">Circuit moyen</div>Un ultime échange de conclusions suffit → 2e audience d'orientation puis audience de plaidoiries.</div>
+      <div class="f-cell"><div class="f-cell-title">Circuit long</div>L'affaire nécessite une mise en état → renvoi devant le Juge de la Mise en État (JME).</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">Étape 3</span> L'instruction de l'affaire</div>
+
+    <div class="f-h2">A. Instruction conventionnelle (principe depuis décret 2025)</div>
+    <div class="f-info"><strong>Depuis le décret du 18 juillet 2025 (art. 127 CPC)</strong>Les parties instruisent elles-mêmes l'affaire via des conventions d'instruction. Deux formes :<br>• Convention simplifiée : peut résulter de simples conclusions concordantes entre avocats<br>• Convention de procédure participative aux fins de mise en état : plus formelle<br>Ces affaires bénéficient d'un audiencement prioritaire. Le juge conserve la main sur le contradictoire.</div>
+
+    <div class="f-h2">B. Instruction judiciaire (exception — via le JME)</div>
+    <div class="f-text">Mission du JME : veiller au déroulement loyal de la procédure dans le respect du contradictoire. Il fixe le calendrier, ordonne la communication des pièces, ordonne des mesures d'instruction, statue sur les incidents et les FNR.</div>
+
+    <div class="f-h2">C. L'administration de la preuve</div>
+    <div class="f-schema">
+      <div class="f-schema-title">Hiérarchie des moyens de preuve</div>
+      <div class="f-flow">
+        <div class="f-flow-item">1. Les pièces (documents)</div>
+        <div class="f-flow-arrow">→ si insuffisantes →</div>
+        <div class="f-flow-item">2. Mesures d'instruction (expertise…)</div>
+        <div class="f-flow-arrow">→ si besoin →</div>
+        <div class="f-flow-item">3. Serment décisoire (rare)</div>
+      </div>
+    </div>
+    <div class="f-key">Art. 146 al. 2 CPC : une mesure d'instruction ne peut jamais être ordonnée pour suppléer la carence d'une partie dans l'administration de la preuve. C'est un moyen subsidiaire.</div>
+
+    <div class="f-info"><strong>Mesure d'instruction préventive — Art. 145 CPC</strong>Avant tout procès, si un motif légitime existe pour établir des preuves → le juge peut ordonner des mesures sur requête ou en référé. Depuis Magico Bus II (juillet 2025) : compétence au choix du demandeur entre juge du fond et juge du lieu d'exécution (sauf immeuble = juge du lieu de l'immeuble).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">Étape 4</span> L'audience de plaidoiries</div>
+    <div class="f-text">Les débats sont <strong>publics</strong> en principe (exceptions : matières liées à l'état des personnes, secrets des affaires, vie privée). Langue : français obligatoire. Un rapport du JME est présenté avant les plaidoiries.</div>
+    <div class="f-flow">
+      <div class="f-flow-item">Rapport du JME</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Plaidoiries (demandeur puis défendeur)</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Clôture des débats</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Mise en délibéré</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Prononcé du jugement</div>
+    </div>
+    <div class="f-alerte"><strong>Procédure sans audience (PSA)</strong>Les parties peuvent convenir de se passer d'audience si elles en sont d'accord. L'affaire est jugée sur dossier. Disponible devant le TJ (art. L212-5-1 COJ).</div>
+    <div class="f-text"><strong>Réouverture des débats</strong> : 3 hypothèses — décision discrétionnaire du juge · changement de composition du tribunal · parties n'ayant pu s'expliquer sur les éclaircissements demandés.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #13 Déroulement de l'instance</strong>
+    <ul>
+      <li>4 grandes étapes : introduction → audience d'orientation → instruction → plaidoiries</li>
+      <li>Enrôlement dans les 4 mois de l'assignation (TJ) → sinon caducité</li>
+      <li>Instruction conventionnelle = principe depuis décret 2025 · judiciaire (JME) = exception</li>
+      <li>Preuve : pièces d'abord → mesures d'instruction si insuffisantes (jamais pour suppléer carence)</li>
+      <li>Art. 145 : mesures préventives avant tout procès · motif légitime requis</li>
+      <li>Clôture des débats → délibéré → prononcé · aucune note après clôture sauf demande du juge</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f12">← Fiche #12</label><label for="r-f14">Fiche #14 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 14 ===== -->
+<div class="page-content" id="page-f14"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #14 — Partie 2, Titre 3, Section 2</div>
+    <h2>Procédures particulières et incidents d'instance</h2>
+    <div class="fiche-intro">Les procédures particulières permettent des décisions rapides ou non contradictoires. Les incidents d'instance sont des événements qui perturbent ou interrompent le cours normal du procès. Tout cela ressemble à des "accidents de parcours" sur la route du jugement.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Le référé — décision provisoire d'urgence</div>
+    <div class="f-illus"><strong>Image</strong>Votre voisin est en train de démolir votre mur commun. Vous ne pouvez pas attendre 2 ans un jugement sur le fond. Le référé permet d'obtenir une décision en 48h pour faire cesser le trouble.</div>
+    <div class="f-key">L'ordonnance de référé est une décision <strong>provisoire</strong> rendue à la demande d'une partie en présence de l'adversaire, dans les cas où la loi confère à un juge le pouvoir d'ordonner des mesures urgentes. (Art. 484 CPC)</div>
+
+    <div class="f-h2">Pouvoirs du juge des référés</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Cas</th><th>Conditions</th></tr></thead><tbody>
+      <tr><td>Urgence + mesures qui ne se heurtent pas à une contestation sérieuse</td><td>Urgence appréciée souverainement · mesure préparatoire ou conservatoire</td></tr>
+      <tr><td>Dommage imminent ou trouble manifestement illicite</td><td>Pas besoin de constater l'urgence · mesures conservatoires ou de remise en état</td></tr>
+      <tr><td>Référé-provision</td><td>L'obligation ne doit pas être sérieusement contestable · obtenir une somme d'argent</td></tr>
+      <tr><td>Référé-injonction</td><td>Faire cesser un acte ou ordonner une obligation de faire</td></tr>
+    </tbody></table></div>
+
+    <div class="f-alerte"><strong>L'ordonnance de référé n'a PAS autorité de la chose jugée au principal !</strong>Elle est provisoire. Le juge du fond n'est pas lié par elle. Elle disparaît si une décision au fond la contredit. MAIS elle a autorité au provisoire : ne peut être modifiée qu'en cas de circonstances nouvelles.</div>
+    <div class="f-text"><strong>Exécution immédiate</strong> : l'ordonnance de référé est exécutoire de plein droit à titre provisoire. Voie de recours : appel dans les 15 jours de la notification.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> La procédure sur requête — sans adversaire</div>
+    <div class="f-illus"><strong>Image</strong>Pour constater un adultère, si vous prévenez votre conjoint que le commissaire de justice va sonner à la porte, ça ne fonctionne pas. La requête permet d'agir à l'insu de l'adversaire.</div>
+    <div class="f-key">L'ordonnance sur requête est rendue <strong>non contradictoirement</strong> (= sans que l'adversaire soit présent ni prévenu), dans les cas où le requérant est fondé à ne pas l'appeler. (Art. 493 CPC)</div>
+    <div class="f-text">Si la requête est accordée → l'adversaire peut saisir le juge en référé pour faire rétracter la décision (le référé-rétractation rétablit le contradictoire différé). Si la requête est rejetée → le requérant peut faire appel dans les 15 jours.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> Le défaut de comparution</div>
+    <div class="f-grid2">
+      <div class="f-cell"><div class="f-cell-title">Défaut du demandeur</div>S'il ne constitue pas avocat → nullité de l'assignation. S'il ne comparaît pas sans motif légitime → caducité de la citation. Avec motif légitime → renvoi à audience ultérieure.</div>
+      <div class="f-cell"><div class="f-cell-title">Défaut du défendeur</div>Jugement rendu quand même sur les seuls éléments du demandeur. Qualifié de « jugement par défaut » ou « jugement réputé contradictoire » selon les conditions. Voie de recours spéciale : l'opposition.</div>
+    </div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">4</span> Incidents affectant l'instance</div>
+
+    <div class="f-h2">A. Interruption de l'instance</div>
+    <div class="f-key">Rupture du lien d'instance due à un événement personnel affectant une partie ou son représentant. L'instance ne s'éteint pas mais est suspendue et aucun acte ne peut être accompli.</div>
+    <div class="f-text">Interruption automatique : décès d'un avocat (si représentation obligatoire), ouverture d'une procédure collective, majorité d'une partie.<br>Interruption conditionnelle (à compter de la notification) : décès d'une partie si l'action est transmissible.</div>
+
+    <div class="f-h2">B. Suspension de l'instance</div>
+    <div class="f-text">Événement non lié à la situation des parties suspend temporairement l'instance. Deux visages :</div>
+    <ul class="f-list">
+      <li><strong>Sursis à statuer</strong> : le juge attend une autre décision qui influencera la sienne (ex. : question préjudicielle) · le délai de péremption est interrompu</li>
+      <li><strong>Radiation ou retrait du rôle</strong> : l'affaire est sortie du rôle de la juridiction (sanction du défaut de diligence ou à la demande des parties) · mesure d'administration judiciaire <strong>sans recours</strong> · le délai de péremption continue de courir !</li>
+    </ul>
+
+    <div class="f-h2">C. Extinction de l'instance</div>
+    <div class="f-table-wrap"><table class="f-table"><thead><tr><th>Mode d'extinction</th><th>Caractéristiques</th></tr></thead><tbody>
+      <tr><td>Désistement d'instance</td><td>Renonciation au procès (pas au droit) · requiert l'accord du défendeur · possibilité d'un nouveau procès</td></tr>
+      <tr><td>Caducité de la citation</td><td>Défaut d'enrôlement dans le délai (4 mois TJ) · peut être constatée d'office · efface les effets interruptifs de prescription</td></tr>
+      <tr><td>Péremption d'instance</td><td>Sanction suprême de la négligence : aucun acte de procédure depuis 2 ans (art. 386 CPC) · le droit d'agir n'est pas éteint mais la demande perd son effet interruptif de prescription</td></tr>
+    </tbody></table></div>
+    <div class="f-alerte"><strong>Péremption — Jurisprudence 2025</strong>Arrêt 27 mars 2025 : la diligence interruptive = initiative d'une partie manifestant sa volonté de parvenir à la résolution du litige, prise utilement dans le cours de l'instance. Les diligences amiables peuvent interrompre le délai. En procédure orale, une fois les formalités accomplies, la péremption ne court plus tant que le greffe n'a pas fixé d'audience.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #14 Procédures &amp; incidents</strong>
+    <ul>
+      <li>Référé : décision provisoire · contradictoire · pas d'autorité de chose jugée au principal</li>
+      <li>Référé-dommage imminent ou trouble illicite : pas besoin de constater l'urgence</li>
+      <li>Ordonnance sur requête : non contradictoire (provisoire) · recours : référé-rétractation</li>
+      <li>Défaut défendeur → jugement par défaut (opposable dans les 6 mois) ou réputé contradictoire</li>
+      <li>Interruption d'instance : suspend l'instance · délai péremption interrompu · reprise par acte spécial</li>
+      <li>Radiation : mesure d'admin judiciaire sans recours · délai péremption CONTINUE de courir</li>
+      <li>Péremption : 2 ans sans diligence → extinction de l'instance (pas du droit d'agir)</li>
+      <li>Désistement d'instance ≠ désistement d'action · accord du défendeur requis</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f13">← Fiche #13</label><label for="r-f15">Fiche #15 →</label></div>
+</div>
+</main></div>
+
+<!-- ===== FICHE 15 ===== -->
+<div class="page-content" id="page-f15"><main>
+<div class="fiche-page">
+  <div class="fiche-header">
+    <div class="fiche-meta">Fiche #15 — Partie 2, Titres 1 &amp; 2</div>
+    <h2>Le jugement et les voies de recours</h2>
+    <div class="fiche-intro">Le jugement est l'acte par lequel le juge tranche le litige. Mais la partie perdante peut ne pas s'incliner. Les voies de recours lui permettent de contester. Voies ordinaires (appel, opposition) = larges / Voies extraordinaires (cassation, tierce opposition, révision) = limitées.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">1</span> Le jugement — son existence et ses effets</div>
+
+    <div class="f-h2">A. L'élaboration du jugement</div>
+    <div class="f-flow">
+      <div class="f-flow-item">Délibéré (secret)</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Rédaction (min. + dispositif)</div>
+      <div class="f-flow-arrow">→</div>
+      <div class="f-flow-item">Prononcé (public)</div>
+    </div>
+    <div class="f-text">Le jugement doit comporter : identification de la juridiction et des juges, noms des parties, <strong>motifs</strong> (raisons de la décision) et <strong>dispositif</strong> (la décision elle-même). Signatures du Président et du greffier à peine de nullité.</div>
+    <div class="f-key">Seul le <strong>dispositif</strong> a l'autorité de la chose jugée. Les motifs ne sont pas opposables (sauf s'ils sont le soutien nécessaire du dispositif).</div>
+
+    <div class="f-h2">B. La notification du jugement</div>
+    <div class="f-text">Le jugement doit être notifié (en principe par signification du commissaire de justice) pour produire son plein effet. La notification fait courir le délai des voies de recours. Sans notification, le délai ne court pas (mais la voie de recours se ferme après 2 ans du prononcé si non exercée).</div>
+
+    <div class="f-h2">C. Autorité de la chose jugée — la triple identité (art. 1355 CC)</div>
+    <div class="f-grid3">
+      <div class="f-cell"><div class="f-cell-title">Même objet</div>Même chose demandée (résultat économique recherché)</div>
+      <div class="f-cell"><div class="f-cell-title">Même cause</div>Mêmes faits générateurs (depuis Césaréo 2006)</div>
+      <div class="f-cell"><div class="f-cell-title">Mêmes parties</div>Mêmes personnes en la même qualité</div>
+    </div>
+    <div class="f-text">Si ces trois éléments sont réunis → FNR tirée de la chose jugée. Les tiers ne sont pas liés par le jugement (ils peuvent former tierce opposition si leurs intérêts sont lésés).</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">2</span> L'exécution du jugement</div>
+
+    <div class="f-h2">A. Condition : le jugement doit avoir force de chose jugée</div>
+    <div class="f-key">Un jugement est passé en force de chose jugée quand il n'est susceptible d'aucun recours suspensif d'exécution (art. 500 CPC). Sans cela, il ne peut pas être exécuté par la force.</div>
+
+    <div class="f-h2">B. Exécution provisoire de droit — depuis le décret du 11 décembre 2019</div>
+    <div class="f-alerte"><strong>Révolution !</strong>Depuis 2020, les jugements de première instance sont exécutoires provisoirement de droit (art. 514 CPC), même si l'appel est ouvert ! L'effet suspensif de l'appel est devenu l'exception. Conséquence : le perdant doit exécuter même s'il fait appel, sauf si :<br>• Le juge a écarté l'exécution provisoire (incompatible avec la nature de l'affaire)<br>• Le 1er Président de la CA l'arrête (moyen sérieux + conséquences manifestement excessives)</div>
+
+    <div class="f-text">Exécution à risques et périls : si le jugement est infirmé en appel, le gagnant de 1ère instance devra restituer et peut être condamné à des DI.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">3</span> Les voies de recours ordinaires</div>
+
+    <div class="f-h2">A. L'appel — la principale voie de recours</div>
+    <div class="f-key">L'appel tend à la réformation ou à l'annulation d'un jugement de 1ère instance par la Cour d'appel. Conditions : taux du ressort &gt; 5 000 € · délai : 1 mois à compter de la notification du jugement.</div>
+
+    <div class="f-h2">Les effets de l'appel</div>
+    <div class="f-grid3">
+      <div class="f-cell"><div class="f-cell-title">Effet suspensif</div>En théorie, l'appel suspend l'exécution. En pratique vidé de sens depuis l'exécution provisoire de droit (2019).</div>
+      <div class="f-cell"><div class="f-cell-title">Effet dévolutif</div>L'appel remet la chose jugée en question. La CA connaît du litige en fait ET en droit dans les limites critiquées. « Il n'est dévolu qu'autant qu'il est appelé. »</div>
+      <div class="f-cell"><div class="f-cell-title">Évocation</div>Faculté pour la CA de statuer sur le fond d'une question que les 1ers juges n'ont pas tranchée (pour donner une solution définitive rapide).</div>
+    </div>
+    <div class="f-alerte"><strong>Déclaration d'appel — obligation de préciser les chefs critiqués</strong>Depuis le décret du 6 mai 2017 (art. 562 CPC) : la déclaration d'appel doit préciser les chefs du jugement critiqués. Sans cela : nullité pour vice de forme + absence d'effet dévolutif. Régularisation possible par une DA rectificative dans les 3 mois ou dans les premières conclusions (nouvel art. 915-2, décret déc. 2023).</div>
+    <div class="f-text"><strong>Prétentions nouvelles en appel :</strong> interdites en principe. Exceptions : pour compenser, pour s'opposer aux prétentions adverses, pour prétentions qui tendent aux mêmes fins qu'en 1ère instance (art. 565), accessoire/complément nécessaire (art. 566), demandes reconventionnelles connexes (art. 567).</div>
+
+    <div class="f-h2">B. L'opposition — pour le défendeur défaillant</div>
+    <div class="f-text">L'opposition est une voie de <strong>rétractation</strong> ouverte seulement contre les jugements rendus par défaut. Elle renvoie l'affaire devant le même juge pour que la décision soit rejugée contradictoirement. Délai : 1 mois à compter de la notification. « Opposition sur opposition ne vaut » : si l'opposant ne comparaît pas à son tour, pas de 2e opposition possible.</div>
+  </div>
+
+  <div class="f-bloc">
+    <div class="f-h1"><span class="f-num">4</span> Les voies de recours extraordinaires</div>
+
+    <div class="f-h2">A. Le pourvoi en cassation</div>
+    <div class="f-key">La Cour de cassation ne rejuge pas le fond. Elle vérifie uniquement la conformité du jugement aux règles de droit. Si elle casse, elle renvoie devant une autre juridiction (ou juge elle-même dans certains cas). Délai : 2 mois à compter de la signification. Représentation obligatoire par avocat au Conseil.</div>
+    <div class="f-text"><strong>Ouvertures à cassation :</strong> violation de la loi (refus d'application, mauvaise interprétation) · défaut de motifs · manque de base légale · défaut de réponse aux conclusions · contrariété de jugements.</div>
+    <div class="f-info"><strong>La Cour de cassation ne juge pas le fond sauf exception</strong>Elle casse et renvoie → un autre juge du fond va rejuger. Exception récente : si l'intérêt d'une bonne administration de la justice le justifie, elle peut juger elle-même au fond (art. L431-4 COJ).</div>
+
+    <div class="f-h2">B. La tierce opposition</div>
+    <div class="f-text">Voie de recours ouverte à un <strong>tiers</strong> (non partie au procès) dont les intérêts sont lésés par un jugement. Tendance à faire rétracter ou réformer la décision pour lui seul. Délai : 30 ans (sauf exceptions). N'a pas d'effet suspensif.</div>
+
+    <div class="f-h2">C. Le recours en révision</div>
+    <div class="f-text">Permet de faire rétracter un jugement passé en force de chose jugée lorsqu'une fraude est découverte après (faux documents, rétention de pièces décisives, faux témoignage…). Délai : 2 mois à compter de la découverte du motif. Voie de rétractation → même juge.</div>
+  </div>
+
+  <div class="f-retenir">
+    <strong>Mémo — Fiche #15 Jugement &amp; voies de recours</strong>
+    <ul>
+      <li>Jugement : délibéré secret → rédaction (motifs + dispositif) → prononcé public</li>
+      <li>Seul le dispositif a l'autorité de la chose jugée (pas les motifs)</li>
+      <li>Triple identité pour la chose jugée : objet + cause (faits, depuis Césaréo) + parties</li>
+      <li>Depuis 2020 : exécution provisoire de droit des jugements 1ère instance → appel ne suspend plus</li>
+      <li>Appel : délai 1 mois · taux ressort &gt; 5 000 € · préciser les chefs critiqués OBLIGATOIRE</li>
+      <li>Effet dévolutif : « il n'est dévolu qu'autant qu'il est appelé » · pas de prétentions nouvelles en appel</li>
+      <li>Opposition : pour défendeur défaillant · même juge · délai 1 mois · pas de 2e opposition</li>
+      <li>Cassation : contrôle du droit · pas de fond · délai 2 mois · avocat au Conseil obligatoire</li>
+      <li>Tierce opposition : tiers lésé · 30 ans · pas d'effet suspensif</li>
+    </ul>
+  </div>
+  <div class="fiche-nav"><label for="r-f14">← Fiche #14</label><label for="r-home">Retour à l'accueil</label></div>
+</div>
+</main></div>
+
+<footer>
+  <p>Droit <span>Judiciaire Privé</span> — 15 fiches pédagogiques · Révision 2025-2026 · Code de procédure civile</p>
+</footer>
+
+</div>
+</body>
+</html>
